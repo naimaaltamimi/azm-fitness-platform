@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" fill="none">
+  <defs>
+    <linearGradient id="fullBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+    <linearGradient id="fullGreenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+  </defs>
+
+  <!-- Icon Section -->
+  <g transform="translate(10, 5) scale(0.7)">
+    <path d="M50 6 L86 24 C86 58 70 82 50 94 C30 82 14 58 14 24 L50 6 Z" fill="url(#fullBlueGrad)" />
+    <path d="M50 18 L76 33 C76 56 64 74 50 84 C36 74 24 56 24 33 L50 18 Z" fill="#0F172A" />
+    <path d="M34 68 L48 28 L54 28 L40 68 Z" fill="#FFFFFF" />
+    <path d="M66 68 L52 28 L46 28 L60 68 Z" fill="#93C5FD" />
+    <path d="M50 24 L56 42 L46 42 L52 64 L38 46 L47 46 Z" fill="url(#fullGreenGrad)" />
+    <circle cx="50" cy="74" r="3.5" fill="#34D399" />
+  </g>
+
+  <!-- Brand Typography -->
+  <!-- Arabic Name "عزم" -->
+  <text x="85" y="46" font-family="'Cairo', sans-serif" font-weight="900" font-size="34" fill="#1D4ED8" letter-spacing="1">
+    عـزم
+  </text>
+  
+  <!-- English AZM -->
+  <text x="175" y="46" font-family="'Cairo', sans-serif" font-weight="900" font-size="28" fill="#0F172A" letter-spacing="2">
+    AZM
+  </text>
+
+  <!-- Green Accent Dot -->
+  <circle cx="160" cy="38" r="4" fill="url(#fullGreenGrad)" />
+
+  <!-- Subtitle: Fitness & Nutrition • Mukalla -->
+  <text x="86" y="66" font-family="'Cairo', sans-serif" font-weight="600" font-size="11" fill="#64748B" letter-spacing="0.5">
+    منصة اللياقة والتغذية الأولى • المكلا
+  </text>
+</svg>
+
