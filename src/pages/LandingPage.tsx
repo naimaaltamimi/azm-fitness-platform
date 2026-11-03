@@ -4,6 +4,7 @@ import { MUKALLA_GYMS } from '../data/mukallaGymsData';
 import { MEALS_DATA } from '../data/mealsData';
 import { GymCard } from '../components/gyms/GymCard';
 import { MealCard } from '../components/nutrition/MealCard';
+import { HeroSlider } from '../components/HeroSlider';
 import {
   Dumbbell,
   Compass,
@@ -31,10 +32,6 @@ export const LandingPage: React.FC = () => {
   const [heroNeighborhood, setHeroNeighborhood] = useState('all');
   const [heroCategory, setHeroCategory] = useState<'gyms' | 'trainers' | 'meals'>('gyms');
 
-  // Interactive Gym Showcase index in Hero
-  const [activeGymIndex, setActiveGymIndex] = useState(0);
-  const activeShowcaseGym = MUKALLA_GYMS[activeGymIndex] || MUKALLA_GYMS[0];
-
   const featuredGyms = MUKALLA_GYMS.slice(0, 3);
   const featuredMeals = MEALS_DATA.slice(0, 3);
 
@@ -55,227 +52,111 @@ export const LandingPage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-10 sm:space-y-16 pb-16">
-      {/* Compact High-Impact Hero Section */}
-      <section className="relative overflow-hidden bg-[#080d1a] text-white border-b border-slate-800/80 pt-5 pb-8 sm:pt-8 sm:pb-12">
-        {/* Ambient Subtle Gradients */}
-        <div className="absolute top-0 right-1/4 w-[500px] h-[350px] bg-brand-blue-600/20 rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute bottom-0 left-10 w-[400px] h-[300px] bg-brand-green-500/15 rounded-full blur-[90px] pointer-events-none" />
+    <div className="space-y-12 sm:space-y-16 pb-16">
+      {/* 1. World-Class Split Screen Hero Slider (Inspired by MyFitnessPal) */}
+      <HeroSlider />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-            {/* Right Column: Punchy Headline & Direct Discovery (RTL) */}
-            <div className="lg:col-span-7 space-y-4 text-right">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-blue-500/15 border border-brand-blue-400/30 text-brand-blue-300 text-xs font-bold">
-                <span className="w-2 h-2 rounded-full bg-brand-green-400 animate-pulse" />
-                <span>المنصة الرياضية المعتمدة في المكلا • ساحل حضرموت</span>
-              </div>
+      {/* 2. Floating Sleek Discovery & Search Bar */}
+      <section className="-mt-8 sm:-mt-14 relative z-30 max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="bg-white/95 backdrop-blur-xl p-4 sm:p-6 rounded-3xl shadow-2xl border border-slate-200/90 space-y-4">
+          <form
+            onSubmit={handleHeroSearch}
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5"
+          >
+            {/* Category Selector */}
+            <select
+              value={heroCategory}
+              onChange={(e) => setHeroCategory(e.target.value as any)}
+              className="w-full sm:w-44 px-3.5 py-3 rounded-2xl bg-slate-100 font-bold text-xs sm:text-sm text-slate-800 border-0 focus:ring-2 focus:ring-brand-blue-500 outline-none cursor-pointer"
+            >
+              <option value="gyms">صالات رياضية</option>
+              <option value="trainers">كباتن ومدربون</option>
+              <option value="meals">وجبات صحية</option>
+            </select>
 
-              {/* Headline */}
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.25] text-white">
-                وجهتك الرياضية الأولى <br />
-                <span className="bg-gradient-to-l from-brand-blue-400 via-sky-300 to-brand-green-400 bg-clip-text text-transparent">
-                  للياقة والتغذية الصحية
-                </span>{' '}
-                في المكلا
-              </h1>
+            {/* Neighborhood Selector */}
+            <select
+              value={heroNeighborhood}
+              onChange={(e) => setHeroNeighborhood(e.target.value)}
+              className="w-full sm:w-48 px-3.5 py-3 rounded-2xl bg-slate-100 font-bold text-xs sm:text-sm text-slate-800 border-0 focus:ring-2 focus:ring-brand-blue-500 outline-none cursor-pointer"
+            >
+              <option value="all">جميع أحياء المكلا</option>
+              <option value="الشرج">حي الشرج</option>
+              <option value="فوة المتضررين">فوة المتضررين</option>
+              <option value="ديس المكلا">ديس المكلا</option>
+            </select>
 
-              {/* Concise Description */}
-              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-xl">
-                استكشف نوادي المكلا المعتمدة في <strong className="text-white">الشرج، فوة المتضررين، والديس</strong>. احجز اشتراكك مباشرة، واستفد من حاسبة السعرات الدقيقة والوجبات الصحية.
-              </p>
-
-              {/* World-Class Floating Discovery Bar */}
-              <div className="pt-1">
-                <form
-                  onSubmit={handleHeroSearch}
-                  className="bg-white/95 backdrop-blur-md p-2 rounded-2xl sm:rounded-3xl shadow-xl border border-white/20 text-slate-800 flex flex-col sm:flex-row items-stretch sm:items-center gap-2"
-                >
-                  {/* Category Selector */}
-                  <select
-                    value={heroCategory}
-                    onChange={(e) => setHeroCategory(e.target.value as any)}
-                    className="w-full sm:w-auto px-3 py-2.5 rounded-xl bg-slate-100 font-bold text-xs text-slate-700 border-0 focus:ring-2 focus:ring-brand-blue-500 outline-none cursor-pointer"
-                  >
-                    <option value="gyms">صالات رياضية</option>
-                    <option value="trainers">كباتن ومدربون</option>
-                    <option value="meals">وجبات صحية</option>
-                  </select>
-
-                  {/* Neighborhood Selector */}
-                  <select
-                    value={heroNeighborhood}
-                    onChange={(e) => setHeroNeighborhood(e.target.value)}
-                    className="w-full sm:w-auto px-3 py-2.5 rounded-xl bg-slate-100 font-bold text-xs text-slate-700 border-0 focus:ring-2 focus:ring-brand-blue-500 outline-none cursor-pointer"
-                  >
-                    <option value="all">جميع أحياء المكلا</option>
-                    <option value="الشرج">حي الشرج</option>
-                    <option value="فوة المتضررين">فوة المتضررين</option>
-                    <option value="ديس المكلا">ديس المكلا</option>
-                  </select>
-
-                  {/* Search Query Input */}
-                  <div className="relative flex-1">
-                    <input
-                      type="text"
-                      value={heroSearch}
-                      onChange={(e) => setHeroSearch(e.target.value)}
-                      placeholder="ابحث باسم الصالة أو الميزة..."
-                      className="w-full pl-3 pr-8 py-2.5 rounded-xl text-xs font-semibold text-slate-800 placeholder-slate-400 bg-transparent focus:outline-none"
-                    />
-                    <Search className="w-4 h-4 text-slate-400 absolute right-2 top-3" />
-                  </div>
-
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    className="px-5 py-2.5 rounded-xl bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold text-xs shadow-md shadow-brand-blue-600/30 active:scale-95 transition-all flex items-center justify-center gap-1.5 shrink-0"
-                  >
-                    <span>استكشف الآن</span>
-                    <ArrowRight className="w-3.5 h-3.5 rotate-180" />
-                  </button>
-                </form>
-
-                {/* Quick-Tap Verified Mukalla Chips */}
-                <div className="flex flex-wrap items-center gap-1.5 pt-3">
-                  <span className="text-[11px] text-slate-400 font-bold w-full sm:w-auto">الوصول السريع:</span>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setHeroNeighborhood('فوة المتضررين');
-                      navigate('/gyms?neighborhood=فوة المتضررين');
-                    }}
-                    className="px-2.5 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-[11px] text-slate-300 hover:text-white border border-slate-700 transition-colors"
-                  >
-                    📍 فوة: سمارت جيم
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setHeroNeighborhood('الشرج');
-                      navigate('/gyms?neighborhood=الشرج');
-                    }}
-                    className="px-2.5 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-[11px] text-slate-300 hover:text-white border border-slate-700 transition-colors"
-                  >
-                    📍 الشرج: قولدن جيم
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setHeroNeighborhood('الشرج');
-                      navigate('/gyms/winner-gym');
-                    }}
-                    className="px-2.5 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-[11px] text-slate-300 hover:text-white border border-slate-700 transition-colors"
-                  >
-                    📍 مارينا: وينر جيم
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setHeroNeighborhood('الشرج');
-                      navigate('/gyms/mukalla-gym');
-                    }}
-                    className="px-2.5 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-[11px] text-slate-300 hover:text-white border border-slate-700 transition-colors"
-                  >
-                    📍 ميرال: المكلا جيم
-                  </button>
-                </div>
-              </div>
-
-              {/* Quick Pillars Strip */}
-              <div className="pt-3 border-t border-slate-800/80 grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 text-slate-300">
-                <div className="flex items-center gap-2">
-                  <Building2 className="w-4 h-4 text-brand-blue-400 shrink-0" />
-                  <div>
-                    <span className="text-xs font-bold text-white block">5 صالات حقيقية</span>
-                    <span className="text-[10px] text-slate-400">معاينة وموثقة بالمكلا</span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Calculator className="w-4 h-4 text-brand-green-400 shrink-0" />
-                  <div>
-                    <span className="text-xs font-bold text-white block">حاسبة السعرات</span>
-                    <span className="text-[10px] text-slate-400">بدقة ميفلين-سانت جور</span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Salad className="w-4 h-4 text-amber-400 shrink-0" />
-                  <div>
-                    <span className="text-xs font-bold text-white block">تغذية ساحلية</span>
-                    <span className="text-[10px] text-slate-400">بأسماك بحر المكلا</span>
-                  </div>
-                </div>
-              </div>
+            {/* Search Query Input */}
+            <div className="relative flex-1">
+              <input
+                type="text"
+                value={heroSearch}
+                onChange={(e) => setHeroSearch(e.target.value)}
+                placeholder="ابحث باسم الصالة أو الميزة (حديد، سير، كارديو)..."
+                className="w-full pl-3.5 pr-10 py-3 rounded-2xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:bg-white transition-all"
+              />
+              <Search className="w-4 h-4 text-slate-400 absolute right-3.5 top-3.5" />
             </div>
 
-            {/* Left Column: Interactive Gym Hub Showcase Card */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative rounded-3xl bg-slate-900/90 border border-slate-700/80 p-5 shadow-2xl backdrop-blur-md space-y-4">
-                {/* Gym Selector Tabs */}
-                <div className="flex items-center gap-1 overflow-x-auto pb-1 border-b border-slate-800">
-                  {MUKALLA_GYMS.map((gym, idx) => (
-                    <button
-                      key={gym.id}
-                      onClick={() => setActiveGymIndex(idx)}
-                      className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
-                        activeGymIndex === idx
-                          ? 'bg-brand-blue-600 text-white shadow-sm'
-                          : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
-                      }`}
-                    >
-                      {gym.nameAr.split('(')[0].trim()}
-                    </button>
-                  ))}
-                </div>
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="px-7 py-3 rounded-2xl bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold text-xs sm:text-sm shadow-lg shadow-brand-blue-600/30 active:scale-95 transition-all flex items-center justify-center gap-2 shrink-0"
+            >
+              <span>استكشف الآن</span>
+              <ArrowRight className="w-4 h-4 rotate-180" />
+            </button>
+          </form>
 
-                {/* Active Gym Preview */}
-                <div className="relative rounded-2xl overflow-hidden aspect-[16/10] bg-slate-800 group">
-                  <img
-                    src={activeShowcaseGym.coverImage}
-                    alt={activeShowcaseGym.nameAr}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-black/20 to-transparent flex flex-col justify-end p-4">
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="px-2.5 py-0.5 rounded-full bg-brand-green-500/90 text-white text-[10px] font-bold">
-                        صالة موثقة ✓
-                      </span>
-                      <span className="px-2.5 py-0.5 rounded-full bg-black/60 text-slate-200 text-[10px] font-bold backdrop-blur-sm">
-                        المكلا - {activeShowcaseGym.neighborhood}
-                      </span>
-                    </div>
-                    <h3 className="text-white font-black text-base sm:text-lg">
-                      {activeShowcaseGym.nameAr}
-                    </h3>
-                    <p className="text-xs text-slate-300 line-clamp-1 mt-0.5">
-                      {activeShowcaseGym.addressText}
-                    </p>
-                  </div>
-                </div>
+          {/* Quick-Tap Verified Mukalla Chips */}
+          <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-100 text-xs">
+            <div className="flex flex-wrap items-center gap-1.5">
+              <span className="text-slate-500 font-bold ml-1">الوصول السريع:</span>
+              <button
+                type="button"
+                onClick={() => {
+                  setHeroNeighborhood('فوة المتضررين');
+                  navigate('/gyms?neighborhood=فوة المتضررين');
+                }}
+                className="px-2.5 py-1 rounded-xl bg-slate-100 hover:bg-brand-blue-50 text-slate-700 hover:text-brand-blue-700 text-[11px] font-semibold transition-colors"
+              >
+                📍 فوة: سمارت جيم
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setHeroNeighborhood('الشرج');
+                  navigate('/gyms?neighborhood=الشرج');
+                }}
+                className="px-2.5 py-1 rounded-xl bg-slate-100 hover:bg-brand-blue-50 text-slate-700 hover:text-brand-blue-700 text-[11px] font-semibold transition-colors"
+              >
+                📍 الشرج: قولدن جيم
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setHeroNeighborhood('الشرج');
+                  navigate('/gyms/winner-gym');
+                }}
+                className="px-2.5 py-1 rounded-xl bg-slate-100 hover:bg-brand-blue-50 text-slate-700 hover:text-brand-blue-700 text-[11px] font-semibold transition-colors"
+              >
+                📍 مارينا: وينر جيم
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setHeroNeighborhood('الشرج');
+                  navigate('/gyms/mukalla-gym');
+                }}
+                className="px-2.5 py-1 rounded-xl bg-slate-100 hover:bg-brand-blue-50 text-slate-700 hover:text-brand-blue-700 text-[11px] font-semibold transition-colors"
+              >
+                📍 ميرال: المكلا جيم
+              </button>
+            </div>
 
-                {/* Mini Features & Direct Action */}
-                <div className="flex items-center justify-between text-xs pt-1">
-                  <div className="flex items-center gap-1.5 text-slate-300">
-                    <Phone className="w-3.5 h-3.5 text-brand-green-400" />
-                    <span dir="ltr" className="font-mono text-[11px]">{activeShowcaseGym.phone}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Link
-                      to={`/gyms/${activeShowcaseGym.slug}`}
-                      className="px-3 py-1.5 rounded-xl border border-slate-700 text-slate-300 hover:text-white hover:bg-slate-800 text-xs font-bold transition-colors"
-                    >
-                      التفاصيل
-                    </Link>
-                    <Link
-                      to={`/gyms/${activeShowcaseGym.slug}/subscribe`}
-                      className="px-4 py-1.5 rounded-xl bg-brand-blue-600 hover:bg-brand-blue-500 text-white text-xs font-bold shadow-md transition-all active:scale-95"
-                    >
-                      طلب اشتراك
-                    </Link>
-                  </div>
-                </div>
-              </div>
+            <div className="flex items-center gap-1.5 text-brand-green-600 font-bold text-[11px]">
+              <ShieldCheck className="w-4 h-4" />
+              <span>5 صالات حقيقية موثقة ومجربة بالمكلا</span>
             </div>
           </div>
         </div>
