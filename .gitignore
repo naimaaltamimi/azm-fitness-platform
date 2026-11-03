@@ -4,3 +4,5 @@ dist/
 .env.*
 !.env.example
 *.tsbuildinfo
+raw_data_clubs/
+tsconfig.tsbuildinfo
