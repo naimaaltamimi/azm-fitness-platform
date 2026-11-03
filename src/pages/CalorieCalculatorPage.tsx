@@ -110,7 +110,7 @@ export const CalorieCalculatorPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
         {/* Input Form Column */}
         <div className="lg:col-span-7 bg-white p-7 sm:p-9 rounded-3xl border border-slate-200/90 shadow-sm space-y-6">
           <h2 className="text-lg font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
@@ -188,10 +188,10 @@ export const CalorieCalculatorPage: React.FC = () => {
             <label className="block text-xs font-bold text-slate-700 mb-2">مستوى النشاط الحركي والتمرين</label>
             <div className="space-y-2">
               {[
-                { label: 'خامل (عمل مكتبي، بدون تمارين)', factor: 1.2 },
-                { label: 'نشاط خفيف (تمارين 1-3 أيام في الأسبوع)', factor: 1.375 },
-                { label: 'نشاط متوسط (تمارين صالة 3-5 أيام أسبوعياً)', factor: 1.55 },
-                { label: 'نشاط عالي (تمارين مكثفة 6-7 أيام في الأسبوع)', factor: 1.725 },
+                { label: 'خامل (عمل مكتبي، بدون تمارين)', labelSm: 'خامل', factor: 1.2 },
+                { label: 'نشاط خفيف (تمارين 1-3 أيام في الأسبوع)', labelSm: 'نشاط خفيف (1-3 أيام)', factor: 1.375 },
+                { label: 'نشاط متوسط (تمارين صالة 3-5 أيام أسبوعياً)', labelSm: 'نشاط متوسط (3-5 أيام)', factor: 1.55 },
+                { label: 'نشاط عالي (تمارين مكثفة 6-7 أيام في الأسبوع)', labelSm: 'نشاط عالي (6-7 أيام)', factor: 1.725 },
               ].map((act) => (
                 <div
                   key={act.factor}
@@ -202,8 +202,9 @@ export const CalorieCalculatorPage: React.FC = () => {
                       : 'border-slate-200 hover:bg-slate-50 text-slate-700'
                   }`}
                 >
-                  <span>{act.label}</span>
-                  <span className={`w-3.5 h-3.5 rounded-full border-2 ${activity === act.factor ? 'border-brand-blue-600 bg-brand-blue-600' : 'border-slate-300'}`} />
+                  <span className="hidden sm:inline">{act.label}</span>
+                  <span className="sm:hidden">{act.labelSm}</span>
+                  <span className={`w-3.5 h-3.5 rounded-full border-2 shrink-0 ${activity === act.factor ? 'border-brand-blue-600 bg-brand-blue-600' : 'border-slate-300'}`} />
                 </div>
               ))}
             </div>

@@ -60,7 +60,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-8 border-b border-slate-800/80">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 pb-8 border-b border-slate-800/80">
           {/* Brand Info & Mission (Col 1-4) */}
           <div className="lg:col-span-4 space-y-4">
             <Logo variant="full" theme="dark" size="lg" />

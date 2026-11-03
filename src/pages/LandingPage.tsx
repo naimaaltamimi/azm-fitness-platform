@@ -55,9 +55,9 @@ export const LandingPage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-12 sm:space-y-16 pb-16">
+    <div className="space-y-10 sm:space-y-16 pb-16">
       {/* Compact High-Impact Hero Section */}
-      <section className="relative overflow-hidden bg-[#080d1a] text-white border-b border-slate-800/80 pt-6 pb-10 sm:pt-8 sm:pb-12">
+      <section className="relative overflow-hidden bg-[#080d1a] text-white border-b border-slate-800/80 pt-5 pb-8 sm:pt-8 sm:pb-12">
         {/* Ambient Subtle Gradients */}
         <div className="absolute top-0 right-1/4 w-[500px] h-[350px] bg-brand-blue-600/20 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute bottom-0 left-10 w-[400px] h-[300px] bg-brand-green-500/15 rounded-full blur-[90px] pointer-events-none" />
@@ -96,7 +96,7 @@ export const LandingPage: React.FC = () => {
                   <select
                     value={heroCategory}
                     onChange={(e) => setHeroCategory(e.target.value as any)}
-                    className="px-3 py-2.5 rounded-xl bg-slate-100 font-bold text-xs text-slate-700 border-0 focus:ring-2 focus:ring-brand-blue-500 outline-none cursor-pointer"
+                    className="w-full sm:w-auto px-3 py-2.5 rounded-xl bg-slate-100 font-bold text-xs text-slate-700 border-0 focus:ring-2 focus:ring-brand-blue-500 outline-none cursor-pointer"
                   >
                     <option value="gyms">صالات رياضية</option>
                     <option value="trainers">كباتن ومدربون</option>
@@ -107,7 +107,7 @@ export const LandingPage: React.FC = () => {
                   <select
                     value={heroNeighborhood}
                     onChange={(e) => setHeroNeighborhood(e.target.value)}
-                    className="px-3 py-2.5 rounded-xl bg-slate-100 font-bold text-xs text-slate-700 border-0 focus:ring-2 focus:ring-brand-blue-500 outline-none cursor-pointer"
+                    className="w-full sm:w-auto px-3 py-2.5 rounded-xl bg-slate-100 font-bold text-xs text-slate-700 border-0 focus:ring-2 focus:ring-brand-blue-500 outline-none cursor-pointer"
                   >
                     <option value="all">جميع أحياء المكلا</option>
                     <option value="الشرج">حي الشرج</option>
@@ -138,15 +138,15 @@ export const LandingPage: React.FC = () => {
                 </form>
 
                 {/* Quick-Tap Verified Mukalla Chips */}
-                <div className="flex flex-wrap items-center gap-2 pt-3">
-                  <span className="text-[11px] text-slate-400 font-bold">الوصول السريع:</span>
+                <div className="flex flex-wrap items-center gap-1.5 pt-3">
+                  <span className="text-[11px] text-slate-400 font-bold w-full sm:w-auto">الوصول السريع:</span>
                   <button
                     type="button"
                     onClick={() => {
                       setHeroNeighborhood('فوة المتضررين');
                       navigate('/gyms?neighborhood=فوة المتضررين');
                     }}
-                    className="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-[11px] text-slate-300 hover:text-white border border-slate-700 transition-colors"
+                    className="px-2.5 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-[11px] text-slate-300 hover:text-white border border-slate-700 transition-colors"
                   >
                     📍 فوة: سمارت جيم
                   </button>
@@ -156,7 +156,7 @@ export const LandingPage: React.FC = () => {
                       setHeroNeighborhood('الشرج');
                       navigate('/gyms?neighborhood=الشرج');
                     }}
-                    className="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-[11px] text-slate-300 hover:text-white border border-slate-700 transition-colors"
+                    className="px-2.5 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-[11px] text-slate-300 hover:text-white border border-slate-700 transition-colors"
                   >
                     📍 الشرج: قولدن جيم
                   </button>
@@ -166,9 +166,9 @@ export const LandingPage: React.FC = () => {
                       setHeroNeighborhood('الشرج');
                       navigate('/gyms/winner-gym');
                     }}
-                    className="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-[11px] text-slate-300 hover:text-white border border-slate-700 transition-colors"
+                    className="px-2.5 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-[11px] text-slate-300 hover:text-white border border-slate-700 transition-colors"
                   >
-                    📍 مارينا مول: وينر جيم
+                    📍 مارينا: وينر جيم
                   </button>
                   <button
                     type="button"
@@ -176,15 +176,15 @@ export const LandingPage: React.FC = () => {
                       setHeroNeighborhood('الشرج');
                       navigate('/gyms/mukalla-gym');
                     }}
-                    className="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-[11px] text-slate-300 hover:text-white border border-slate-700 transition-colors"
+                    className="px-2.5 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-[11px] text-slate-300 hover:text-white border border-slate-700 transition-colors"
                   >
-                    📍 قاعة ميرال: المكلا جيم
+                    📍 ميرال: المكلا جيم
                   </button>
                 </div>
               </div>
 
               {/* Quick Pillars Strip */}
-              <div className="pt-3 border-t border-slate-800/80 grid grid-cols-3 gap-3 text-slate-300">
+              <div className="pt-3 border-t border-slate-800/80 grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 text-slate-300">
                 <div className="flex items-center gap-2">
                   <Building2 className="w-4 h-4 text-brand-blue-400 shrink-0" />
                   <div>

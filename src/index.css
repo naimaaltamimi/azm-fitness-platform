@@ -7,17 +7,43 @@
     direction: rtl;
     font-family: 'Cairo', Tajawal, system-ui, -apple-system, sans-serif;
     scroll-behavior: smooth;
+    /* منع التمرير الأفقي على مستوى الصفحة */
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-slate-50 text-slate-900 min-h-screen antialiased;
+    /* منع التمرير الأفقي */
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* صور متجاوبة عالمياً */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* حقول الإدخال: حجم خط 16px على الهاتف لمنع التكبير التلقائي في iOS */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  @media (min-width: 640px) {
+    input,
+    select,
+    textarea {
+      font-size: inherit;
+    }
   }
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -33,3 +59,15 @@
   background: #94a3b8;
 }
 
+/* تأكيد عدم خروج أي عنصر عن حدود الشاشة */
+* {
+  box-sizing: border-box;
+}
+
+/* أزرار: حجم لمس مناسب على الهاتف */
+@layer utilities {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}

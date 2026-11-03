@@ -75,14 +75,14 @@ export const GymCard: React.FC<GymCardProps> = ({ gym }) => {
         <div className="pt-2 flex items-center gap-2">
           <Link
             to={`/gyms/${gym.slug}`}
-            className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl border border-slate-200 text-slate-700 hover:text-brand-blue-700 hover:border-brand-blue-300 hover:bg-brand-blue-50/50 font-bold text-xs transition-all text-center"
+            className="flex-1 inline-flex items-center justify-center gap-1.5 py-3 px-4 rounded-xl border border-slate-200 text-slate-700 hover:text-brand-blue-700 hover:border-brand-blue-300 hover:bg-brand-blue-50/50 font-bold text-xs transition-all text-center min-h-[44px]"
           >
             <span>التفاصيل والصور</span>
             <ArrowLeft className="w-3.5 h-3.5" />
           </Link>
           <Link
             to={`/gyms/${gym.slug}/subscribe`}
-            className="flex-1 inline-flex items-center justify-center py-2.5 px-4 rounded-xl bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold text-xs transition-all shadow-md shadow-brand-blue-600/20 active:scale-95 text-center"
+            className="flex-1 inline-flex items-center justify-center py-3 px-4 rounded-xl bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold text-xs transition-all shadow-md shadow-brand-blue-600/20 active:scale-95 text-center min-h-[44px]"
           >
             طلب اشتراك
           </Link>

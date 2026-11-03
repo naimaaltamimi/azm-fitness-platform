@@ -115,53 +115,56 @@ export const AdminDashboardPage: React.FC = () => {
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex items-center gap-2 border-b border-slate-200 pb-2">
+      <div className="flex items-center gap-1.5 border-b border-slate-200 pb-2 overflow-x-auto">
         <button
           onClick={() => setActiveTab('subscriptions')}
-          className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+          className={`px-3 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 ${
             activeTab === 'subscriptions'
               ? 'bg-brand-blue-600 text-white shadow-sm'
               : 'text-slate-600 hover:bg-slate-100'
           }`}
         >
           <CalendarCheck className="w-4 h-4" />
-          <span>طلبات الاشتراكات ({subscriptions.length})</span>
+          <span className="hidden sm:inline">طلبات الاشتراكات </span>
+          <span>({subscriptions.length})</span>
         </button>
 
         <button
           onClick={() => setActiveTab('gyms')}
-          className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+          className={`px-3 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 ${
             activeTab === 'gyms'
               ? 'bg-brand-blue-600 text-white shadow-sm'
               : 'text-slate-600 hover:bg-slate-100'
           }`}
         >
           <Building2 className="w-4 h-4" />
-          <span>صالات المكلا ({MUKALLA_GYMS.length})</span>
+          <span className="hidden sm:inline">صالات المكلا </span>
+          <span>({MUKALLA_GYMS.length})</span>
         </button>
 
         <button
           onClick={() => setActiveTab('trainers')}
-          className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+          className={`px-3 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 ${
             activeTab === 'trainers'
               ? 'bg-brand-blue-600 text-white shadow-sm'
               : 'text-slate-600 hover:bg-slate-100'
           }`}
         >
           <Users className="w-4 h-4" />
-          <span>المدربون ({trainers.length})</span>
+          <span className="hidden sm:inline">المدربون </span>
+          <span>({trainers.length})</span>
         </button>
 
         <button
           onClick={() => setActiveTab('database')}
-          className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+          className={`px-3 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 ${
             activeTab === 'database'
               ? 'bg-brand-blue-600 text-white shadow-sm'
               : 'text-slate-600 hover:bg-slate-100'
           }`}
         >
           <Database className="w-4 h-4" />
-          <span>تكامل Supabase</span>
+          <span>Supabase</span>
         </button>
       </div>
 

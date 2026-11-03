@@ -52,21 +52,22 @@ export const GymDetailsPage: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
       {/* Breadcrumb Navigation */}
-      <div className="flex items-center justify-between text-xs text-slate-500">
-        <div className="flex items-center gap-2">
-          <Link to="/" className="hover:text-brand-blue-600">الرئيسية</Link>
+      <div className="flex items-center justify-between text-xs text-slate-500 gap-2 flex-wrap">
+        <div className="flex items-center gap-1.5 flex-wrap min-w-0">
+          <Link to="/" className="hover:text-brand-blue-600 shrink-0">الرئيسية</Link>
           <span>/</span>
-          <Link to="/gyms" className="hover:text-brand-blue-600">صالات المكلا</Link>
+          <Link to="/gyms" className="hover:text-brand-blue-600 shrink-0">صالات المكلا</Link>
           <span>/</span>
-          <span className="text-slate-900 font-bold">{gym.nameAr}</span>
+          <span className="text-slate-900 font-bold truncate max-w-[140px] sm:max-w-none">{gym.nameAr}</span>
         </div>
 
         <button
           onClick={handleShare}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 text-xs font-semibold"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 text-xs font-semibold shrink-0"
         >
           <Share2 className="w-3.5 h-3.5" />
-          <span>مشاركة الصالة</span>
+          <span className="hidden sm:inline">مشاركة الصالة</span>
+          <span className="sm:hidden">مشاركة</span>
         </button>
       </div>
 
@@ -93,12 +94,12 @@ export const GymDetailsPage: React.FC = () => {
 
           {/* Thumbnails */}
           {gym.galleryImages.length > 1 && (
-            <div className="flex items-center gap-3 overflow-x-auto pb-2">
+            <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-thin">
               {gym.galleryImages.map((img, idx) => (
                 <button
                   key={idx}
                   onClick={() => setActiveImageIndex(idx)}
-                  className={`relative w-24 h-16 rounded-xl overflow-hidden shrink-0 border-2 transition-all ${
+                  className={`relative w-16 h-12 sm:w-24 sm:h-16 rounded-xl overflow-hidden shrink-0 border-2 transition-all ${
                     activeImageIndex === idx
                       ? 'border-brand-blue-600 ring-2 ring-brand-blue-500/30'
                       : 'border-transparent opacity-70 hover:opacity-100'
@@ -209,12 +210,13 @@ export const GymDetailsPage: React.FC = () => {
           </div>
 
           {/* Working Hours */}
-          <div className="bg-white p-8 rounded-3xl border border-slate-200/90 shadow-sm space-y-4">
+          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/90 shadow-sm space-y-4">
             <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
               <Clock className="w-5 h-5 text-brand-blue-600" />
               مواعيد العمل والفترات التدريبية
             </h2>
-            <div className="overflow-x-auto">
+            {/* Desktop Table */}
+            <div className="hidden sm:block overflow-x-auto">
               <table className="w-full text-right text-xs">
                 <thead>
                   <tr className="border-b border-slate-200 text-slate-400">
@@ -239,6 +241,19 @@ export const GymDetailsPage: React.FC = () => {
                   ))}
                 </tbody>
               </table>
+            </div>
+            {/* Mobile Cards */}
+            <div className="sm:hidden space-y-3">
+              {gym.workingHours.map((wh, idx) => (
+                <div key={idx} className="p-3 rounded-xl bg-slate-50 border border-slate-100 space-y-1.5 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="font-black text-slate-900">{wh.period}</span>
+                    <span className="px-2 py-0.5 rounded-full bg-slate-200 text-slate-700 font-semibold text-[10px]">{wh.targetGroup}</span>
+                  </div>
+                  <div className="text-slate-600">{wh.days}</div>
+                  <div className="font-mono font-bold text-brand-blue-700">{wh.hours}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
