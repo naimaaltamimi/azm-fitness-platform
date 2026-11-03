@@ -6,3 +6,5 @@ dist/
 *.tsbuildinfo
 raw_data_clubs/
 tsconfig.tsbuildinfo
+raw_data_clubs/
+tsconfig.tsbuildinfo
