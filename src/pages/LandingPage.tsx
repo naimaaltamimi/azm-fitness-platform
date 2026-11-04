@@ -4,7 +4,7 @@ import { MUKALLA_GYMS } from '../data/mukallaGymsData';
 import { MEALS_DATA } from '../data/mealsData';
 import { GymCard } from '../components/gyms/GymCard';
 import { MealCard } from '../components/nutrition/MealCard';
-import { HeroSlider } from '../components/HeroSlider';
+import { HeroSection } from '../components/HeroSection';
 import {
   Dumbbell,
   Compass,
@@ -59,8 +59,8 @@ export const LandingPage: React.FC = () => {
 
   return (
     <div className="space-y-12 sm:space-y-16 pb-16">
-      {/* 1. Full-Width Split Hero Slider (Inspired by Coach Sheikha & Modern Fitness Platforms) */}
-      <HeroSlider />
+      {/* 1. Full-Width Unified Hero Section with Single Concept-Expressive Visual */}
+      <HeroSection />
 
       {/* 2. Floating Sleek Discovery & Search Bar */}
       <section className="-mt-8 sm:-mt-14 relative z-30 max-w-6xl mx-auto px-4 sm:px-6">

@@ -99,3 +99,4 @@ export const InstagramEmbedCard: React.FC<InstagramEmbedCardProps> = ({
 };
 
 export default InstagramEmbedCard;
+
