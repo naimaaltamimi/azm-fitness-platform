@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { MUKALLA_GYMS } from '../data/mukallaGymsData';
 import { GymCard } from '../components/gyms/GymCard';
 import { EmptyState } from '../components/common/EmptyState';
-import { Search, MapPin, Dumbbell, ShieldCheck } from 'lucide-react';
+import { Search, MapPin, Dumbbell } from 'lucide-react';
 
 export const GymsDirectoryPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -89,13 +89,9 @@ export const GymsDirectoryPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Real Status Info */}
-        <div className="flex items-center justify-between text-xs text-slate-500 pt-2 border-t border-slate-100">
-          <span className="flex items-center gap-1.5 font-medium">
-            <ShieldCheck className="w-4 h-4 text-brand-green-500" />
-            <span>عرض الصالات الحقيقية المعاينة ميدانياً في المكلا ({filteredGyms.length} صالة)</span>
-          </span>
-          {(searchQuery || selectedNeighborhood !== 'all') && (
+        {/* Active Filters Reset */}
+        {(searchQuery || selectedNeighborhood !== 'all') && (
+          <div className="flex items-center justify-end text-xs text-slate-500 pt-2 border-t border-slate-100">
             <button
               onClick={() => {
                 setSearchQuery('');
@@ -105,8 +101,8 @@ export const GymsDirectoryPage: React.FC = () => {
             >
               إعادة ضبط الفلاتر
             </button>
-          )}
-        </div>
+          </div>
+        )}
       </div>
 
       {/* Gyms Grid or Empty State */}
