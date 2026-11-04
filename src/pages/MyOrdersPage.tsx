@@ -64,7 +64,7 @@ export const MyOrdersPage: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* Banner */}
-      <div className="bg-gradient-to-r from-brand-blue-900 to-slate-900 text-white rounded-3xl p-8 sm:p-10 relative overflow-hidden shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div className="bg-gradient-to-r from-brand-blue-900 to-slate-900 text-white rounded-3xl p-6 sm:p-10 relative overflow-hidden shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="space-y-2">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-green-500/20 text-brand-green-400 text-xs font-bold border border-brand-green-500/30">
             <CalendarCheck className="w-3.5 h-3.5" />
@@ -78,14 +78,14 @@ export const MyOrdersPage: React.FC = () => {
 
         <Link
           to="/gyms"
-          className="px-6 py-3 rounded-xl bg-brand-blue-600 hover:bg-brand-blue-500 text-white font-bold text-xs shadow-md transition-all shrink-0"
+          className="w-full sm:w-auto text-center px-6 py-3 rounded-xl bg-brand-blue-600 hover:bg-brand-blue-500 text-white font-bold text-xs shadow-md transition-all shrink-0"
         >
           طلب اشتراك جديد
         </Link>
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
+      <div className="flex items-center gap-2 border-b border-slate-200 pb-3 overflow-x-auto">
         {[
           { key: 'all', label: 'كافة الطلبات' },
           { key: 'confirmed', label: 'المؤكدة والنشطة' },
@@ -94,7 +94,7 @@ export const MyOrdersPage: React.FC = () => {
           <button
             key={tab.key}
             onClick={() => setStatusFilter(tab.key as any)}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all shrink-0 ${
               statusFilter === tab.key
                 ? 'bg-brand-blue-600 text-white'
                 : 'text-slate-600 hover:bg-slate-100'
@@ -111,7 +111,7 @@ export const MyOrdersPage: React.FC = () => {
           {filtered.map((sub) => (
             <div
               key={sub.id}
-              className="bg-white rounded-3xl border border-slate-200/90 p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-4"
+              className="bg-white rounded-3xl border border-slate-200/90 p-5 sm:p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-4"
             >
               <div>
                 <div className="flex items-center justify-between mb-3">

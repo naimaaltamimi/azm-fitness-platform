@@ -44,6 +44,9 @@ export default {
       fontFamily: {
         sans: ['Cairo', 'Tajawal', 'system-ui', 'sans-serif'],
       },
+      screens: {
+        'xs': '375px',
+      },
     },
   },
   plugins: [],

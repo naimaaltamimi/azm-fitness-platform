@@ -40,13 +40,13 @@ export const GymsDirectoryPage: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* Page Header */}
-      <div className="bg-gradient-to-l from-brand-blue-900 to-brand-dark-900 text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-xl">
+      <div className="bg-gradient-to-l from-brand-blue-900 to-brand-dark-900 text-white rounded-3xl p-6 sm:p-8 md:p-12 relative overflow-hidden shadow-xl">
         <div className="relative z-10 max-w-2xl space-y-3">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-blue-500/20 text-brand-blue-300 text-xs font-bold border border-brand-blue-400/30">
             <MapPin className="w-3.5 h-3.5 text-brand-green-400" />
             <span>حضرموت - ساحل المكلا</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-black">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-black">
             دليل صالات ونوادي المكلا الرياضية
           </h1>
           <p className="text-slate-300 text-sm leading-relaxed">

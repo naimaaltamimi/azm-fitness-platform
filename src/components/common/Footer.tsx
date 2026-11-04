@@ -39,19 +39,19 @@ export const Footer: React.FC = () => {
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 w-full md:w-auto shrink-0">
             <a
               href="https://wa.me/967733444520"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-3 rounded-2xl bg-brand-green-600 hover:bg-brand-green-500 text-white font-bold text-xs transition-all flex items-center gap-2 shadow-lg shadow-brand-green-600/25 active:scale-95"
+              className="px-5 py-3 rounded-2xl bg-brand-green-600 hover:bg-brand-green-500 text-white font-bold text-xs transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-green-600/25 active:scale-95 min-h-[44px]"
             >
               <MessageCircle className="w-4 h-4" />
               <span>واتساب الاستفسارات المباشر</span>
             </a>
             <Link
               to="/gyms"
-              className="px-5 py-3 rounded-2xl bg-brand-blue-600 hover:bg-brand-blue-500 text-white font-bold text-xs transition-all flex items-center gap-2 shadow-lg shadow-brand-blue-600/25 active:scale-95"
+              className="px-5 py-3 rounded-2xl bg-brand-blue-600 hover:bg-brand-blue-500 text-white font-bold text-xs transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-blue-600/25 active:scale-95 min-h-[44px]"
             >
               <Dumbbell className="w-4 h-4" />
               <span>استكشف الصالات الآن</span>

@@ -65,20 +65,20 @@ export const AdminDashboardPage: React.FC = () => {
       )}
 
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-slate-900 via-brand-dark-900 to-brand-blue-950 text-white rounded-3xl p-8 sm:p-10 relative overflow-hidden shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div className="bg-gradient-to-r from-slate-900 via-brand-dark-900 to-brand-blue-950 text-white rounded-3xl p-6 sm:p-8 md:p-10 relative overflow-hidden shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="space-y-2">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-blue-500/20 text-brand-blue-300 text-xs font-bold border border-brand-blue-400/30">
             <ShieldAlert className="w-3.5 h-3.5 text-amber-400" />
             <span>لوحة التحكم الإدارية المركزية • عزم المكلا</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black">إدارة المنصة والعمليات الميدانية</h1>
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-black">إدارة المنصة والعمليات الميدانية</h1>
           <p className="text-slate-300 text-xs sm:text-sm">
             متابعة طلبات الاشتراكات الواردة من رياضيي المكلا، إدارة الصالات المعتمدة، واعتماد الكباتن.
           </p>
         </div>
 
         {/* Database Readiness Tag */}
-        <div className="flex items-center gap-2 p-3 rounded-2xl bg-slate-800/80 border border-slate-700 text-xs shrink-0">
+        <div className="flex items-center gap-2 p-3 rounded-2xl bg-slate-800/80 border border-slate-700 text-xs shrink-0 w-full md:w-auto">
           <Database className="w-4 h-4 text-brand-green-400" />
           <div>
             <span className="text-slate-400 block text-[10px]">حالة الباك إند:</span>
@@ -178,7 +178,7 @@ export const AdminDashboardPage: React.FC = () => {
 
           {subscriptions.length > 0 ? (
             <div className="overflow-x-auto">
-              <table className="w-full text-right text-xs">
+              <table className="w-full min-w-[720px] text-right text-xs">
                 <thead>
                   <tr className="border-b border-slate-200 text-slate-400">
                     <th className="py-3">الطلب</th>

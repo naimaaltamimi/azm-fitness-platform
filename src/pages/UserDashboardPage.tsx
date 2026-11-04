@@ -68,32 +68,32 @@ export const UserDashboardPage: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* Welcome Banner */}
-      <div className="bg-gradient-to-r from-brand-blue-900 via-slate-900 to-brand-dark-900 text-white rounded-3xl p-8 sm:p-10 relative overflow-hidden shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div className="bg-gradient-to-r from-brand-blue-900 via-slate-900 to-brand-dark-900 text-white rounded-3xl p-6 sm:p-8 md:p-10 relative overflow-hidden shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="flex items-center gap-4">
           <img
             src={user.avatarUrl || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80'}
             alt={user.name}
-            className="w-16 h-16 rounded-2xl object-cover ring-2 ring-brand-blue-400/40 shrink-0"
+            className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover ring-2 ring-brand-blue-400/40 shrink-0"
           />
           <div className="space-y-1">
-            <h1 className="text-2xl sm:text-3xl font-black">أهلاً بك، {user.name}</h1>
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-black">أهلاً بك، {user.name}</h1>
             <p className="text-xs sm:text-sm text-slate-300">
               عضو منصة عزم • {user.city} ({user.neighborhood})
             </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
           <Link
             to="/profile"
-            className="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold border border-white/20 transition-all flex items-center gap-1.5"
+            className="flex-1 sm:flex-none justify-center px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold border border-white/20 transition-all flex items-center gap-1.5"
           >
             <User className="w-4 h-4" />
             <span>تعديل الملف</span>
           </Link>
           <Link
             to="/gyms"
-            className="px-5 py-2.5 rounded-xl bg-brand-green-500 hover:bg-brand-green-600 text-white text-xs font-bold shadow-md transition-all flex items-center gap-1.5"
+            className="flex-1 sm:flex-none justify-center px-5 py-2.5 rounded-xl bg-brand-green-500 hover:bg-brand-green-600 text-white text-xs font-bold shadow-md transition-all flex items-center gap-1.5"
           >
             <PlusCircle className="w-4 h-4" />
             <span>اشتراك نادي جديد</span>
@@ -189,10 +189,10 @@ export const UserDashboardPage: React.FC = () => {
       </div>
 
       {/* Active Subscriptions Details Table */}
-      <div className="bg-white p-8 rounded-3xl border border-slate-200/90 shadow-sm space-y-4">
-        <div className="flex items-center justify-between border-b border-slate-100 pb-4">
-          <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-            <CalendarCheck className="w-5 h-5 text-brand-blue-600" />
+      <div className="bg-white p-5 sm:p-8 rounded-3xl border border-slate-200/90 shadow-sm space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-4 gap-2">
+          <h2 className="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
+            <CalendarCheck className="w-5 h-5 text-brand-blue-600 shrink-0" />
             <span>حجوزاتي واشتراكاتي الحالية في نوادي المكلا</span>
           </h2>
           <Link to="/my-orders" className="text-xs font-bold text-brand-blue-600 hover:underline">
@@ -202,7 +202,7 @@ export const UserDashboardPage: React.FC = () => {
 
         {subscriptions.length > 0 ? (
           <div className="overflow-x-auto">
-            <table className="w-full text-right text-xs">
+            <table className="w-full min-w-[520px] text-right text-xs">
               <thead>
                 <tr className="border-b border-slate-100 text-slate-400">
                   <th className="py-3">رقم الطلب</th>

@@ -138,31 +138,31 @@ export const NutritionPlanPage: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-brand-blue-900 via-slate-900 to-brand-dark-900 text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="bg-gradient-to-r from-brand-blue-900 via-slate-900 to-brand-dark-900 text-white rounded-3xl p-6 sm:p-8 md:p-12 relative overflow-hidden shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="space-y-3 max-w-2xl text-right">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-green-500/20 text-brand-green-400 text-xs font-bold border border-brand-green-500/30">
             <Salad className="w-3.5 h-3.5" />
             <span>خطة تغذية رياضية مخصصة</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-black">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-black">
             جدول الخطة الغذائية اليومية
           </h1>
-          <p className="text-slate-300 text-sm leading-relaxed">
+          <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
             برنامج غذائي رياضي متكامل مقسم على فترات اليوم بالاعتماد على المكونات الصحية المتوفرة في أسواق المكلا (كالأسماك الطازجة والشوفان والمأكولات النظيفة).
           </p>
         </div>
 
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 sm:gap-3 w-full sm:w-auto shrink-0">
           <button
             onClick={handlePrint}
-            className="px-4 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs font-bold transition-all flex items-center gap-1.5"
+            className="flex-1 sm:flex-none justify-center px-4 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs font-bold transition-all flex items-center gap-1.5 min-h-[44px]"
           >
             <Printer className="w-4 h-4" />
             <span>طباعة الجدول</span>
           </button>
           <button
             onClick={handleSavePlan}
-            className="px-5 py-3 rounded-xl bg-brand-green-600 hover:bg-brand-green-700 text-white text-xs font-bold shadow-md transition-all flex items-center gap-1.5 active:scale-95"
+            className="flex-1 sm:flex-none justify-center px-5 py-3 rounded-xl bg-brand-green-600 hover:bg-brand-green-700 text-white text-xs font-bold shadow-md transition-all flex items-center gap-1.5 active:scale-95 min-h-[44px]"
           >
             {isSaved ? <CheckCircle className="w-4 h-4" /> : <Bookmark className="w-4 h-4" />}
             <span>{isSaved ? 'تم الحفظ في ملفك' : 'حفظ الخطة'}</span>
@@ -171,50 +171,50 @@ export const NutritionPlanPage: React.FC = () => {
       </div>
 
       {/* Target Macros Quick Ribbon */}
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-        <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm text-center">
-          <span className="text-[11px] text-slate-500 block mb-0.5">الهدف الإجمالي</span>
-          <span className="text-lg font-black text-amber-600 flex items-center justify-center gap-1 font-mono">
-            <Flame className="w-4 h-4" />
+      <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5 sm:gap-3">
+        <div className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm text-center">
+          <span className="text-[10px] sm:text-[11px] text-slate-500 block mb-0.5">الهدف الإجمالي</span>
+          <span className="text-base sm:text-lg font-black text-amber-600 flex items-center justify-center gap-1 font-mono">
+            <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             {targetCalories}
           </span>
-          <span className="text-[10px] text-slate-400">سعرة حرارية</span>
+          <span className="text-[9px] sm:text-[10px] text-slate-400">سعرة حرارية</span>
         </div>
 
-        <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm text-center">
-          <span className="text-[11px] text-slate-500 block mb-0.5">البروتين اليومي</span>
-          <span className="text-lg font-black text-brand-blue-600 flex items-center justify-center gap-1 font-mono">
-            <Beef className="w-4 h-4" />
+        <div className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm text-center">
+          <span className="text-[10px] sm:text-[11px] text-slate-500 block mb-0.5">البروتين اليومي</span>
+          <span className="text-base sm:text-lg font-black text-brand-blue-600 flex items-center justify-center gap-1 font-mono">
+            <Beef className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             {proteinGrams}g
           </span>
-          <span className="text-[10px] text-slate-400">بناء واستشفاء</span>
+          <span className="text-[9px] sm:text-[10px] text-slate-400">بناء واستشفاء</span>
         </div>
 
-        <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm text-center">
-          <span className="text-[11px] text-slate-500 block mb-0.5">الكربوهيدرات</span>
-          <span className="text-lg font-black text-brand-green-600 flex items-center justify-center gap-1 font-mono">
-            <Wheat className="w-4 h-4" />
+        <div className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm text-center">
+          <span className="text-[10px] sm:text-[11px] text-slate-500 block mb-0.5">الكربوهيدرات</span>
+          <span className="text-base sm:text-lg font-black text-brand-green-600 flex items-center justify-center gap-1 font-mono">
+            <Wheat className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             {carbsGrams}g
           </span>
-          <span className="text-[10px] text-slate-400">طاقة وجليكوجين</span>
+          <span className="text-[9px] sm:text-[10px] text-slate-400">طاقة وجليكوجين</span>
         </div>
 
-        <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm text-center">
-          <span className="text-[11px] text-slate-500 block mb-0.5">الدهون الصحية</span>
-          <span className="text-lg font-black text-amber-600 flex items-center justify-center gap-1 font-mono">
-            <Droplet className="w-4 h-4" />
+        <div className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm text-center">
+          <span className="text-[10px] sm:text-[11px] text-slate-500 block mb-0.5">الدهون الصحية</span>
+          <span className="text-base sm:text-lg font-black text-amber-600 flex items-center justify-center gap-1 font-mono">
+            <Droplet className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             {fatsGrams}g
           </span>
-          <span className="text-[10px] text-slate-400">توازن هرموني</span>
+          <span className="text-[9px] sm:text-[10px] text-slate-400">توازن هرموني</span>
         </div>
 
-        <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm text-center col-span-2 sm:col-span-1">
-          <span className="text-[11px] text-slate-500 block mb-0.5">شرب الماء (المكلا)</span>
-          <span className="text-lg font-black text-sky-600 flex items-center justify-center gap-1 font-mono">
-            <GlassWater className="w-4 h-4" />
+        <div className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm text-center col-span-2 sm:col-span-1">
+          <span className="text-[10px] sm:text-[11px] text-slate-500 block mb-0.5">شرب الماء (المكلا)</span>
+          <span className="text-base sm:text-lg font-black text-sky-600 flex items-center justify-center gap-1 font-mono">
+            <GlassWater className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             {waterLiters}L
           </span>
-          <span className="text-[10px] text-slate-400">ترطيب يومي</span>
+          <span className="text-[9px] sm:text-[10px] text-slate-400">ترطيب يومي</span>
         </div>
       </div>
 

@@ -57,48 +57,48 @@ export const RegisterPage: React.FC = () => {
         </div>
 
         {/* Card */}
-        <div className="bg-white p-8 rounded-3xl border border-slate-200/90 shadow-xl space-y-6">
+        <div className="bg-white p-5 sm:p-8 rounded-3xl border border-slate-200/90 shadow-xl space-y-6">
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Role Selection */}
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-2">نوع الحساب *</label>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                 <button
                   type="button"
                   onClick={() => setRole('trainee')}
-                  className={`flex flex-col items-center justify-center p-3 rounded-2xl border text-xs font-bold transition-all ${
+                  className={`flex sm:flex-col items-center justify-center p-3 rounded-2xl border text-xs font-bold transition-all gap-2 min-h-[44px] ${
                     role === 'trainee'
                       ? 'border-brand-blue-600 bg-brand-blue-50/70 text-brand-blue-700 ring-2 ring-brand-blue-500/20'
                       : 'border-slate-200 text-slate-600 hover:bg-slate-50'
                   }`}
                 >
-                  <UserCheck className="w-5 h-5 mb-1 text-brand-blue-600" />
+                  <UserCheck className="w-5 h-5 text-brand-blue-600 shrink-0" />
                   <span>متدرب رياضي</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setRole('trainer')}
-                  className={`flex flex-col items-center justify-center p-3 rounded-2xl border text-xs font-bold transition-all ${
+                  className={`flex sm:flex-col items-center justify-center p-3 rounded-2xl border text-xs font-bold transition-all gap-2 min-h-[44px] ${
                     role === 'trainer'
                       ? 'border-brand-green-600 bg-brand-green-50/70 text-brand-green-700 ring-2 ring-brand-green-500/20'
                       : 'border-slate-200 text-slate-600 hover:bg-slate-50'
                   }`}
                 >
-                  <Dumbbell className="w-5 h-5 mb-1 text-brand-green-600" />
+                  <Dumbbell className="w-5 h-5 text-brand-green-600 shrink-0" />
                   <span>كابتن / مدرب</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setRole('gym_owner')}
-                  className={`flex flex-col items-center justify-center p-3 rounded-2xl border text-xs font-bold transition-all ${
+                  className={`flex sm:flex-col items-center justify-center p-3 rounded-2xl border text-xs font-bold transition-all gap-2 min-h-[44px] ${
                     role === 'gym_owner'
                       ? 'border-amber-600 bg-amber-50/70 text-amber-700 ring-2 ring-amber-500/20'
                       : 'border-slate-200 text-slate-600 hover:bg-slate-50'
                   }`}
                 >
-                  <ShieldCheck className="w-5 h-5 mb-1 text-amber-600" />
+                  <ShieldCheck className="w-5 h-5 text-amber-600 shrink-0" />
                   <span>صاحب صالة</span>
                 </button>
               </div>

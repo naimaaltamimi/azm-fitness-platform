@@ -93,7 +93,7 @@ export const Logo: React.FC<LogoProps> = ({
             </span>
           </div>
           <span
-            className={`${sizeMap[size].subtext} font-medium mt-0.5 ${
+            className={`${sizeMap[size].subtext} font-medium mt-0.5 whitespace-nowrap hidden xs:inline ${
               isDark ? 'text-slate-400' : 'text-slate-500'
             }`}
           >

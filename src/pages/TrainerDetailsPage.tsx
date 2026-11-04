@@ -69,16 +69,16 @@ export const TrainerDetailsPage: React.FC = () => {
       </div>
 
       {/* Main Profile Header */}
-      <div className="bg-white rounded-3xl border border-slate-200/90 shadow-xl overflow-hidden p-8 sm:p-10">
+      <div className="bg-white rounded-3xl border border-slate-200/90 shadow-xl overflow-hidden p-6 sm:p-8 md:p-10">
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pb-8 border-b border-slate-100">
           <img
             src={trainer.avatarUrl}
             alt={trainer.name}
-            className="w-28 h-28 rounded-3xl object-cover ring-4 ring-brand-blue-500/20 shadow-md shrink-0"
+            className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl object-cover ring-4 ring-brand-blue-500/20 shadow-md shrink-0"
           />
           <div className="space-y-2 flex-1">
             <div className="flex flex-wrap items-center gap-3">
-              <h1 className="text-2xl sm:text-3xl font-black text-slate-900">{trainer.name}</h1>
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900">{trainer.name}</h1>
               {trainer.isVerified && (
                 <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-brand-green-50 text-brand-green-700 border border-brand-green-200 text-xs font-bold">
                   <CheckCircle2 className="w-3.5 h-3.5 text-brand-green-600" />
@@ -101,7 +101,7 @@ export const TrainerDetailsPage: React.FC = () => {
 
           <button
             onClick={() => setIsBookModalOpen(true)}
-            className="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold text-sm shadow-md shadow-brand-blue-600/20 active:scale-95 transition-all flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold text-sm shadow-md shadow-brand-blue-600/20 active:scale-95 transition-all flex items-center justify-center gap-2 min-h-[44px]"
           >
             <Calendar className="w-4 h-4" />
             <span>حجز جلسة تدريبية</span>
@@ -109,7 +109,7 @@ export const TrainerDetailsPage: React.FC = () => {
         </div>
 
         {/* Details Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 pt-8">
           {/* Bio & Philosophy */}
           <div className="md:col-span-2 space-y-6">
             <div className="space-y-3">

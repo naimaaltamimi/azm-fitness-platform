@@ -101,7 +101,7 @@ export const SubscriptionRequestPage: React.FC = () => {
       </div>
 
       {/* Header */}
-      <div className="bg-gradient-to-r from-brand-blue-900 to-brand-dark-900 text-white rounded-3xl p-8 sm:p-10 relative overflow-hidden shadow-xl">
+      <div className="bg-gradient-to-r from-brand-blue-900 to-brand-dark-900 text-white rounded-3xl p-6 sm:p-8 md:p-10 relative overflow-hidden shadow-xl">
         <div className="relative z-10 max-w-xl space-y-2">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-green-500/20 text-brand-green-400 text-xs font-bold border border-brand-green-500/30">
             <CalendarCheck className="w-3.5 h-3.5" />
@@ -118,7 +118,7 @@ export const SubscriptionRequestPage: React.FC = () => {
 
       {/* Auth Gate for Interactive Subscription */}
       {!isAuthenticated && (
-        <div className="bg-amber-50 border border-amber-200/80 rounded-3xl p-6 sm:p-8 space-y-4">
+        <div className="bg-amber-50 border border-amber-200/80 rounded-3xl p-5 sm:p-8 space-y-4">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
               <LogIn className="w-6 h-6" />
@@ -158,18 +158,18 @@ export const SubscriptionRequestPage: React.FC = () => {
 
       {/* Main Form */}
       {isSuccess ? (
-        <div className="bg-white p-12 rounded-3xl border border-slate-200 text-center space-y-4 shadow-xl">
-          <div className="w-20 h-20 rounded-full bg-brand-green-100 text-brand-green-600 flex items-center justify-center mx-auto animate-bounce">
-            <CheckCircle2 className="w-10 h-10" />
+        <div className="bg-white p-6 sm:p-12 rounded-3xl border border-slate-200 text-center space-y-4 shadow-xl">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-brand-green-100 text-brand-green-600 flex items-center justify-center mx-auto animate-bounce">
+            <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10" />
           </div>
-          <h2 className="text-2xl font-black text-slate-900">تم تسجيل طلب الاشتراك بنجاح!</h2>
-          <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+          <h2 className="text-xl sm:text-2xl font-black text-slate-900">تم تسجيل طلب الاشتراك بنجاح!</h2>
+          <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
             تم إرسال طلب اشتراكك إلى إدارة <strong className="text-slate-800">{currentGym.nameAr}</strong>. يمكنك مراجعة كود الطلب ومتابعة حالته من صفحة طلباتي وحجوزاتي.
           </p>
           <div className="pt-4">
             <Link
               to="/my-orders"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold text-sm"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold text-xs sm:text-sm"
             >
               <span>الانتقال لطلباتي واشتراكاتي</span>
               <ArrowRight className="w-4 h-4 rotate-180" />
@@ -179,7 +179,7 @@ export const SubscriptionRequestPage: React.FC = () => {
       ) : (
         <form onSubmit={handleSubmit} className="space-y-8">
           {/* Gym & Plan Selection */}
-          <div className="bg-white p-7 rounded-3xl border border-slate-200/90 shadow-sm space-y-6">
+          <div className="bg-white p-5 sm:p-7 rounded-3xl border border-slate-200/90 shadow-sm space-y-6">
             <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
               <Building className="w-5 h-5 text-brand-blue-600" />
               <span>اختيار الصالة والباقة الرياضية</span>
@@ -239,7 +239,7 @@ export const SubscriptionRequestPage: React.FC = () => {
           </div>
 
           {/* Schedule & Shift */}
-          <div className="bg-white p-7 rounded-3xl border border-slate-200/90 shadow-sm space-y-6">
+          <div className="bg-white p-5 sm:p-7 rounded-3xl border border-slate-200/90 shadow-sm space-y-6">
             <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
               <Clock className="w-5 h-5 text-brand-green-600" />
               <span>فترة التمرين وتاريخ البدء</span>
@@ -305,7 +305,7 @@ export const SubscriptionRequestPage: React.FC = () => {
           </div>
 
           {/* Payment Method */}
-          <div className="bg-white p-7 rounded-3xl border border-slate-200/90 shadow-sm space-y-6">
+          <div className="bg-white p-5 sm:p-7 rounded-3xl border border-slate-200/90 shadow-sm space-y-6">
             <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
               <CreditCard className="w-5 h-5 text-amber-600" />
               <span>طريقة السداد المعتمدة في المكلا</span>
@@ -376,7 +376,7 @@ export const SubscriptionRequestPage: React.FC = () => {
           </div>
 
           {/* Total & Submit Button */}
-          <div className="bg-slate-900 text-white p-7 rounded-3xl shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="bg-slate-900 text-white p-5 sm:p-7 rounded-3xl shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
               <span className="text-xs text-slate-400 block">إجمالي قيمة الاشتراك المستحق:</span>
               <div className="flex items-baseline gap-2 mt-1">

@@ -76,12 +76,12 @@ export const UserProfilePage: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* Header */}
-      <div className="bg-gradient-to-r from-brand-blue-900 to-slate-900 text-white rounded-3xl p-8 sm:p-10 relative overflow-hidden shadow-xl flex flex-col sm:flex-row items-center gap-6">
+      <div className="bg-gradient-to-r from-brand-blue-900 to-slate-900 text-white rounded-3xl p-6 sm:p-8 md:p-10 relative overflow-hidden shadow-xl flex flex-col sm:flex-row items-center gap-6">
         <div className="relative group cursor-pointer" onClick={handleAvatarChange} title="انقر لتغيير الصورة الرمزية">
           <img
             src={avatarUrl}
             alt={name}
-            className="w-24 h-24 rounded-3xl object-cover ring-4 ring-brand-blue-400/40 shadow-xl"
+            className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl object-cover ring-4 ring-brand-blue-400/40 shadow-xl"
           />
           <div className="absolute inset-0 bg-black/40 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
             <Camera className="w-6 h-6" />
@@ -90,7 +90,7 @@ export const UserProfilePage: React.FC = () => {
 
         <div className="space-y-1 text-center sm:text-right flex-1">
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
-            <h1 className="text-2xl sm:text-3xl font-black">{name || 'رياضي عزم'}</h1>
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-black">{name || 'رياضي عزم'}</h1>
             <span className="px-3 py-1 rounded-full bg-brand-green-500/20 text-brand-green-400 border border-brand-green-500/30 text-xs font-bold">
               {user.role === 'admin' ? 'مدير المنصة' : user.role === 'trainer' ? 'مدرب معتمد' : 'متدرب نشط'}
             </span>
@@ -101,7 +101,7 @@ export const UserProfilePage: React.FC = () => {
       </div>
 
       {/* Main Profile Form */}
-      <form onSubmit={handleSave} className="bg-white p-8 rounded-3xl border border-slate-200/90 shadow-sm space-y-8">
+      <form onSubmit={handleSave} className="bg-white p-5 sm:p-8 rounded-3xl border border-slate-200/90 shadow-sm space-y-8">
         {/* Personal Details */}
         <div className="space-y-4">
           <h2 className="text-base font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
@@ -215,14 +215,14 @@ export const UserProfilePage: React.FC = () => {
 
           <div>
             <label className="block text-xs font-bold text-slate-700 mb-2">الهدف الرياضي</label>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
               <button
                 type="button"
                 onClick={() => setFitnessGoal('fat_loss')}
-                className={`py-2.5 rounded-xl border text-xs font-bold transition-all ${
+                className={`py-3 px-4 rounded-xl border text-xs font-bold transition-all text-center min-h-[44px] ${
                   fitnessGoal === 'fat_loss'
                     ? 'border-amber-600 bg-amber-50 text-amber-800'
-                    : 'border-slate-200 text-slate-600'
+                    : 'border-slate-200 text-slate-600 hover:bg-slate-50'
                 }`}
               >
                 تنشيف وخسارة دهون
@@ -230,10 +230,10 @@ export const UserProfilePage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setFitnessGoal('fitness_maintenance')}
-                className={`py-2.5 rounded-xl border text-xs font-bold transition-all ${
+                className={`py-3 px-4 rounded-xl border text-xs font-bold transition-all text-center min-h-[44px] ${
                   fitnessGoal === 'fitness_maintenance'
                     ? 'border-brand-green-600 bg-brand-green-50 text-brand-green-800'
-                    : 'border-slate-200 text-slate-600'
+                    : 'border-slate-200 text-slate-600 hover:bg-slate-50'
                 }`}
               >
                 ثبات وتحسين لياقة
@@ -241,10 +241,10 @@ export const UserProfilePage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setFitnessGoal('muscle_gain')}
-                className={`py-2.5 rounded-xl border text-xs font-bold transition-all ${
+                className={`py-3 px-4 rounded-xl border text-xs font-bold transition-all text-center min-h-[44px] ${
                   fitnessGoal === 'muscle_gain'
                     ? 'border-brand-blue-600 bg-brand-blue-50 text-brand-blue-800'
-                    : 'border-slate-200 text-slate-600'
+                    : 'border-slate-200 text-slate-600 hover:bg-slate-50'
                 }`}
               >
                 تضخيم وبناء عضلات
@@ -254,19 +254,19 @@ export const UserProfilePage: React.FC = () => {
         </div>
 
         {/* Save Bar */}
-        <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+        <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
           {isSaved ? (
-            <span className="text-xs font-bold text-brand-green-600 flex items-center gap-1.5 animate-in fade-in">
+            <span className="text-xs font-bold text-brand-green-600 flex items-center justify-center sm:justify-start gap-1.5 animate-in fade-in">
               <CheckCircle className="w-4 h-4" />
               تم حفظ التعديلات بنجاح!
             </span>
           ) : (
-            <span className="text-xs text-slate-400">تُحفظ البيانات فورياً في جلستك المحلية.</span>
+            <span className="text-xs text-slate-400 text-center sm:text-right">تُحفظ البيانات فورياً في جلستك المحلية.</span>
           )}
 
           <button
             type="submit"
-            className="px-7 py-3 rounded-xl bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold text-xs shadow-md shadow-brand-blue-600/20 active:scale-95 transition-all flex items-center gap-2"
+            className="w-full sm:w-auto px-7 py-3 rounded-xl bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold text-xs shadow-md shadow-brand-blue-600/20 active:scale-95 transition-all flex items-center justify-center gap-2 min-h-[44px]"
           >
             <Save className="w-4 h-4" />
             <span>حفظ التعديلات</span>
