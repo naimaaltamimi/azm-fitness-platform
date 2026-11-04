@@ -348,7 +348,7 @@ export const CalorieCalculatorPage: React.FC = () => {
                     <GlassWater className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-slate-800 block">احتياج الماء في المكلا</span>
+                    <span className="text-xs font-bold text-slate-800 block">احتياج الماء اليومي</span>
                     <span className="text-[10px] text-slate-500">معوض لرطوبة وحرارة الساحل</span>
                   </div>
                 </div>

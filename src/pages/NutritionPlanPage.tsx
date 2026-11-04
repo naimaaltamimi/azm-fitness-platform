@@ -209,7 +209,7 @@ export const NutritionPlanPage: React.FC = () => {
         </div>
 
         <div className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm text-center col-span-2 sm:col-span-1">
-          <span className="text-[10px] sm:text-[11px] text-slate-500 block mb-0.5">شرب الماء (المكلا)</span>
+          <span className="text-[10px] sm:text-[11px] text-slate-500 block mb-0.5">شرب الماء</span>
           <span className="text-base sm:text-lg font-black text-sky-600 flex items-center justify-center gap-1 font-mono">
             <GlassWater className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             {waterLiters}L
