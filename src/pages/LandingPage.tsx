@@ -168,68 +168,9 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. Solid High-Impact Stats Strip (Directly Inspired by Coach Sheikha's .stats) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-r from-slate-900 via-brand-blue-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl border border-slate-800">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 divide-y sm:divide-y-0 sm:divide-x sm:divide-x-reverse divide-slate-800/80">
-            {/* Stat 1 */}
-            <div className="flex flex-col items-center text-center pt-4 sm:pt-0">
-              <span className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-none mb-2">
-                5+
-              </span>
-              <span className="text-sm sm:text-base font-bold text-sky-200 mb-1">
-                صالات معتمدة
-              </span>
-              <span className="text-xs text-slate-400 font-medium">
-                فحص ميداني وتوثيق رسمي بالمكلا
-              </span>
-            </div>
-
-            {/* Stat 2 */}
-            <div className="flex flex-col items-center text-center pt-4 sm:pt-0">
-              <span className="text-3xl sm:text-4xl lg:text-5xl font-black text-brand-green-400 tracking-tight leading-none mb-2">
-                100%
-              </span>
-              <span className="text-sm sm:text-base font-bold text-sky-200 mb-1">
-                دقة علمية
-              </span>
-              <span className="text-xs text-slate-400 font-medium">
-                معادلة ميفلين-سانت جور لمناخ الساحل
-              </span>
-            </div>
-
-            {/* Stat 3 */}
-            <div className="flex flex-col items-center text-center pt-4 sm:pt-0">
-              <span className="text-3xl sm:text-4xl lg:text-5xl font-black text-amber-400 tracking-tight leading-none mb-2">
-                20+
-              </span>
-              <span className="text-sm sm:text-base font-bold text-sky-200 mb-1">
-                وجبة ساحلية
-              </span>
-              <span className="text-xs text-slate-400 font-medium">
-                ثمد طازج وبروتين محلي نقي
-              </span>
-            </div>
-
-            {/* Stat 4 */}
-            <div className="flex flex-col items-center text-center pt-4 sm:pt-0">
-              <span className="text-3xl sm:text-4xl lg:text-5xl font-black text-sky-300 tracking-tight leading-none mb-2">
-                0 عمولة
-              </span>
-              <span className="text-sm sm:text-base font-bold text-sky-200 mb-1">
-                اشتراكات فورية
-              </span>
-              <span className="text-xs text-slate-400 font-medium">
-                بالريال اليمني نقداً وعبر الصرافة
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. 3-Step Journey Timeline Section (Directly Inspired by Coach Sheikha's .journey-section) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12 space-y-3">
+      {/* 3. 3-Step Journey Timeline Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-4">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10 space-y-2.5">
           <span className="eyebrow-pill bg-brand-blue-50 text-brand-blue-700 border border-brand-blue-200/80">
             <Sparkles className="w-3.5 h-3.5 text-brand-blue-600" />
             رحلتك في عزم • ساحل حضرموت

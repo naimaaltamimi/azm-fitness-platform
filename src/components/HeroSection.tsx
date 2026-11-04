@@ -42,34 +42,34 @@ export const HeroSection: React.FC = () => {
             </div>
 
             {/* Master Headline (World-Class Clean Typography) */}
-            <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-black text-white leading-[1.2] tracking-tight">
+            <h1 className="text-2xl sm:text-4xl lg:text-[42px] font-extrabold text-white leading-[1.25] tracking-tight">
               وجهتك الرياضية الأولى
-              <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-blue-100 to-white">
+              <span className="block mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-blue-100 to-white">
                 للياقة البدنية والتغذية الصحية
               </span>
-              <span className="block mt-1 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-sky-400">
+              <span className="block mt-1 text-lg sm:text-2xl lg:text-3xl font-bold text-sky-400">
                 في المكلا وساحل حضرموت
               </span>
             </h1>
 
             {/* Lead Description */}
-            <p className="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl font-medium">
+            <p className="text-slate-300 text-xs sm:text-sm lg:text-[15px] leading-relaxed max-w-xl font-normal">
               كل ما تحتاجه لتحقيق هدفك البدني في منصة واحدة: استكشف الصالات الرياضية المعتمدة في الشرج وفوة والديس، احسب احتياجك الفعلي من السعرات والماء وفق مناخ الساحل، وتناول وجبات رياضية غنية بالبروتين تعتمد على صيد بحر المكلا الطازج.
             </p>
 
             {/* Dual CTAs (Inspired by Top Global Platforms) */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+            <div className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <Link
                 to="/gyms"
-                className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-brand-blue-600 hover:bg-brand-blue-500 text-white font-black text-sm sm:text-base shadow-xl shadow-brand-blue-600/35 hover:shadow-brand-blue-600/50 hover:-translate-y-0.5 active:scale-95 transition-all group min-h-[50px]"
+                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-brand-blue-600 hover:bg-brand-blue-500 text-white font-bold text-xs sm:text-sm shadow-xl shadow-brand-blue-600/30 hover:shadow-brand-blue-600/40 hover:-translate-y-0.5 active:scale-95 transition-all group min-h-[46px]"
               >
                 <span>استكشف الصالات المعتمدة</span>
-                <ArrowLeft className="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1" />
+                <ArrowLeft className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" />
               </Link>
 
               <Link
                 to="/calculator"
-                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm sm:text-base border border-white/20 backdrop-blur-md hover:-translate-y-0.5 active:scale-95 transition-all min-h-[50px]"
+                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm border border-white/20 backdrop-blur-md hover:-translate-y-0.5 active:scale-95 transition-all min-h-[46px]"
               >
                 <Calculator className="w-4 h-4 text-amber-400 shrink-0" />
                 <span>احسب سعراتك الآن مجاناً</span>
@@ -160,3 +160,4 @@ export const HeroSection: React.FC = () => {
 };
 
 export default HeroSection;
+
