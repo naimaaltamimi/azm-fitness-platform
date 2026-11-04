@@ -2,15 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowLeft,
-  Dumbbell,
-  Salad,
   Flame,
   Calculator,
-  ShieldCheck,
-  CheckCircle2,
-  Compass,
-  Sparkles,
-  MapPin
+  CheckCircle2
 } from 'lucide-react';
 
 export const HeroSection: React.FC = () => {
@@ -108,33 +102,9 @@ export const HeroSection: React.FC = () => {
                   loading="eager"
                 />
                 {/* Gradient Vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent pointer-events-none" />
 
-                {/* Floating Glassmorphic Pill 1: Verified Gym in Mukalla (Top Corner) */}
-                <div className="absolute top-4 right-4 bg-slate-950/85 backdrop-blur-xl border border-white/20 p-3 rounded-2xl shadow-xl flex items-center gap-3 max-w-[240px] transform hover:scale-105 transition-transform">
-                  <div className="w-10 h-10 rounded-xl bg-brand-blue-600/30 border border-brand-blue-500/40 text-brand-blue-400 flex items-center justify-center shrink-0">
-                    <Dumbbell className="w-5 h-5" />
-                  </div>
-                  <div className="min-w-0">
-                    <span className="text-[10px] font-bold text-brand-blue-400 block">صالة معتمدة</span>
-                    <span className="text-xs font-black text-white truncate block">سمارت جيم (Smart Gym)</span>
-                    <span className="text-[10px] text-slate-300">المكلا - فوة المتضررين</span>
-                  </div>
-                </div>
-
-                {/* Floating Glassmorphic Pill 2: Coastal Nutrition (Center Left) */}
-                <div className="absolute top-1/2 -translate-y-1/2 left-4 bg-slate-950/85 backdrop-blur-xl border border-white/20 p-3 rounded-2xl shadow-xl flex items-center gap-3 max-w-[230px] transform hover:scale-105 transition-transform">
-                  <div className="w-10 h-10 rounded-xl bg-brand-green-500/30 border border-brand-green-500/40 text-brand-green-400 flex items-center justify-center shrink-0">
-                    <Salad className="w-5 h-5" />
-                  </div>
-                  <div className="min-w-0">
-                    <span className="text-[10px] font-bold text-brand-green-400 block">تغذية ساحلية صحية</span>
-                    <span className="text-xs font-black text-white truncate block">ثمد مشوي بالبهارات</span>
-                    <span className="text-[10px] text-slate-300">42g بروتين • صيد المكلا</span>
-                  </div>
-                </div>
-
-                {/* Floating Glassmorphic Pill 3: Smart Calorie Metric (Bottom Edge) */}
+                {/* Floating Glassmorphic Pill: Smart Calorie Metric (Bottom Edge) */}
                 <div className="absolute bottom-4 right-4 left-4 bg-slate-950/90 backdrop-blur-xl border border-white/20 p-3.5 rounded-2xl shadow-2xl flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/30 text-amber-400 flex items-center justify-center shrink-0">
