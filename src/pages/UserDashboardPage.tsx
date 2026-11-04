@@ -128,18 +128,19 @@ export const UserDashboardPage: React.FC = () => {
         {/* Calorie Goal */}
         <div className="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-sm flex flex-col justify-between space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-500">الهدف اليومي للسعرات</span>
-            <div className="w-9 h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
-              <Flame className="w-5 h-5" />
+            <span className="text-xs font-bold text-slate-700">الهدف اليومي للسعرات</span>
+            <div className="w-9 h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center ring-4 ring-amber-50/70">
+              <Flame className="w-5 h-5 fill-amber-500/20" />
             </div>
           </div>
           <div>
-            <h3 className="text-2xl font-black text-amber-600 font-mono">
-              {user.targetCalories || 2450}
+            <h3 className="text-2xl font-black text-amber-600 font-mono flex items-center gap-1">
+              <span>{user.targetCalories || 2450}</span>
+              <span className="text-xs text-amber-700/80 font-bold font-sans">سعرة</span>
             </h3>
-            <span className="text-xs text-slate-500 block mt-0.5">سعرة حرارية موصى بها</span>
+            <span className="text-xs text-slate-500 block mt-0.5">سعرة حرارية موصى بها يومياً</span>
           </div>
-          <Link to="/calculator" className="text-xs font-bold text-brand-blue-600 hover:underline flex items-center gap-1 pt-1">
+          <Link to="/calculator" className="text-xs font-bold text-amber-600 hover:text-amber-700 hover:underline flex items-center gap-1 pt-1">
             <span>إعادة الحساب</span>
             <ArrowRight className="w-3.5 h-3.5 rotate-180" />
           </Link>

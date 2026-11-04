@@ -262,15 +262,17 @@ export const CalorieCalculatorPage: React.FC = () => {
             </div>
 
             {/* Calories Hero Box */}
-            <div className="bg-gradient-to-br from-brand-blue-900 to-slate-900 rounded-2xl p-6 text-white text-center space-y-2 relative overflow-hidden">
-              <div className="flex items-center justify-center gap-1.5 text-xs text-brand-blue-300 font-bold">
-                <Flame className="w-4 h-4 text-amber-400" />
+            <div className="bg-gradient-to-br from-brand-blue-900 via-slate-900 to-brand-dark-900 rounded-2xl p-6 text-white text-center space-y-2 relative overflow-hidden shadow-lg border border-brand-blue-700/40">
+              {/* Subtle warm glow behind calories */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="relative flex items-center justify-center gap-1.5 text-xs text-amber-300 font-bold">
+                <Flame className="w-4 h-4 text-amber-400 fill-amber-400/30" />
                 <span>السعرات اليومية المستهدفة (Daily Target)</span>
               </div>
-              <div className="text-4xl sm:text-5xl font-black text-amber-400 font-mono tracking-tight">
+              <div className="relative text-4xl sm:text-5xl font-black text-amber-400 font-mono tracking-tight drop-shadow-sm">
                 {targetCalories.toLocaleString()}
               </div>
-              <p className="text-xs text-slate-300">
+              <p className="relative text-xs text-slate-300">
                 سعرة حرارية / اليوم لتحقيق هدفك: {goal === 'cut' ? 'تنشيف الدهون (-500 سعرة)' : goal === 'bulk' ? 'تضخيم العضلات (+400 سعرة)' : 'المحافظة على ثبات الوزن'}
               </p>
             </div>

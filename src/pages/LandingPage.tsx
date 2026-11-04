@@ -192,28 +192,28 @@ export const LandingPage: React.FC = () => {
           </div>
 
           <div className="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 space-y-3 hover:-translate-y-1">
-            <div className="w-12 h-12 rounded-2xl bg-brand-green-50 text-brand-green-600 flex items-center justify-center ring-8 ring-brand-green-50/50">
+            <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center ring-8 ring-amber-50/50">
               <Calculator className="w-6 h-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900">حاسبة السعرات والمغذيات</h3>
             <p className="text-slate-600 text-xs leading-relaxed">
               احسب معدل الأيض الأساسي (BMR) واحتياجك من البروتين والماء مع مراعاة مناخ المكلا.
             </p>
-            <Link to="/calculator" className="inline-flex items-center gap-1 text-xs font-bold text-brand-green-600 hover:text-brand-green-700 pt-1">
+            <Link to="/calculator" className="inline-flex items-center gap-1 text-xs font-bold text-amber-600 hover:text-amber-700 pt-1">
               <span>ابدأ الحساب الآن</span>
               <ChevronLeft className="w-4 h-4" />
             </Link>
           </div>
 
           <div className="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 space-y-3 hover:-translate-y-1">
-            <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center ring-8 ring-amber-50/50">
+            <div className="w-12 h-12 rounded-2xl bg-brand-green-50 text-brand-green-600 flex items-center justify-center ring-8 ring-brand-green-50/50">
               <Salad className="w-6 h-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900">مكتبة الوجبات الصحية</h3>
             <p className="text-slate-600 text-xs leading-relaxed">
               وجبات رياضية غنية بالبروتين تعتمد على صيد المكلا الطازج من سمك الثمد والأغذية الصحية.
             </p>
-            <Link to="/meals" className="inline-flex items-center gap-1 text-xs font-bold text-amber-600 hover:text-amber-700 pt-1">
+            <Link to="/meals" className="inline-flex items-center gap-1 text-xs font-bold text-brand-green-600 hover:text-brand-green-700 pt-1">
               <span>تصفح الوجبات</span>
               <ChevronLeft className="w-4 h-4" />
             </Link>

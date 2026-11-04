@@ -94,11 +94,11 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ slides = SLIDES_DATA }) 
               <div className="w-full md:w-1/2 flex flex-col justify-center items-start px-4 sm:px-10 lg:px-16 py-8 sm:py-12 md:py-16 bg-gradient-to-l from-brand-blue-700 via-brand-blue-600 to-brand-blue-800 text-white relative z-10">
                 {/* Ambient glow effect inside text container */}
                 <div className="absolute top-0 right-0 w-72 h-72 bg-white/10 rounded-full blur-3xl pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-80 h-80 bg-brand-green-500/15 rounded-full blur-3xl pointer-events-none" />
+                <div className={`absolute bottom-0 left-0 w-80 h-80 rounded-full blur-3xl pointer-events-none transition-colors duration-700 ${slide.id === 3 ? 'bg-amber-500/15' : 'bg-brand-green-500/15'}`} />
 
                 {/* Pill Badge */}
                 <div className="relative inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-blue-50 text-[11px] sm:text-xs font-bold mb-3 sm:mb-4 shadow-sm">
-                  <span className="w-2 h-2 rounded-full bg-brand-green-400 animate-pulse shrink-0" />
+                  <span className={`w-2 h-2 rounded-full animate-pulse shrink-0 ${slide.id === 3 ? 'bg-amber-400' : 'bg-brand-green-400'}`} />
                   <span className="line-clamp-1">{slide.badge}</span>
                 </div>
 

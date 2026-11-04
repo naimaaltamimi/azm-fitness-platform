@@ -116,21 +116,24 @@ export const MealDetailsPage: React.FC = () => {
           <div className="p-3 sm:p-4 bg-slate-50 rounded-2xl border border-slate-100 space-y-2.5 sm:space-y-3">
             <h3 className="text-xs font-bold text-slate-700">القيمة الغذائية المحسوبة للوجبة:</h3>
             <div className="grid grid-cols-4 gap-1.5 sm:gap-2 text-center">
-              <div className="bg-white p-2 sm:p-2.5 rounded-xl border border-slate-200/70">
-                <span className="text-[9px] sm:text-[10px] text-slate-500 block">سعرات</span>
+              <div className="bg-amber-50/70 p-2 sm:p-2.5 rounded-xl border border-amber-200/60 shadow-sm">
+                <span className="text-[9px] sm:text-[10px] text-amber-700 font-bold block flex items-center justify-center gap-0.5">
+                  <Flame className="w-3 h-3 text-amber-500 fill-amber-500/20" />
+                  سعرات
+                </span>
                 <span className="text-sm sm:text-base font-black text-amber-600 font-mono">{meal.calories}</span>
               </div>
-              <div className="bg-white p-2 sm:p-2.5 rounded-xl border border-slate-200/70">
-                <span className="text-[9px] sm:text-[10px] text-slate-500 block">بروتين</span>
+              <div className="bg-blue-50/70 p-2 sm:p-2.5 rounded-xl border border-blue-200/60 shadow-sm">
+                <span className="text-[9px] sm:text-[10px] text-brand-blue-700 font-bold block">بروتين</span>
                 <span className="text-sm sm:text-base font-black text-brand-blue-600 font-mono">{meal.protein}g</span>
               </div>
-              <div className="bg-white p-2 sm:p-2.5 rounded-xl border border-slate-200/70">
-                <span className="text-[9px] sm:text-[10px] text-slate-500 block">كارب</span>
+              <div className="bg-emerald-50/70 p-2 sm:p-2.5 rounded-xl border border-emerald-200/60 shadow-sm">
+                <span className="text-[9px] sm:text-[10px] text-brand-green-700 font-bold block">كارب</span>
                 <span className="text-sm sm:text-base font-black text-brand-green-600 font-mono">{meal.carbs}g</span>
               </div>
-              <div className="bg-white p-2 sm:p-2.5 rounded-xl border border-slate-200/70">
+              <div className="bg-slate-50 p-2 sm:p-2.5 rounded-xl border border-slate-200/70">
                 <span className="text-[9px] sm:text-[10px] text-slate-500 block">دهون</span>
-                <span className="text-sm sm:text-base font-black text-amber-700 font-mono">{meal.fats}g</span>
+                <span className="text-sm sm:text-base font-black text-slate-700 font-mono">{meal.fats}g</span>
               </div>
             </div>
           </div>

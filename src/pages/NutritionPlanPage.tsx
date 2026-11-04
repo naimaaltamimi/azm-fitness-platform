@@ -172,13 +172,13 @@ export const NutritionPlanPage: React.FC = () => {
 
       {/* Target Macros Quick Ribbon */}
       <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5 sm:gap-3">
-        <div className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm text-center">
-          <span className="text-[10px] sm:text-[11px] text-slate-500 block mb-0.5">الهدف الإجمالي</span>
+        <div className="p-3 sm:p-4 rounded-2xl bg-amber-50/50 border border-amber-200/60 shadow-sm text-center">
+          <span className="text-[10px] sm:text-[11px] text-amber-800 font-bold block mb-0.5">الهدف الإجمالي</span>
           <span className="text-base sm:text-lg font-black text-amber-600 flex items-center justify-center gap-1 font-mono">
-            <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-500 fill-amber-500/20" />
             {targetCalories}
           </span>
-          <span className="text-[9px] sm:text-[10px] text-slate-400">سعرة حرارية</span>
+          <span className="text-[9px] sm:text-[10px] text-amber-700/80">سعرة حرارية</span>
         </div>
 
         <div className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm text-center">
@@ -251,7 +251,10 @@ export const NutritionPlanPage: React.FC = () => {
               <div className="flex items-center gap-4 shrink-0 bg-slate-50 p-4 rounded-2xl border border-slate-100 text-xs w-full md:w-auto justify-between md:justify-end">
                 <div className="text-center">
                   <span className="text-[10px] text-slate-500 block">السعرات</span>
-                  <span className="font-black text-amber-600 font-mono text-sm">{meal.calories}</span>
+                  <span className="font-black text-amber-600 font-mono text-sm flex items-center justify-center gap-0.5">
+                    <Flame className="w-3 h-3 text-amber-500 fill-amber-500/20" />
+                    {meal.calories}
+                  </span>
                 </div>
                 <div className="text-center">
                   <span className="text-[10px] text-slate-500 block">بروتين</span>

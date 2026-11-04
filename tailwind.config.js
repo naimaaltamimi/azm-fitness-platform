@@ -33,6 +33,18 @@ export default {
             800: '#065f46',
             900: '#064e3b',
           },
+          flame: {
+            50: '#fffbeb',
+            100: '#fef3c7',
+            200: '#fde68a',
+            300: '#fcd34d',
+            400: '#fbbf24',
+            500: '#f59e0b', // Warm Amber Accent for Calories, Energy & Flame
+            600: '#d97706',
+            700: '#b45309',
+            800: '#92400e',
+            900: '#78350f',
+          },
           dark: {
             900: '#080d1a',
             800: '#0f172a',

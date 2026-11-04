@@ -52,8 +52,8 @@ export const MealCard: React.FC<MealCardProps> = ({ meal }) => {
           <div className="grid grid-cols-3 gap-2 text-center py-2 px-3 bg-slate-50 rounded-2xl">
             <div>
               <span className="text-[10px] text-slate-500 block">سعرات</span>
-              <span className="text-sm font-black text-amber-600 flex items-center justify-center gap-0.5">
-                <Flame className="w-3.5 h-3.5" />
+              <span className="text-sm font-black text-amber-600 flex items-center justify-center gap-1 font-mono">
+                <Flame className="w-3.5 h-3.5 text-amber-500 fill-amber-500/20" />
                 {meal.calories}
               </span>
             </div>
