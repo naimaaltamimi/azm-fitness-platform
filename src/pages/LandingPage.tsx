@@ -21,7 +21,13 @@ import {
   MapPin,
   Clock,
   ArrowRight,
-  Phone
+  ArrowLeft,
+  Target,
+  Sparkles,
+  CheckCircle2,
+  TrendingUp,
+  Activity,
+  HeartHandshake
 } from 'lucide-react';
 
 export const LandingPage: React.FC = () => {
@@ -53,7 +59,7 @@ export const LandingPage: React.FC = () => {
 
   return (
     <div className="space-y-12 sm:space-y-16 pb-16">
-      {/* 1. World-Class Split Screen Hero Slider (Inspired by MyFitnessPal) */}
+      {/* 1. Full-Width Split Hero Slider (Inspired by Coach Sheikha & Modern Fitness Platforms) */}
       <HeroSlider />
 
       {/* 2. Floating Sleek Discovery & Search Bar */}
@@ -101,7 +107,7 @@ export const LandingPage: React.FC = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="px-7 py-3 rounded-2xl bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold text-xs sm:text-sm shadow-lg shadow-brand-blue-600/30 active:scale-95 transition-all flex items-center justify-center gap-2 shrink-0"
+              className="px-7 py-3 rounded-2xl bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold text-xs sm:text-sm shadow-lg shadow-brand-blue-600/30 active:scale-95 transition-all flex items-center justify-center gap-2 shrink-0 min-h-[44px]"
             >
               <span>استكشف الآن</span>
               <ArrowRight className="w-4 h-4 rotate-180" />
@@ -162,97 +168,286 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* 3. Solid High-Impact Stats Strip (Directly Inspired by Coach Sheikha's .stats) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
-          <span className="text-xs font-black text-brand-blue-600 bg-brand-blue-50 px-3.5 py-1 rounded-full uppercase tracking-wider">
-            منظومة عزم
+        <div className="bg-gradient-to-r from-slate-900 via-brand-blue-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl border border-slate-800">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 divide-y sm:divide-y-0 sm:divide-x sm:divide-x-reverse divide-slate-800/80">
+            {/* Stat 1 */}
+            <div className="flex flex-col items-center text-center pt-4 sm:pt-0">
+              <span className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-none mb-2">
+                5+
+              </span>
+              <span className="text-sm sm:text-base font-bold text-sky-200 mb-1">
+                صالات معتمدة
+              </span>
+              <span className="text-xs text-slate-400 font-medium">
+                فحص ميداني وتوثيق رسمي بالمكلا
+              </span>
+            </div>
+
+            {/* Stat 2 */}
+            <div className="flex flex-col items-center text-center pt-4 sm:pt-0">
+              <span className="text-3xl sm:text-4xl lg:text-5xl font-black text-brand-green-400 tracking-tight leading-none mb-2">
+                100%
+              </span>
+              <span className="text-sm sm:text-base font-bold text-sky-200 mb-1">
+                دقة علمية
+              </span>
+              <span className="text-xs text-slate-400 font-medium">
+                معادلة ميفلين-سانت جور لمناخ الساحل
+              </span>
+            </div>
+
+            {/* Stat 3 */}
+            <div className="flex flex-col items-center text-center pt-4 sm:pt-0">
+              <span className="text-3xl sm:text-4xl lg:text-5xl font-black text-amber-400 tracking-tight leading-none mb-2">
+                20+
+              </span>
+              <span className="text-sm sm:text-base font-bold text-sky-200 mb-1">
+                وجبة ساحلية
+              </span>
+              <span className="text-xs text-slate-400 font-medium">
+                ثمد طازج وبروتين محلي نقي
+              </span>
+            </div>
+
+            {/* Stat 4 */}
+            <div className="flex flex-col items-center text-center pt-4 sm:pt-0">
+              <span className="text-3xl sm:text-4xl lg:text-5xl font-black text-sky-300 tracking-tight leading-none mb-2">
+                0 عمولة
+              </span>
+              <span className="text-sm sm:text-base font-bold text-sky-200 mb-1">
+                اشتراكات فورية
+              </span>
+              <span className="text-xs text-slate-400 font-medium">
+                بالريال اليمني نقداً وعبر الصرافة
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. 3-Step Journey Timeline Section (Directly Inspired by Coach Sheikha's .journey-section) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12 space-y-3">
+          <span className="eyebrow-pill bg-brand-blue-50 text-brand-blue-700 border border-brand-blue-200/80">
+            <Sparkles className="w-3.5 h-3.5 text-brand-blue-600" />
+            رحلتك في عزم • ساحل حضرموت
           </span>
-          <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
+          <h2 className="heading-section">
+            رحلتك الرياضية والغذائية في المكلا
+          </h2>
+          <p className="text-body-lead">
+            ثلاث خطوات متسلسلة ومدروسة تبدأ بها رحلتك نحو صحة ولياقة أفضل بكل وضوح وثقة.
+          </p>
+        </div>
+
+        {/* Journey Timeline Wrapper */}
+        <div className="journey-timeline-wrapper">
+          {/* Top Timeline Bar with Numbered Badges (Visible on md and up) */}
+          <div className="hidden md:flex journey-timeline-bar mb-6">
+            <div className="flex flex-col items-center">
+              <div className="step-circle-badge bg-brand-blue-600 text-white">
+                1
+              </div>
+              <span className="text-xs font-bold text-brand-blue-700 mt-2">الخطوة الأولى</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="step-circle-badge bg-brand-blue-600 text-white">
+                2
+              </div>
+              <span className="text-xs font-bold text-brand-blue-700 mt-2">الخطوة الثانية</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="step-circle-badge bg-brand-blue-600 text-white">
+                3
+              </div>
+              <span className="text-xs font-bold text-brand-blue-700 mt-2">الخطوة الثالثة</span>
+            </div>
+          </div>
+
+          {/* 3 Step Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Step 1 Card */}
+            <div className="card-sheikha p-6 sm:p-7 flex flex-col justify-between space-y-4 relative">
+              <div className="md:hidden flex items-center justify-between mb-2">
+                <span className="w-8 h-8 rounded-full bg-brand-blue-600 text-white font-extrabold flex items-center justify-center text-sm">
+                  1
+                </span>
+                <span className="text-xs font-bold text-brand-blue-600">الخطوة الأولى</span>
+              </div>
+              <div className="space-y-3">
+                <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center ring-8 ring-amber-50/50">
+                  <Calculator className="w-6 h-6" />
+                </div>
+                <h3 className="heading-card">احسب سعراتك وأرقامك بدقة</h3>
+                <p className="text-body-muted">
+                  استخدم حاسبة عزم المعتمدة لمعرفة معدل الأيض اليومي (BMR) واحتياجك من البروتين والماء مع مراعاة حرارة ورطوبة المكلا.
+                </p>
+              </div>
+              <Link
+                to="/calculator"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 hover:text-amber-700 pt-2 group"
+              >
+                <span>ابدأ بالحساب مجاناً</span>
+                <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+              </Link>
+            </div>
+
+            {/* Step 2 Card */}
+            <div className="card-sheikha p-6 sm:p-7 flex flex-col justify-between space-y-4 relative">
+              <div className="md:hidden flex items-center justify-between mb-2">
+                <span className="w-8 h-8 rounded-full bg-brand-blue-600 text-white font-extrabold flex items-center justify-center text-sm">
+                  2
+                </span>
+                <span className="text-xs font-bold text-brand-blue-600">الخطوة الثانية</span>
+              </div>
+              <div className="space-y-3">
+                <div className="w-12 h-12 rounded-2xl bg-brand-blue-50 text-brand-blue-600 flex items-center justify-center ring-8 ring-brand-blue-50/50">
+                  <Compass className="w-6 h-6" />
+                </div>
+                <h3 className="heading-card">اختر صالتك أو مدربك</h3>
+                <p className="text-body-muted">
+                  استعرض صالات المكلا المعتمدة في الشرج وفوة والديس مع صور وتجهيزات واقعية أو تواصل مع كباتن معتمدين واشترك بالريال اليمني.
+                </p>
+              </div>
+              <Link
+                to="/gyms"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-blue-600 hover:text-brand-blue-700 pt-2 group"
+              >
+                <span>استكشف الصالات والكباتن</span>
+                <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+              </Link>
+            </div>
+
+            {/* Step 3 Card */}
+            <div className="card-sheikha p-6 sm:p-7 flex flex-col justify-between space-y-4 relative">
+              <div className="md:hidden flex items-center justify-between mb-2">
+                <span className="w-8 h-8 rounded-full bg-brand-blue-600 text-white font-extrabold flex items-center justify-center text-sm">
+                  3
+                </span>
+                <span className="text-xs font-bold text-brand-blue-600">الخطوة الثالثة</span>
+              </div>
+              <div className="space-y-3">
+                <div className="w-12 h-12 rounded-2xl bg-brand-green-50 text-brand-green-600 flex items-center justify-center ring-8 ring-brand-green-50/50">
+                  <Salad className="w-6 h-6" />
+                </div>
+                <h3 className="heading-card">التزم بالوجبات وتتبع هدفك</h3>
+                <p className="text-body-muted">
+                  طبق وجباتك الصحية المعدة بأسماك وثروات بحر المكلا الغنية بالبروتين، وتابع اشتراكك وتطورك البدني في منصة عزم خطوة بخطوة.
+                </p>
+              </div>
+              <Link
+                to="/meals"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-green-600 hover:text-brand-green-700 pt-2 group"
+              >
+                <span>تصفح الوجبات الساحلية</span>
+                <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Core Services Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
+          <span className="eyebrow-pill bg-brand-blue-50 text-brand-blue-700 border border-brand-blue-200/80">
+            منظومة عزم الشاملة
+          </span>
+          <h2 className="heading-section">
             خدمات صممت خصيصاً لمجتمع المكلا
           </h2>
-          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-            الصالات، المدربين، والأدوات الغذائية في بيئة واحدة سهلة الاستخدام بدون تعقيد.
+          <p className="text-body-lead">
+            الصالات المعتمدة، المدربون، والأدوات الغذائية في بيئة واحدة سهلة الاستخدام بدون تعقيد.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 space-y-3 hover:-translate-y-1">
-            <div className="w-12 h-12 rounded-2xl bg-brand-blue-50 text-brand-blue-600 flex items-center justify-center ring-8 ring-brand-blue-50/50">
-              <Dumbbell className="w-6 h-6" />
+          <div className="card-sheikha p-6 space-y-3 flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="w-12 h-12 rounded-2xl bg-brand-blue-50 text-brand-blue-600 flex items-center justify-center ring-8 ring-brand-blue-50/50">
+                <Dumbbell className="w-6 h-6" />
+              </div>
+              <h3 className="heading-card">دليل نوادي المكلا</h3>
+              <p className="text-body-muted text-xs leading-relaxed">
+                صالات الشرج، فوة المتضررين، والديس مع صور حقيقية ومواعيد العمل وباقات الأسعار الرسمية.
+              </p>
             </div>
-            <h3 className="text-base font-bold text-slate-900">دليل نوادي المكلا</h3>
-            <p className="text-slate-600 text-xs leading-relaxed">
-              صالات الشرج، فوة المتضررين، والديس مع صور حقيقية ومواعيد العمل والباقات الرسمية.
-            </p>
-            <Link to="/gyms" className="inline-flex items-center gap-1 text-xs font-bold text-brand-blue-600 hover:text-brand-blue-700 pt-1">
+            <Link to="/gyms" className="inline-flex items-center gap-1 text-xs font-bold text-brand-blue-600 hover:text-brand-blue-700 pt-1 group">
               <span>تصفح الصالات</span>
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             </Link>
           </div>
 
-          <div className="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 space-y-3 hover:-translate-y-1">
-            <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center ring-8 ring-amber-50/50">
-              <Calculator className="w-6 h-6" />
+          <div className="card-sheikha p-6 space-y-3 flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center ring-8 ring-amber-50/50">
+                <Calculator className="w-6 h-6" />
+              </div>
+              <h3 className="heading-card">حاسبة السعرات والمغذيات</h3>
+              <p className="text-body-muted text-xs leading-relaxed">
+                احسب معدل الأيض الأساسي (BMR) واحتياجك من البروتين والماء مع مراعاة مناخ المكلا الساحلي.
+              </p>
             </div>
-            <h3 className="text-base font-bold text-slate-900">حاسبة السعرات والمغذيات</h3>
-            <p className="text-slate-600 text-xs leading-relaxed">
-              احسب معدل الأيض الأساسي (BMR) واحتياجك من البروتين والماء مع مراعاة مناخ المكلا.
-            </p>
-            <Link to="/calculator" className="inline-flex items-center gap-1 text-xs font-bold text-amber-600 hover:text-amber-700 pt-1">
+            <Link to="/calculator" className="inline-flex items-center gap-1 text-xs font-bold text-amber-600 hover:text-amber-700 pt-1 group">
               <span>ابدأ الحساب الآن</span>
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             </Link>
           </div>
 
-          <div className="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 space-y-3 hover:-translate-y-1">
-            <div className="w-12 h-12 rounded-2xl bg-brand-green-50 text-brand-green-600 flex items-center justify-center ring-8 ring-brand-green-50/50">
-              <Salad className="w-6 h-6" />
+          <div className="card-sheikha p-6 space-y-3 flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="w-12 h-12 rounded-2xl bg-brand-green-50 text-brand-green-600 flex items-center justify-center ring-8 ring-brand-green-50/50">
+                <Salad className="w-6 h-6" />
+              </div>
+              <h3 className="heading-card">مكتبة الوجبات الصحية</h3>
+              <p className="text-body-muted text-xs leading-relaxed">
+                وجبات رياضية غنية بالبروتين تعتمد على صيد المكلا الطازج من سمك الثمد والأغذية الصحية المتوفرة.
+              </p>
             </div>
-            <h3 className="text-base font-bold text-slate-900">مكتبة الوجبات الصحية</h3>
-            <p className="text-slate-600 text-xs leading-relaxed">
-              وجبات رياضية غنية بالبروتين تعتمد على صيد المكلا الطازج من سمك الثمد والأغذية الصحية.
-            </p>
-            <Link to="/meals" className="inline-flex items-center gap-1 text-xs font-bold text-brand-green-600 hover:text-brand-green-700 pt-1">
+            <Link to="/meals" className="inline-flex items-center gap-1 text-xs font-bold text-brand-green-600 hover:text-brand-green-700 pt-1 group">
               <span>تصفح الوجبات</span>
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             </Link>
           </div>
 
-          <div className="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 space-y-3 hover:-translate-y-1">
-            <div className="w-12 h-12 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center ring-8 ring-sky-50/50">
-              <Award className="w-6 h-6" />
+          <div className="card-sheikha p-6 space-y-3 flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="w-12 h-12 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center ring-8 ring-sky-50/50">
+                <Award className="w-6 h-6" />
+              </div>
+              <h3 className="heading-card">الاشتراكات المباشرة</h3>
+              <p className="text-body-muted text-xs leading-relaxed">
+                اختر باقتك وسجل طلب اشتراكك مع خيارات الدفع نقداً بالصالة أو عبر الكريمي والعمقي.
+              </p>
             </div>
-            <h3 className="text-base font-bold text-slate-900">الاشتراكات المباشرة</h3>
-            <p className="text-slate-600 text-xs leading-relaxed">
-              اختر باقتك وسجل طلب اشتراكك مع خيارات الدفع نقداً بالصالة أو عبر الكريمي والعمقي.
-            </p>
-            <Link to="/gyms" className="inline-flex items-center gap-1 text-xs font-bold text-sky-600 hover:text-sky-700 pt-1">
+            <Link to="/gyms" className="inline-flex items-center gap-1 text-xs font-bold text-sky-600 hover:text-sky-700 pt-1 group">
               <span>اختر صالتك</span>
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Featured Mukalla Gyms Section */}
+      {/* 6. Featured Mukalla Gyms Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
-            <div className="flex items-center gap-2 text-xs font-bold text-brand-blue-600 mb-1">
+            <div className="flex items-center gap-2 text-xs font-bold text-brand-blue-600 mb-1.5">
               <Compass className="w-4 h-4" />
-              <span>الصالات المعتمدة</span>
+              <span>الصالات المعتمدة بالمكلا</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
+            <h2 className="heading-section">
               أبرز صالات المكلا الرياضية
             </h2>
           </div>
           <Link
             to="/gyms"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-brand-blue-700 hover:text-brand-blue-800 transition-colors"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-brand-blue-700 hover:text-brand-blue-800 transition-colors group"
           >
             <span>مشاهدة كافة صالات المكلا</span>
-            <ChevronLeft className="w-4 h-4" />
+            <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
           </Link>
         </div>
 
@@ -263,25 +458,25 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Nutrition Section */}
+      {/* 7. Coastal Nutrition Section */}
       <section className="bg-slate-100/70 py-12 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
             <div>
-              <div className="flex items-center gap-2 text-xs font-bold text-brand-green-600 mb-1">
+              <div className="flex items-center gap-2 text-xs font-bold text-brand-green-600 mb-1.5">
                 <Salad className="w-4 h-4" />
                 <span>التغذية الساحلية السليمة</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
+              <h2 className="heading-section">
                 وجبات رياضية غنية بالبروتين
               </h2>
             </div>
             <Link
               to="/meals"
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-brand-green-700 hover:text-brand-green-800 transition-colors"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-brand-green-700 hover:text-brand-green-800 transition-colors group"
             >
               <span>فتح مكتبة الوجبات الكاملة</span>
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             </Link>
           </div>
 
@@ -293,31 +488,32 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Trainers & Coaches Call to Action Banner */}
+      {/* 8. Trainers & Coaches Community Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-brand-blue-900 via-brand-blue-800 to-brand-dark-900 text-white p-8 sm:p-10 shadow-xl border border-brand-blue-700/50 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-slate-900 via-brand-blue-900 to-slate-950 text-white p-8 sm:p-12 shadow-2xl border border-brand-blue-700/40 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="relative z-10 max-w-xl space-y-3 text-right">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-brand-green-400 bg-brand-green-950/60 border border-brand-green-800/60 px-3 py-1 rounded-lg">
+            <span className="eyebrow-pill text-brand-green-400 bg-brand-green-950/70 border border-brand-green-700/60">
+              <HeartHandshake className="w-3.5 h-3.5" />
               شراكة مجتمعية في ساحل حضرموت
             </span>
-            <h3 className="text-xl sm:text-2xl font-black leading-snug">
+            <h3 className="text-2xl sm:text-3xl font-black leading-snug">
               هل أنت كابتن معتمد أو تدير صالة في المكلا؟
             </h3>
-            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-              انضم إلى منصة عزم لتوثيق صالتك أو اعتماد ملفك التدريبي والوصول لمئات الرياضيين والمهتمين بالصحة في المكلا.
+            <p className="text-slate-300 text-sm leading-relaxed">
+              انضم إلى منصة عزم لتوثيق صالتك أو اعتماد ملفك التدريبي وحسابك الرياضي للوصول لمئات الرياضيين والمهتمين بالصحة في المكلا.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
+          <div className="flex flex-wrap items-center gap-3 shrink-0 relative z-10">
             <Link
               to="/trainers"
-              className="px-6 py-3 rounded-xl bg-brand-green-500 hover:bg-brand-green-600 text-white font-bold text-xs shadow-md transition-all active:scale-95"
+              className="btn-sheikha-primary bg-brand-green-500 hover:bg-brand-green-600 shadow-brand-green-600/30 text-white"
             >
-              تسجيل كابتن معتمد
+              دليل الكباتن المعتمدين
             </Link>
             <Link
               to="/register"
-              className="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs border border-white/20 transition-all"
+              className="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/20 transition-all min-h-[44px] inline-flex items-center justify-center"
             >
               انضمام منشأة رياضية
             </Link>

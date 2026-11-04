@@ -258,59 +258,68 @@ export const GymDetailsPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Pricing Plans Sidebar */}
+        {/* Pricing Plans Sidebar (Inspired by Coach Sheikha's pkg-card design) */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-sm space-y-4">
-            <h3 className="text-lg font-bold text-slate-900">باقات الاشتراك المتاحة</h3>
-            <p className="text-xs text-slate-500">
-              الأسعار بالريال اليمني، ومحددة رسمياً من قبل إدارة الصالة.
-            </p>
+          <div className="bg-white p-6 sm:p-7 rounded-3xl border border-slate-200/90 shadow-sm space-y-5">
+            <div>
+              <div className="flex items-center gap-1.5 text-xs font-bold text-brand-blue-600 mb-1">
+                <span>الاشتراكات المعتمدة</span>
+              </div>
+              <h3 className="text-xl font-black text-slate-900">باقات الاشتراك المتاحة</h3>
+              <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                الأسعار بالريال اليمني ومحددة رسمياً من إدارة الصالة مباشرة دون أي عمولات.
+              </p>
+            </div>
 
-            <div className="space-y-4">
+            <div className="space-y-5">
               {gym.pricingPlans.map((plan) => (
                 <div
                   key={plan.id}
-                  className={`p-5 rounded-2xl border transition-all ${
+                  className={`pkg-card ${
                     plan.isPopular
-                      ? 'border-brand-blue-500 bg-brand-blue-50/40 ring-1 ring-brand-blue-500'
-                      : 'border-slate-200 bg-white hover:border-slate-300'
+                      ? 'border-brand-blue-500 bg-gradient-to-b from-blue-50/40 to-white ring-2 ring-brand-blue-500/20 shadow-md'
+                      : 'border-slate-200 bg-white hover:border-brand-blue-300'
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-2">
-                    <h4 className="font-bold text-slate-900 text-sm">{plan.name}</h4>
-                    {plan.isPopular && (
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-brand-blue-600 text-white">
-                        الأكثر طلباً
-                      </span>
-                    )}
+                  {plan.isPopular && (
+                    <span className="pkg-card-badge">
+                      الأكثر طلباً
+                    </span>
+                  )}
+
+                  <div className="text-center pt-1 mb-3">
+                    <h4 className="font-extrabold text-slate-900 text-base">{plan.name}</h4>
+                    <span className="text-xs font-semibold text-slate-500">مدة الاشتراك: {plan.period}</span>
                   </div>
 
-                  <div className="my-3">
-                    <span className="text-2xl font-black text-brand-blue-700">
+                  <div className="text-center my-2 py-2 border-y border-slate-100">
+                    <span className="text-3xl font-black text-brand-blue-700 tracking-tight">
                       {plan.priceYer.toLocaleString()}
                     </span>
-                    <span className="text-xs text-slate-500 mr-1.5 font-bold">ريال يمني / {plan.period}</span>
+                    <span className="text-xs text-slate-500 mr-1.5 font-bold">ريال يمني</span>
                   </div>
 
-                  <ul className="space-y-1.5 text-[11px] text-slate-600 mb-4">
+                  <ul className="space-y-2 text-xs text-slate-600 my-4 flex-1">
                     {plan.features.map((f, i) => (
-                      <li key={i} className="flex items-center gap-1.5">
-                        <span className="text-brand-green-600">✓</span>
-                        <span>{f}</span>
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="w-4 h-4 rounded-full bg-brand-green-100 text-brand-green-600 flex items-center justify-center shrink-0 text-[10px] font-bold mt-0.5">
+                          ✓
+                        </span>
+                        <span className="leading-snug">{f}</span>
                       </li>
                     ))}
                   </ul>
 
                   <Link
                     to={`/gyms/${gym.slug}/subscribe?plan=${plan.id}`}
-                    className={`w-full py-2.5 rounded-xl font-bold text-xs flex items-center justify-center gap-1 transition-all text-center ${
+                    className={`w-full py-3 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all text-center min-h-[44px] ${
                       plan.isPopular
-                        ? 'bg-brand-blue-600 hover:bg-brand-blue-700 text-white shadow-sm'
-                        : 'bg-slate-100 hover:bg-brand-blue-50 text-slate-700 hover:text-brand-blue-700'
+                        ? 'bg-brand-blue-600 hover:bg-brand-blue-700 text-white shadow-md shadow-brand-blue-600/30 active:scale-95'
+                        : 'bg-slate-100 hover:bg-brand-blue-50 text-slate-800 hover:text-brand-blue-700 border border-slate-200/80 active:scale-95'
                     }`}
                   >
-                    <span>اختيار هذه الباقة</span>
-                    <ArrowRight className="w-3.5 h-3.5 rotate-180" />
+                    <span>طلب اشتراك في هذه الباقة</span>
+                    <ArrowRight className="w-4 h-4 rotate-180" />
                   </Link>
                 </div>
               ))}

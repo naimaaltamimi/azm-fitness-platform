@@ -7,24 +7,25 @@
     direction: rtl;
     font-family: 'Cairo', Tajawal, system-ui, -apple-system, sans-serif;
     scroll-behavior: smooth;
-    /* منع التمرير الأفقي على مستوى الصفحة */
+    /* Prevent horizontal scroll globally */
     overflow-x: hidden;
   }
 
   body {
     @apply bg-slate-50 text-slate-900 min-h-screen antialiased;
-    /* منع التمرير الأفقي */
     overflow-x: hidden;
     width: 100%;
+    color: #0f172a;
+    background-color: #fafbfd;
   }
 
-  /* صور متجاوبة عالمياً */
+  /* Responsive Images */
   img {
     max-width: 100%;
     height: auto;
   }
 
-  /* حقول الإدخال: حجم خط 16px على الهاتف لمنع التكبير التلقائي في iOS */
+  /* Form inputs: 16px minimum font size on mobile to prevent iOS auto-zoom */
   input,
   select,
   textarea {
@@ -59,17 +60,203 @@
   background: #94a3b8;
 }
 
-/* تأكيد عدم خروج أي عنصر عن حدود الشاشة */
+/* Ensure box-sizing across all elements */
 * {
   box-sizing: border-box;
 }
 
-/* أزرار: حجم لمس مناسب على الهاتف */
+/* Touch Targets for Mobile Accessibility */
 @layer utilities {
   .touch-target {
     min-height: 44px;
     min-width: 44px;
   }
+}
+
+/* ==========================================================
+   Design Tokens & Typography Scales (Inspired by Coach Sheikha)
+   ========================================================== */
+
+/* Fluid Typography Scales */
+.heading-hero {
+  font-size: clamp(28px, 4.2vw, 48px);
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.heading-section {
+  font-size: clamp(24px, 3.2vw, 36px);
+  line-height: 1.35;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+
+.heading-card {
+  font-size: clamp(18px, 1.8vw, 22px);
+  line-height: 1.4;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.text-body-lead {
+  font-size: clamp(15px, 1.25vw, 17px);
+  line-height: 1.9;
+  color: #475569;
+  font-weight: 500;
+}
+
+.text-body-muted {
+  font-size: 14.5px;
+  line-height: 1.8;
+  color: #64748b;
+}
+
+.eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+}
+
+/* Card Style (Inspired by Coach Sheikha's card architecture) */
+.card-sheikha {
+  background-color: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card-sheikha:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.09);
+  border-color: #cbd5e1;
+}
+
+/* High-Contrast Action Buttons with Lift */
+.btn-sheikha-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 15.5px;
+  font-weight: 700;
+  padding: 13px 28px;
+  border-radius: 12px;
+  background-color: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.28);
+  transition: all 0.25s ease;
+  min-height: 44px;
+}
+
+.btn-sheikha-primary:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+}
+
+.btn-sheikha-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 15.5px;
+  font-weight: 700;
+  padding: 13px 28px;
+  border-radius: 12px;
+  background-color: transparent;
+  color: #2563eb;
+  border: 1.5px solid #2563eb;
+  transition: all 0.25s ease;
+  min-height: 44px;
+}
+
+.btn-sheikha-secondary:hover {
+  background-color: #eff6ff;
+  transform: translateY(-2px);
+}
+
+/* Journey Timeline Bar */
+.journey-timeline-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1020px;
+  margin: 0 auto;
+}
+
+.journey-timeline-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.journey-timeline-bar::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 15%;
+  left: 15%;
+  height: 2px;
+  background: #cbd5e1;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.step-circle-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 19px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* Package Card Architecture (Inspired by Coach Sheikha's pkg-card) */
+.pkg-card {
+  background-color: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 34px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.pkg-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.1);
+  border-color: #93c5fd;
+}
+
+.pkg-card-badge {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
 }
 
 /* Swiper Pagination Customization */
@@ -84,4 +271,3 @@
   width: 24px !important;
   border-radius: 9999px !important;
 }
-

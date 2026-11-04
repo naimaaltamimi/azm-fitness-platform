@@ -10,6 +10,7 @@ export const TrainersDirectoryPage: React.FC = () => {
   const [trainers, setTrainers] = useState<Trainer[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedNeighborhood, setSelectedNeighborhood] = useState('all');
+  const [selectedGender, setSelectedGender] = useState<'all' | 'male' | 'female'>('all');
   const [isApplyModalOpen, setIsApplyModalOpen] = useState(false);
 
   const loadTrainers = () => {
@@ -31,7 +32,10 @@ export const TrainersDirectoryPage: React.FC = () => {
     const matchNeighborhood =
       selectedNeighborhood === 'all' || t.neighborhood.includes(selectedNeighborhood);
 
-    return matchSearch && matchNeighborhood;
+    const matchGender =
+      selectedGender === 'all' || t.gender === selectedGender;
+
+    return matchSearch && matchNeighborhood && matchGender;
   });
 
   return (
@@ -61,8 +65,8 @@ export const TrainersDirectoryPage: React.FC = () => {
       </div>
 
       {/* Toolbar */}
-      <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-sm flex flex-col sm:flex-row gap-4 items-center justify-between">
-        <div className="relative w-full sm:w-80">
+      <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-sm flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
+        <div className="relative w-full md:w-80">
           <input
             type="text"
             value={searchQuery}
@@ -73,20 +77,57 @@ export const TrainersDirectoryPage: React.FC = () => {
           <Search className="w-4 h-4 text-slate-400 absolute right-3.5 top-3" />
         </div>
 
-        <div className="flex flex-wrap items-center gap-1.5 w-full sm:w-auto">
-          {['all', 'الشرج', 'فوة المتضررين', 'ديس المكلا'].map((n) => (
+        <div className="flex flex-wrap items-center gap-2">
+          {/* Gender Filter */}
+          <div className="flex items-center gap-1 p-1 bg-slate-100 rounded-xl">
             <button
-              key={n}
-              onClick={() => setSelectedNeighborhood(n)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                selectedNeighborhood === n
-                  ? 'bg-brand-blue-600 text-white'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              onClick={() => setSelectedGender('all')}
+              className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
+                selectedGender === 'all'
+                  ? 'bg-white text-brand-blue-700 shadow-sm'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              {n === 'all' ? 'جميع المناطق' : n}
+              الجميع
             </button>
-          ))}
+            <button
+              onClick={() => setSelectedGender('male')}
+              className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
+                selectedGender === 'male'
+                  ? 'bg-white text-brand-blue-700 shadow-sm'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              رجال
+            </button>
+            <button
+              onClick={() => setSelectedGender('female')}
+              className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
+                selectedGender === 'female'
+                  ? 'bg-white text-brand-blue-700 shadow-sm'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              سيدات
+            </button>
+          </div>
+
+          {/* Neighborhood Filter */}
+          <div className="flex flex-wrap items-center gap-1">
+            {['all', 'الشرج', 'فوة المتضررين', 'ديس المكلا'].map((n) => (
+              <button
+                key={n}
+                onClick={() => setSelectedNeighborhood(n)}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                  selectedNeighborhood === n
+                    ? 'bg-brand-blue-600 text-white'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`}
+              >
+                {n === 'all' ? 'جميع المناطق' : n}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 

@@ -110,6 +110,32 @@ export const storageService = {
     localStorage.setItem(APPLIED_TRAINERS_KEY, JSON.stringify(applied));
     window.dispatchEvent(new Event('azm_storage_update'));
     return newTrainer;
+  },
+
+  updateTrainer(id: string, updates: Partial<Trainer>): Trainer[] {
+    try {
+      const custom = localStorage.getItem(APPLIED_TRAINERS_KEY);
+      let applied: Trainer[] = custom ? JSON.parse(custom) : [];
+      applied = applied.map((t) => (t.id === id ? { ...t, ...updates } : t));
+      localStorage.setItem(APPLIED_TRAINERS_KEY, JSON.stringify(applied));
+      window.dispatchEvent(new Event('azm_storage_update'));
+      return this.getTrainers();
+    } catch {
+      return this.getTrainers();
+    }
+  },
+
+  deleteTrainer(id: string): Trainer[] {
+    try {
+      const custom = localStorage.getItem(APPLIED_TRAINERS_KEY);
+      let applied: Trainer[] = custom ? JSON.parse(custom) : [];
+      applied = applied.filter((t) => t.id !== id);
+      localStorage.setItem(APPLIED_TRAINERS_KEY, JSON.stringify(applied));
+      window.dispatchEvent(new Event('azm_storage_update'));
+      return this.getTrainers();
+    } catch {
+      return this.getTrainers();
+    }
   }
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Trainer } from '../../types';
-import { MapPin, Award, CheckCircle, Calendar, ArrowLeft } from 'lucide-react';
+import { MapPin, Award, CheckCircle, Calendar, ArrowLeft, Instagram } from 'lucide-react';
 
 interface TrainerCardProps {
   trainer: Trainer;
@@ -10,7 +10,7 @@ interface TrainerCardProps {
 
 export const TrainerCard: React.FC<TrainerCardProps> = ({ trainer }) => {
   return (
-    <div className="bg-white rounded-3xl border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between p-6">
+    <div className="card-sheikha p-6 flex flex-col justify-between h-full">
       <div className="space-y-4">
         {/* Header with Avatar & Badge */}
         <div className="flex items-start gap-4">
@@ -21,7 +21,7 @@ export const TrainerCard: React.FC<TrainerCardProps> = ({ trainer }) => {
           />
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2">
-              <h3 className="font-bold text-slate-900 text-lg truncate">{trainer.name}</h3>
+              <h3 className="font-bold text-slate-900 text-base sm:text-lg truncate">{trainer.name}</h3>
               {trainer.isVerified && (
                 <span title="مدرب موثق">
                   <CheckCircle className="w-4 h-4 text-brand-green-500 shrink-0" />
@@ -29,9 +29,16 @@ export const TrainerCard: React.FC<TrainerCardProps> = ({ trainer }) => {
               )}
             </div>
             <p className="text-xs font-semibold text-brand-blue-600 mt-0.5">{trainer.specialty}</p>
-            <div className="flex items-center gap-1.5 text-xs text-slate-500 mt-1">
-              <MapPin className="w-3.5 h-3.5 text-slate-400" />
-              <span>المكلا - {trainer.neighborhood}</span>
+            <div className="flex items-center gap-2 text-xs text-slate-500 mt-1">
+              <span className="flex items-center gap-1">
+                <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                <span>المكلا - {trainer.neighborhood}</span>
+              </span>
+              {trainer.gender === 'female' && (
+                <span className="px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 font-bold text-[10px]">
+                  فترة نسائية
+                </span>
+              )}
             </div>
           </div>
         </div>
@@ -40,6 +47,14 @@ export const TrainerCard: React.FC<TrainerCardProps> = ({ trainer }) => {
         <p className="text-slate-600 text-xs leading-relaxed line-clamp-3">
           {trainer.bio}
         </p>
+
+        {/* Instagram Pill Badge if available */}
+        {trainer.instagramUsername && (
+          <div className="flex items-center gap-1.5 text-xs text-slate-600 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-100 font-mono">
+            <Instagram className="w-3.5 h-3.5 text-pink-500" />
+            <span>@{trainer.instagramUsername}</span>
+          </div>
+        )}
 
         {/* Affiliation / Badges */}
         {trainer.activeGymAffiliation && (
@@ -67,14 +82,14 @@ export const TrainerCard: React.FC<TrainerCardProps> = ({ trainer }) => {
       <div className="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2">
         <Link
           to={`/trainers/${trainer.id}`}
-          className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl border border-slate-200 text-slate-700 hover:text-brand-blue-700 hover:border-brand-blue-300 hover:bg-brand-blue-50 font-bold text-xs transition-colors"
+          className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl border border-slate-200 text-slate-700 hover:text-brand-blue-700 hover:border-brand-blue-300 hover:bg-brand-blue-50 font-bold text-xs transition-colors min-h-[42px]"
         >
           <span>الملف والشهادات</span>
           <ArrowLeft className="w-3.5 h-3.5" />
         </Link>
         <Link
           to={`/trainers/${trainer.id}`}
-          className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold text-xs transition-all shadow-md shadow-brand-blue-600/20 active:scale-95"
+          className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold text-xs transition-all shadow-md shadow-brand-blue-600/20 active:scale-95 min-h-[42px]"
         >
           <Calendar className="w-3.5 h-3.5" />
           <span>حجز استشارة</span>
