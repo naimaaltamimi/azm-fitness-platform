@@ -160,8 +160,8 @@ export const LandingPage: React.FC = () => {
               </button>
             </div>
 
-            <div className="flex items-center gap-1.5 text-brand-green-600 font-bold text-[11px]">
-              <ShieldCheck className="w-4 h-4" />
+            <div className="flex items-center gap-1.5 text-brand-blue-700 font-bold text-[11px]">
+              <ShieldCheck className="w-4 h-4 text-[#D9AD55]" />
               <span>5 صالات حقيقية موثقة ومجربة بالمكلا</span>
             </div>
           </div>
@@ -270,7 +270,7 @@ export const LandingPage: React.FC = () => {
                 <span className="text-xs font-bold text-brand-blue-600">الخطوة الثالثة</span>
               </div>
               <div className="space-y-3">
-                <div className="w-12 h-12 rounded-2xl bg-brand-green-50 text-brand-green-600 flex items-center justify-center ring-8 ring-brand-green-50/50">
+                <div className="w-12 h-12 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center ring-8 ring-sky-50/50">
                   <Salad className="w-6 h-6" />
                 </div>
                 <h3 className="heading-card">التزم بالوجبات وتتبع هدفك</h3>
@@ -280,7 +280,7 @@ export const LandingPage: React.FC = () => {
               </div>
               <Link
                 to="/meals"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-green-600 hover:text-brand-green-700 pt-2 group"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2878B8] hover:text-[#1f639a] pt-2 group"
               >
                 <span>تصفح الوجبات الساحلية</span>
                 <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
@@ -339,7 +339,7 @@ export const LandingPage: React.FC = () => {
 
           <div className="card-sheikha p-6 space-y-3 flex flex-col justify-between">
             <div className="space-y-3">
-              <div className="w-12 h-12 rounded-2xl bg-brand-green-50 text-brand-green-600 flex items-center justify-center ring-8 ring-brand-green-50/50">
+              <div className="w-12 h-12 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center ring-8 ring-sky-50/50">
                 <Salad className="w-6 h-6" />
               </div>
               <h3 className="heading-card">مكتبة الوجبات الصحية</h3>
@@ -347,7 +347,7 @@ export const LandingPage: React.FC = () => {
                 وجبات رياضية غنية بالبروتين تعتمد على صيد المكلا الطازج من سمك الثمد والأغذية الصحية المتوفرة.
               </p>
             </div>
-            <Link to="/meals" className="inline-flex items-center gap-1 text-xs font-bold text-brand-green-600 hover:text-brand-green-700 pt-1 group">
+            <Link to="/meals" className="inline-flex items-center gap-1 text-xs font-bold text-[#2878B8] hover:text-[#1f639a] pt-1 group">
               <span>تصفح الوجبات</span>
               <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             </Link>
@@ -404,7 +404,7 @@ export const LandingPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
             <div>
-              <div className="flex items-center gap-2 text-xs font-bold text-brand-green-600 mb-1.5">
+              <div className="flex items-center gap-2 text-xs font-bold text-[#2878B8] mb-1.5">
                 <Salad className="w-4 h-4" />
                 <span>التغذية الساحلية السليمة</span>
               </div>
@@ -414,7 +414,7 @@ export const LandingPage: React.FC = () => {
             </div>
             <Link
               to="/meals"
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-brand-green-700 hover:text-brand-green-800 transition-colors group"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#2878B8] hover:text-[#1f639a] transition-colors group"
             >
               <span>فتح مكتبة الوجبات الكاملة</span>
               <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
@@ -431,16 +431,16 @@ export const LandingPage: React.FC = () => {
 
       {/* 8. Trainers & Coaches Community Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-slate-900 via-brand-blue-900 to-slate-950 text-white p-8 sm:p-12 shadow-2xl border border-brand-blue-700/40 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#102C50] via-brand-blue-900 to-[#102C50] text-white p-8 sm:p-12 shadow-2xl border border-white/10 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="relative z-10 max-w-xl space-y-3 text-right">
-            <span className="eyebrow-pill text-brand-green-400 bg-brand-green-950/70 border border-brand-green-700/60">
+            <span className="eyebrow-pill text-[#D9AD55] bg-[#102C50]/80 border border-[#D9AD55]/40">
               <HeartHandshake className="w-3.5 h-3.5" />
               شراكة مجتمعية في ساحل حضرموت
             </span>
             <h3 className="text-2xl sm:text-3xl font-black leading-snug">
               هل أنت كابتن معتمد أو تدير صالة في المكلا؟
             </h3>
-            <p className="text-slate-300 text-sm leading-relaxed">
+            <p className="text-slate-200 text-sm leading-relaxed">
               انضم إلى منصة عزم لتوثيق صالتك أو اعتماد ملفك التدريبي وحسابك الرياضي للوصول لمئات الرياضيين والمهتمين بالصحة في المكلا.
             </p>
           </div>
@@ -448,7 +448,7 @@ export const LandingPage: React.FC = () => {
           <div className="flex flex-wrap items-center gap-3 shrink-0 relative z-10">
             <Link
               to="/trainers"
-              className="btn-sheikha-primary bg-brand-green-500 hover:bg-brand-green-600 shadow-brand-green-600/30 text-white"
+              className="btn-sheikha-primary bg-[#2878B8] hover:bg-[#1f639a] shadow-[#2878B8]/30 text-white"
             >
               دليل الكباتن المعتمدين
             </Link>
