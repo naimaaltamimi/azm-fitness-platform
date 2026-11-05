@@ -14,7 +14,6 @@ export const INITIAL_TRAINERS: Trainer[] = [
     experienceYears: 6,
     city: 'المكلا',
     neighborhood: 'الشرج',
-    phone: '+967 770 123 456',
     avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
     certifications: [
       'شهادة تدريب لياقة بدنية وبناء أجسام معتمدة',
@@ -41,7 +40,6 @@ export const INITIAL_TRAINERS: Trainer[] = [
     experienceYears: 5,
     city: 'المكلا',
     neighborhood: 'فوة المتضررين',
-    phone: '+967 771 987 654',
     avatarUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80',
     certifications: [
       'شهادة معتمدة في اللياقة والرشاقة النسائية (Aerobics & Pilates)',

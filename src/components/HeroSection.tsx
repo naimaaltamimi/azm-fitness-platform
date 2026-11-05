@@ -33,7 +33,7 @@ const QUICK_GYMS: Record<string, QuickGym> = {
     price: '15,000 ر.ي / شهر',
     rating: '4.9',
     tag: 'الأكثر إقبالاً',
-    image: '/images/clubs/smart-gym/interior.png'
+    image: '/images/clubs/smart-gym/hd-interior.jpg'
   },
   sharj: {
     id: 'mukalla-gym',
@@ -50,10 +50,10 @@ const QUICK_GYMS: Record<string, QuickGym> = {
     slug: 'golds-gym',
     name: 'قولدن جيم (Golden Gym)',
     neighborhood: 'ديس المكلا • الشارع العام',
-    price: '15,000 ر.ي / شهر',
+    price: '18,000 ر.ي / شهر',
     rating: '4.9',
     tag: 'تجهيزات متطورة',
-    image: '/images/clubs/smart-gym/hd-interior.jpg'
+    image: '/images/clubs/golds-gym/hd-cover.jpg'
   }
 };
 
@@ -211,7 +211,7 @@ export const HeroSection: React.FC = () => {
                     alt={activeGym.name}
                     className="w-16 h-16 rounded-xl object-cover shrink-0 border border-white/20 bg-slate-900"
                     onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).src = '/images/clubs/smart-gym/interior.png';
+                      (e.currentTarget as HTMLImageElement).src = '/images/clubs/smart-gym/hd-interior.jpg';
                     }}
                   />
                   <div className="flex-1 min-w-0 space-y-1">

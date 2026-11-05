@@ -275,8 +275,12 @@ export const AdminDashboardPage: React.FC = () => {
               <h4 className="font-bold text-slate-900 text-sm">{gym.nameAr}</h4>
               <p className="text-xs text-slate-500 line-clamp-2">{gym.shortDescription}</p>
               <div className="flex items-center justify-between pt-2 border-t border-slate-100 text-xs">
-                <span className="font-mono text-slate-600" dir="ltr">{gym.phone}</span>
-                <span className="text-brand-green-600 font-bold">صالة معتمدة ✓</span>
+                {gym.phone ? (
+                  <span className="font-mono text-slate-600" dir="ltr">{gym.phone}</span>
+                ) : (
+                  <span className="text-slate-400 text-[11px]">توثيق ميداني</span>
+                )}
+                <span className="text-[#2878B8] font-bold">صالة معتمدة ✓</span>
               </div>
             </div>
           ))}

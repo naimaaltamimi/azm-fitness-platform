@@ -173,7 +173,7 @@ export const TrainerDetailsPage: React.FC = () => {
                   <span className="text-slate-500 block mb-1">هاتف التواصل المباشر:</span>
                   <a
                     href={`tel:${trainer.phone}`}
-                    className="font-bold font-mono text-brand-green-700 flex items-center gap-1.5"
+                    className="font-bold font-mono text-[#2878B8] flex items-center gap-1.5"
                     dir="ltr"
                   >
                     <Phone className="w-3.5 h-3.5" />

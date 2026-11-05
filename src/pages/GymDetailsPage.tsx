@@ -85,7 +85,7 @@ export const GymDetailsPage: React.FC = () => {
               <span className="px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-white text-xs font-bold">
                 المكلا - {gym.neighborhood}
               </span>
-              <span className="px-3 py-1 rounded-full bg-brand-green-500/90 text-white text-xs font-bold flex items-center gap-1">
+              <span className="px-3 py-1 rounded-full bg-[#2878B8] text-white text-xs font-bold flex items-center gap-1 shadow-sm">
                 <CheckCircle className="w-3.5 h-3.5" />
                 صالة معتمدة
               </span>
@@ -101,7 +101,7 @@ export const GymDetailsPage: React.FC = () => {
                   onClick={() => setActiveImageIndex(idx)}
                   className={`relative w-16 h-12 sm:w-24 sm:h-16 rounded-xl overflow-hidden shrink-0 border-2 transition-all ${
                     activeImageIndex === idx
-                      ? 'border-brand-blue-600 ring-2 ring-brand-blue-500/30'
+                      ? 'border-[#2878B8] ring-2 ring-[#2878B8]/30'
                       : 'border-transparent opacity-70 hover:opacity-100'
                   }`}
                 >
@@ -120,25 +120,34 @@ export const GymDetailsPage: React.FC = () => {
             </h1>
             <p className="text-sm font-mono text-slate-400">{gym.nameEn}</p>
             <div className="flex items-center gap-2 mt-3 text-xs text-slate-600">
-              <MapPin className="w-4 h-4 text-brand-blue-600 shrink-0" />
+              <MapPin className="w-4 h-4 text-[#2878B8] shrink-0" />
               <span>{gym.addressText}</span>
             </div>
           </div>
 
           <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 space-y-3 text-xs text-slate-700">
-            <div className="flex items-center justify-between">
-              <span className="font-semibold text-slate-500">رقم الهاتف / الاستفسار:</span>
-              <span className="font-bold font-mono text-brand-blue-700" dir="ltr">
-                {gym.phone}
-              </span>
-            </div>
+            {gym.phone ? (
+              <div className="flex items-center justify-between">
+                <span className="font-semibold text-slate-500">رقم الهاتف / الاستفسار:</span>
+                <span className="font-bold font-mono text-[#2878B8]" dir="ltr">
+                  {gym.phone}
+                </span>
+              </div>
+            ) : (
+              <div className="flex items-center justify-between">
+                <span className="font-semibold text-slate-500">طريقة التواصل:</span>
+                <span className="font-bold text-[#2878B8]">
+                  الاستقبال المباشر بالصالة • اشتراك فوري
+                </span>
+              </div>
+            )}
             <div className="flex items-center justify-between">
               <span className="font-semibold text-slate-500">المدينة:</span>
               <span className="font-bold text-slate-900">المكلا - حضرموت</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="font-semibold text-slate-500">الحالة:</span>
-              <span className="font-bold text-brand-green-600 flex items-center gap-1">
+              <span className="font-bold text-[#2878B8] flex items-center gap-1">
                 <CheckCircle className="w-3.5 h-3.5" />
                 مفتوحة ومستقبلة للمشتركين
               </span>
@@ -149,23 +158,25 @@ export const GymDetailsPage: React.FC = () => {
           <div className="space-y-3">
             <Link
               to={`/gyms/${gym.slug}/subscribe`}
-              className="w-full py-3.5 px-6 rounded-2xl bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold text-sm shadow-lg shadow-brand-blue-600/25 active:scale-95 transition-all flex items-center justify-center gap-2 text-center"
+              className="w-full py-3.5 px-6 rounded-2xl bg-[#2878B8] hover:bg-[#1f639a] text-white font-bold text-sm shadow-lg shadow-[#2878B8]/30 active:scale-95 transition-all flex items-center justify-center gap-2 text-center"
             >
               <CalendarCheck className="w-5 h-5" />
               <span>طلب اشتراك فوري في هذه الصالة</span>
             </Link>
 
-            <a
-              href={`tel:${gym.phone.replace(/\s+/g, '')}`}
-              className="w-full py-3 px-6 rounded-2xl border border-slate-200 hover:bg-slate-50 text-slate-700 font-bold text-xs transition-colors flex items-center justify-center gap-2 text-center"
-            >
-              <Phone className="w-4 h-4 text-brand-green-600" />
-              <span>اتصال هاتفي مباشر بالصالة</span>
-            </a>
+            {gym.phone && (
+              <a
+                href={`tel:${gym.phone.replace(/\s+/g, '')}`}
+                className="w-full py-3 px-6 rounded-2xl border border-slate-200 hover:bg-slate-50 text-slate-700 font-bold text-xs transition-colors flex items-center justify-center gap-2 text-center"
+              >
+                <Phone className="w-4 h-4 text-[#2878B8]" />
+                <span>اتصال هاتفي مباشر بالصالة</span>
+              </a>
+            )}
           </div>
 
           <div className="flex items-center gap-2 text-[11px] text-slate-500 pt-2 border-t border-slate-100">
-            <ShieldCheck className="w-4 h-4 text-brand-green-500 shrink-0" />
+            <ShieldCheck className="w-4 h-4 text-[#D9AD55] shrink-0" />
             <span>يمكنك الدفع نقداً عند زيارة الصالة أو عبر التحويل المحلي.</span>
           </div>
         </div>
@@ -302,7 +313,7 @@ export const GymDetailsPage: React.FC = () => {
                   <ul className="space-y-2 text-xs text-slate-600 my-4 flex-1">
                     {plan.features.map((f, i) => (
                       <li key={i} className="flex items-start gap-2">
-                        <span className="w-4 h-4 rounded-full bg-brand-green-100 text-brand-green-600 flex items-center justify-center shrink-0 text-[10px] font-bold mt-0.5">
+                        <span className="w-4 h-4 rounded-full bg-[#2878B8]/15 text-[#2878B8] flex items-center justify-center shrink-0 text-[10px] font-bold mt-0.5">
                           ✓
                         </span>
                         <span className="leading-snug">{f}</span>

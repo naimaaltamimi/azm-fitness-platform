@@ -11,12 +11,8 @@ export const MUKALLA_GYMS: Gym[] = [
     city: 'المكلا',
     neighborhood: 'فوة المتضررين',
     addressText: 'المكلا - فوة، حي المتضررين، الشارع التجاري العام',
-    phone: '+967 733 444 520',
-    whatsapp: '+967733444520',
-    coverImage: '/images/clubs/smart-gym/interior.png',
+    coverImage: '/images/clubs/smart-gym/hd-interior.jpg',
     galleryImages: [
-      '/images/clubs/smart-gym/facade.png',
-      '/images/clubs/smart-gym/interior.png',
       '/images/clubs/smart-gym/hd-interior.jpg',
       '/images/clubs/smart-gym/hd-weights.jpg'
     ],
@@ -80,12 +76,9 @@ export const MUKALLA_GYMS: Gym[] = [
     city: 'المكلا',
     neighborhood: 'الشرج',
     addressText: 'المكلا - الشرج، فوق قاعة ميرال للمناسبات والأفراح',
-    phone: '+967 777 555 666',
-    whatsapp: '+967777555666',
     coverImage: '/images/clubs/mukalla-gym/hd-red-machines.jpg',
     galleryImages: [
       '/images/clubs/mukalla-gym/hd-red-machines.jpg',
-      '/images/clubs/mukalla-gym/machines-red.jpg',
       '/images/clubs/mukalla-gym/hd-fitness.jpg'
     ],
     features: [
@@ -133,12 +126,8 @@ export const MUKALLA_GYMS: Gym[] = [
     city: 'المكلا',
     neighborhood: 'الشرج',
     addressText: 'المكلا - الشرج، شارع الميناء / فوق مقر شركة الشامل للصرافة',
-    phone: '+967 770 000 000',
-    whatsapp: '+967770000000',
     coverImage: '/images/clubs/golds-gym/hd-cover.jpg',
     galleryImages: [
-      '/images/clubs/golds-gym/facade.png',
-      '/images/clubs/golds-gym/interior-mirror.png',
       '/images/clubs/golds-gym/hd-cover.jpg',
       '/images/clubs/golds-gym/hd-cardio.jpg'
     ],
@@ -190,18 +179,14 @@ export const MUKALLA_GYMS: Gym[] = [
     nameAr: 'وينر جيم (Winner Gym)',
     nameEn: 'Winner Gym Mukalla',
     shortDescription: 'مركز رياضي عصري بالشرج بجانب مارينا مول الدور الثاني يجمع بين أجهزة الركض وتمارين القوة.',
-    fullDescription: 'يعد وينر جيم من الصالات العصرية الفاخرة في الشرج بموقع مميز بجانب مارينا مول بالدور الثاني، ويحظى بإقبال واسع من الشباب بفضل بيئته الرياضية الحماسية، وأجهزة المشي والسبينينج الزرقاء الحديثة، وجداول التمارين التي تركز على التحمل وحرق السعرات.',
+    fullDescription: 'يعد وينر جيم من الصالات العصرية الفاخرة في الشرج بموقع مميز بجانب مارينا مول بالدور الثاني، ويحظى بإقبال واسع من الشباب بفضل بيئته الرياضية الحماسية، وأجهزة المشي والسبينينج الحديثة، وجداول التمارين التي تركز على التحمل وحرق السعرات.',
     city: 'المكلا',
     neighborhood: 'الشرج',
     addressText: 'المكلا - الشرج، بجانب مارينا مول، الدور الثاني',
-    phone: '+967 775 111 222',
-    whatsapp: '+967775111222',
-    coverImage: '/images/clubs/winner-gym/treadmills.png',
+    coverImage: '/images/clubs/winner-gym/hd-zone.jpg',
     galleryImages: [
-      '/images/clubs/winner-gym/logo.png',
-      '/images/clubs/winner-gym/treadmills.png',
-      '/images/clubs/winner-gym/hd-treadmills.jpg',
-      '/images/clubs/winner-gym/hd-zone.jpg'
+      '/images/clubs/winner-gym/hd-zone.jpg',
+      '/images/clubs/winner-gym/hd-treadmills.jpg'
     ],
     features: [
       'صف أجهزة ركض كهربائية ذكية وشاشات تتبع عالية الدقة',
@@ -250,11 +235,8 @@ export const MUKALLA_GYMS: Gym[] = [
     city: 'المكلا',
     neighborhood: 'ديس المكلا',
     addressText: 'المكلا - الديس، بالقرب من الجسر الصيني',
-    phone: '+967 771 333 444',
-    whatsapp: '+967771333444',
-    coverImage: '/images/clubs/power-gym/hall.png',
+    coverImage: '/images/clubs/power-gym/hd-power.jpg',
     galleryImages: [
-      '/images/clubs/power-gym/hall.png',
       '/images/clubs/power-gym/hd-power.jpg',
       '/images/clubs/power-gym/hd-dumbbells.jpg'
     ],

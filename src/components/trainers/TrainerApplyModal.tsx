@@ -99,7 +99,7 @@ export const TrainerApplyModal: React.FC<TrainerApplyModalProps> = ({
                 required
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                placeholder="+967 77..."
+                placeholder="أدخل رقم هاتفك..."
                 className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-blue-500 text-sm"
                 dir="ltr"
               />

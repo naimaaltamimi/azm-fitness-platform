@@ -12,7 +12,7 @@ const INITIAL_SUBSCRIPTIONS: SubscriptionRequest[] = [
     createdAt: new Date().toISOString(),
     userId: 'user-trainee-1',
     userName: 'سالم أحمد باحشوان',
-    userPhone: '+967 771 234 567',
+    userPhone: '',
     gymId: 'smart-gym-mukalla',
     gymName: 'سمارت جيم (Smart Gym)',
     planId: 'smart-month',

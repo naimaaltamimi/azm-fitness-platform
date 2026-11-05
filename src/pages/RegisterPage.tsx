@@ -129,7 +129,7 @@ export const RegisterPage: React.FC = () => {
                     required
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    placeholder="+967 77..."
+                    placeholder="أدخل رقم هاتفك..."
                     className="w-full pl-3.5 pr-10 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-blue-500 text-sm"
                     dir="ltr"
                   />

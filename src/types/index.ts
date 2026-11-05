@@ -44,7 +44,7 @@ export interface Gym {
   city: 'المكلا';
   neighborhood: string; // e.g. "الشرج", "فوه", "ديس المكلا", "المكلا القديمة"
   addressText: string;
-  phone: string;
+  phone?: string;
   whatsapp?: string;
   coverImage: string;
   galleryImages: string[];
