@@ -4,7 +4,6 @@ import { storageService } from '../services/storageService';
 import { useAuth } from '../context/AuthContext';
 import { EmptyState } from '../components/common/EmptyState';
 import { Modal } from '../components/common/Modal';
-import { InstagramEmbedCard } from '../components/trainers/InstagramEmbedCard';
 import {
   UserCheck,
   MapPin,
@@ -15,9 +14,7 @@ import {
   Clock,
   Dumbbell,
   ShieldCheck,
-  ArrowRight,
-  Instagram,
-  ExternalLink
+  ArrowRight
 } from 'lucide-react';
 
 export const TrainerDetailsPage: React.FC = () => {
@@ -192,72 +189,6 @@ export const TrainerDetailsPage: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* Instagram Official Integration Showcase */}
-      {trainer.instagramUsername && (
-        <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-6 sm:p-8 space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white flex items-center justify-center shadow-md">
-                <Instagram className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="font-extrabold text-slate-900 text-base sm:text-lg flex items-center gap-2">
-                  <span>حساب Instagram المعتمد للكابتن</span>
-                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
-                    تم التحقق
-                  </span>
-                </h3>
-                <p className="text-xs text-slate-500 font-mono mt-0.5">
-                  @{trainer.instagramUsername}
-                </p>
-              </div>
-            </div>
-
-            <a
-              href={trainer.instagramUrl || `https://instagram.com/${trainer.instagramUsername}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-xs shadow-md shadow-pink-500/20 hover:opacity-95 active:scale-95 transition-all min-h-[42px]"
-            >
-              <Instagram className="w-4 h-4" />
-              <span>متابعة الكابتن على Instagram</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
-          </div>
-
-          {trainer.instagramEmbeds && trainer.instagramEmbeds.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {trainer.instagramEmbeds.map((url, idx) => (
-                <InstagramEmbedCard
-                  key={idx}
-                  postUrl={url}
-                  caption="تمارين وخطط رياضية معتمدة من حساب الكابتن الرسمي"
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-right">
-              <div className="space-y-1">
-                <h4 className="text-sm font-bold text-slate-800">
-                  شاهد التمارين والنتائج الواقعية على حساب الكابتن
-                </h4>
-                <p className="text-xs text-slate-500 max-w-xl leading-relaxed">
-                  يقوم الكابتن بنشر نصائح التغذية، نماذج التمارين الصحيحة، وتجارب المتدربين في صالات المكلا بشكل دوري عبر حسابه الموثق.
-                </p>
-              </div>
-              <a
-                href={trainer.instagramUrl || `https://instagram.com/${trainer.instagramUsername}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 rounded-xl border border-slate-300 text-slate-700 font-bold text-xs hover:bg-white hover:text-brand-blue-700 transition-colors shrink-0"
-              >
-                فتح الحساب المباشر
-              </a>
-            </div>
-          )}
-        </div>
-      )}
 
       {/* Booking Session Modal */}
       <Modal

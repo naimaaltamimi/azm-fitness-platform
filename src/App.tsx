@@ -33,77 +33,85 @@ const ScrollToTop: React.FC = () => {
   return null;
 };
 
+// Public Website Layout wrapper (Contains public Navbar and Footer)
+const PublicLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return (
+    <div className="flex flex-col min-h-screen bg-white text-[#1F2722] selection:bg-[#D97241] selection:text-white font-['Cairo',sans-serif]" dir="rtl">
+      <Navbar />
+      <main className="flex-1">
+        {children}
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
 export const App: React.FC = () => {
   return (
     <BrowserRouter>
       <AuthProvider>
         <ScrollToTop />
-        <div className="flex flex-col min-h-screen bg-slate-50 text-slate-900 selection:bg-brand-blue-600 selection:text-white" dir="rtl">
-          <Navbar />
-          <main className="flex-1">
-            <Routes>
-              {/* 1. Landing Page */}
-              <Route path="/" element={<LandingPage />} />
+        <Routes>
+          {/* 1. SEPARATE ADMIN PORTAL ROUTE (Completely Independent Layout - No Public Navbar, No Public Footer) */}
+          <Route path="/admin" element={<AdminDashboardPage />} />
 
-              {/* 2. Authentication */}
-              <Route path="/login" element={<LoginPage />} />
-              {/* 3. Register */}
-              <Route path="/register" element={<RegisterPage />} />
+          {/* 2. PUBLIC WEBSITE ROUTES (Inside PublicLayout with Public Navbar and Footer) */}
+          <Route
+            path="*"
+            element={
+              <PublicLayout>
+                <Routes>
+                  {/* Landing Page */}
+                  <Route path="/" element={<LandingPage />} />
 
-              {/* 4. Gyms Directory */}
-              <Route path="/gyms" element={<GymsDirectoryPage />} />
-              {/* 5. Gym Details */}
-              <Route path="/gyms/:id" element={<GymDetailsPage />} />
-              {/* 6. Subscription Request */}
-              <Route path="/gyms/:id/subscribe" element={<SubscriptionRequestPage />} />
-              <Route path="/subscribe" element={<SubscriptionRequestPage />} />
+                  {/* Authentication */}
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/register" element={<RegisterPage />} />
 
-              {/* 7. Trainers Directory */}
-              <Route path="/trainers" element={<TrainersDirectoryPage />} />
-              {/* 8. Trainer Details */}
-              <Route path="/trainers/:id" element={<TrainerDetailsPage />} />
+                  {/* Gyms Directory & Details */}
+                  <Route path="/gyms" element={<GymsDirectoryPage />} />
+                  <Route path="/gyms/:id" element={<GymDetailsPage />} />
+                  <Route path="/gyms/:id/subscribe" element={<SubscriptionRequestPage />} />
+                  <Route path="/subscribe" element={<SubscriptionRequestPage />} />
 
-              {/* 9. Calorie Calculator */}
-              <Route path="/calculator" element={<CalorieCalculatorPage />} />
-              {/* 10. Nutrition Plan */}
-              <Route path="/nutrition-plan" element={<NutritionPlanPage />} />
-              {/* 11. Meals Library */}
-              <Route path="/meals" element={<MealsLibraryPage />} />
-              {/* 12. Meal Details */}
-              <Route path="/meals/:id" element={<MealDetailsPage />} />
+                  {/* Trainers Directory & Details */}
+                  <Route path="/trainers" element={<TrainersDirectoryPage />} />
+                  <Route path="/trainers/:id" element={<TrainerDetailsPage />} />
 
-              {/* 13. User Dashboard */}
-              <Route path="/dashboard" element={<UserDashboardPage />} />
-              {/* 14. User Profile */}
-              <Route path="/profile" element={<UserProfilePage />} />
-              {/* 15. My Orders & Bookings */}
-              <Route path="/my-orders" element={<MyOrdersPage />} />
-              {/* 16. Admin Dashboard */}
-              <Route path="/admin" element={<AdminDashboardPage />} />
+                  {/* Health & Nutrition Tools */}
+                  <Route path="/calculator" element={<CalorieCalculatorPage />} />
+                  <Route path="/nutrition-plan" element={<NutritionPlanPage />} />
+                  <Route path="/meals" element={<MealsLibraryPage />} />
+                  <Route path="/meals/:id" element={<MealDetailsPage />} />
 
-              {/* 404 Not Found Catch-All */}
-              <Route
-                path="*"
-                element={
-                  <div className="max-w-7xl mx-auto px-4 py-24 text-center">
-                    <EmptyState
-                      icon={Compass}
-                      title="الصفحة المطلوبة غير موجودة (404)"
-                      description="عذراً، الرابط الذي حاولت الوصول إليه غير متوفر في منصة عزم."
-                      actionText="العودة للصفحة الرئيسية"
-                      actionLink="/"
-                    />
-                  </div>
-                }
-              />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
+                  {/* Trainee Account & Orders */}
+                  <Route path="/dashboard" element={<UserDashboardPage />} />
+                  <Route path="/profile" element={<UserProfilePage />} />
+                  <Route path="/my-orders" element={<MyOrdersPage />} />
+
+                  {/* 404 Catch-All within Public Layout */}
+                  <Route
+                    path="*"
+                    element={
+                      <div className="max-w-7xl mx-auto px-4 py-24 text-center">
+                        <EmptyState
+                          icon={Compass}
+                          title="الصفحة المطلوبة غير موجودة (404)"
+                          description="عذراً، الرابط الذي حاولت الوصول إليه غير متوفر في منصة عزم."
+                          actionText="العودة للصفحة الرئيسية"
+                          actionLink="/"
+                        />
+                      </div>
+                    }
+                  />
+                </Routes>
+              </PublicLayout>
+            }
+          />
+        </Routes>
       </AuthProvider>
     </BrowserRouter>
   );
 };
 
 export default App;
-

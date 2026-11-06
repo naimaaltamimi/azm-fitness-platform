@@ -43,7 +43,7 @@ export const TrainersDirectoryPage: React.FC = () => {
       {/* Banner */}
       <div className="bg-gradient-to-r from-brand-blue-900 via-brand-dark-900 to-slate-900 text-white rounded-3xl p-6 sm:p-8 md:p-12 relative overflow-hidden shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="space-y-3 max-w-2xl text-right">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-green-500/20 text-brand-green-400 text-xs font-bold border border-brand-green-500/30">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-[#D9AD55] text-xs font-bold border border-[#D9AD55]/40 backdrop-blur-md">
             <ShieldCheck className="w-3.5 h-3.5" />
             <span>توثيق واعتماد معايير التدريب بالمكلا</span>
           </div>
@@ -57,7 +57,7 @@ export const TrainersDirectoryPage: React.FC = () => {
 
         <button
           onClick={() => setIsApplyModalOpen(true)}
-          className="w-full sm:w-auto shrink-0 px-6 py-3.5 rounded-2xl bg-brand-green-500 hover:bg-brand-green-600 text-white font-bold text-sm shadow-lg shadow-brand-green-500/25 active:scale-95 transition-all flex items-center justify-center gap-2 min-h-[44px]"
+          className="w-full sm:w-auto shrink-0 px-6 py-3.5 rounded-2xl bg-[#2878B8] hover:bg-[#1f639a] text-white font-bold text-sm shadow-lg shadow-[#2878B8]/30 active:scale-95 transition-all flex items-center justify-center gap-2 min-h-[44px]"
         >
           <PlusCircle className="w-5 h-5" />
           <span>تسجيل كابتن معتمد</span>

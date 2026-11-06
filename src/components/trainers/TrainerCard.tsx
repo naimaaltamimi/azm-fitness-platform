@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Trainer } from '../../types';
-import { MapPin, Award, CheckCircle, Calendar, ArrowLeft, Instagram } from 'lucide-react';
+import { MapPin, Award, CheckCircle, Calendar, ArrowLeft } from 'lucide-react';
 
 interface TrainerCardProps {
   trainer: Trainer;
@@ -24,7 +24,7 @@ export const TrainerCard: React.FC<TrainerCardProps> = ({ trainer }) => {
               <h3 className="font-bold text-slate-900 text-base sm:text-lg truncate">{trainer.name}</h3>
               {trainer.isVerified && (
                 <span title="مدرب موثق">
-                  <CheckCircle className="w-4 h-4 text-brand-green-500 shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-[#2878B8] shrink-0" />
                 </span>
               )}
             </div>
@@ -48,18 +48,10 @@ export const TrainerCard: React.FC<TrainerCardProps> = ({ trainer }) => {
           {trainer.bio}
         </p>
 
-        {/* Instagram Pill Badge if available */}
-        {trainer.instagramUsername && (
-          <div className="flex items-center gap-1.5 text-xs text-slate-600 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-100 font-mono">
-            <Instagram className="w-3.5 h-3.5 text-pink-500" />
-            <span>@{trainer.instagramUsername}</span>
-          </div>
-        )}
-
         {/* Affiliation / Badges */}
         {trainer.activeGymAffiliation && (
           <div className="text-[11px] font-medium bg-slate-50 border border-slate-100 rounded-xl px-3 py-2 text-slate-700 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-brand-green-500" />
+            <span className="w-2 h-2 rounded-full bg-[#2878B8]" />
             <span>مدرب معتمد لدى: <strong className="text-slate-900">{trainer.activeGymAffiliation}</strong></span>
           </div>
         )}

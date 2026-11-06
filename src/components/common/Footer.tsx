@@ -1,238 +1,121 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Logo } from './Logo';
-import {
-  MapPin,
-  Dumbbell,
-  ShieldCheck,
-  Calculator,
-  Salad,
-  CreditCard,
-  Building2,
-  Users2,
-  Sparkles
-} from 'lucide-react';
 
 export const Footer: React.FC = () => {
+  const [email, setEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+    setSubscribed(true);
+    setTimeout(() => {
+      setEmail('');
+      setSubscribed(false);
+    }, 2000);
+  };
+
   return (
-    <footer className="relative bg-[#081628] text-white border-t border-slate-800/80 overflow-hidden font-['Cairo',sans-serif]" dir="rtl">
-      {/* Subtle Ambient Glow matching palette */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#2878B8]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#D9AD55]/10 rounded-full blur-3xl pointer-events-none" />
+    <footer className="w-full bg-[#1F2722] text-white font-['Cairo',sans-serif]" dir="rtl">
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8 space-y-12">
-        {/* Top Community Card */}
-        <div className="relative rounded-3xl bg-[#102C50]/80 border border-white/10 p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl backdrop-blur-xl">
-          <div className="space-y-2 text-center md:text-right">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-[#D9AD55]/40 text-[#D9AD55] text-xs font-bold">
-              <span className="w-2 h-2 rounded-full bg-[#D9AD55] animate-pulse" />
-              <span>خدمة مجتمع المكلا وساحل حضرموت</span>
-            </div>
-            <h3 className="text-xl sm:text-2xl font-black text-white">
-              جاهز للبدء في رحلتك الرياضية اليوم؟
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
-              تصفح صالات المكلا المعتمدة، احسب سعراتك بدقة علمية، واشترك في صالتك المفضلة دون أي وسيط أو عمولة.
+      {/* ─── MAIN FOOTER CONTENT (4 Columns) ─── */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+
+          {/* Column 1: Brand Info */}
+          <div className="space-y-4">
+            <Logo size="md" theme="dark" />
+            <p className="text-xs text-white/60 leading-relaxed max-w-xs">
+              منصة اللياقة والتغذية الصحية الأولى في المكلا. نوفر لك صالات معتمدة ميدانياً وخطط غذائية مبنية على أسس علمية.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 w-full md:w-auto shrink-0">
-            <Link
-              to="/gyms"
-              className="px-6 py-3 rounded-2xl bg-[#2878B8] hover:bg-[#1f639a] text-white font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#2878B8]/30 active:scale-95 min-h-[46px]"
-            >
-              <Dumbbell className="w-4 h-4" />
-              <span>استكشف الصالات المعتمدة</span>
-            </Link>
-            <Link
-              to="/calculator"
-              className="px-6 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm border border-white/20 hover:border-[#D9AD55]/50 transition-all flex items-center justify-center gap-2 backdrop-blur-md active:scale-95 min-h-[46px]"
-            >
-              <Calculator className="w-4 h-4 text-[#D9AD55]" />
-              <span>حاسبة السعرات المجانية</span>
-            </Link>
+          {/* Column 2: Quick Links */}
+          <div className="space-y-4">
+            <h4 className="text-sm font-black text-white uppercase tracking-wide">روابط سريعة</h4>
+            <ul className="space-y-2.5">
+              {[
+                { label: 'الرئيسية', path: '/' },
+                { label: 'صالات المكلا', path: '/gyms' },
+                { label: 'دليل المدربين', path: '/trainers' },
+                { label: 'الوجبات الصحية', path: '/meals' },
+                { label: 'حاسبة السعرات', path: '/calculator' },
+              ].map((item) => (
+                <li key={item.path}>
+                  <Link
+                    to={item.path}
+                    className="text-xs text-white/60 hover:text-white font-medium transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
 
-        {/* Main Content Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 pb-8 border-b border-white/10">
-          {/* Brand Info & Mission (Col 1-4) */}
-          <div className="lg:col-span-4 space-y-4">
-            <Logo variant="full" theme="dark" size="lg" />
-            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed text-justify">
-              منصة <strong className="text-white">عزم (AZM)</strong> هي المنظومة الرقمية الميدانية المتخصصة في ربط المتدربين بأفضل صالات ونوادي اللياقة المعتمدة في مدينة المكلا، مع حلول اشتراكات فورية وأدوات تغذية صحية مصممة للبيئة الساحلية.
+          {/* Column 3: Support */}
+          <div className="space-y-4">
+            <h4 className="text-sm font-black text-white uppercase tracking-wide">الدعم</h4>
+            <ul className="space-y-2.5">
+              {[
+                { label: 'الخطة الغذائية', path: '/nutrition-plan' },
+                { label: 'تسجيل حساب', path: '/register' },
+                { label: 'تسجيل الدخول', path: '/login' },
+                { label: 'سياسة الخصوصية', path: '/' },
+                { label: 'الشروط والأحكام', path: '/' },
+              ].map((item, idx) => (
+                <li key={idx}>
+                  <Link
+                    to={item.path}
+                    className="text-xs text-white/60 hover:text-white font-medium transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: Newsletter */}
+          <div className="space-y-4">
+            <h4 className="text-sm font-black text-white uppercase tracking-wide">النشرة البريدية</h4>
+            <p className="text-xs text-white/60 leading-relaxed">
+              اشترك للحصول على آخر العروض والنصائح الصحية من منصة عزم.
             </p>
-            <div className="flex flex-col gap-2 pt-1 text-xs text-slate-300">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-[#2878B8] shrink-0" />
-                <span>حضرموت - مدينة المكلا (الشرج، فوة، الديس)</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#D9AD55] shrink-0" />
-                <span>توثيق ومعاينة ميدانية لكافة المنشآت</span>
-              </div>
-            </div>
+            <form onSubmit={handleSubscribe} className="flex gap-2">
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="بريدك الإلكتروني..."
+                className="flex-1 px-3 py-2.5 rounded-lg bg-white/10 border border-white/15 text-xs text-white placeholder-white/40 focus:outline-none focus:ring-1 focus:ring-[#7D9683] transition-all"
+              />
+              <button
+                type="submit"
+                className="px-4 py-2.5 rounded-lg bg-[#D97241] hover:bg-[#C75F2F] text-white font-bold text-xs shrink-0 transition-colors"
+              >
+                {subscribed ? '✓ تم' : 'اشتراك'}
+              </button>
+            </form>
           </div>
 
-          {/* Mukalla Gyms (Col 5-7) */}
-          <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-black text-white uppercase tracking-wider flex items-center gap-2 pb-1 border-b border-white/10">
-              <Building2 className="w-4 h-4 text-[#2878B8]" />
-              <span>صالات المكلا المعتمدة</span>
-            </h4>
-            <ul className="space-y-2 text-xs">
-              <li>
-                <Link
-                  to="/gyms/smart-gym"
-                  className="flex items-center justify-between text-slate-300 hover:text-white transition-colors py-1 group"
-                >
-                  <span className="font-medium group-hover:translate-x-1 transition-transform">سمارت جيم</span>
-                  <span className="text-[10px] text-white/90 bg-[#102C50] border border-white/20 px-2 py-0.5 rounded-full">
-                    فوة المتضررين
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/gyms/mukalla-gym"
-                  className="flex items-center justify-between text-slate-300 hover:text-white transition-colors py-1 group"
-                >
-                  <span className="font-medium group-hover:translate-x-1 transition-transform">المكلا جيم</span>
-                  <span className="text-[10px] text-white/90 bg-[#102C50] border border-white/20 px-2 py-0.5 rounded-full">
-                    فوق قاعة ميرال
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/gyms/golds-gym"
-                  className="flex items-center justify-between text-slate-300 hover:text-white transition-colors py-1 group"
-                >
-                  <span className="font-medium group-hover:translate-x-1 transition-transform">قولدن جيم</span>
-                  <span className="text-[10px] text-[#D9AD55] bg-[#D9AD55]/10 border border-[#D9AD55]/30 px-2 py-0.5 rounded-full">
-                    الشرج
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/gyms/winner-gym"
-                  className="flex items-center justify-between text-slate-300 hover:text-white transition-colors py-1 group"
-                >
-                  <span className="font-medium group-hover:translate-x-1 transition-transform">وينر جيم</span>
-                  <span className="text-[10px] text-[#2878B8] bg-[#2878B8]/15 border border-[#2878B8]/30 px-2 py-0.5 rounded-full">
-                    مارينا مول (الدور 2)
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/gyms/power-gym"
-                  className="flex items-center justify-between text-slate-300 hover:text-white transition-colors py-1 group"
-                >
-                  <span className="font-medium group-hover:translate-x-1 transition-transform">باور جيم</span>
-                  <span className="text-[10px] text-slate-300 bg-white/5 border border-white/10 px-2 py-0.5 rounded-full">
-                    ديس المكلا
-                  </span>
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Tools & Features (Col 8-10) */}
-          <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-black text-white uppercase tracking-wider flex items-center gap-2 pb-1 border-b border-white/10">
-              <Calculator className="w-4 h-4 text-[#D9AD55]" />
-              <span>الأدوات والتغذية الذكية</span>
-            </h4>
-            <ul className="space-y-2 text-xs">
-              <li>
-                <Link
-                  to="/calculator"
-                  className="flex items-center gap-2 text-slate-300 hover:text-[#D9AD55] transition-colors py-1"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D9AD55]" />
-                  <span>حاسبة السعرات (Mifflin-St Jeor)</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/nutrition-plan"
-                  className="flex items-center gap-2 text-slate-300 hover:text-[#D9AD55] transition-colors py-1"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#2878B8]" />
-                  <span>جدول الخطة الغذائية اليومية</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/meals"
-                  className="flex items-center gap-2 text-slate-300 hover:text-[#D9AD55] transition-colors py-1"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#2878B8]" />
-                  <span>مكتبة الوجبات الساحلية الصحية</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/trainers"
-                  className="flex items-center gap-2 text-slate-300 hover:text-[#D9AD55] transition-colors py-1"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D9AD55]" />
-                  <span>دليل الكباتن والمدربين المعتمدين</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/my-orders"
-                  className="flex items-center gap-2 text-slate-300 hover:text-[#D9AD55] transition-colors py-1"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#2878B8]" />
-                  <span>متابعة طلبات الاشتراكات والحجوزات</span>
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Payment & Trust (Col 11-12) */}
-          <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-xs font-black text-white uppercase tracking-wider flex items-center gap-2 pb-1 border-b border-white/10">
-              <CreditCard className="w-4 h-4 text-[#D9AD55]" />
-              <span>طرق السداد</span>
-            </h4>
-            <div className="space-y-2 text-xs">
-              <div className="p-2.5 rounded-xl bg-[#102C50]/60 border border-white/10 text-[11px] space-y-1">
-                <span className="font-bold text-white block">سداد محلي مباشر:</span>
-                <span className="text-slate-300 block">• نقداً عند الحضور للصالة</span>
-                <span className="text-slate-300 block">• تحويل عبر بنك الكريمي</span>
-                <span className="text-slate-300 block">• حوالة عبر العمقي للصرافة</span>
-              </div>
-              <div className="flex items-center gap-1.5 text-[10px] text-[#D9AD55] pt-1">
-                <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
-                <span>ضمان توثيق الحجز لدى إدارة الصالة</span>
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
 
-        {/* Bottom Bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4 pt-4">
-          <p className="text-center sm:text-right">
-            © {new Date().getFullYear()} <strong className="text-white font-bold">عزم AZM</strong> • جميع الحقوق محفوظة لخدمة مجتمع المكلا الرياضي - حضرموت.
-          </p>
-          <div className="flex items-center gap-4 text-[11px]">
-            <Link to="/admin" className="text-slate-400 hover:text-white transition-colors">
-              بوابة الإدارة
-            </Link>
-            <span>•</span>
-            <Link to="/register" className="text-slate-400 hover:text-white transition-colors">
-              تسجيل كابتن / صالة
-            </Link>
-            <span>•</span>
-            <span className="text-[#D9AD55] font-semibold flex items-center gap-1">
-              <span>حضرموت</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#D9AD55]" />
-            </span>
+      {/* ─── BOTTOM BAR (Copyright) ─── */}
+      <div className="border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-white/50">
+            <p>
+              © {new Date().getFullYear()} <strong className="text-white/70">عزم AZM</strong> • جميع الحقوق محفوظة – حضرموت، المكلا.
+            </p>
+            <div className="flex items-center gap-4 font-medium">
+              <Link to="/" className="hover:text-white/80 transition-colors">سياسة الخصوصية</Link>
+              <span className="text-white/20">|</span>
+              <Link to="/" className="hover:text-white/80 transition-colors">الشروط والأحكام</Link>
+            </div>
           </div>
         </div>
       </div>

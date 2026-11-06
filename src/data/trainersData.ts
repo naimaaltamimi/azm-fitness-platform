@@ -25,11 +25,6 @@ export const INITIAL_TRAINERS: Trainer[] = [
     isVerified: true,
     rating: 4.9,
     activeGymAffiliation: 'سمارت جيم (Smart Gym)',
-    instagramUsername: 'moath_fit_mukalla',
-    instagramUrl: 'https://instagram.com/moath_fit_mukalla',
-    instagramEmbeds: [
-      'https://www.instagram.com/p/C-example-mukalla1/'
-    ],
     gender: 'male'
   },
   {
@@ -50,9 +45,6 @@ export const INITIAL_TRAINERS: Trainer[] = [
     isVerified: true,
     rating: 5.0,
     activeGymAffiliation: 'فترة السيدات - فوة المتضررين',
-    instagramUsername: 'mariam_fitness_mukalla',
-    instagramUrl: 'https://instagram.com/mariam_fitness_mukalla',
-    instagramEmbeds: [],
     gender: 'female'
   }
 ];

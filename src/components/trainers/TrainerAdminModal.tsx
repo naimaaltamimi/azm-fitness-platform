@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Trainer } from '../../types';
 import { Modal } from '../common/Modal';
-import { UserCheck, Instagram, MapPin, Award, CheckCircle, Shield } from 'lucide-react';
+import { UserCheck, MapPin, Award, CheckCircle, Shield } from 'lucide-react';
 
 interface TrainerAdminModalProps {
   isOpen: boolean;
@@ -23,7 +23,6 @@ export const TrainerAdminModal: React.FC<TrainerAdminModalProps> = ({
   const [phone, setPhone] = useState('');
   const [bio, setBio] = useState('');
   const [certificationsText, setCertificationsText] = useState('');
-  const [instagramUsername, setInstagramUsername] = useState('');
   const [isVerified, setIsVerified] = useState(true);
 
   useEffect(() => {
@@ -35,7 +34,6 @@ export const TrainerAdminModal: React.FC<TrainerAdminModalProps> = ({
       setPhone(trainer.phone || '');
       setBio(trainer.bio || '');
       setCertificationsText((trainer.certifications || []).join('\n'));
-      setInstagramUsername((trainer as any).instagramUsername || '');
       setIsVerified(trainer.isVerified !== undefined ? trainer.isVerified : true);
     } else {
       setName('');
@@ -45,7 +43,6 @@ export const TrainerAdminModal: React.FC<TrainerAdminModalProps> = ({
       setPhone('');
       setBio('');
       setCertificationsText('');
-      setInstagramUsername('');
       setIsVerified(true);
     }
   }, [trainer, isOpen]);
@@ -71,12 +68,6 @@ export const TrainerAdminModal: React.FC<TrainerAdminModalProps> = ({
         trainer?.avatarUrl ||
         'https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=600&q=80',
       availableForPersonalTraining: true,
-      ...(instagramUsername
-        ? {
-            instagramUsername,
-            instagramUrl: `https://instagram.com/${instagramUsername.replace('@', '')}`,
-          }
-        : {}),
     });
     onClose();
   };
@@ -147,22 +138,6 @@ export const TrainerAdminModal: React.FC<TrainerAdminModalProps> = ({
               onChange={(e) => setExperienceYears(Number(e.target.value))}
               className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-blue-500 outline-none"
             />
-          </div>
-
-          <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">
-              حساب Instagram (اختياري)
-            </label>
-            <div className="relative">
-              <input
-                type="text"
-                value={instagramUsername}
-                onChange={(e) => setInstagramUsername(e.target.value)}
-                className="w-full pl-3.5 pr-8 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-blue-500 outline-none"
-                placeholder="coach_ahmed"
-              />
-              <Instagram className="w-4 h-4 text-slate-400 absolute right-2.5 top-3" />
-            </div>
           </div>
         </div>
 

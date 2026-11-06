@@ -286,11 +286,10 @@ export const GymDetailsPage: React.FC = () => {
               {gym.pricingPlans.map((plan) => (
                 <div
                   key={plan.id}
-                  className={`pkg-card ${
-                    plan.isPopular
-                      ? 'border-brand-blue-500 bg-gradient-to-b from-blue-50/40 to-white ring-2 ring-brand-blue-500/20 shadow-md'
-                      : 'border-slate-200 bg-white hover:border-brand-blue-300'
-                  }`}
+                  className={`pkg-card ${plan.isPopular
+                    ? 'border-brand-blue-500 bg-gradient-to-b from-blue-50/40 to-white ring-2 ring-brand-blue-500/20 shadow-md'
+                    : 'border-slate-200 bg-white hover:border-brand-blue-300'
+                    }`}
                 >
                   {plan.isPopular && (
                     <span className="pkg-card-badge">
@@ -323,11 +322,10 @@ export const GymDetailsPage: React.FC = () => {
 
                   <Link
                     to={`/gyms/${gym.slug}/subscribe?plan=${plan.id}`}
-                    className={`w-full py-3 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all text-center min-h-[44px] ${
-                      plan.isPopular
-                        ? 'bg-brand-blue-600 hover:bg-brand-blue-700 text-white shadow-md shadow-brand-blue-600/30 active:scale-95'
-                        : 'bg-slate-100 hover:bg-brand-blue-50 text-slate-800 hover:text-brand-blue-700 border border-slate-200/80 active:scale-95'
-                    }`}
+                    className={`w-full py-3 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all text-center min-h-[44px] ${plan.isPopular
+                      ? 'bg-brand-blue-600 hover:bg-brand-blue-700 text-white shadow-md shadow-brand-blue-600/30 active:scale-95'
+                      : 'bg-slate-100 hover:bg-brand-blue-50 text-slate-800 hover:text-brand-blue-700 border border-slate-200/80 active:scale-95'
+                      }`}
                   >
                     <span>طلب اشتراك في هذه الباقة</span>
                     <ArrowRight className="w-4 h-4 rotate-180" />

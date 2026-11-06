@@ -72,9 +72,6 @@ export interface Trainer {
   isVerified: boolean;
   rating?: number;
   activeGymAffiliation?: string;
-  instagramUsername?: string;
-  instagramUrl?: string;
-  instagramEmbeds?: string[];
   gender?: 'male' | 'female';
 }
 

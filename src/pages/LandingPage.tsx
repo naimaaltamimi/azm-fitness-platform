@@ -1,466 +1,433 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { MUKALLA_GYMS } from '../data/mukallaGymsData';
 import { MEALS_DATA } from '../data/mealsData';
-import { GymCard } from '../components/gyms/GymCard';
-import { MealCard } from '../components/nutrition/MealCard';
 import { HeroSection } from '../components/HeroSection';
 import {
-  Dumbbell,
-  Compass,
-  Calculator,
-  Salad,
   ShieldCheck,
-  ChevronLeft,
+  Dumbbell,
+  Calculator,
   Flame,
-  Award,
-  Users2,
-  CalendarCheck,
-  Building2,
-  Search,
-  MapPin,
-  Clock,
-  ArrowRight,
   ArrowLeft,
-  Target,
-  Sparkles,
-  CheckCircle2,
-  TrendingUp,
-  Activity,
-  HeartHandshake
+  MapPin,
+  Star,
+  Heart,
+  Truck,
+  RefreshCw,
+  Shield,
+  Headphones,
+  Leaf,
+  Beaker,
+  Users2,
+  UtensilsCrossed
 } from 'lucide-react';
 
+/* ─── Category Data (Shop by Category equivalent) ─── */
+const CATEGORIES = [
+  {
+    label: 'صالات رياضية',
+    path: '/gyms',
+    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=400&q=80',
+  },
+  {
+    label: 'تغذية صحية',
+    path: '/meals',
+    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=400&q=80',
+  },
+  {
+    label: 'المدربون',
+    path: '/trainers',
+    image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=400&q=80',
+  },
+  {
+    label: 'حاسبة السعرات',
+    path: '/calculator',
+    image: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400&q=80',
+  },
+  {
+    label: 'الخطة الغذائية',
+    path: '/nutrition-plan',
+    image: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=400&q=80',
+  },
+  {
+    label: 'الاشتراكات',
+    path: '/gyms',
+    image: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80',
+  },
+];
+
 export const LandingPage: React.FC = () => {
-  const navigate = useNavigate();
+  const [subscribedEmail, setSubscribedEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
 
-  // Search & Filter State in Hero
-  const [heroSearch, setHeroSearch] = useState('');
-  const [heroNeighborhood, setHeroNeighborhood] = useState('all');
-  const [heroCategory, setHeroCategory] = useState<'gyms' | 'trainers' | 'meals'>('gyms');
+  /* Featured data */
+  const popularGyms = MUKALLA_GYMS.slice(0, 4);
+  const recommendedMeals = MEALS_DATA.slice(0, 3);
 
-  const featuredGyms = MUKALLA_GYMS.slice(0, 3);
-  const featuredMeals = MEALS_DATA.slice(0, 3);
-
-  const handleHeroSearch = (e: React.FormEvent) => {
+  const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    if (heroCategory === 'trainers') {
-      navigate('/trainers');
-      return;
-    }
-    if (heroCategory === 'meals') {
-      navigate('/meals');
-      return;
-    }
-    const params = new URLSearchParams();
-    if (heroSearch) params.set('q', heroSearch);
-    if (heroNeighborhood !== 'all') params.set('neighborhood', heroNeighborhood);
-    navigate(`/gyms?${params.toString()}`);
+    if (!subscribedEmail.trim()) return;
+    setIsSubscribed(true);
+    setTimeout(() => {
+      setSubscribedEmail('');
+      setIsSubscribed(false);
+      alert('شكراً لك! تم تسجيل بريدك للاطلاع على جديد عروض نوادي المكلا.');
+    }, 1500);
   };
 
   return (
-    <div className="space-y-12 sm:space-y-16 pb-16">
-      {/* 1. Full-Width Unified Hero Section with Single Concept-Expressive Visual */}
+    <div className="bg-white text-[#1F2722] font-['Cairo',sans-serif]" dir="rtl">
+
+      {/* ═══════════════════════════════════════════
+          1. HERO SECTION (Carousel)
+      ═══════════════════════════════════════════ */}
       <HeroSection />
 
-      {/* 2. Floating Sleek Discovery & Search Bar */}
-      <section className="-mt-8 sm:-mt-14 relative z-30 max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="bg-white/95 backdrop-blur-xl p-4 sm:p-6 rounded-3xl shadow-2xl border border-slate-200/90 space-y-4">
-          <form
-            onSubmit={handleHeroSearch}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5"
-          >
-            {/* Category Selector */}
-            <select
-              value={heroCategory}
-              onChange={(e) => setHeroCategory(e.target.value as any)}
-              className="w-full sm:w-44 px-3.5 py-3 rounded-2xl bg-slate-100 font-bold text-xs sm:text-sm text-slate-800 border-0 focus:ring-2 focus:ring-brand-blue-500 outline-none cursor-pointer"
-            >
-              <option value="gyms">صالات رياضية</option>
-              <option value="trainers">كباتن ومدربون</option>
-              <option value="meals">وجبات صحية</option>
-            </select>
 
-            {/* Neighborhood Selector */}
-            <select
-              value={heroNeighborhood}
-              onChange={(e) => setHeroNeighborhood(e.target.value)}
-              className="w-full sm:w-48 px-3.5 py-3 rounded-2xl bg-slate-100 font-bold text-xs sm:text-sm text-slate-800 border-0 focus:ring-2 focus:ring-brand-blue-500 outline-none cursor-pointer"
-            >
-              <option value="all">جميع أحياء المكلا</option>
-              <option value="الشرج">حي الشرج</option>
-              <option value="فوة المتضررين">فوة المتضررين</option>
-              <option value="ديس المكلا">ديس المكلا</option>
-            </select>
+      {/* ═══════════════════════════════════════════
+          2. TRUST BADGES STRIP (4 items with dividers)
+          Matches: "Clean Ingredients | Clinically Proven | Cruelty Free | Sustainable Beauty"
+      ═══════════════════════════════════════════ */}
+      <section className="border-y border-[#F0EBE3] bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x md:divide-x-reverse divide-[#F0EBE3]">
 
-            {/* Search Query Input */}
-            <div className="relative flex-1">
-              <input
-                type="text"
-                value={heroSearch}
-                onChange={(e) => setHeroSearch(e.target.value)}
-                placeholder="ابحث باسم الصالة أو الميزة (حديد، سير، كارديو)..."
-                className="w-full pl-3.5 pr-10 py-3 rounded-2xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:bg-white transition-all"
-              />
-              <Search className="w-4 h-4 text-slate-400 absolute right-3.5 top-3.5" />
+            {/* Badge 1 */}
+            <div className="flex flex-col items-center text-center md:px-6 gap-2">
+              <div className="w-11 h-11 rounded-full bg-[#F4F7F5] text-[#7D9683] flex items-center justify-center">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-sm font-black text-[#1F2722]">صالات معتمدة</p>
+                <p className="text-[11px] text-[#7D9683] font-medium">فحص وتوثيق ميداني</p>
+              </div>
             </div>
 
-            {/* Submit Button */}
-            <button
-              type="submit"
-              className="px-7 py-3 rounded-2xl bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold text-xs sm:text-sm shadow-lg shadow-brand-blue-600/30 active:scale-95 transition-all flex items-center justify-center gap-2 shrink-0 min-h-[44px]"
-            >
-              <span>استكشف الآن</span>
-              <ArrowRight className="w-4 h-4 rotate-180" />
-            </button>
-          </form>
-
-          {/* Quick-Tap Verified Mukalla Chips */}
-          <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-100 text-xs">
-            <div className="flex flex-wrap items-center gap-1.5">
-              <span className="text-slate-500 font-bold ml-1">الوصول السريع:</span>
-              <button
-                type="button"
-                onClick={() => {
-                  setHeroNeighborhood('فوة المتضررين');
-                  navigate('/gyms?neighborhood=فوة المتضررين');
-                }}
-                className="px-2.5 py-1 rounded-xl bg-slate-100 hover:bg-brand-blue-50 text-slate-700 hover:text-brand-blue-700 text-[11px] font-semibold transition-colors"
-              >
-                📍 فوة: سمارت جيم
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setHeroNeighborhood('الشرج');
-                  navigate('/gyms?neighborhood=الشرج');
-                }}
-                className="px-2.5 py-1 rounded-xl bg-slate-100 hover:bg-brand-blue-50 text-slate-700 hover:text-brand-blue-700 text-[11px] font-semibold transition-colors"
-              >
-                📍 الشرج: قولدن جيم
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setHeroNeighborhood('الشرج');
-                  navigate('/gyms/winner-gym');
-                }}
-                className="px-2.5 py-1 rounded-xl bg-slate-100 hover:bg-brand-blue-50 text-slate-700 hover:text-brand-blue-700 text-[11px] font-semibold transition-colors"
-              >
-                📍 مارينا: وينر جيم
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setHeroNeighborhood('الشرج');
-                  navigate('/gyms/mukalla-gym');
-                }}
-                className="px-2.5 py-1 rounded-xl bg-slate-100 hover:bg-brand-blue-50 text-slate-700 hover:text-brand-blue-700 text-[11px] font-semibold transition-colors"
-              >
-                📍 ميرال: المكلا جيم
-              </button>
+            {/* Badge 2 */}
+            <div className="flex flex-col items-center text-center md:px-6 gap-2">
+              <div className="w-11 h-11 rounded-full bg-[#F4F7F5] text-[#7D9683] flex items-center justify-center">
+                <Beaker className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-sm font-black text-[#1F2722]">تغذية مدروسة علمياً</p>
+                <p className="text-[11px] text-[#7D9683] font-medium">معادلات معتمدة دولياً</p>
+              </div>
             </div>
 
-            <div className="flex items-center gap-1.5 text-brand-blue-700 font-bold text-[11px]">
-              <ShieldCheck className="w-4 h-4 text-[#D9AD55]" />
-              <span>5 صالات حقيقية موثقة ومجربة بالمكلا</span>
+            {/* Badge 3 */}
+            <div className="flex flex-col items-center text-center md:px-6 gap-2">
+              <div className="w-11 h-11 rounded-full bg-[#F4F7F5] text-[#7D9683] flex items-center justify-center">
+                <Leaf className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-sm font-black text-[#1F2722]">مكونات طبيعية</p>
+                <p className="text-[11px] text-[#7D9683] font-medium">وجبات ساحلية طازجة</p>
+              </div>
             </div>
+
+            {/* Badge 4 */}
+            <div className="flex flex-col items-center text-center md:px-6 gap-2">
+              <div className="w-11 h-11 rounded-full bg-[#F4F7F5] text-[#7D9683] flex items-center justify-center">
+                <Users2 className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-sm font-black text-[#1F2722]">كباتن مؤهلون</p>
+                <p className="text-[11px] text-[#7D9683] font-medium">إشراف وتوجيه مهني</p>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* 3. 3-Step Journey Timeline Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-4">
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10 space-y-2.5">
-          <span className="eyebrow-pill bg-brand-blue-50 text-brand-blue-700 border border-brand-blue-200/80">
-            <Sparkles className="w-3.5 h-3.5 text-brand-blue-600" />
-            رحلتك في عزم • ساحل حضرموت
-          </span>
-          <h2 className="heading-section">
-            رحلتك الرياضية والغذائية في المكلا
-          </h2>
-          <p className="text-body-lead">
-            ثلاث خطوات متسلسلة ومدروسة تبدأ بها رحلتك نحو صحة ولياقة أفضل بكل وضوح وثقة.
-          </p>
-        </div>
 
-        {/* Journey Timeline Wrapper */}
-        <div className="journey-timeline-wrapper">
-          {/* Top Timeline Bar with Numbered Badges (Visible on md and up) */}
-          <div className="hidden md:flex journey-timeline-bar mb-6">
-            <div className="flex flex-col items-center">
-              <div className="step-circle-badge bg-brand-blue-600 text-white">
-                1
-              </div>
-              <span className="text-xs font-bold text-brand-blue-700 mt-2">الخطوة الأولى</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="step-circle-badge bg-brand-blue-600 text-white">
-                2
-              </div>
-              <span className="text-xs font-bold text-brand-blue-700 mt-2">الخطوة الثانية</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="step-circle-badge bg-brand-blue-600 text-white">
-                3
-              </div>
-              <span className="text-xs font-bold text-brand-blue-700 mt-2">الخطوة الثالثة</span>
-            </div>
-          </div>
+      {/* ═══════════════════════════════════════════
+          3. SHOP BY CATEGORY → "تصفح حسب الفئة"
+          Matches: 6 circular category images with labels
+      ═══════════════════════════════════════════ */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <h2 className="text-xl sm:text-2xl font-black text-[#1F2722] text-center tracking-wide uppercase mb-10">
+          تصفح حسب الفئة
+        </h2>
 
-          {/* 3 Step Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Step 1 Card */}
-            <div className="card-sheikha p-6 sm:p-7 flex flex-col justify-between space-y-4 relative">
-              <div className="md:hidden flex items-center justify-between mb-2">
-                <span className="w-8 h-8 rounded-full bg-brand-blue-600 text-white font-extrabold flex items-center justify-center text-sm">
-                  1
-                </span>
-                <span className="text-xs font-bold text-brand-blue-600">الخطوة الأولى</span>
+        <div className="grid grid-cols-3 sm:grid-cols-6 gap-6 sm:gap-8">
+          {CATEGORIES.map((cat) => (
+            <Link
+              key={cat.label}
+              to={cat.path}
+              className="group flex flex-col items-center gap-3 text-center"
+            >
+              {/* Circular Image */}
+              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden ring-2 ring-[#F0EBE3] group-hover:ring-[#D97241] transition-all shadow-md group-hover:shadow-lg group-hover:-translate-y-1 duration-300">
+                <img
+                  src={cat.image}
+                  alt={cat.label}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
               </div>
-              <div className="space-y-3">
-                <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center ring-8 ring-amber-50/50">
-                  <Calculator className="w-6 h-6" />
-                </div>
-                <h3 className="heading-card">احسب سعراتك وأرقامك بدقة</h3>
-                <p className="text-body-muted">
-                  استخدم حاسبة عزم المعتمدة لمعرفة معدل الأيض اليومي (BMR) واحتياجك من البروتين والماء مع مراعاة حرارة ورطوبة المكلا.
-                </p>
-              </div>
-              <Link
-                to="/calculator"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 hover:text-amber-700 pt-2 group"
-              >
-                <span>ابدأ بالحساب مجاناً</span>
-                <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-              </Link>
-            </div>
-
-            {/* Step 2 Card */}
-            <div className="card-sheikha p-6 sm:p-7 flex flex-col justify-between space-y-4 relative">
-              <div className="md:hidden flex items-center justify-between mb-2">
-                <span className="w-8 h-8 rounded-full bg-brand-blue-600 text-white font-extrabold flex items-center justify-center text-sm">
-                  2
-                </span>
-                <span className="text-xs font-bold text-brand-blue-600">الخطوة الثانية</span>
-              </div>
-              <div className="space-y-3">
-                <div className="w-12 h-12 rounded-2xl bg-brand-blue-50 text-brand-blue-600 flex items-center justify-center ring-8 ring-brand-blue-50/50">
-                  <Compass className="w-6 h-6" />
-                </div>
-                <h3 className="heading-card">اختر صالتك أو مدربك</h3>
-                <p className="text-body-muted">
-                  استعرض صالات المكلا المعتمدة في الشرج وفوة والديس مع صور وتجهيزات واقعية أو تواصل مع كباتن معتمدين واشترك بالريال اليمني.
-                </p>
-              </div>
-              <Link
-                to="/gyms"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-blue-600 hover:text-brand-blue-700 pt-2 group"
-              >
-                <span>استكشف الصالات والكباتن</span>
-                <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-              </Link>
-            </div>
-
-            {/* Step 3 Card */}
-            <div className="card-sheikha p-6 sm:p-7 flex flex-col justify-between space-y-4 relative">
-              <div className="md:hidden flex items-center justify-between mb-2">
-                <span className="w-8 h-8 rounded-full bg-brand-blue-600 text-white font-extrabold flex items-center justify-center text-sm">
-                  3
-                </span>
-                <span className="text-xs font-bold text-brand-blue-600">الخطوة الثالثة</span>
-              </div>
-              <div className="space-y-3">
-                <div className="w-12 h-12 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center ring-8 ring-sky-50/50">
-                  <Salad className="w-6 h-6" />
-                </div>
-                <h3 className="heading-card">التزم بالوجبات وتتبع هدفك</h3>
-                <p className="text-body-muted">
-                  طبق وجباتك الصحية المعدة بأسماك وثروات بحر المكلا الغنية بالبروتين، وتابع اشتراكك وتطورك البدني في منصة عزم خطوة بخطوة.
-                </p>
-              </div>
-              <Link
-                to="/meals"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2878B8] hover:text-[#1f639a] pt-2 group"
-              >
-                <span>تصفح الوجبات الساحلية</span>
-                <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Core Services Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
-          <span className="eyebrow-pill bg-brand-blue-50 text-brand-blue-700 border border-brand-blue-200/80">
-            منظومة عزم الشاملة
-          </span>
-          <h2 className="heading-section">
-            خدمات صممت خصيصاً لمجتمع المكلا
-          </h2>
-          <p className="text-body-lead">
-            الصالات المعتمدة، المدربون، والأدوات الغذائية في بيئة واحدة سهلة الاستخدام بدون تعقيد.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="card-sheikha p-6 space-y-3 flex flex-col justify-between">
-            <div className="space-y-3">
-              <div className="w-12 h-12 rounded-2xl bg-brand-blue-50 text-brand-blue-600 flex items-center justify-center ring-8 ring-brand-blue-50/50">
-                <Dumbbell className="w-6 h-6" />
-              </div>
-              <h3 className="heading-card">دليل نوادي المكلا</h3>
-              <p className="text-body-muted text-xs leading-relaxed">
-                صالات الشرج، فوة المتضررين، والديس مع صور حقيقية ومواعيد العمل وباقات الأسعار الرسمية.
-              </p>
-            </div>
-            <Link to="/gyms" className="inline-flex items-center gap-1 text-xs font-bold text-brand-blue-600 hover:text-brand-blue-700 pt-1 group">
-              <span>تصفح الصالات</span>
-              <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+              {/* Label */}
+              <span className="text-xs sm:text-sm font-bold text-[#1F2722] group-hover:text-[#D97241] transition-colors uppercase">
+                {cat.label}
+              </span>
             </Link>
-          </div>
-
-          <div className="card-sheikha p-6 space-y-3 flex flex-col justify-between">
-            <div className="space-y-3">
-              <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center ring-8 ring-amber-50/50">
-                <Calculator className="w-6 h-6" />
-              </div>
-              <h3 className="heading-card">حاسبة السعرات والمغذيات</h3>
-              <p className="text-body-muted text-xs leading-relaxed">
-                احسب معدل الأيض الأساسي (BMR) واحتياجك من البروتين والماء مع مراعاة مناخ المكلا الساحلي.
-              </p>
-            </div>
-            <Link to="/calculator" className="inline-flex items-center gap-1 text-xs font-bold text-amber-600 hover:text-amber-700 pt-1 group">
-              <span>ابدأ الحساب الآن</span>
-              <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            </Link>
-          </div>
-
-          <div className="card-sheikha p-6 space-y-3 flex flex-col justify-between">
-            <div className="space-y-3">
-              <div className="w-12 h-12 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center ring-8 ring-sky-50/50">
-                <Salad className="w-6 h-6" />
-              </div>
-              <h3 className="heading-card">مكتبة الوجبات الصحية</h3>
-              <p className="text-body-muted text-xs leading-relaxed">
-                وجبات رياضية غنية بالبروتين تعتمد على صيد المكلا الطازج من سمك الثمد والأغذية الصحية المتوفرة.
-              </p>
-            </div>
-            <Link to="/meals" className="inline-flex items-center gap-1 text-xs font-bold text-[#2878B8] hover:text-[#1f639a] pt-1 group">
-              <span>تصفح الوجبات</span>
-              <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            </Link>
-          </div>
-
-          <div className="card-sheikha p-6 space-y-3 flex flex-col justify-between">
-            <div className="space-y-3">
-              <div className="w-12 h-12 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center ring-8 ring-sky-50/50">
-                <Award className="w-6 h-6" />
-              </div>
-              <h3 className="heading-card">الاشتراكات المباشرة</h3>
-              <p className="text-body-muted text-xs leading-relaxed">
-                اختر باقتك وسجل طلب اشتراكك مع خيارات الدفع نقداً بالصالة أو عبر الكريمي والعمقي.
-              </p>
-            </div>
-            <Link to="/gyms" className="inline-flex items-center gap-1 text-xs font-bold text-sky-600 hover:text-sky-700 pt-1 group">
-              <span>اختر صالتك</span>
-              <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Featured Mukalla Gyms Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-bold text-brand-blue-600 mb-1.5">
-              <Compass className="w-4 h-4" />
-              <span>الصالات المعتمدة بالمكلا</span>
-            </div>
-            <h2 className="heading-section">
-              أبرز صالات المكلا الرياضية
-            </h2>
-          </div>
-          <Link
-            to="/gyms"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-brand-blue-700 hover:text-brand-blue-800 transition-colors group"
-          >
-            <span>مشاهدة كافة صالات المكلا</span>
-            <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {featuredGyms.map((gym) => (
-            <GymCard key={gym.id} gym={gym} />
           ))}
         </div>
       </section>
 
-      {/* 7. Coastal Nutrition Section */}
-      <section className="bg-slate-100/70 py-12 border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
-            <div>
-              <div className="flex items-center gap-2 text-xs font-bold text-[#2878B8] mb-1.5">
-                <Salad className="w-4 h-4" />
-                <span>التغذية الساحلية السليمة</span>
+
+      {/* ═══════════════════════════════════════════
+          4. PROMOTIONAL BANNER (Split Layout)
+          Matches: "LIMITED TIME OFFER - Up to 30% Off..."
+      ═══════════════════════════════════════════ */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16">
+        <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg">
+          <div className="grid grid-cols-1 lg:grid-cols-2">
+
+            {/* Left (in RTL → appears on right visually): Dark content */}
+            <div className="bg-[#1F2722] text-white p-8 sm:p-10 lg:p-12 flex flex-col justify-center space-y-4">
+              <span className="text-[11px] font-bold text-[#D97241] tracking-widest uppercase">
+                ميزة حصرية
+              </span>
+              <h3 className="text-3xl sm:text-4xl lg:text-[42px] font-black leading-tight">
+                احسب سعراتك<br />
+                <span className="text-[#D97241]">مجاناً بدقة علمية</span>
+              </h3>
+              <p className="text-sm text-white/70 leading-relaxed max-w-sm font-medium">
+                احسب احتياجك اليومي الفعلي من السعرات، البروتين، والماء وفق معادلة ميفلين-سانت جور مع مراعاة مناخ المكلا.
+              </p>
+              <div className="pt-2">
+                <Link
+                  to="/calculator"
+                  className="inline-flex items-center px-6 py-3 rounded-lg border-2 border-white text-white font-bold text-sm hover:bg-white hover:text-[#1F2722] transition-all uppercase tracking-wide"
+                >
+                  ابدأ الحساب الآن
+                </Link>
               </div>
-              <h2 className="heading-section">
-                وجبات رياضية غنية بالبروتين
-              </h2>
             </div>
+
+            {/* Right (in RTL → appears on left visually): Image */}
+            <div className="relative bg-[#EDE8DF] min-h-[280px] lg:min-h-0">
+              <img
+                src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80"
+                alt="التدريب والتغذية الصحية"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      {/* ═══════════════════════════════════════════
+          5. BEST SELLERS → "الأكثر إقبالاً"
+          Matches: Product cards with image, heart, name, price, rating, CTA
+      ═══════════════════════════════════════════ */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16">
+        {/* Section Header */}
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="text-xl sm:text-2xl font-black text-[#1F2722] tracking-wide uppercase">
+            الأكثر إقبالاً
+          </h2>
+          <Link
+            to="/gyms"
+            className="text-xs sm:text-sm font-bold text-[#D97241] hover:text-[#C75F2F] transition-colors flex items-center gap-1 uppercase"
+          >
+            <span>عرض الكل</span>
+            <ArrowLeft className="w-4 h-4" />
+          </Link>
+        </div>
+
+        {/* Cards Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          {popularGyms.map((gym) => (
+            <Link
+              key={gym.id}
+              to={`/gyms/${gym.slug}`}
+              className="group bg-white rounded-2xl border border-[#F0EBE3] hover:border-[#D97241]/30 hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col"
+            >
+              {/* Card Image */}
+              <div className="relative aspect-square bg-[#FAF8F5] overflow-hidden">
+                <img
+                  src={gym.coverImage}
+                  alt={gym.nameAr}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                {/* Heart Icon */}
+                <button
+                  onClick={(e) => e.preventDefault()}
+                  className="absolute top-3 left-3 w-8 h-8 rounded-full bg-white/90 hover:bg-white flex items-center justify-center text-[#C8BEAA] hover:text-red-400 transition-colors shadow-sm"
+                >
+                  <Heart className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Card Body */}
+              <div className="p-3 sm:p-4 flex-1 flex flex-col justify-between space-y-2">
+                {/* Gym Name */}
+                <h4 className="font-bold text-sm text-[#1F2722] leading-snug line-clamp-2 group-hover:text-[#D97241] transition-colors">
+                  {gym.nameAr}
+                </h4>
+
+                {/* Location */}
+                <p className="text-[11px] text-[#7D9683] font-medium flex items-center gap-1">
+                  <MapPin className="w-3 h-3 shrink-0" />
+                  <span>{gym.neighborhood}</span>
+                </p>
+
+                {/* Price */}
+                <div className="flex items-baseline gap-1.5">
+                  <span className="text-base font-black text-[#D97241]">
+                    {gym.pricingPlans[0]?.priceYer.toLocaleString()}
+                  </span>
+                  <span className="text-[10px] text-[#7D9683] font-bold">ر.ي / شهر</span>
+                </div>
+
+                {/* Rating */}
+                <div className="flex items-center gap-1">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <Star
+                      key={s}
+                      className={`w-3 h-3 ${s <= 4 ? 'text-amber-400 fill-amber-400' : 'text-[#DED7C8]'}`}
+                    />
+                  ))}
+                  <span className="text-[10px] text-[#7D9683] font-medium mr-1">(4.0)</span>
+                </div>
+
+                {/* CTA Button */}
+                <div className="pt-1">
+                  <span className="block w-full text-center py-2 rounded-lg border border-[#D97241] text-[#D97241] text-xs font-bold group-hover:bg-[#D97241] group-hover:text-white transition-colors uppercase">
+                    عرض التفاصيل
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+
+      {/* ═══════════════════════════════════════════
+          6. RECOMMENDED MEALS SECTION
+          "✦ نوصي بتجربته ✦" → Horizontal Meal Cards
+      ═══════════════════════════════════════════ */}
+      <section className="bg-[#FAF8F5] border-y border-[#F0EBE3]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-8">
+          {/* Section Header */}
+          <div className="flex items-center justify-between">
+            <h2 className="text-xl sm:text-2xl font-black text-[#1F2722] tracking-wide uppercase">
+              وجبات نوصي بتجربتها
+            </h2>
             <Link
               to="/meals"
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#2878B8] hover:text-[#1f639a] transition-colors group"
+              className="text-xs sm:text-sm font-bold text-[#D97241] hover:text-[#C75F2F] transition-colors flex items-center gap-1 uppercase"
             >
-              <span>فتح مكتبة الوجبات الكاملة</span>
-              <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+              <span>عرض الكل</span>
+              <ArrowLeft className="w-4 h-4" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {featuredMeals.map((meal) => (
-              <MealCard key={meal.id} meal={meal} />
+          {/* Meal Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+            {recommendedMeals.map((meal) => (
+              <Link
+                key={meal.id}
+                to={`/meals/${meal.id}`}
+                className="group bg-white rounded-2xl border border-[#F0EBE3] hover:border-[#D97241]/30 hover:shadow-lg transition-all duration-300 overflow-hidden"
+              >
+                {/* Meal Image */}
+                <div className="relative aspect-video bg-[#EDE8DF] overflow-hidden">
+                  <img
+                    src={meal.imageUrl}
+                    alt={meal.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {/* Heart */}
+                  <button
+                    onClick={(e) => e.preventDefault()}
+                    className="absolute top-3 left-3 w-8 h-8 rounded-full bg-white/90 hover:bg-white flex items-center justify-center text-[#C8BEAA] hover:text-red-400 transition-colors shadow-sm"
+                  >
+                    <Heart className="w-4 h-4" />
+                  </button>
+                  {/* Calorie Badge */}
+                  <div className="absolute bottom-3 right-3 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-lg shadow-sm">
+                    <span className="text-xs font-black text-[#D97241]">{meal.calories}</span>
+                    <span className="text-[10px] text-[#7D9683] mr-1 font-bold">سعرة</span>
+                  </div>
+                </div>
+
+                {/* Meal Body */}
+                <div className="p-4 space-y-2">
+                  <h4 className="font-bold text-sm text-[#1F2722] leading-snug line-clamp-2 group-hover:text-[#D97241] transition-colors">
+                    {meal.title}
+                  </h4>
+                  <p className="text-[11px] text-[#536559] line-clamp-2 leading-relaxed">
+                    {meal.description}
+                  </p>
+                  {/* Macros Row */}
+                  <div className="flex items-center gap-2 pt-1">
+                    <span className="text-[10px] font-bold text-[#7D9683] bg-[#F4F7F5] px-2 py-0.5 rounded-full">
+                      {meal.protein}g بروتين
+                    </span>
+                    <span className="text-[10px] font-bold text-[#7D9683] bg-[#F4F7F5] px-2 py-0.5 rounded-full">
+                      {meal.carbs}g كربوهيدرات
+                    </span>
+                    <span className="text-[10px] font-bold text-[#7D9683] bg-[#F4F7F5] px-2 py-0.5 rounded-full">
+                      {meal.fats}g دهون
+                    </span>
+                  </div>
+                  {/* CTA */}
+                  <div className="pt-2">
+                    <span className="block w-full text-center py-2 rounded-lg border border-[#D97241] text-[#D97241] text-xs font-bold group-hover:bg-[#D97241] group-hover:text-white transition-colors uppercase">
+                      عرض الوصفة
+                    </span>
+                  </div>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 8. Trainers & Coaches Community Banner */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#102C50] via-brand-blue-900 to-[#102C50] text-white p-8 sm:p-12 shadow-2xl border border-white/10 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="relative z-10 max-w-xl space-y-3 text-right">
-            <span className="eyebrow-pill text-[#D9AD55] bg-[#102C50]/80 border border-[#D9AD55]/40">
-              <HeartHandshake className="w-3.5 h-3.5" />
-              شراكة مجتمعية في ساحل حضرموت
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-black leading-snug">
-              هل أنت كابتن معتمد أو تدير صالة في المكلا؟
-            </h3>
-            <p className="text-slate-200 text-sm leading-relaxed">
-              انضم إلى منصة عزم لتوثيق صالتك أو اعتماد ملفك التدريبي وحسابك الرياضي للوصول لمئات الرياضيين والمهتمين بالصحة في المكلا.
-            </p>
-          </div>
 
-          <div className="flex flex-wrap items-center gap-3 shrink-0 relative z-10">
-            <Link
-              to="/trainers"
-              className="btn-sheikha-primary bg-[#2878B8] hover:bg-[#1f639a] shadow-[#2878B8]/30 text-white"
-            >
-              دليل الكباتن المعتمدين
-            </Link>
-            <Link
-              to="/register"
-              className="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/20 transition-all min-h-[44px] inline-flex items-center justify-center"
-            >
-              انضمام منشأة رياضية
-            </Link>
+      {/* ═══════════════════════════════════════════
+          7. SERVICE GUARANTEES STRIP
+          Matches: "Free Shipping | Easy Returns | Secure Payment | 24/7 Support"
+      ═══════════════════════════════════════════ */}
+      <section className="border-b border-[#F0EBE3] bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x md:divide-x-reverse divide-[#F0EBE3]">
+
+            <div className="flex flex-col items-center text-center md:px-6 gap-2">
+              <Truck className="w-6 h-6 text-[#1F2722]" />
+              <p className="text-sm font-black text-[#1F2722]">اشتراك فوري</p>
+              <p className="text-[11px] text-[#7D9683] font-medium">تفعيل مباشر بدون انتظار</p>
+            </div>
+
+            <div className="flex flex-col items-center text-center md:px-6 gap-2">
+              <RefreshCw className="w-6 h-6 text-[#1F2722]" />
+              <p className="text-sm font-black text-[#1F2722]">مرونة في الباقات</p>
+              <p className="text-[11px] text-[#7D9683] font-medium">خيارات شهرية وسنوية</p>
+            </div>
+
+            <div className="flex flex-col items-center text-center md:px-6 gap-2">
+              <Shield className="w-6 h-6 text-[#1F2722]" />
+              <p className="text-sm font-black text-[#1F2722]">بيانات آمنة</p>
+              <p className="text-[11px] text-[#7D9683] font-medium">حماية كاملة لمعلوماتك</p>
+            </div>
+
+            <div className="flex flex-col items-center text-center md:px-6 gap-2">
+              <Headphones className="w-6 h-6 text-[#1F2722]" />
+              <p className="text-sm font-black text-[#1F2722]">دعم متواصل</p>
+              <p className="text-[11px] text-[#7D9683] font-medium">نحن هنا لمساعدتك</p>
+            </div>
+
           </div>
         </div>
       </section>
+
     </div>
   );
 };
+
+export default LandingPage;
