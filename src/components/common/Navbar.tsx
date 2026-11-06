@@ -55,12 +55,12 @@ export const Navbar: React.FC = () => {
       </div>
 
       {/* ─── MAIN NAVBAR ─── */}
-      <header className="sticky top-0 z-40 w-full bg-white border-b border-[#F0EBE3] shadow-sm font-['Cairo',sans-serif]" dir="rtl">
+      <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-[#F0EBE3] shadow-sm font-['Cairo',sans-serif]" dir="rtl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 sm:h-[68px]">
+          <div className="flex items-center justify-between h-16 sm:h-[72px]">
 
             {/* ─── RIGHT (RTL): BRAND LOGO ─── */}
-            <div className="flex items-center shrink-0">
+            <div className="flex items-center shrink-0 py-1">
               <Logo size="md" />
             </div>
 

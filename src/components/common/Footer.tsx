@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
 
           {/* Column 1: Brand Info */}
           <div className="space-y-4">
-            <Logo size="md" theme="dark" />
+            <Logo size="lg" theme="dark" />
             <p className="text-xs text-white/60 leading-relaxed max-w-xs">
               منصة اللياقة والتغذية الصحية الأولى في المكلا. نوفر لك صالات معتمدة ميدانياً وخطط غذائية مبنية على أسس علمية.
             </p>
