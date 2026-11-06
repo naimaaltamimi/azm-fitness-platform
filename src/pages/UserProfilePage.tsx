@@ -76,36 +76,37 @@ export const UserProfilePage: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* Header */}
-      <div className="bg-gradient-to-r from-brand-blue-900 to-slate-900 text-white rounded-3xl p-6 sm:p-8 md:p-10 relative overflow-hidden shadow-xl flex flex-col sm:flex-row items-center gap-6">
-        <div className="relative group cursor-pointer" onClick={handleAvatarChange} title="انقر لتغيير الصورة الرمزية">
+      <div className="bg-gradient-to-r from-forest-900 via-forest-800 to-forest-950 text-white rounded-3xl p-6 sm:p-8 md:p-10 relative overflow-hidden shadow-xl border border-forest-800/60 flex flex-col sm:flex-row items-center gap-6">
+        <div className="absolute top-0 left-0 w-80 h-80 bg-terracotta-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="relative group cursor-pointer shrink-0 z-10" onClick={handleAvatarChange} title="انقر لتغيير الصورة الرمزية">
           <img
             src={avatarUrl}
             alt={name}
-            className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl object-cover ring-4 ring-brand-blue-400/40 shadow-xl"
+            className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl object-cover ring-4 ring-terracotta-400/40 shadow-xl"
           />
           <div className="absolute inset-0 bg-black/40 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
             <Camera className="w-6 h-6" />
           </div>
         </div>
 
-        <div className="space-y-1 text-center sm:text-right flex-1">
+        <div className="space-y-1 text-center sm:text-right flex-1 relative z-10">
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
             <h1 className="text-xl sm:text-2xl md:text-3xl font-black">{name || 'رياضي عزم'}</h1>
-            <span className="px-3 py-1 rounded-full bg-brand-green-500/20 text-brand-green-400 border border-brand-green-500/30 text-xs font-bold">
+            <span className="px-3.5 py-1.5 rounded-full bg-sage-500/20 text-sage-300 border border-sage-500/30 text-xs font-bold">
               {user.role === 'admin' ? 'مدير المنصة' : user.role === 'trainer' ? 'مدرب معتمد' : 'متدرب نشط'}
             </span>
           </div>
-          <p className="text-xs text-slate-300 font-mono" dir="ltr">{user.email}</p>
-          <p className="text-xs text-slate-400">حضرموت - المكلا، حي {neighborhood}</p>
+          <p className="text-xs text-sand-300 font-mono" dir="ltr">{user.email}</p>
+          <p className="text-xs text-sand-300/80">حضرموت - المكلا، حي {neighborhood}</p>
         </div>
       </div>
 
       {/* Main Profile Form */}
-      <form onSubmit={handleSave} className="bg-white p-5 sm:p-8 rounded-3xl border border-slate-200/90 shadow-sm space-y-8">
+      <form onSubmit={handleSave} className="bg-white p-5 sm:p-8 rounded-3xl border border-sand-200 shadow-sm space-y-8">
         {/* Personal Details */}
         <div className="space-y-4">
-          <h2 className="text-base font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
-            <User className="w-5 h-5 text-brand-blue-600" />
+          <h2 className="text-base font-bold text-forest-900 border-b border-sand-100 pb-3 flex items-center gap-2">
+            <User className="w-5 h-5 text-terracotta-500" />
             <span>البيانات الأساسية</span>
           </h2>
 
@@ -117,7 +118,7 @@ export const UserProfilePage: React.FC = () => {
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-sm"
               />
             </div>
 
@@ -128,7 +129,7 @@ export const UserProfilePage: React.FC = () => {
                 required
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm font-mono"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-sm font-mono"
                 dir="ltr"
               />
             </div>
@@ -141,7 +142,7 @@ export const UserProfilePage: React.FC = () => {
                 type="email"
                 disabled
                 value={user.email}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-500 text-sm cursor-not-allowed font-mono"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 bg-sand-50/70 text-slate-500 text-sm cursor-not-allowed font-mono"
                 dir="ltr"
               />
             </div>
@@ -151,7 +152,7 @@ export const UserProfilePage: React.FC = () => {
               <select
                 value={neighborhood}
                 onChange={(e) => setNeighborhood(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm bg-white"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-sm bg-white"
               >
                 <option value="الشرج">الشرج</option>
                 <option value="فوة المتضررين">فوة (حي المتضررين)</option>
@@ -166,8 +167,8 @@ export const UserProfilePage: React.FC = () => {
 
         {/* Fitness & Body Measurements */}
         <div className="space-y-4">
-          <h2 className="text-base font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
-            <Dumbbell className="w-5 h-5 text-brand-green-600" />
+          <h2 className="text-base font-bold text-forest-900 border-b border-sand-100 pb-3 flex items-center gap-2">
+            <Dumbbell className="w-5 h-5 text-terracotta-500" />
             <span>القياسات البدنية والأهداف الرياضية</span>
           </h2>
 
@@ -178,7 +179,7 @@ export const UserProfilePage: React.FC = () => {
                 type="number"
                 value={age}
                 onChange={(e) => setAge(Number(e.target.value))}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm text-center"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-sm text-center"
               />
             </div>
 
@@ -188,7 +189,7 @@ export const UserProfilePage: React.FC = () => {
                 type="number"
                 value={weight}
                 onChange={(e) => setWeight(Number(e.target.value))}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm text-center"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-sm text-center"
               />
             </div>
 
@@ -198,7 +199,7 @@ export const UserProfilePage: React.FC = () => {
                 type="number"
                 value={height}
                 onChange={(e) => setHeight(Number(e.target.value))}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm text-center"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-sm text-center"
               />
             </div>
 
@@ -208,7 +209,7 @@ export const UserProfilePage: React.FC = () => {
                 type="number"
                 value={targetCalories}
                 onChange={(e) => setTargetCalories(Number(e.target.value))}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm text-center font-bold text-amber-600"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-sm text-center font-bold text-amber-600"
               />
             </div>
           </div>
@@ -222,7 +223,7 @@ export const UserProfilePage: React.FC = () => {
                 className={`py-3 px-4 rounded-xl border text-xs font-bold transition-all text-center min-h-[44px] ${
                   fitnessGoal === 'fat_loss'
                     ? 'border-amber-600 bg-amber-50 text-amber-800'
-                    : 'border-slate-200 text-slate-600 hover:bg-slate-50'
+                    : 'border-sand-200 text-slate-600 hover:bg-sand-50'
                 }`}
               >
                 تنشيف وخسارة دهون
@@ -232,8 +233,8 @@ export const UserProfilePage: React.FC = () => {
                 onClick={() => setFitnessGoal('fitness_maintenance')}
                 className={`py-3 px-4 rounded-xl border text-xs font-bold transition-all text-center min-h-[44px] ${
                   fitnessGoal === 'fitness_maintenance'
-                    ? 'border-brand-green-600 bg-brand-green-50 text-brand-green-800'
-                    : 'border-slate-200 text-slate-600 hover:bg-slate-50'
+                    ? 'border-sage-600 bg-sage-50 text-sage-800'
+                    : 'border-sand-200 text-slate-600 hover:bg-sand-50'
                 }`}
               >
                 ثبات وتحسين لياقة
@@ -243,8 +244,8 @@ export const UserProfilePage: React.FC = () => {
                 onClick={() => setFitnessGoal('muscle_gain')}
                 className={`py-3 px-4 rounded-xl border text-xs font-bold transition-all text-center min-h-[44px] ${
                   fitnessGoal === 'muscle_gain'
-                    ? 'border-brand-blue-600 bg-brand-blue-50 text-brand-blue-800'
-                    : 'border-slate-200 text-slate-600 hover:bg-slate-50'
+                    ? 'border-terracotta-500 bg-terracotta-50 text-terracotta-800'
+                    : 'border-sand-200 text-slate-600 hover:bg-sand-50'
                 }`}
               >
                 تضخيم وبناء عضلات
@@ -254,10 +255,10 @@ export const UserProfilePage: React.FC = () => {
         </div>
 
         {/* Save Bar */}
-        <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+        <div className="pt-4 border-t border-sand-100 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
           {isSaved ? (
-            <span className="text-xs font-bold text-brand-green-600 flex items-center justify-center sm:justify-start gap-1.5 animate-in fade-in">
-              <CheckCircle className="w-4 h-4" />
+            <span className="text-xs font-bold text-sage-700 flex items-center justify-center sm:justify-start gap-1.5 animate-in fade-in">
+              <CheckCircle className="w-4 h-4 text-sage-600" />
               تم حفظ التعديلات بنجاح!
             </span>
           ) : (
@@ -266,7 +267,7 @@ export const UserProfilePage: React.FC = () => {
 
           <button
             type="submit"
-            className="w-full sm:w-auto px-7 py-3 rounded-xl bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold text-xs shadow-md shadow-brand-blue-600/20 active:scale-95 transition-all flex items-center justify-center gap-2 min-h-[44px]"
+            className="w-full sm:w-auto px-7 py-3 rounded-xl bg-terracotta-500 hover:bg-terracotta-600 text-white font-bold text-xs shadow-md shadow-terracotta-500/20 active:scale-95 transition-all flex items-center justify-center gap-2 min-h-[44px]"
           >
             <Save className="w-4 h-4" />
             <span>حفظ التعديلات</span>
@@ -276,4 +277,3 @@ export const UserProfilePage: React.FC = () => {
     </div>
   );
 };
-

@@ -93,24 +93,25 @@ export const SubscriptionRequestPage: React.FC = () => {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-xs text-slate-500">
-        <Link to="/" className="hover:text-brand-blue-600">الرئيسية</Link>
+        <Link to="/" className="hover:text-terracotta-600 transition-colors">الرئيسية</Link>
         <span>/</span>
-        <Link to="/gyms" className="hover:text-brand-blue-600">صالات المكلا</Link>
+        <Link to="/gyms" className="hover:text-terracotta-600 transition-colors">صالات المكلا</Link>
         <span>/</span>
-        <span className="text-slate-900 font-bold">طلب الاشتراك</span>
+        <span className="text-forest-900 font-bold">طلب الاشتراك</span>
       </div>
 
       {/* Header */}
-      <div className="bg-gradient-to-r from-brand-blue-900 to-brand-dark-900 text-white rounded-3xl p-6 sm:p-8 md:p-10 relative overflow-hidden shadow-xl">
+      <div className="bg-gradient-to-r from-forest-900 via-forest-800 to-forest-950 text-white rounded-3xl p-6 sm:p-8 md:p-10 relative overflow-hidden shadow-xl border border-forest-800/60">
+        <div className="absolute top-0 left-0 w-80 h-80 bg-terracotta-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="relative z-10 max-w-xl space-y-2">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-green-500/20 text-brand-green-400 text-xs font-bold border border-brand-green-500/30">
-            <CalendarCheck className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-sage-500/20 text-sage-300 text-xs font-bold border border-sage-500/30">
+            <CalendarCheck className="w-3.5 h-3.5 text-sage-300" />
             <span>تسجيل واشتراك فوري</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-black">
             طلب اشتراك في صالات المكلا
           </h1>
-          <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          <p className="text-sand-200 text-xs sm:text-sm leading-relaxed">
             اختر الصالة والباقة المناسبة لميزانيتك وجدولك اليومي، واحجز مقعدك بكل سهولة وأمان.
           </p>
         </div>
@@ -118,7 +119,7 @@ export const SubscriptionRequestPage: React.FC = () => {
 
       {/* Auth Gate for Interactive Subscription */}
       {!isAuthenticated && (
-        <div className="bg-amber-50 border border-amber-200/80 rounded-3xl p-5 sm:p-8 space-y-4">
+        <div className="bg-amber-50/70 border border-amber-200/80 rounded-3xl p-5 sm:p-8 space-y-4">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
               <LogIn className="w-6 h-6" />
@@ -136,13 +137,13 @@ export const SubscriptionRequestPage: React.FC = () => {
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <Link
               to="/login"
-              className="px-5 py-2.5 rounded-xl bg-brand-blue-600 hover:bg-brand-blue-700 text-white text-xs font-bold shadow-sm"
+              className="px-5 py-2.5 rounded-xl bg-terracotta-500 hover:bg-terracotta-600 text-white text-xs font-bold shadow-sm shadow-terracotta-500/20"
             >
               تسجيل الدخول
             </Link>
             <Link
               to="/register"
-              className="px-5 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-700 text-xs font-bold hover:bg-slate-50"
+              className="px-5 py-2.5 rounded-xl bg-white border border-sand-300 text-forest-800 text-xs font-bold hover:bg-sand-50"
             >
               إنشاء حساب جديد
             </Link>
@@ -158,18 +159,18 @@ export const SubscriptionRequestPage: React.FC = () => {
 
       {/* Main Form */}
       {isSuccess ? (
-        <div className="bg-white p-6 sm:p-12 rounded-3xl border border-slate-200 text-center space-y-4 shadow-xl">
-          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-brand-green-100 text-brand-green-600 flex items-center justify-center mx-auto animate-bounce">
+        <div className="bg-white p-6 sm:p-12 rounded-3xl border border-sand-200 text-center space-y-4 shadow-xl">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-sage-100 text-sage-600 flex items-center justify-center mx-auto animate-bounce">
             <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10" />
           </div>
-          <h2 className="text-xl sm:text-2xl font-black text-slate-900">تم تسجيل طلب الاشتراك بنجاح!</h2>
+          <h2 className="text-xl sm:text-2xl font-black text-forest-900">تم تسجيل طلب الاشتراك بنجاح!</h2>
           <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-            تم إرسال طلب اشتراكك إلى إدارة <strong className="text-slate-800">{currentGym.nameAr}</strong>. يمكنك مراجعة كود الطلب ومتابعة حالته من صفحة طلباتي وحجوزاتي.
+            تم إرسال طلب اشتراكك إلى إدارة <strong className="text-forest-900">{currentGym.nameAr}</strong>. يمكنك مراجعة كود الطلب ومتابعة حالته من صفحة طلباتي وحجوزاتي.
           </p>
           <div className="pt-4">
             <Link
               to="/my-orders"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold text-xs sm:text-sm"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-terracotta-500 hover:bg-terracotta-600 text-white font-bold text-xs sm:text-sm shadow-md shadow-terracotta-500/20"
             >
               <span>الانتقال لطلباتي واشتراكاتي</span>
               <ArrowRight className="w-4 h-4 rotate-180" />
@@ -179,9 +180,9 @@ export const SubscriptionRequestPage: React.FC = () => {
       ) : (
         <form onSubmit={handleSubmit} className="space-y-8">
           {/* Gym & Plan Selection */}
-          <div className="bg-white p-5 sm:p-7 rounded-3xl border border-slate-200/90 shadow-sm space-y-6">
-            <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-              <Building className="w-5 h-5 text-brand-blue-600" />
+          <div className="bg-white p-5 sm:p-7 rounded-3xl border border-sand-200 shadow-sm space-y-6">
+            <h3 className="text-base font-bold text-forest-900 flex items-center gap-2">
+              <Building className="w-5 h-5 text-terracotta-500" />
               <span>اختيار الصالة والباقة الرياضية</span>
             </h3>
 
@@ -193,7 +194,7 @@ export const SubscriptionRequestPage: React.FC = () => {
               <select
                 value={gymId}
                 onChange={(e) => setGymId(e.target.value)}
-                className="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-blue-500 text-sm font-bold bg-white"
+                className="w-full px-4 py-3 rounded-2xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-sm font-bold bg-white"
               >
                 {MUKALLA_GYMS.map((g) => (
                   <option key={g.id} value={g.id}>
@@ -217,18 +218,18 @@ export const SubscriptionRequestPage: React.FC = () => {
                       onClick={() => setPlanId(p.id)}
                       className={`cursor-pointer p-4 rounded-2xl border-2 transition-all flex flex-col justify-between ${
                         isSelected
-                          ? 'border-brand-blue-600 bg-brand-blue-50/50 shadow-sm'
-                          : 'border-slate-200 hover:border-slate-300 bg-white'
+                          ? 'border-terracotta-500 bg-terracotta-50/50 shadow-sm'
+                          : 'border-sand-200 hover:border-sand-300 bg-white'
                       }`}
                     >
                       <div>
                         <div className="flex items-center justify-between mb-1">
-                          <span className="text-xs font-bold text-slate-900">{p.name}</span>
-                          <span className={`w-3.5 h-3.5 rounded-full border-2 ${isSelected ? 'border-brand-blue-600 bg-brand-blue-600' : 'border-slate-300'}`} />
+                          <span className="text-xs font-bold text-forest-900">{p.name}</span>
+                          <span className={`w-3.5 h-3.5 rounded-full border-2 ${isSelected ? 'border-terracotta-500 bg-terracotta-500' : 'border-slate-300'}`} />
                         </div>
                         <p className="text-[11px] text-slate-500 mb-2">المدة: {p.period}</p>
                       </div>
-                      <div className="text-left font-black text-brand-blue-700 text-base" dir="ltr">
+                      <div className="text-left font-black text-terracotta-600 text-base" dir="ltr">
                         {p.priceYer.toLocaleString()} YER
                       </div>
                     </div>
@@ -239,9 +240,9 @@ export const SubscriptionRequestPage: React.FC = () => {
           </div>
 
           {/* Schedule & Shift */}
-          <div className="bg-white p-5 sm:p-7 rounded-3xl border border-slate-200/90 shadow-sm space-y-6">
-            <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-              <Clock className="w-5 h-5 text-brand-green-600" />
+          <div className="bg-white p-5 sm:p-7 rounded-3xl border border-sand-200 shadow-sm space-y-6">
+            <h3 className="text-base font-bold text-forest-900 flex items-center gap-2">
+              <Clock className="w-5 h-5 text-sage-600" />
               <span>فترة التمرين وتاريخ البدء</span>
             </h3>
 
@@ -255,7 +256,7 @@ export const SubscriptionRequestPage: React.FC = () => {
                   required
                   value={startDate}
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-blue-500 text-sm font-semibold"
+                  className="w-full px-4 py-2.5 rounded-xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-sm font-semibold"
                 />
               </div>
 
@@ -267,10 +268,10 @@ export const SubscriptionRequestPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setPreferredShift('morning')}
-                    className={`py-2.5 px-3 rounded-xl border text-xs font-bold transition-all ${
+                    className={`py-2.5 px-3 rounded-xl border text-xs font-bold transition-all min-h-[44px] ${
                       preferredShift === 'morning'
-                        ? 'border-brand-blue-600 bg-brand-blue-50 text-brand-blue-700'
-                        : 'border-slate-200 text-slate-600 hover:bg-slate-50'
+                        ? 'border-terracotta-500 bg-terracotta-50 text-terracotta-700'
+                        : 'border-sand-200 text-slate-600 hover:bg-sand-50'
                     }`}
                   >
                     الفترة الصباحية
@@ -278,10 +279,10 @@ export const SubscriptionRequestPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setPreferredShift('evening')}
-                    className={`py-2.5 px-3 rounded-xl border text-xs font-bold transition-all ${
+                    className={`py-2.5 px-3 rounded-xl border text-xs font-bold transition-all min-h-[44px] ${
                       preferredShift === 'evening'
-                        ? 'border-brand-blue-600 bg-brand-blue-50 text-brand-blue-700'
-                        : 'border-slate-200 text-slate-600 hover:bg-slate-50'
+                        ? 'border-terracotta-500 bg-terracotta-50 text-terracotta-700'
+                        : 'border-sand-200 text-slate-600 hover:bg-sand-50'
                     }`}
                   >
                     الفترة المسائية
@@ -299,14 +300,14 @@ export const SubscriptionRequestPage: React.FC = () => {
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="مثال: لدي إصابة سابقة في الركبة / أود برنامج لياقة لتخفيف الوزن..."
-                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-blue-500 text-sm"
+                className="w-full px-4 py-2.5 rounded-xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-sm"
               />
             </div>
           </div>
 
           {/* Payment Method */}
-          <div className="bg-white p-5 sm:p-7 rounded-3xl border border-slate-200/90 shadow-sm space-y-6">
-            <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+          <div className="bg-white p-5 sm:p-7 rounded-3xl border border-sand-200 shadow-sm space-y-6">
+            <h3 className="text-base font-bold text-forest-900 flex items-center gap-2">
               <CreditCard className="w-5 h-5 text-amber-600" />
               <span>طريقة السداد المعتمدة في المكلا</span>
             </h3>
@@ -316,13 +317,13 @@ export const SubscriptionRequestPage: React.FC = () => {
                 onClick={() => setPaymentMethod('cash_at_gym')}
                 className={`cursor-pointer p-4 rounded-2xl border-2 transition-all ${
                   paymentMethod === 'cash_at_gym'
-                    ? 'border-brand-blue-600 bg-brand-blue-50/60 shadow-sm'
-                    : 'border-slate-200 hover:border-slate-300'
+                    ? 'border-terracotta-500 bg-terracotta-50/60 shadow-sm'
+                    : 'border-sand-200 hover:border-sand-300'
                 }`}
               >
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-xs font-bold text-slate-900">نقداً بالصالة</span>
-                  <span className={`w-3 h-3 rounded-full ${paymentMethod === 'cash_at_gym' ? 'bg-brand-blue-600' : 'bg-slate-200'}`} />
+                  <span className="text-xs font-bold text-forest-900">نقداً بالصالة</span>
+                  <span className={`w-3 h-3 rounded-full ${paymentMethod === 'cash_at_gym' ? 'bg-terracotta-500' : 'bg-slate-200'}`} />
                 </div>
                 <p className="text-[11px] text-slate-500">الدفع كاش عند الحضور وبدء التمرين</p>
               </div>
@@ -331,13 +332,13 @@ export const SubscriptionRequestPage: React.FC = () => {
                 onClick={() => setPaymentMethod('kuraimi_exchange')}
                 className={`cursor-pointer p-4 rounded-2xl border-2 transition-all ${
                   paymentMethod === 'kuraimi_exchange'
-                    ? 'border-brand-blue-600 bg-brand-blue-50/60 shadow-sm'
-                    : 'border-slate-200 hover:border-slate-300'
+                    ? 'border-terracotta-500 bg-terracotta-50/60 shadow-sm'
+                    : 'border-sand-200 hover:border-sand-300'
                 }`}
               >
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-xs font-bold text-slate-900">بنك الكريمي</span>
-                  <span className={`w-3 h-3 rounded-full ${paymentMethod === 'kuraimi_exchange' ? 'bg-brand-blue-600' : 'bg-slate-200'}`} />
+                  <span className="text-xs font-bold text-forest-900">بنك الكريمي</span>
+                  <span className={`w-3 h-3 rounded-full ${paymentMethod === 'kuraimi_exchange' ? 'bg-terracotta-500' : 'bg-slate-200'}`} />
                 </div>
                 <p className="text-[11px] text-slate-500">تحويل لحساب الصالة لدى الكريمي</p>
               </div>
@@ -346,13 +347,13 @@ export const SubscriptionRequestPage: React.FC = () => {
                 onClick={() => setPaymentMethod('omgy_exchange')}
                 className={`cursor-pointer p-4 rounded-2xl border-2 transition-all ${
                   paymentMethod === 'omgy_exchange'
-                    ? 'border-brand-blue-600 bg-brand-blue-50/60 shadow-sm'
-                    : 'border-slate-200 hover:border-slate-300'
+                    ? 'border-terracotta-500 bg-terracotta-50/60 shadow-sm'
+                    : 'border-sand-200 hover:border-sand-300'
                 }`}
               >
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-xs font-bold text-slate-900">العمقي للصرافة</span>
-                  <span className={`w-3 h-3 rounded-full ${paymentMethod === 'omgy_exchange' ? 'bg-brand-blue-600' : 'bg-slate-200'}`} />
+                  <span className="text-xs font-bold text-forest-900">العمقي للصرافة</span>
+                  <span className={`w-3 h-3 rounded-full ${paymentMethod === 'omgy_exchange' ? 'bg-terracotta-500' : 'bg-slate-200'}`} />
                 </div>
                 <p className="text-[11px] text-slate-500">حوالة باسم الصالة عبر فروع العمقي</p>
               </div>
@@ -368,7 +369,7 @@ export const SubscriptionRequestPage: React.FC = () => {
                   value={paymentReference}
                   onChange={(e) => setPaymentReference(e.target.value)}
                   placeholder="أدخل رقم الحوالة للتأكيد الفوري..."
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-blue-500 text-sm font-mono"
+                  className="w-full px-4 py-2.5 rounded-xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-sm font-mono"
                   dir="ltr"
                 />
               </div>
@@ -376,16 +377,16 @@ export const SubscriptionRequestPage: React.FC = () => {
           </div>
 
           {/* Total & Submit Button */}
-          <div className="bg-slate-900 text-white p-5 sm:p-7 rounded-3xl shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="bg-forest-900 text-white p-5 sm:p-7 rounded-3xl shadow-xl border border-forest-800/60 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-              <span className="text-xs text-slate-400 block">إجمالي قيمة الاشتراك المستحق:</span>
+              <span className="text-xs text-sand-300 block">إجمالي قيمة الاشتراك المستحق:</span>
               <div className="flex items-baseline gap-2 mt-1">
-                <span className="text-3xl font-black text-brand-green-400">
+                <span className="text-3xl font-black text-terracotta-400">
                   {activePlan.priceYer.toLocaleString()}
                 </span>
-                <span className="text-xs text-slate-300 font-bold">ريال يمني</span>
+                <span className="text-xs text-sand-200 font-bold">ريال يمني</span>
               </div>
-              <span className="text-[11px] text-slate-400 block mt-1">
+              <span className="text-[11px] text-sand-300/80 block mt-1">
                 تشمل باقة: {activePlan.name} ({currentGym.nameAr})
               </span>
             </div>
@@ -393,13 +394,13 @@ export const SubscriptionRequestPage: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting || !isAuthenticated}
-              className={`w-full sm:w-auto px-8 py-4 rounded-2xl font-black text-sm flex items-center justify-center gap-2 transition-all shadow-lg ${
+              className={`w-full sm:w-auto px-8 py-4 rounded-2xl font-black text-sm flex items-center justify-center gap-2 transition-all shadow-lg min-h-[48px] ${
                 !isAuthenticated
-                  ? 'bg-slate-700 text-slate-400 cursor-not-allowed'
-                  : 'bg-brand-blue-600 hover:bg-brand-blue-500 text-white shadow-brand-blue-600/30 active:scale-95'
+                  ? 'bg-forest-800 text-sand-400 cursor-not-allowed'
+                  : 'bg-terracotta-500 hover:bg-terracotta-600 text-white shadow-terracotta-500/30 active:scale-95'
               }`}
             >
-              <ShieldCheck className="w-5 h-5 text-brand-green-300" />
+              <ShieldCheck className="w-5 h-5 text-sage-300" />
               <span>{isSubmitting ? 'جاري الإرسال...' : 'تأكيد وإرسال طلب الاشتراك'}</span>
             </button>
           </div>

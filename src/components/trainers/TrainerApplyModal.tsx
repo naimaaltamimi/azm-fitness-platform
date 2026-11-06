@@ -62,19 +62,19 @@ export const TrainerApplyModal: React.FC<TrainerApplyModalProps> = ({
     <Modal isOpen={isOpen} onClose={onClose} title="تسجيل كابتن / مدرب معتمد بالمكلا" maxWidth="lg">
       {isSubmitted ? (
         <div className="text-center py-8 space-y-4">
-          <div className="w-16 h-16 rounded-full bg-brand-green-100 text-brand-green-600 mx-auto flex items-center justify-center animate-bounce">
+          <div className="w-16 h-16 rounded-full bg-sage-100 text-sage-600 mx-auto flex items-center justify-center animate-bounce">
             <CheckCircle2 className="w-10 h-10" />
           </div>
-          <h4 className="text-xl font-bold text-slate-800">تم تسجيل طلبك بنجاح كابتن!</h4>
+          <h4 className="text-xl font-bold text-forest-900">تم تسجيل طلبك بنجاح كابتن!</h4>
           <p className="text-sm text-slate-600 max-w-sm mx-auto">
             تم توثيق بياناتك وإدراج ملفك الرياضي في دليل مدربي المكلا بمنصة عزم.
           </p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4 text-right">
-          <div className="p-3 bg-brand-blue-50 border border-brand-blue-100 rounded-xl flex items-start gap-3">
-            <UserCheck className="w-5 h-5 text-brand-blue-600 shrink-0 mt-0.5" />
-            <p className="text-xs text-brand-blue-900 leading-relaxed">
+          <div className="p-3.5 bg-sand-100 border border-sand-200 rounded-2xl flex items-start gap-3">
+            <UserCheck className="w-5 h-5 text-terracotta-500 shrink-0 mt-0.5" />
+            <p className="text-xs text-forest-900 leading-relaxed">
               وفقاً لقواعد منصة عزم، نقبل الكباتن والمدربين الحقيقيين الممارسين في صالات وأندية المكلا لضمان تجربة حقيقية للمتدربين.
             </p>
           </div>
@@ -88,7 +88,7 @@ export const TrainerApplyModal: React.FC<TrainerApplyModalProps> = ({
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="مثال: سالم باحيدرة"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-blue-500 text-sm"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-sm"
               />
             </div>
 
@@ -100,7 +100,7 @@ export const TrainerApplyModal: React.FC<TrainerApplyModalProps> = ({
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="أدخل رقم هاتفك..."
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-blue-500 text-sm"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-sm"
                 dir="ltr"
               />
             </div>
@@ -115,7 +115,7 @@ export const TrainerApplyModal: React.FC<TrainerApplyModalProps> = ({
                 value={specialty}
                 onChange={(e) => setSpecialty(e.target.value)}
                 placeholder="مثال: مدرب كمال أجسام وتغذية"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-blue-500 text-sm"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-sm"
               />
             </div>
 
@@ -124,7 +124,7 @@ export const TrainerApplyModal: React.FC<TrainerApplyModalProps> = ({
               <select
                 value={neighborhood}
                 onChange={(e) => setNeighborhood(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-blue-500 text-sm bg-white"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-sm bg-white"
               >
                 <option value="الشرج">الشرج</option>
                 <option value="فوه">فوه</option>
@@ -145,7 +145,7 @@ export const TrainerApplyModal: React.FC<TrainerApplyModalProps> = ({
                 max="40"
                 value={experienceYears}
                 onChange={(e) => setExperienceYears(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-blue-500 text-sm"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-sm"
               />
             </div>
 
@@ -154,7 +154,7 @@ export const TrainerApplyModal: React.FC<TrainerApplyModalProps> = ({
               <select
                 value={gymAffiliation}
                 onChange={(e) => setGymAffiliation(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-blue-500 text-sm bg-white"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-sm bg-white"
               >
                 <option value="سمارت جيم (Smart Gym)">سمارت جيم (Smart Gym) - فوة المتضررين</option>
                 <option value="المكلا جيم (Mukalla Gym)">المكلا جيم (Mukalla Gym) - الشرج فوق قاعة ميرال</option>
@@ -173,7 +173,7 @@ export const TrainerApplyModal: React.FC<TrainerApplyModalProps> = ({
               value={certificationsText}
               onChange={(e) => setCertificationsText(e.target.value)}
               placeholder="مثال:&#10;دبلوم تدريب اللياقة البدنية&#10;شهادة الإسعافات الأولية الرياضية"
-              className="w-full px-3.5 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-blue-500 text-sm"
+              className="w-full px-3.5 py-2 rounded-xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-sm"
             />
           </div>
 
@@ -184,7 +184,7 @@ export const TrainerApplyModal: React.FC<TrainerApplyModalProps> = ({
               value={bio}
               onChange={(e) => setBio(e.target.value)}
               placeholder="أخبر الرياضيين عن أسلوبك التدريبي وأهدافك معهم..."
-              className="w-full px-3.5 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-blue-500 text-sm"
+              className="w-full px-3.5 py-2 rounded-xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-sm"
             />
           </div>
 
@@ -192,13 +192,13 @@ export const TrainerApplyModal: React.FC<TrainerApplyModalProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 text-sm font-semibold"
+              className="px-4 py-2.5 rounded-xl border border-sand-200 text-slate-600 hover:bg-sand-50 text-sm font-semibold"
             >
               إلغاء
             </button>
             <button
               type="submit"
-              className="px-6 py-2.5 rounded-xl bg-brand-blue-600 hover:bg-brand-blue-700 text-white text-sm font-bold shadow-md shadow-brand-blue-600/20 active:scale-95 transition-all"
+              className="px-6 py-2.5 rounded-xl bg-terracotta-500 hover:bg-terracotta-600 text-white text-sm font-bold shadow-md shadow-terracotta-500/20 active:scale-95 transition-all"
             >
               تقديم وتوثيق الملف
             </button>
@@ -208,4 +208,3 @@ export const TrainerApplyModal: React.FC<TrainerApplyModalProps> = ({
     </Modal>
   );
 };
-

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { storageService } from '../services/storageService';
 import { useAuth } from '../context/AuthContext';
 import { EmptyState } from '../components/common/EmptyState';
@@ -19,7 +19,6 @@ import {
 
 export const TrainerDetailsPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
   const { user, isAuthenticated, loginAsDemo } = useAuth();
 
   const trainers = storageService.getTrainers();
@@ -61,32 +60,32 @@ export const TrainerDetailsPage: React.FC = () => {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-xs text-slate-500">
-        <Link to="/" className="hover:text-brand-blue-600">الرئيسية</Link>
+        <Link to="/" className="hover:text-terracotta-600 transition-colors">الرئيسية</Link>
         <span>/</span>
-        <Link to="/trainers" className="hover:text-brand-blue-600">دليل المدربين</Link>
+        <Link to="/trainers" className="hover:text-terracotta-600 transition-colors">دليل المدربين</Link>
         <span>/</span>
-        <span className="text-slate-900 font-bold">{trainer.name}</span>
+        <span className="text-forest-900 font-bold">{trainer.name}</span>
       </div>
 
       {/* Main Profile Header */}
-      <div className="bg-white rounded-3xl border border-slate-200/90 shadow-xl overflow-hidden p-6 sm:p-8 md:p-10">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pb-8 border-b border-slate-100">
+      <div className="bg-white rounded-3xl border border-sand-200 shadow-xl overflow-hidden p-6 sm:p-8 md:p-10">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pb-8 border-b border-sand-100">
           <img
             src={trainer.avatarUrl}
             alt={trainer.name}
-            className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl object-cover ring-4 ring-brand-blue-500/20 shadow-md shrink-0"
+            className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl object-cover ring-4 ring-sand-200 shadow-md shrink-0"
           />
           <div className="space-y-2 flex-1">
             <div className="flex flex-wrap items-center gap-3">
-              <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900">{trainer.name}</h1>
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-forest-900">{trainer.name}</h1>
               {trainer.isVerified && (
-                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-brand-green-50 text-brand-green-700 border border-brand-green-200 text-xs font-bold">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-brand-green-600" />
+                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-sage-50 text-sage-800 border border-sage-200 text-xs font-bold">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-sage-600" />
                   مدرب معتمد بالمكلا
                 </span>
               )}
             </div>
-            <p className="text-sm font-bold text-brand-blue-600">{trainer.specialty}</p>
+            <p className="text-sm font-bold text-terracotta-600">{trainer.specialty}</p>
             <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500 pt-1">
               <span className="flex items-center gap-1.5">
                 <MapPin className="w-4 h-4 text-slate-400" />
@@ -101,7 +100,7 @@ export const TrainerDetailsPage: React.FC = () => {
 
           <button
             onClick={() => setIsBookModalOpen(true)}
-            className="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold text-sm shadow-md shadow-brand-blue-600/20 active:scale-95 transition-all flex items-center justify-center gap-2 min-h-[44px]"
+            className="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-terracotta-500 hover:bg-terracotta-600 text-white font-bold text-sm shadow-md shadow-terracotta-500/20 active:scale-95 transition-all flex items-center justify-center gap-2 min-h-[44px]"
           >
             <Calendar className="w-4 h-4" />
             <span>حجز جلسة تدريبية</span>
@@ -113,8 +112,8 @@ export const TrainerDetailsPage: React.FC = () => {
           {/* Bio & Philosophy */}
           <div className="md:col-span-2 space-y-6">
             <div className="space-y-3">
-              <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <Dumbbell className="w-4 h-4 text-brand-blue-600" />
+              <h3 className="text-base font-bold text-forest-900 flex items-center gap-2">
+                <Dumbbell className="w-4 h-4 text-terracotta-500" />
                 النبذة المهنية والأسلوب التدريبي
               </h3>
               <p className="text-slate-600 text-sm leading-relaxed whitespace-pre-line">
@@ -124,17 +123,17 @@ export const TrainerDetailsPage: React.FC = () => {
 
             {/* Certifications */}
             <div className="space-y-3">
-              <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <Award className="w-4 h-4 text-brand-green-600" />
+              <h3 className="text-base font-bold text-forest-900 flex items-center gap-2">
+                <Award className="w-4 h-4 text-sage-600" />
                 الشهادات والاعتمادات الرسمية
               </h3>
               <div className="space-y-2">
                 {trainer.certifications.map((c, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100 text-slate-800 text-xs font-semibold"
+                    className="flex items-center gap-3 p-3 rounded-xl bg-sand-50/70 border border-sand-100 text-forest-900 text-xs font-semibold"
                   >
-                    <div className="w-6 h-6 rounded-lg bg-brand-green-100 text-brand-green-700 flex items-center justify-center shrink-0">
+                    <div className="w-6 h-6 rounded-lg bg-sage-100 text-sage-700 flex items-center justify-center shrink-0">
                       ✓
                     </div>
                     <span>{c}</span>
@@ -146,42 +145,42 @@ export const TrainerDetailsPage: React.FC = () => {
 
           {/* Quick Info Sidebar */}
           <div className="space-y-4">
-            <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100 space-y-4 text-xs">
-              <h4 className="font-bold text-slate-900 text-sm">بيانات التعاقد والتدريب</h4>
+            <div className="p-6 bg-sand-50/70 rounded-2xl border border-sand-200 space-y-4 text-xs">
+              <h4 className="font-bold text-forest-900 text-sm">بيانات التعاقد والتدريب</h4>
 
               {trainer.activeGymAffiliation && (
                 <div>
                   <span className="text-slate-500 block mb-1">الصالة التي يدرب بها:</span>
-                  <span className="font-bold text-slate-900">{trainer.activeGymAffiliation}</span>
+                  <span className="font-bold text-forest-900">{trainer.activeGymAffiliation}</span>
                 </div>
               )}
 
               {trainer.sessionPriceYer && (
                 <div>
                   <span className="text-slate-500 block mb-1">سعر الجلسة الاستشارية / الخاصة:</span>
-                  <span className="font-black text-brand-blue-700 text-base">
+                  <span className="font-black text-terracotta-600 text-base">
                     {trainer.sessionPriceYer.toLocaleString()} ريال يمني
                   </span>
                 </div>
               )}
 
               {trainer.phone && (
-                <div className="pt-2 border-t border-slate-200">
+                <div className="pt-2 border-t border-sand-200">
                   <span className="text-slate-500 block mb-1">هاتف التواصل المباشر:</span>
                   <a
                     href={`tel:${trainer.phone}`}
-                    className="font-bold font-mono text-[#2878B8] flex items-center gap-1.5"
+                    className="font-bold font-mono text-forest-900 hover:text-terracotta-600 transition-colors flex items-center gap-1.5"
                     dir="ltr"
                   >
-                    <Phone className="w-3.5 h-3.5" />
+                    <Phone className="w-3.5 h-3.5 text-terracotta-500" />
                     {trainer.phone}
                   </a>
                 </div>
               )}
             </div>
 
-            <div className="p-4 bg-brand-blue-50/60 rounded-2xl border border-brand-blue-100 text-xs text-brand-blue-900 flex items-start gap-2">
-              <ShieldCheck className="w-4 h-4 text-brand-blue-600 shrink-0 mt-0.5" />
+            <div className="p-4 bg-sand-100/70 rounded-2xl border border-sand-200 text-xs text-forest-900 flex items-start gap-2">
+              <ShieldCheck className="w-4 h-4 text-sage-600 shrink-0 mt-0.5" />
               <span>
                 كافة جلسات التدريب الشخصي تتم بالتنسيق داخل الصالات الرياضية المعتمدة في المكلا.
               </span>
@@ -201,7 +200,7 @@ export const TrainerDetailsPage: React.FC = () => {
             <div className="w-12 h-12 rounded-full bg-amber-100 text-amber-700 mx-auto flex items-center justify-center">
               <Calendar className="w-6 h-6" />
             </div>
-            <h4 className="text-base font-bold text-slate-800">سجل دخولك لحجز الجلسة</h4>
+            <h4 className="text-base font-bold text-forest-900">سجل دخولك لحجز الجلسة</h4>
             <p className="text-xs text-slate-600 max-w-sm mx-auto">
               يلزم تسجيل الدخول لتسجيل اسمك ورقم هاتفك لدى الكابتن للتنسيق.
             </p>
@@ -209,7 +208,7 @@ export const TrainerDetailsPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => loginAsDemo('trainee')}
-                className="px-4 py-2 bg-brand-blue-600 text-white font-bold text-xs rounded-xl"
+                className="px-4 py-2 bg-terracotta-500 hover:bg-terracotta-600 text-white font-bold text-xs rounded-xl shadow-sm"
               >
                 دخول سريع كمتدرب
               </button>
@@ -217,8 +216,8 @@ export const TrainerDetailsPage: React.FC = () => {
           </div>
         ) : isBooked ? (
           <div className="text-center py-8 space-y-3">
-            <CheckCircle2 className="w-12 h-12 text-brand-green-500 mx-auto animate-bounce" />
-            <h4 className="font-bold text-slate-800">تم حجز الجلسة بنجاح!</h4>
+            <CheckCircle2 className="w-12 h-12 text-sage-600 mx-auto animate-bounce" />
+            <h4 className="font-bold text-forest-900">تم حجز الجلسة بنجاح!</h4>
             <p className="text-xs text-slate-600">سيتم إشعار الكابتن والتواصل معك هاتفياً.</p>
           </div>
         ) : (
@@ -230,7 +229,7 @@ export const TrainerDetailsPage: React.FC = () => {
                 required
                 value={sessionDate}
                 onChange={(e) => setSessionDate(e.target.value)}
-                className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-xs"
               />
             </div>
 
@@ -239,7 +238,7 @@ export const TrainerDetailsPage: React.FC = () => {
               <select
                 value={sessionTime}
                 onChange={(e) => setSessionTime(e.target.value)}
-                className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs bg-white"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-xs bg-white"
               >
                 <option value="09:00 صباحاً">09:00 صباحاً (فترة صباحية)</option>
                 <option value="05:00 عصراً">05:00 عصراً (فترة ما بعد العصر)</option>
@@ -255,7 +254,7 @@ export const TrainerDetailsPage: React.FC = () => {
                 value={sessionGoal}
                 onChange={(e) => setSessionGoal(e.target.value)}
                 placeholder="مثال: تنشيف دهون، زيادة قوة، استشارة تمرين..."
-                className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-xs"
               />
             </div>
 
@@ -263,13 +262,13 @@ export const TrainerDetailsPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setIsBookModalOpen(false)}
-                className="px-4 py-2 border rounded-xl text-xs text-slate-600"
+                className="px-4 py-2 border border-sand-200 rounded-xl text-xs text-slate-600 hover:bg-sand-50"
               >
                 إلغاء
               </button>
               <button
                 type="submit"
-                className="px-6 py-2 bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-bold text-xs rounded-xl shadow-md"
+                className="px-6 py-2.5 bg-terracotta-500 hover:bg-terracotta-600 text-white font-bold text-xs rounded-xl shadow-md shadow-terracotta-500/20"
               >
                 تأكيد الحجز
               </button>
@@ -280,4 +279,3 @@ export const TrainerDetailsPage: React.FC = () => {
     </div>
   );
 };
-

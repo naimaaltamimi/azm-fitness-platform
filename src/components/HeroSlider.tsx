@@ -79,7 +79,7 @@ interface HeroSliderProps {
 
 export const HeroSlider: React.FC<HeroSliderProps> = ({ slides = SLIDES_DATA }) => {
   return (
-    <div className="w-full relative overflow-hidden bg-slate-950 font-['Cairo',sans-serif]" dir="rtl">
+    <div className="w-full relative overflow-hidden bg-forest-950 font-['Cairo',sans-serif]" dir="rtl">
       <Swiper
         modules={[Autoplay, Pagination, EffectFade]}
         effect="fade"
@@ -99,20 +99,20 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ slides = SLIDES_DATA }) 
           <SwiperSlide key={slide.id} className="w-full h-full">
             <div className="w-full h-full flex flex-col-reverse md:flex-row items-stretch">
               {/* Content Column (52% on Desktop, Full on Mobile) */}
-              <div className="w-full md:w-[54%] flex flex-col justify-center items-start px-5 sm:px-10 lg:px-16 py-8 sm:py-12 md:py-16 bg-gradient-to-l from-brand-blue-700 via-brand-blue-600 to-brand-blue-800 text-white relative z-10">
+              <div className="w-full md:w-[54%] flex flex-col justify-center items-start px-5 sm:px-10 lg:px-16 py-8 sm:py-12 md:py-16 bg-gradient-to-l from-forest-900 via-forest-800 to-forest-950 text-white relative z-10 border-l border-forest-800/40">
                 {/* Ambient Subtle Glows */}
-                <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute top-0 right-0 w-80 h-80 bg-terracotta-500/10 rounded-full blur-3xl pointer-events-none" />
                 <div
                   className={`absolute bottom-0 left-0 w-80 h-80 rounded-full blur-3xl pointer-events-none transition-colors duration-700 ${
-                    slide.id === 3 ? 'bg-amber-500/15' : 'bg-brand-green-500/15'
+                    slide.id === 3 ? 'bg-amber-500/15' : 'bg-sage-500/15'
                   }`}
                 />
 
-                {/* Eyebrow Pill Badge (Coach Sheikha Style) */}
-                <div className="relative inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-blue-50 text-xs sm:text-[13px] font-bold mb-4 shadow-sm">
+                {/* Eyebrow Pill Badge */}
+                <div className="relative inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-sand-100 text-xs sm:text-[13px] font-bold mb-4 shadow-sm">
                   <span
                     className={`w-2.5 h-2.5 rounded-full animate-pulse shrink-0 ${
-                      slide.id === 3 ? 'bg-amber-400' : 'bg-brand-green-400'
+                      slide.id === 3 ? 'bg-amber-400' : 'bg-sage-400'
                     }`}
                   />
                   <span className="line-clamp-1">{slide.badge}</span>
@@ -121,34 +121,34 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ slides = SLIDES_DATA }) 
                 {/* Main Headline with High-Contrast Bold Pill */}
                 <h1 className="relative heading-hero text-white mb-4 tracking-tight">
                   <span className="block text-white/95">{slide.titlePrefix}</span>
-                  {/* High-Contrast White Pill with Blue Text */}
-                  <span className="inline-block my-1.5 sm:my-2 px-3.5 sm:px-4 py-1 rounded-2xl bg-white text-brand-blue-700 shadow-xl shadow-black/15 transform hover:scale-[1.01] transition-transform text-[0.88em]">
+                  {/* High-Contrast Pill with Terracotta Accent */}
+                  <span className="inline-block my-1.5 sm:my-2 px-3.5 sm:px-4 py-1 rounded-2xl bg-white text-forest-900 shadow-xl shadow-black/15 transform hover:scale-[1.01] transition-transform text-[0.88em]">
                     {slide.pillText}
                   </span>
-                  <span className="block text-sky-200 text-[0.72em] font-extrabold mt-1">
+                  <span className="block text-terracotta-400 text-[0.72em] font-extrabold mt-1">
                     {slide.titleSuffix}
                   </span>
                 </h1>
 
                 {/* Body Lead Description */}
-                <p className="relative text-blue-100 text-sm sm:text-base leading-relaxed max-w-xl mb-6 sm:mb-8 font-medium">
+                <p className="relative text-sand-200 text-sm sm:text-base leading-relaxed max-w-xl mb-6 sm:mb-8 font-medium">
                   {slide.description}
                 </p>
 
-                {/* Dual Action Buttons (Coach Sheikha pattern: Primary + Secondary) */}
+                {/* Dual Action Buttons */}
                 <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
                   <Link
                     to={slide.primaryBtnLink}
-                    className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-white text-brand-blue-700 hover:bg-blue-50 hover:text-brand-blue-800 font-extrabold text-sm sm:text-base shadow-xl hover:shadow-2xl active:scale-95 transition-all group min-h-[46px]"
+                    className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl bg-terracotta-500 text-white hover:bg-terracotta-600 font-extrabold text-sm sm:text-base shadow-xl shadow-terracotta-500/30 hover:shadow-2xl active:scale-95 transition-all group min-h-[46px]"
                   >
                     <span>{slide.primaryBtnText}</span>
-                    <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:-translate-x-1 text-brand-blue-600" />
+                    <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:-translate-x-1" />
                   </Link>
 
                   {slide.secondaryBtnText && slide.secondaryBtnLink && (
                     <Link
                       to={slide.secondaryBtnLink}
-                      className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/30 backdrop-blur-sm transition-all min-h-[46px]"
+                      className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/20 backdrop-blur-sm transition-all min-h-[46px]"
                     >
                       <span>{slide.secondaryBtnText}</span>
                     </Link>
@@ -156,14 +156,14 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ slides = SLIDES_DATA }) 
                 </div>
 
                 {/* Trust Anchor text below buttons */}
-                <p className="relative text-blue-100/90 text-xs sm:text-[13px] font-semibold mt-4 sm:mt-5 flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-brand-green-400 shrink-0" />
+                <p className="relative text-sand-200/90 text-xs sm:text-[13px] font-semibold mt-4 sm:mt-5 flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-sage-400 shrink-0" />
                   <span>{slide.secondaryText}</span>
                 </p>
               </div>
 
               {/* Image Art Frame Column (48% on Desktop, Full on Mobile) */}
-              <div className="w-full md:w-[46%] min-h-[280px] md:min-h-full relative overflow-hidden bg-slate-900 md:rounded-r-none md:rounded-l-[40px] shadow-2xl">
+              <div className="w-full md:w-[46%] min-h-[280px] md:min-h-full relative overflow-hidden bg-forest-950 md:rounded-r-none md:rounded-l-[40px] shadow-2xl">
                 <img
                   src={slide.image}
                   alt={slide.altText}
@@ -171,7 +171,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ slides = SLIDES_DATA }) 
                   loading="eager"
                 />
                 {/* Soft gradient edge for seamless visual transition */}
-                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-brand-blue-700/60 via-transparent to-black/30 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-forest-900/60 via-transparent to-black/30 pointer-events-none" />
               </div>
             </div>
           </SwiperSlide>

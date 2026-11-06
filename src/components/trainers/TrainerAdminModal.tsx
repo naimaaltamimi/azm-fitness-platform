@@ -88,7 +88,7 @@ export const TrainerAdminModal: React.FC<TrainerAdminModalProps> = ({
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-blue-500 outline-none"
+            className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 text-sm focus:ring-2 focus:ring-terracotta-500 outline-none"
             placeholder="مثال: الكابتن أحمد سالم العمودي"
           />
         </div>
@@ -103,7 +103,7 @@ export const TrainerAdminModal: React.FC<TrainerAdminModalProps> = ({
               required
               value={specialty}
               onChange={(e) => setSpecialty(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-blue-500 outline-none"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 text-sm focus:ring-2 focus:ring-terracotta-500 outline-none"
               placeholder="مثال: كمال أجسام وتغذية رياضية"
             />
           </div>
@@ -115,7 +115,7 @@ export const TrainerAdminModal: React.FC<TrainerAdminModalProps> = ({
             <select
               value={neighborhood}
               onChange={(e) => setNeighborhood(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-blue-500 outline-none"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 text-sm focus:ring-2 focus:ring-terracotta-500 outline-none bg-white"
             >
               <option value="الشرج">الشرج</option>
               <option value="فوة المتضررين">فوة المتضررين</option>
@@ -136,7 +136,7 @@ export const TrainerAdminModal: React.FC<TrainerAdminModalProps> = ({
               max={30}
               value={experienceYears}
               onChange={(e) => setExperienceYears(Number(e.target.value))}
-              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-blue-500 outline-none"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 text-sm focus:ring-2 focus:ring-terracotta-500 outline-none"
             />
           </div>
         </div>
@@ -149,7 +149,7 @@ export const TrainerAdminModal: React.FC<TrainerAdminModalProps> = ({
             rows={3}
             value={bio}
             onChange={(e) => setBio(e.target.value)}
-            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-blue-500 outline-none resize-none"
+            className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 text-sm focus:ring-2 focus:ring-terracotta-500 outline-none resize-none"
             placeholder="اكتب نبذة مختصرة عن الكابتن وخبراته في تدريب أبناء المكلا..."
           />
         </div>
@@ -162,34 +162,34 @@ export const TrainerAdminModal: React.FC<TrainerAdminModalProps> = ({
             rows={2}
             value={certificationsText}
             onChange={(e) => setCertificationsText(e.target.value)}
-            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-blue-500 outline-none resize-none"
+            className="w-full px-3.5 py-2.5 rounded-xl border border-sand-200 text-sm focus:ring-2 focus:ring-terracotta-500 outline-none resize-none"
             placeholder="شهادة تدريب لياقة معتمدة&#10;دورة إنعاش قلبي وإسعافات رياضية"
           />
         </div>
 
         <div className="pt-2 flex items-center justify-between">
-          <label className="flex items-center gap-2 cursor-pointer text-xs font-bold text-slate-800">
+          <label className="flex items-center gap-2 cursor-pointer text-xs font-bold text-forest-900">
             <input
               type="checkbox"
               checked={isVerified}
               onChange={(e) => setIsVerified(e.target.checked)}
-              className="rounded text-brand-blue-600 focus:ring-brand-blue-500 w-4 h-4"
+              className="rounded text-terracotta-500 focus:ring-terracotta-500 w-4 h-4"
             />
             <span>توثيق المدرب ككابتن معتمد رسمياً</span>
           </label>
         </div>
 
-        <div className="pt-4 flex items-center justify-end gap-2 border-t border-slate-100">
+        <div className="pt-4 flex items-center justify-end gap-2 border-t border-sand-100">
           <button
             type="button"
             onClick={onClose}
-            className="px-5 py-2.5 rounded-xl border border-slate-200 text-slate-700 text-xs font-bold hover:bg-slate-50 transition-colors"
+            className="px-5 py-2.5 rounded-xl border border-sand-200 text-slate-700 text-xs font-bold hover:bg-sand-50 transition-colors"
           >
             إلغاء
           </button>
           <button
             type="submit"
-            className="px-6 py-2.5 rounded-xl bg-brand-blue-600 hover:bg-brand-blue-700 text-white text-xs font-bold shadow-md shadow-brand-blue-600/20 active:scale-95 transition-all"
+            className="px-6 py-2.5 rounded-xl bg-terracotta-500 hover:bg-terracotta-600 text-white text-xs font-bold shadow-md shadow-terracotta-500/20 active:scale-95 transition-all"
           >
             {trainer ? 'حفظ التعديلات' : 'إضافة الكابتن'}
           </button>
@@ -200,4 +200,3 @@ export const TrainerAdminModal: React.FC<TrainerAdminModalProps> = ({
 };
 
 export default TrainerAdminModal;
-
