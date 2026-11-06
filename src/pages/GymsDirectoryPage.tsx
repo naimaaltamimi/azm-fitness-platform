@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { MUKALLA_GYMS } from '../data/mukallaGymsData';
 import { GymCard } from '../components/gyms/GymCard';
 import { EmptyState } from '../components/common/EmptyState';
-import { Search, MapPin, Dumbbell } from 'lucide-react';
+import { Search, MapPin, Dumbbell, ShieldCheck } from 'lucide-react';
 
 export const GymsDirectoryPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -38,26 +38,28 @@ export const GymsDirectoryPage: React.FC = () => {
   }, [searchQuery, selectedNeighborhood]);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
-      {/* Page Header */}
-      <div className="bg-gradient-to-l from-brand-blue-900 to-brand-dark-900 text-white rounded-3xl p-6 sm:p-8 md:p-12 relative overflow-hidden shadow-xl">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8 font-['Cairo',sans-serif]" dir="rtl">
+      
+      {/* Page Header (Warm Deep Charcoal Luxury Banner) */}
+      <div className="bg-[#1F2722] text-white rounded-3xl p-6 sm:p-10 md:p-14 relative overflow-hidden shadow-xl border border-[#2D3831]">
         <div className="relative z-10 max-w-2xl space-y-3">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-blue-500/20 text-brand-blue-300 text-xs font-bold border border-brand-blue-400/30">
-            <MapPin className="w-3.5 h-3.5 text-brand-green-400" />
-            <span>حضرموت - ساحل المكلا</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[#E49C7A] text-xs font-bold border border-white/15">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#D97241]" />
+            <span>فحص وتوثيق ميداني 2026 • ساحل المكلا</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-black">
-            دليل صالات ونوادي المكلا الرياضية
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight">
+            دليل صالات ونوادي المكلا المعتمدة
           </h1>
-          <p className="text-slate-300 text-sm leading-relaxed">
-            استعرض الصالات الرياضية المعتمدة في مدينة المكلا بصورها وتجهيزاتها الواقعية، مع مواعيد العمل وخيارات الاشتراك المباشرة.
+          <p className="text-white/70 text-xs sm:text-sm leading-relaxed font-medium">
+            استعرض الصالات الرياضية في المكلا بالصور الواقعية، خطوط الأجهزة المتوفرة، مواعيد فترات الرجال والنساء، والاشتراكات المعتمدة بالريال اليمني.
           </p>
         </div>
       </div>
 
       {/* Filters & Search Toolbar */}
-      <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-sm space-y-4">
+      <div className="bg-white p-5 sm:p-6 rounded-3xl border border-[#F0EBE3] shadow-[0_8px_30px_rgb(0,0,0,0.03)] space-y-4">
         <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+          
           {/* Search Box */}
           <div className="relative w-full md:w-96">
             <input
@@ -65,22 +67,22 @@ export const GymsDirectoryPage: React.FC = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="ابحث باسم الصالة أو الميزة (حديد، سير، كارديو)..."
-              className="w-full pl-3.5 pr-10 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-blue-500 text-sm"
+              className="w-full pl-4 pr-11 py-3 rounded-2xl border border-[#F0EBE3] bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#D97241] text-xs sm:text-sm font-semibold text-[#1F2722]"
             />
-            <Search className="w-4 h-4 text-slate-400 absolute right-3.5 top-3" />
+            <Search className="w-4 h-4 text-[#7D9683] absolute right-4 top-3.5" />
           </div>
 
           {/* Neighborhood Pills */}
-          <div className="flex flex-wrap items-center gap-1.5 w-full md:w-auto">
-            <span className="text-xs font-bold text-slate-500 ml-2 hidden sm:inline">الحي:</span>
+          <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
+            <span className="text-xs font-black text-[#536559] ml-1 hidden sm:inline">أحياء المكلا:</span>
             {neighborhoods.map((n) => (
               <button
                 key={n}
                 onClick={() => setSelectedNeighborhood(n)}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                   selectedNeighborhood === n
-                    ? 'bg-brand-blue-600 text-white shadow-sm'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    ? 'bg-[#D97241] text-white shadow-md'
+                    : 'bg-[#FAF8F5] text-[#536559] hover:bg-[#FDF6F2] hover:text-[#D97241] border border-[#F0EBE3]'
                 }`}
               >
                 {n === 'all' ? 'جميع أحياء المكلا' : n}
@@ -91,15 +93,15 @@ export const GymsDirectoryPage: React.FC = () => {
 
         {/* Active Filters Reset */}
         {(searchQuery || selectedNeighborhood !== 'all') && (
-          <div className="flex items-center justify-end text-xs text-slate-500 pt-2 border-t border-slate-100">
+          <div className="flex items-center justify-end text-xs text-[#536559] pt-3 border-t border-[#F0EBE3]">
             <button
               onClick={() => {
                 setSearchQuery('');
                 setSelectedNeighborhood('all');
               }}
-              className="text-brand-blue-600 font-bold hover:underline"
+              className="text-[#D97241] font-bold hover:underline"
             >
-              إعادة ضبط الفلاتر
+              إعادة ضبط معايير البحث
             </button>
           </div>
         )}
@@ -107,7 +109,7 @@ export const GymsDirectoryPage: React.FC = () => {
 
       {/* Gyms Grid or Empty State */}
       {filteredGyms.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredGyms.map((gym) => (
             <GymCard key={gym.id} gym={gym} />
           ))}
@@ -128,3 +130,4 @@ export const GymsDirectoryPage: React.FC = () => {
   );
 };
 
+export default GymsDirectoryPage;
