@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { storageService } from '../services/storageService';
 import { MUKALLA_GYMS } from '../data/mukallaGymsData';
-import { getSupabaseStatusMessage, supabaseConfig } from '../services/supabaseClient';
 import { SubscriptionRequest, Trainer } from '../types';
 import { TrainerAdminModal } from '../components/trainers/TrainerAdminModal';
 import { AdminLayout } from '../components/admin/AdminLayout';
@@ -13,17 +12,15 @@ import {
   Users,
   CheckCircle,
   XCircle,
-  Database,
   PlusCircle,
   Edit,
-  Trash2,
-  Sparkles
+  Trash2
 } from 'lucide-react';
 
 export const AdminDashboardPage: React.FC = () => {
   const [subscriptions, setSubscriptions] = useState<SubscriptionRequest[]>([]);
   const [trainers, setTrainers] = useState<Trainer[]>([]);
-  const [activeTab, setActiveTab] = useState<'subscriptions' | 'gyms' | 'trainers' | 'database'>('subscriptions');
+  const [activeTab, setActiveTab] = useState<'subscriptions' | 'gyms' | 'trainers'>('subscriptions');
   const [selectedTrainer, setSelectedTrainer] = useState<Trainer | null>(null);
   const [isTrainerModalOpen, setIsTrainerModalOpen] = useState(false);
 
@@ -264,45 +261,6 @@ export const AdminDashboardPage: React.FC = () => {
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-        )}
-
-        {/* Tab 4: Database & Architecture */}
-        {activeTab === 'database' && (
-          <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
-            <div className="space-y-1">
-              <h3 className="text-base font-bold text-slate-900">حالة تكامل وتجهيز قاعدة بيانات Supabase</h3>
-              <p className="text-xs text-slate-500">
-                {getSupabaseStatusMessage()}
-              </p>
-            </div>
-
-            <div className="p-4 bg-slate-900 text-slate-200 rounded-2xl font-mono text-xs space-y-2" dir="ltr">
-              <p className="text-[#D9AD55]">// Supabase Connection Status</p>
-              <p>VITE_SUPABASE_URL: {supabaseConfig.supabaseUrl || '(Not set yet - ready for phase 2)'}</p>
-              <p>VITE_SUPABASE_ANON_KEY: {supabaseConfig.supabaseAnonKey ? '***' : '(Not set yet)'}</p>
-              <p>STATUS: READY_FOR_ENV_KEYS</p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-              <div className="p-4 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-                <span className="font-bold text-slate-900 text-xs block">جداول المنصة المصممة:</span>
-                <ul className="text-xs text-slate-600 space-y-1 list-disc list-inside">
-                  <li>`profiles` (المستخدمين والأدوار)</li>
-                  <li>`gyms` (نوادي المكلا المعتمدة)</li>
-                  <li>`subscriptions` (طلبات الاشتراكات)</li>
-                  <li>`trainers` (دليل الكباتن)</li>
-                  <li>`meals` (الوجبات الصحية)</li>
-                </ul>
-              </div>
-
-              <div className="p-4 bg-slate-50 rounded-xl border border-slate-100 space-y-1 sm:col-span-2">
-                <span className="font-bold text-slate-900 text-xs block">خطوات التفعيل في المرحلة التالية:</span>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  بمجرد إضافة مفاتيح `VITE_SUPABASE_URL` و `VITE_SUPABASE_ANON_KEY` في ملف `.env`، سيتم نقل البيانات بسلاسة وتفعيل المصادقة الحقيقية عبر البريد والهاتف دون الحاجة لإعادة كتابة الواجهات الـ 16 المبنية حالياً.
-                </p>
-              </div>
             </div>
           </div>
         )}

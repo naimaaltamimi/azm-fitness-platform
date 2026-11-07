@@ -6,7 +6,6 @@ import {
   CalendarCheck,
   Building2,
   Users,
-  Database,
   ExternalLink,
   LogOut,
   ShieldAlert,
@@ -17,8 +16,8 @@ import {
 
 interface AdminLayoutProps {
   children: React.ReactNode;
-  activeTab: 'subscriptions' | 'gyms' | 'trainers' | 'database';
-  setActiveTab: (tab: 'subscriptions' | 'gyms' | 'trainers' | 'database') => void;
+  activeTab: 'subscriptions' | 'gyms' | 'trainers';
+  setActiveTab: (tab: 'subscriptions' | 'gyms' | 'trainers') => void;
   pendingCount: number;
 }
 
@@ -148,21 +147,6 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
                 <span>دليل الكباتن والمدربين</span>
               </div>
               <ChevronLeft className="w-4 h-4 text-slate-400" />
-            </button>
-
-            <button
-              onClick={() => setActiveTab('database')}
-              className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-xs font-bold transition-all ${
-                activeTab === 'database'
-                  ? 'bg-[#2878B8] text-white shadow-md shadow-[#2878B8]/30'
-                  : 'text-slate-300 hover:bg-white/5 hover:text-white'
-              }`}
-            >
-              <div className="flex items-center gap-3">
-                <Database className="w-4 h-4 text-[#D9AD55]" />
-                <span>قاعدة البيانات و Supabase</span>
-              </div>
-              <span className="w-2 h-2 rounded-full bg-[#D9AD55]" />
             </button>
           </nav>
         </div>
