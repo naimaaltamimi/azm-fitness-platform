@@ -102,10 +102,10 @@ export const CalorieCalculatorPage: React.FC = () => {
           <Calculator className="w-4 h-4 text-[#7D9683]" />
           <span>حاسبة السعرات والماكروز العلمية • المكلا</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-black text-[#1F2722] tracking-tight">
+        <h1 className="text-3xl sm:text-4xl font-black text-[#1F2722] leading-[1.3] tracking-normal">
           احسب احتياجك اليومي بدقة علمية
         </h1>
-        <p className="text-sm text-[#536559] leading-relaxed">
+        <p className="text-sm text-[#536559] leading-[1.8] font-normal sm:font-medium">
           معادلة ميفلين-سانت جور المعتمدة عالمياً مع احتساب تعويض الماء لرطوبة وطقس ساحل حضرموت.
         </p>
       </div>

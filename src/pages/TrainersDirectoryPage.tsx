@@ -48,10 +48,10 @@ export const TrainersDirectoryPage: React.FC = () => {
             <ShieldCheck className="w-3.5 h-3.5 text-[#D97241]" />
             <span>توثيق واعتماد معايير التدريب بالمكلا 2026</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black leading-[1.3] tracking-normal">
             دليل الكباتن والمدربين المعتمدين
           </h1>
-          <p className="text-white/70 text-xs sm:text-sm leading-relaxed font-medium">
+          <p className="text-white/80 text-xs sm:text-sm leading-[1.8] font-normal sm:font-medium">
             حرصاً على المصداقية الميدانية: نعرض فقط المدربين الحقيقيين المعتمدين في صالات المكلا مع تفاصيل خبراتهم وشهاداتهم، مع إمكانية انضمام الكباتن المؤهلين.
           </p>
         </div>

@@ -47,10 +47,10 @@ export const GymsDirectoryPage: React.FC = () => {
             <ShieldCheck className="w-3.5 h-3.5 text-[#D97241]" />
             <span>فحص وتوثيق ميداني 2026 • ساحل المكلا</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black leading-[1.3] tracking-normal">
             دليل صالات ونوادي المكلا المعتمدة
           </h1>
-          <p className="text-white/70 text-xs sm:text-sm leading-relaxed font-medium">
+          <p className="text-white/80 text-xs sm:text-sm leading-[1.8] font-normal sm:font-medium">
             استعرض الصالات الرياضية في المكلا بالصور الواقعية، خطوط الأجهزة المتوفرة، مواعيد فترات الرجال والنساء، والاشتراكات المعتمدة بالريال اليمني.
           </p>
         </div>

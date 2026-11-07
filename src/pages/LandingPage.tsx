@@ -206,10 +206,10 @@ export const LandingPage: React.FC = () => {
       ═══════════════════════════════════════════ */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="text-center space-y-2 mb-10">
-          <span className="text-xs font-black text-[#D97241] uppercase tracking-wider">
+          <span className="text-xs font-black text-[#D97241] uppercase tracking-normal">
             ✦ دليلك الرياضي والتغذوي في المكلا ✦
           </span>
-          <h2 className="text-2xl sm:text-3xl font-black text-[#1F2722] tracking-wide">
+          <h2 className="text-2xl sm:text-3xl font-black text-[#1F2722] leading-[1.3] tracking-normal">
             تصفح خدمات عزم حسب الفئة
           </h2>
         </div>
@@ -297,7 +297,7 @@ export const LandingPage: React.FC = () => {
         <div className="flex items-center justify-between mb-8">
           <div>
             <span className="text-xs font-black text-[#7D9683] block">صالات حقيقية معتمدة</span>
-            <h2 className="text-2xl sm:text-3xl font-black text-[#1F2722] tracking-wide">
+            <h2 className="text-2xl sm:text-3xl font-black text-[#1F2722] leading-[1.3] tracking-normal">
               الصالات الأكثر إقبالاً في المكلا
             </h2>
           </div>
@@ -402,7 +402,7 @@ export const LandingPage: React.FC = () => {
           <div className="flex items-center justify-between">
             <div>
               <span className="text-xs font-black text-[#7D9683] block">صيد بحر المكلا الطازج</span>
-              <h2 className="text-2xl sm:text-3xl font-black text-[#1F2722] tracking-wide">
+              <h2 className="text-2xl sm:text-3xl font-black text-[#1F2722] leading-[1.3] tracking-normal">
                 وجبات ساحلية نوصي بتجربتها
               </h2>
             </div>
@@ -515,7 +515,7 @@ export const LandingPage: React.FC = () => {
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 block animate-ping absolute inset-0" />
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 block relative" />
           </div>
-          <span className="text-xs font-black tracking-wide">
+          <span className="text-xs font-black tracking-normal">
             استفسار فوري • صالات المكلا
           </span>
         </a>

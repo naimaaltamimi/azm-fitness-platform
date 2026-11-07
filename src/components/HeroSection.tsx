@@ -60,17 +60,17 @@ export const HeroSection: React.FC = () => {
           {/* ─── RIGHT (RTL): TEXT CONTENT ─── */}
           <div className="space-y-5 sm:space-y-6 text-right order-2 lg:order-1">
             {/* Tag / Eyebrow */}
-            <span className="inline-block text-[11px] sm:text-xs font-bold text-[#D97241] tracking-wide uppercase">
+            <span className="inline-block text-[11px] sm:text-xs font-bold text-[#D97241] tracking-normal">
               {slide.tag}
             </span>
 
             {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[58px] font-black text-[#1F2722] leading-[1.15] tracking-tight whitespace-pre-line">
+            <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-black text-[#1F2722] leading-[1.28] tracking-normal whitespace-pre-line">
               {slide.headline}
             </h1>
 
             {/* Subtitle */}
-            <p className="text-sm sm:text-base text-[#536559] leading-relaxed max-w-lg font-medium">
+            <p className="text-sm sm:text-base text-[#536559] leading-[1.8] max-w-lg font-normal sm:font-medium">
               {slide.subtitle}
             </p>
 
@@ -78,7 +78,7 @@ export const HeroSection: React.FC = () => {
             <div className="pt-1">
               <Link
                 to={slide.ctaLink}
-                className="inline-flex items-center justify-center px-8 py-3.5 rounded-lg bg-[#D97241] hover:bg-[#C75F2F] text-white font-bold text-sm tracking-wide shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:scale-[0.98] transition-all uppercase"
+                className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl bg-[#D97241] hover:bg-[#C75F2F] text-white font-bold text-sm tracking-normal shadow-lg shadow-[#D97241]/25 hover:shadow-xl hover:-translate-y-0.5 active:scale-[0.98] transition-all"
               >
                 {slide.ctaLabel}
               </Link>

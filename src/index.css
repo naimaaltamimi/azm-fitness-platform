@@ -5,10 +5,16 @@
 @layer base {
   html {
     direction: rtl;
-    font-family: 'Cairo', Tajawal, system-ui, -apple-system, sans-serif;
+    font-family: 'Cairo', 'Tajawal', system-ui, -apple-system, sans-serif;
     scroll-behavior: smooth;
     /* Prevent horizontal scroll globally */
     overflow-x: hidden;
+    /* Masterclass Arabic Font Optimization */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "cv01", "ss01", "kern" 1;
+    letter-spacing: 0;
   }
 
   body {
@@ -17,6 +23,7 @@
     width: 100%;
     color: #1F2722;
     background-color: #ffffff;
+    font-family: 'Cairo', 'Tajawal', system-ui, -apple-system, sans-serif;
   }
 
   /* Fade-in animation for hero carousel */
@@ -83,40 +90,43 @@
    Design Tokens & Typography Scales (Inspired by Coach Sheikha)
    ========================================================== */
 
-/* Fluid Typography Scales - Refined & Harmonious */
+/* Fluid Typography Scales - Perfected for Arabic Script */
 .heading-hero {
-  font-size: clamp(22px, 3.2vw, 36px);
-  line-height: 1.3;
-  font-weight: 800;
-  letter-spacing: -0.015em;
+  font-size: clamp(24px, 3.4vw, 38px);
+  line-height: 1.35;
+  font-weight: 850;
+  letter-spacing: normal;
 }
 
 .heading-section {
-  font-size: clamp(19px, 2.2vw, 25px);
-  line-height: 1.4;
+  font-size: clamp(20px, 2.4vw, 28px);
+  line-height: 1.45;
   font-weight: 800;
-  color: #0f172a;
-  letter-spacing: -0.01em;
+  color: #1F2722;
+  letter-spacing: normal;
 }
 
 .heading-card {
-  font-size: clamp(15.5px, 1.4vw, 18px);
-  line-height: 1.45;
+  font-size: clamp(16px, 1.5vw, 19px);
+  line-height: 1.5;
   font-weight: 750;
-  color: #0f172a;
+  color: #1F2722;
+  letter-spacing: normal;
 }
 
 .text-body-lead {
-  font-size: clamp(13px, 1.1vw, 15px);
-  line-height: 1.75;
-  color: #475569;
+  font-size: clamp(14px, 1.15vw, 16px);
+  line-height: 1.85;
+  color: #3D4C42;
   font-weight: 500;
+  letter-spacing: normal;
 }
 
 .text-body-muted {
-  font-size: 13px;
-  line-height: 1.7;
-  color: #64748b;
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: #536559;
+  letter-spacing: normal;
 }
 
 .eyebrow-pill {
@@ -125,7 +135,7 @@
   gap: 6px;
   font-size: 11.5px;
   font-weight: 700;
-  letter-spacing: 0.2px;
+  letter-spacing: normal;
   padding: 4px 12px;
   border-radius: 9999px;
 }
@@ -133,16 +143,16 @@
 /* Card Style (Inspired by Coach Sheikha's card architecture) */
 .card-sheikha {
   background-color: #ffffff;
-  border: 1.5px solid #e2e8f0;
+  border: 1.5px solid #EAE5DA;
   border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 4px 20px rgba(31, 39, 34, 0.04);
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .card-sheikha:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.09);
-  border-color: #cbd5e1;
+  box-shadow: 0 12px 30px rgba(31, 39, 34, 0.08);
+  border-color: #DED7C8;
 }
 
 /* High-Contrast Action Buttons with Lift */
@@ -151,21 +161,21 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  font-size: 15.5px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 750;
   padding: 13px 28px;
-  border-radius: 12px;
-  background-color: #2563eb;
+  border-radius: 14px;
+  background-color: #D97241;
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.28);
+  box-shadow: 0 4px 14px rgba(217, 114, 65, 0.28);
   transition: all 0.25s ease;
   min-height: 44px;
 }
 
 .btn-sheikha-primary:hover {
-  background-color: #1d4ed8;
+  background-color: #C75F2F;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 6px 20px rgba(217, 114, 65, 0.38);
 }
 
 .btn-sheikha-secondary {
@@ -173,19 +183,20 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  font-size: 15.5px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 750;
   padding: 13px 28px;
-  border-radius: 12px;
+  border-radius: 14px;
   background-color: transparent;
-  color: #2563eb;
-  border: 1.5px solid #2563eb;
+  color: #1F2722;
+  border: 1.5px solid #DED7C8;
   transition: all 0.25s ease;
   min-height: 44px;
 }
 
 .btn-sheikha-secondary:hover {
-  background-color: #eff6ff;
+  background-color: #F4F1EA;
+  border-color: #C8BEAA;
   transform: translateY(-2px);
 }
 
@@ -221,7 +232,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: #2563eb;
+  background: #1F2722;
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -230,39 +241,46 @@
   font-size: 15px;
   position: relative;
   z-index: 2;
-  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+  box-shadow: 0 4px 10px rgba(31, 39, 34, 0.25);
 }
 
-/* Package Card Architecture (Inspired by Coach Sheikha's pkg-card) */
+/* Package Card Architecture */
 .pkg-card {
   background-color: #ffffff;
-  border: 1.5px solid #e2e8f0;
+  border: 1.5px solid #EAE5DA;
   border-radius: 20px;
   padding: 34px 28px 28px;
   display: flex;
   flex-direction: column;
   position: relative;
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 4px 20px rgba(31, 39, 34, 0.04);
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .pkg-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.1);
-  border-color: #93c5fd;
+  box-shadow: 0 12px 30px rgba(31, 39, 34, 0.09);
+  border-color: #DED7C8;
 }
 
 .pkg-card-badge {
   position: absolute;
   top: 16px;
   right: 20px;
-  background-color: #2563eb;
+  background-color: #D97241;
   color: #ffffff;
   font-size: 12px;
   font-weight: 700;
   padding: 4px 14px;
   border-radius: 14px;
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+  box-shadow: 0 2px 8px rgba(217, 114, 65, 0.25);
+}
+
+/* Tabular Numbers for Prices & Calories */
+.font-tabular,
+.font-mono {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
 }
 
 /* Swiper Pagination Customization */

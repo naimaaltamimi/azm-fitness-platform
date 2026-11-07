@@ -67,7 +67,7 @@ export const LoginPage: React.FC = () => {
           <div className="flex justify-center">
             <Logo size="lg" variant="full" />
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black text-[#1F2722] tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-black text-[#1F2722] leading-[1.3] tracking-normal">
             تسجيل الدخول إلى حسابك
           </h1>
           <p className="text-xs sm:text-sm text-[#536559] font-medium">
