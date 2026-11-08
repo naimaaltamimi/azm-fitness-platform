@@ -1,79 +1,45 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  ChevronLeft,
-  ChevronRight,
-  ArrowLeft,
-  Dumbbell,
-  Flame,
-  Salad,
-  CheckCircle2,
-} from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-/* ─── Hero Slide Data (Harmonized with AZM Scandinavian-Sand Identity & MyFitnessPal System) ─── */
+/* ─── Hero Slide Data ─── */
 interface SlideItem {
-  id: number;
   tag: string;
-  badgeType: 'nutrition' | 'gym' | 'calorie';
-  headlinePrefix: string;
-  highlightedBadge: string;
-  headlineSuffix: string;
+  headline: string;
   subtitle: string;
   ctaLabel: string;
   ctaLink: string;
-  microProof: string;
   image: string;
   alt: string;
 }
 
 const heroSlides: SlideItem[] = [
   {
-    id: 1,
-    tag: 'تغذية ساحلية حضرمية',
-    badgeType: 'nutrition',
-    headlinePrefix: 'وجبات صحية من',
-    highlightedBadge: '#1 صيد بحر المكلا',
-    headlineSuffix: 'بروتين طبيعي طازج',
-    subtitle:
-      'وصفات غنية بالبروتين مبنية على صيد المكلا الطازج ومنتجات البيئة الحضرمية المحلية لدعم أهدافك في البناء العضلي والتنشيف.',
-    ctaLabel: 'تصفح مكتبة الوجبات',
+    tag: 'تغذية ساحلية',
+    headline: 'وجبات صحية\nمن بحر المكلا.',
+    subtitle: 'وصفات غنية بالبروتين مبنية على صيد المكلا الطازج ومنتجات البيئة الحضرمية المحلية.',
+    ctaLabel: 'تصفح الوجبات',
     ctaLink: '/meals',
-    microProof: 'صيد بحر المكلا اليومي • ماكروز محسوبة علمياً • بدون اشتراكات إضافية',
-    image:
-      'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1800&q=85',
-    alt: 'وجبات صحية غنية بالبروتين من صيد بحر المكلا الطازج',
+    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1400&q=85',
+    alt: 'وجبات صحية غنية بالبروتين من صيد بحر المكلا',
   },
   {
-    id: 2,
-    tag: 'منصة عزم الرياضية • ساحل حضرموت',
-    badgeType: 'gym',
-    headlinePrefix: 'لياقتك تبدأ من',
-    highlightedBadge: '#1 صالات معتمدة',
-    headlineSuffix: 'بالمكلا وفوة والديس',
-    subtitle:
-      'اكتشف أفضل الصالات الرياضية المعتمدة في المكلا، مع أسعار رسمية بالريال اليمني دون وسطاء، ومواعيد فترات الرجال والنساء المحدثة 2026.',
-    ctaLabel: 'استكشف صالات المكلا',
+    tag: 'منصة عزم الرياضية',
+    headline: 'لياقتك تبدأ\nمن هنا.',
+    subtitle: 'اكتشف أفضل الصالات الرياضية المعتمدة في المكلا، واحسب سعراتك وخطتك الغذائية بدقة علمية.',
+    ctaLabel: 'استكشف الصالات',
     ctaLink: '/gyms',
-    microProof: 'صالات موثقة ميدانياً • أسعار اشتراكات حقيقية بالريال اليمني',
-    image:
-      'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=85',
-    alt: 'تدريب كمال أجسام وأجهزة رياضية متطورة في المكلا',
+    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=85',
+    alt: 'صالات رياضية معتمدة بالمكلا وأجهزة متطورة',
   },
   {
-    id: 3,
-    tag: 'حاسبة السعرات والماكروز العلمية',
-    badgeType: 'calorie',
-    headlinePrefix: 'غذاؤك وحساب سعراتك',
-    highlightedBadge: '#1 علم وليس تخميناً',
-    headlineSuffix: 'وفق مناخ ساحل حضرموت',
-    subtitle:
-      'احسب احتياجك اليومي من السعرات والبروتين والماء وفق معادلة ميفلين-سانت جور المعتمدة عالمياً مع احتساب تعويض الرطوبة وحرارة الساحل بدقة.',
-    ctaLabel: 'احسب سعراتك الآن مجاناً',
+    tag: 'حاسبة السعرات',
+    headline: 'غذاؤك\nعلم وليس تخميناً.',
+    subtitle: 'احسب احتياجك اليومي من السعرات والبروتين والماء وفق معادلة ميفلين-سانت جور المعتمدة عالمياً.',
+    ctaLabel: 'احسب سعراتك مجاناً',
     ctaLink: '/calculator',
-    microProof: 'مجاني 100% • معادلة ميفلين-سانت جور • توصيات مخصصة للساحل',
-    image:
-      'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1800&q=85',
-    alt: 'حساب السعرات الغذائية والماكروز بدقة علمية',
+    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1400&q=85',
+    alt: 'حساب السعرات والماكروز بدقة علمية',
   },
 ];
 
@@ -92,18 +58,14 @@ export const HeroSection: React.FC = () => {
     setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
   }, [totalSlides]);
 
-  const goToSlide = (idx: number) => {
-    setCurrentSlide(idx);
-  };
-
-  /* ─── Autoplay timer (6.5s) with pause on hover ─── */
+  /* Auto-advance timer (6.5s) */
   useEffect(() => {
     if (isPaused) return;
     const timer = setInterval(nextSlide, 6500);
     return () => clearInterval(timer);
   }, [nextSlide, isPaused]);
 
-  /* ─── Mobile Swipe Handlers ─── */
+  /* Touch gestures for mobile */
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartXRef.current = e.touches[0].clientX;
   };
@@ -112,32 +74,16 @@ export const HeroSection: React.FC = () => {
     if (touchStartXRef.current === null) return;
     const touchEndX = e.changedTouches[0].clientX;
     const diff = touchStartXRef.current - touchEndX;
-
-    // RTL: Swipe left (diff > 50) moves next; swipe right (diff < -50) moves prev
-    if (diff > 50) {
-      nextSlide();
-    } else if (diff < -50) {
-      prevSlide();
-    }
+    if (diff > 50) nextSlide();
+    else if (diff < -50) prevSlide();
     touchStartXRef.current = null;
   };
 
   const slide = heroSlides[currentSlide];
 
-  const renderBadgeIcon = (type: SlideItem['badgeType']) => {
-    switch (type) {
-      case 'gym':
-        return <Dumbbell className="w-3.5 h-3.5 text-[#D97241]" />;
-      case 'calorie':
-        return <Flame className="w-3.5 h-3.5 text-[#F59E0B]" />;
-      case 'nutrition':
-        return <Salad className="w-3.5 h-3.5 text-[#7D9683]" />;
-    }
-  };
-
   return (
     <section
-      className="relative w-full overflow-hidden bg-gradient-to-bl from-[#FAF8F5] via-[#F4F1EA] to-[#E5ECE7] font-['Cairo','Tajawal',sans-serif] min-h-[580px] sm:min-h-[640px] lg:min-h-[680px] xl:min-h-[720px] flex items-center select-none"
+      className="relative w-full overflow-hidden font-['Cairo','Tajawal',sans-serif] select-none"
       dir="rtl"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -145,151 +91,117 @@ export const HeroSection: React.FC = () => {
       onTouchEnd={handleTouchEnd}
       aria-label="القسم الرئيسي لمنصة عزم"
     >
-      {/* ════════════════════════════════════════════════════════════════
-          1. FULL-BLEED HORIZONTAL IMAGES (MYFITNESSPAL PATTERN ON SAND PALETTE)
-          (امتداد أفقي كامل على الجانب الأيسر يندمج بانسيابية مع خلفية الرمل الفخمة)
-      ════════════════════════════════════════════════════════════════ */}
-      <div className="absolute inset-y-0 left-0 w-full lg:w-[52%] xl:w-[55%] h-full z-0 overflow-hidden pointer-events-none">
-        {heroSlides.map((item, idx) => (
-          <div
-            key={item.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out will-change-transform ${
-              idx === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
-            }`}
-            aria-hidden={idx !== currentSlide}
-          >
-            <img
-              src={item.image}
-              alt={item.alt}
-              className="w-full h-full object-cover object-center lg:object-left"
-              loading={idx === 0 ? 'eager' : 'lazy'}
-            />
-          </div>
-        ))}
+      {/* ─── Background Gradient (Soft Warm Sand Scandinavian) ─── */}
+      <div className="absolute inset-0 bg-gradient-to-bl from-[#F4F1EA] via-[#EDE8DF] to-[#E5ECE7]" />
 
-        {/* ─── Seamless Horizontal Sand Gradient Blend (MyFitnessPal Signature) ─── */}
-        {/* On Desktop RTL: Left edge is clear photo, Right blends into soft warm sand #F4F1EA */}
-        <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-transparent via-[#F4F1EA]/60 via-45% via-[#F4F1EA]/95 via-80% to-[#F4F1EA] to-100%" />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-        {/* On Mobile / Tablet: Gradient washes top-to-bottom for 100% Arabic text readability */}
-        <div className="lg:hidden absolute inset-0 bg-gradient-to-b from-transparent from-0% via-[#F4F1EA]/80 via-45% to-[#F4F1EA] to-85%" />
+          {/* ─── RIGHT (RTL): TEXT CONTENT ─── */}
+          <div className="space-y-5 sm:space-y-6 text-right order-2 lg:order-1">
+            {/* Tag / Eyebrow */}
+            <span className="inline-block text-[11px] sm:text-xs font-bold text-[#D97241] tracking-wide uppercase">
+              {slide.tag}
+            </span>
 
-        {/* Ambient Brand Glows (Terracotta & Sage) */}
-        <div className="absolute top-1/4 right-0 w-80 h-80 bg-[#D97241]/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-[#7D9683]/10 rounded-full blur-3xl pointer-events-none" />
-      </div>
-
-      {/* ════════════════════════════════════════════════════════════════
-          2. FOREGROUND CONTENT (SYNCHRONIZED WITH ACTIVE SLIDE)
-      ════════════════════════════════════════════════════════════════ */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24 flex flex-col justify-between min-h-[580px] sm:min-h-[640px] lg:min-h-[680px] xl:min-h-[720px]">
-        <div className="max-w-2xl text-right my-auto">
-          
-          {/* Keyed container for smooth entrance transition whenever currentSlide changes */}
-          <div key={currentSlide} className="space-y-5 sm:space-y-6 animate-hero-fade">
-            
-            {/* Tag / Eyebrow Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-[#DED7C8] text-[#D97241] text-xs sm:text-sm font-bold shadow-sm">
-              {renderBadgeIcon(slide.badgeType)}
-              <span className="tracking-normal">{slide.tag}</span>
-            </div>
-
-            {/* Main Headline with MyFitnessPal Signature Pill Badge */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[58px] font-black text-[#1F2722] leading-[1.2] sm:leading-[1.22] tracking-tight">
-              <span className="block text-[#1F2722]">{slide.headlinePrefix}</span>
-              <span className="inline-block my-2 px-5 sm:px-6 py-1.5 sm:py-2 rounded-2xl bg-white text-[#D97241] shadow-md border border-[#EAE5DA] text-[0.88em] font-black align-middle transform hover:scale-[1.02] transition-transform">
-                {slide.highlightedBadge}
-              </span>
-              <span className="block text-[#1F2722]">{slide.headlineSuffix}</span>
+            {/* Headline */}
+            <h1 className="text-4xl sm:text-5xl lg:text-[58px] font-black text-[#1F2722] leading-[1.15] tracking-tight whitespace-pre-line animate-hero-fade key={currentSlide}">
+              {slide.headline}
             </h1>
 
             {/* Subtitle */}
-            <p className="text-base sm:text-lg text-[#536559] leading-[1.8] sm:leading-[1.85] font-medium max-w-xl text-balance">
+            <p className="text-sm sm:text-base text-[#536559] leading-relaxed max-w-lg font-medium">
               {slide.subtitle}
             </p>
 
-            {/* Primary Action Button (Terracotta Pill CTA like MyFitnessPal) */}
-            <div className="pt-2 sm:pt-4 flex flex-col items-start gap-3.5">
+            {/* CTA Button */}
+            <div className="pt-1">
               <Link
                 to={slide.ctaLink}
-                className="inline-flex items-center justify-center gap-3 px-9 sm:px-11 py-4 sm:py-4.5 rounded-full bg-[#D97241] hover:bg-[#C75F2F] text-white font-black text-base sm:text-lg shadow-xl shadow-[#D97241]/25 hover:shadow-2xl hover:shadow-[#D97241]/40 hover:scale-[1.02] active:scale-[0.98] transition-all group min-h-[56px]"
+                className="inline-flex items-center justify-center px-8 py-3.5 rounded-lg bg-[#D97241] hover:bg-[#C75F2F] text-white font-bold text-sm tracking-wide shadow-lg shadow-[#D97241]/20 hover:shadow-xl hover:shadow-[#D97241]/30 hover:-translate-y-0.5 active:scale-[0.98] transition-all uppercase"
               >
-                <span>{slide.ctaLabel}</span>
-                <ArrowLeft className="w-5 h-5 text-white group-hover:-translate-x-1.5 transition-transform" />
+                {slide.ctaLabel}
               </Link>
+            </div>
+          </div>
 
-              {/* Micro-Reassurance Line */}
-              <div className="pt-1 flex items-center gap-2 text-xs sm:text-[13px] text-[#6E8074] font-medium">
-                <CheckCircle2 className="w-4 h-4 text-[#7D9683] shrink-0" />
-                <span>{slide.microProof}</span>
+          {/* ─── LEFT (RTL): HERO IMAGE & PROPORTIONATE CONTROLS ─── */}
+          <div className="relative order-1 lg:order-2 flex flex-col items-center">
+            
+            {/* The Image Card */}
+            <div className="relative w-full max-w-lg aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-slate-200">
+              <img
+                key={currentSlide}
+                src={slide.image}
+                alt={slide.alt}
+                className="w-full h-full object-cover animate-[fadeIn_0.5s_ease-in-out]"
+                loading="eager"
+              />
+              {/* Subtle gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+            </div>
+
+            {/* ════════════════════════════════════════════════════════════════
+                تنسيق متناسب تماماً تحت الصورة (Live Badge + Slide Dots)
+            ════════════════════════════════════════════════════════════════ */}
+            <div className="w-full max-w-lg mt-4 sm:mt-5 flex items-center justify-between px-1">
+              {/* Live Instant Inquiry Pill (مربوط بالواتساب) */}
+              <a
+                href="https://wa.me/967770000000?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D9%86%D8%B5%D8%A9%20%D8%B9%D8%B2%D9%85%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A3%D9%81%D8%B6%D9%84%20%D8%B5%D8%A7%D9%84%D8%A9%20%D8%B1%D9%8A%D8%A7%D8%B6%D9%8A%D8%A9%20%D9%82%D8%B1%D9%8A%D8%A8%D8%A9%20%D9%85%D9%86%D9%8A%20%D9%81%D9%8A%20%D8%A7%D9%84%D9%85%D9%83%D9%84%D8%A7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#1F2722] hover:bg-[#D97241] text-white text-xs font-bold shadow-md transition-all duration-300 hover:scale-105 active:scale-95 border border-white/10"
+                title="تواصل مباشر عبر واتساب"
+              >
+                <div className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400" />
+                </div>
+                <span className="tracking-normal">استفسار فوري • صالات المكلا</span>
+              </a>
+
+              {/* Dots Indicator (تحت الصورة بمسافة وتناسق دقيق) */}
+              <div className="flex items-center gap-2">
+                {heroSlides.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentSlide(idx)}
+                    className={`rounded-full transition-all duration-300 ${
+                      idx === currentSlide
+                        ? 'w-7 sm:w-8 h-2.5 bg-[#D97241] shadow-sm shadow-[#D97241]/30'
+                        : 'w-2.5 h-2.5 bg-[#DED7C8] hover:bg-[#C8BEAA]'
+                    }`}
+                    aria-label={`الشريحة ${idx + 1}`}
+                  />
+                ))}
               </div>
             </div>
 
           </div>
-
         </div>
 
-        {/* ════════════════════════════════════════════════════════════════
-            3. CAROUSEL CONTROLS & BOTTOM STATUS (HARMONIZED WITH USER SCREENSHOT)
-        ════════════════════════════════════════════════════════════════ */}
-        <div className="mt-8 flex items-center justify-between gap-4 pt-4 border-t border-[#DED7C8]/60">
-          
-          {/* Right side (RTL): Navigation Arrows (< >) */}
-          <div className="flex items-center gap-2.5">
+        {/* ─── NAVIGATION ARROWS (BOTTOM-RIGHT IN RTL) ─── */}
+        <div className="flex items-center justify-start mt-6 sm:mt-8">
+          <div className="flex items-center gap-2">
             <button
               onClick={prevSlide}
-              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#DED7C8] bg-white hover:bg-[#FAF8F5] text-[#536559] hover:text-[#1F2722] flex items-center justify-center transition-all duration-300 shadow-sm active:scale-95 group"
-              aria-label="الشريحة السابقة"
-              title="الشريحة السابقة"
+              className="w-10 h-10 rounded-full border border-[#DED7C8] bg-white hover:bg-[#F4F1EA] flex items-center justify-center text-[#536559] hover:text-[#1F2722] transition-colors shadow-sm active:scale-95"
+              aria-label="السابق"
+              title="السابق"
             >
-              <ChevronRight className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              <ChevronRight className="w-5 h-5" />
             </button>
             <button
               onClick={nextSlide}
-              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#DED7C8] bg-white hover:bg-[#FAF8F5] text-[#536559] hover:text-[#1F2722] flex items-center justify-center transition-all duration-300 shadow-sm active:scale-95 group"
-              aria-label="الشريحة التالية"
-              title="الشريحة التالية"
+              className="w-10 h-10 rounded-full border border-[#DED7C8] bg-white hover:bg-[#F4F1EA] flex items-center justify-center text-[#536559] hover:text-[#1F2722] transition-colors shadow-sm active:scale-95"
+              aria-label="التالي"
+              title="التالي"
             >
-              <ChevronLeft className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              <ChevronLeft className="w-5 h-5" />
             </button>
           </div>
-
-          {/* Left side (RTL): Live Status Badge & Slide Indicators */}
-          <div className="flex items-center gap-3 sm:gap-4">
-            {/* Live Indicator Pill from User's Platform */}
-            <div className="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1F2722] text-white text-xs font-bold shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[#34D399] animate-pulse" />
-              <span>استفسار فوري • صالات المكلا</span>
-            </div>
-
-            {/* Interactive Progress Indicators */}
-            <div className="flex items-center gap-2">
-              {heroSlides.map((item, idx) => {
-                const isActive = idx === currentSlide;
-                return (
-                  <button
-                    key={item.id}
-                    onClick={() => goToSlide(idx)}
-                    className={`h-2.5 rounded-full transition-all duration-500 ${
-                      isActive
-                        ? 'w-7 sm:w-9 bg-[#D97241] shadow-md shadow-[#D97241]/30'
-                        : 'w-2.5 bg-[#DED7C8] hover:bg-[#C8BEAA]'
-                    }`}
-                    aria-label={`الانتقال إلى الشريحة ${idx + 1}`}
-                  />
-                );
-              })}
-            </div>
-
-            {/* Numerical Slide Counter (01 / 03) */}
-            <div className="font-mono text-xs sm:text-sm font-bold text-[#536559] tracking-wider">
-              <span className="text-[#1F2722]">0{currentSlide + 1}</span>
-              <span className="text-[#536559]/50 mx-1">/</span>
-              <span className="text-[#536559]/70">0{totalSlides}</span>
-            </div>
-          </div>
-
         </div>
+
       </div>
     </section>
   );

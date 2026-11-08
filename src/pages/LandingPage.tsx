@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { MUKALLA_GYMS } from '../data/mukallaGymsData';
 import { MEALS_DATA } from '../data/mealsData';
@@ -71,6 +71,15 @@ export const LandingPage: React.FC = () => {
   const [subscribedEmail, setSubscribedEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [favorites, setFavorites] = useState<string[]>([]);
+  const [showFloatingButton, setShowFloatingButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowFloatingButton(window.scrollY > 400);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   /* Featured data */
   const popularGyms = MUKALLA_GYMS.slice(0, 4);
@@ -501,25 +510,27 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* ═══════════════════════════════════════════
-          8. FLOATING SMART WHATSAPP ACTION BUTTON
+          8. FLOATING SMART WHATSAPP ACTION BUTTON (Appears on Scroll)
       ═══════════════════════════════════════════ */}
-      <div className="fixed bottom-6 left-6 z-50">
-        <a
-          href="https://wa.me/967770000000?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D9%86%D8%B5%D8%A9%20%D8%B9%D8%B2%D9%85%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A3%D9%81%D8%B6%D9%84%20%D8%B5%D8%A7%D9%84%D8%A9%20%D8%B1%D9%8A%D8%A7%D8%B6%D9%8A%D8%A9%20%D9%82%D8%B1%D9%8A%D8%A8%D8%A9%20%D9%85%D9%86%D9%8A%20%D9%81%D9%8A%20%D8%A7%D9%84%D9%85%D9%83%D9%84%D8%A7"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#1F2722] hover:bg-[#D97241] text-white shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 border border-white/20"
-          title="تواصل مباشر عبر واتساب"
-        >
-          <div className="relative">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 block animate-ping absolute inset-0" />
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 block relative" />
-          </div>
-          <span className="text-xs font-black tracking-normal">
-            استفسار فوري • صالات المكلا
-          </span>
-        </a>
-      </div>
+      {showFloatingButton && (
+        <div className="fixed bottom-6 left-6 z-50 animate-[fadeIn_0.3s_ease-out]">
+          <a
+            href="https://wa.me/967770000000?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D9%86%D8%B5%D8%A9%20%D8%B9%D8%B2%D9%85%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A3%D9%81%D8%B6%D9%84%20%D8%B5%D8%A7%D9%84%D8%A9%20%D8%B1%D9%8A%D8%A7%D8%B6%D9%8A%D8%A9%20%D9%82%D8%B1%D9%8A%D8%A8%D8%A9%20%D9%85%D9%86%D9%8A%20%D9%81%D9%8A%20%D8%A7%D9%84%D9%85%D9%83%D9%84%D8%A7"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#1F2722] hover:bg-[#D97241] text-white shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 border border-white/20"
+            title="تواصل مباشر عبر واتساب"
+          >
+            <div className="relative">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 block animate-ping absolute inset-0" />
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 block relative" />
+            </div>
+            <span className="text-xs font-black tracking-normal">
+              استفسار فوري • صالات المكلا
+            </span>
+          </a>
+        </div>
+      )}
 
     </div>
   );
