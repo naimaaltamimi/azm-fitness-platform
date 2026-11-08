@@ -10,11 +10,11 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 
-/* ─── Hero Slide Data (Aligned with MyFitnessPal System & AZM Platform) ─── */
+/* ─── Hero Slide Data (Harmonized with AZM Scandinavian-Sand Identity & MyFitnessPal System) ─── */
 interface SlideItem {
   id: number;
   tag: string;
-  badgeType: 'calorie' | 'gym' | 'nutrition';
+  badgeType: 'nutrition' | 'gym' | 'calorie';
   headlinePrefix: string;
   highlightedBadge: string;
   headlineSuffix: string;
@@ -29,51 +29,51 @@ interface SlideItem {
 const heroSlides: SlideItem[] = [
   {
     id: 1,
-    tag: 'حاسبة السعرات والماكروز المعتمدة',
-    badgeType: 'calorie',
-    headlinePrefix: 'منصتك الأولى لـ',
-    highlightedBadge: '#1 لياقة وتغذية',
-    headlineSuffix: 'بالمكلا وساحل حضرموت',
+    tag: 'تغذية ساحلية حضرمية',
+    badgeType: 'nutrition',
+    headlinePrefix: 'وجبات صحية من',
+    highlightedBadge: '#1 صيد بحر المكلا',
+    headlineSuffix: 'بروتين طبيعي طازج',
     subtitle:
-      'انضم لآلاف الرياضيين في المكلا لحساب سعراتك بدقة علمية وفق مناخ الساحل، وتناول وجبات صحية غنية بالبروتين، واستكشف أفضل الصالات المعتمدة دون عناء.',
-    ctaLabel: 'ابدأ رحلتك مجاناً',
-    ctaLink: '/calculator',
-    microProof: 'مجاني 100% • حسابات علمية معتمدة وفق معادلة ميفلين • صالات موثقة ميدانياً',
+      'وصفات غنية بالبروتين مبنية على صيد المكلا الطازج ومنتجات البيئة الحضرمية المحلية لدعم أهدافك في البناء العضلي والتنشيف.',
+    ctaLabel: 'تصفح مكتبة الوجبات',
+    ctaLink: '/meals',
+    microProof: 'صيد بحر المكلا اليومي • ماكروز محسوبة علمياً • بدون اشتراكات إضافية',
     image:
-      'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1800&q=85',
-    alt: 'طبق تغذية صحية متكامل بالبيض والأفوكادو والخضار الطازجة',
+      'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1800&q=85',
+    alt: 'وجبات صحية غنية بالبروتين من صيد بحر المكلا الطازج',
   },
   {
     id: 2,
-    tag: 'دليل صالات المكلا المعتمدة 2026',
+    tag: 'منصة عزم الرياضية • ساحل حضرموت',
     badgeType: 'gym',
-    headlinePrefix: 'دليلك الشامل لـ',
-    highlightedBadge: '#1 صالات رياضية',
-    headlineSuffix: 'في فوة والشرج والديس',
+    headlinePrefix: 'لياقتك تبدأ من',
+    highlightedBadge: '#1 صالات معتمدة',
+    headlineSuffix: 'بالمكلا وفوة والديس',
     subtitle:
-      'استكشف الصالات الرياضية الموثقة في المكلا بأسعار رسمية بالريال اليمني دون وسطاء، مع جداول فترات الرجال والنساء وقوائم الأجهزة المتوفرة.',
+      'اكتشف أفضل الصالات الرياضية المعتمدة في المكلا، مع أسعار رسمية بالريال اليمني دون وسطاء، ومواعيد فترات الرجال والنساء المحدثة 2026.',
     ctaLabel: 'استكشف صالات المكلا',
     ctaLink: '/gyms',
-    microProof: 'اشتراكات مباشرة دون رسوم إضافية • توثيق ميداني معتمد 2026',
+    microProof: 'صالات موثقة ميدانياً • أسعار اشتراكات حقيقية بالريال اليمني',
     image:
       'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=85',
     alt: 'تدريب كمال أجسام وأجهزة رياضية متطورة في المكلا',
   },
   {
     id: 3,
-    tag: 'تغذية ساحلية حضرمية',
-    badgeType: 'nutrition',
-    headlinePrefix: 'وجبات رياضية من',
-    highlightedBadge: '#1 صيد بحر المكلا',
-    headlineSuffix: 'بروتين طبيعي عالي الجودة',
+    tag: 'حاسبة السعرات والماكروز العلمية',
+    badgeType: 'calorie',
+    headlinePrefix: 'غذاؤك وحساب سعراتك',
+    highlightedBadge: '#1 علم وليس تخميناً',
+    headlineSuffix: 'وفق مناخ ساحل حضرموت',
     subtitle:
-      'وصفات صحية غنية بالبروتين مبنية على صيد بحر المكلا اليومي الطازج من سمك الثمد والباغة لتعزيز البناء العضلي والاستشفاء الرياضي.',
-    ctaLabel: 'تصفح مكتبة الوجبات',
-    ctaLink: '/meals',
-    microProof: 'ماكروز محسوبة بدقة • وصفات محلية متوافقة مع ميزانيتك',
+      'احسب احتياجك اليومي من السعرات والبروتين والماء وفق معادلة ميفلين-سانت جور المعتمدة عالمياً مع احتساب تعويض الرطوبة وحرارة الساحل بدقة.',
+    ctaLabel: 'احسب سعراتك الآن مجاناً',
+    ctaLink: '/calculator',
+    microProof: 'مجاني 100% • معادلة ميفلين-سانت جور • توصيات مخصصة للساحل',
     image:
-      'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1800&q=85',
-    alt: 'وجبات صحية من صيد بحر المكلا الطازج غنية بالبروتين',
+      'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1800&q=85',
+    alt: 'حساب السعرات الغذائية والماكروز بدقة علمية',
   },
 ];
 
@@ -137,7 +137,7 @@ export const HeroSection: React.FC = () => {
 
   return (
     <section
-      className="relative w-full overflow-hidden bg-gradient-to-br from-[#16291E] via-[#1B3526] to-[#122017] font-['Cairo','Tajawal',sans-serif] min-h-[580px] sm:min-h-[640px] lg:min-h-[680px] xl:min-h-[720px] flex items-center select-none"
+      className="relative w-full overflow-hidden bg-gradient-to-bl from-[#FAF8F5] via-[#F4F1EA] to-[#E5ECE7] font-['Cairo','Tajawal',sans-serif] min-h-[580px] sm:min-h-[640px] lg:min-h-[680px] xl:min-h-[720px] flex items-center select-none"
       dir="rtl"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -146,10 +146,10 @@ export const HeroSection: React.FC = () => {
       aria-label="القسم الرئيسي لمنصة عزم"
     >
       {/* ════════════════════════════════════════════════════════════════
-          1. FULL-BLEED HORIZONTAL IMAGES (MYFITNESSPAL EXACT PATTERN)
-          (امتداد أفقي كامل على الجانب الأيسر مع تلاشٍ انسيابي ناعم)
+          1. FULL-BLEED HORIZONTAL IMAGES (MYFITNESSPAL PATTERN ON SAND PALETTE)
+          (امتداد أفقي كامل على الجانب الأيسر يندمج بانسيابية مع خلفية الرمل الفخمة)
       ════════════════════════════════════════════════════════════════ */}
-      <div className="absolute inset-y-0 left-0 w-full lg:w-[54%] xl:w-[56%] h-full z-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-y-0 left-0 w-full lg:w-[52%] xl:w-[55%] h-full z-0 overflow-hidden pointer-events-none">
         {heroSlides.map((item, idx) => (
           <div
             key={item.id}
@@ -167,111 +167,126 @@ export const HeroSection: React.FC = () => {
           </div>
         ))}
 
-        {/* ─── Seamless Horizontal Gradient Blend (MyFitnessPal Signature Pattern) ─── */}
-        {/* On Desktop RTL: Left edge is clear photo, Right blends into the rich brand background */}
-        <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-transparent via-[#16291E]/50 via-55% via-[#16291E]/95 via-85% to-[#16291E] to-100%" />
+        {/* ─── Seamless Horizontal Sand Gradient Blend (MyFitnessPal Signature) ─── */}
+        {/* On Desktop RTL: Left edge is clear photo, Right blends into soft warm sand #F4F1EA */}
+        <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-transparent via-[#F4F1EA]/60 via-45% via-[#F4F1EA]/95 via-80% to-[#F4F1EA] to-100%" />
 
         {/* On Mobile / Tablet: Gradient washes top-to-bottom for 100% Arabic text readability */}
-        <div className="lg:hidden absolute inset-0 bg-gradient-to-b from-[#16291E]/25 from-0% via-[#16291E]/80 via-45% to-[#16291E] to-85%" />
+        <div className="lg:hidden absolute inset-0 bg-gradient-to-b from-transparent from-0% via-[#F4F1EA]/80 via-45% to-[#F4F1EA] to-85%" />
 
-        {/* Ambient Warm Luxury Glows */}
-        <div className="absolute top-1/4 right-0 w-80 h-80 bg-[#D97241]/15 rounded-full blur-3xl pointer-events-none" />
+        {/* Ambient Brand Glows (Terracotta & Sage) */}
+        <div className="absolute top-1/4 right-0 w-80 h-80 bg-[#D97241]/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-[#7D9683]/10 rounded-full blur-3xl pointer-events-none" />
       </div>
 
       {/* ════════════════════════════════════════════════════════════════
-          2. FOREGROUND CONTENT (MYFITNESSPAL HIERARCHY & AZM IDENTITY)
+          2. FOREGROUND CONTENT (SYNCHRONIZED WITH ACTIVE SLIDE)
       ════════════════════════════════════════════════════════════════ */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24 flex flex-col justify-center min-h-[580px] sm:min-h-[640px] lg:min-h-[680px] xl:min-h-[720px]">
-        <div className="max-w-2xl text-right">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24 flex flex-col justify-between min-h-[580px] sm:min-h-[640px] lg:min-h-[680px] xl:min-h-[720px]">
+        <div className="max-w-2xl text-right my-auto">
           
           {/* Keyed container for smooth entrance transition whenever currentSlide changes */}
-          <div key={currentSlide} className="space-y-6 sm:space-y-7 animate-hero-fade">
+          <div key={currentSlide} className="space-y-5 sm:space-y-6 animate-hero-fade">
             
             {/* Tag / Eyebrow Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-[#FAF8F5] text-xs sm:text-sm font-bold shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-[#DED7C8] text-[#D97241] text-xs sm:text-sm font-bold shadow-sm">
               {renderBadgeIcon(slide.badgeType)}
               <span className="tracking-normal">{slide.tag}</span>
             </div>
 
-            {/* Main Headline (Exact 3-level rhythm from MyFitnessPal) */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[62px] font-black text-white leading-[1.2] sm:leading-[1.22] tracking-normal">
-              <span className="block text-white/95">{slide.headlinePrefix}</span>
-              <span className="inline-block my-2 px-5 sm:px-6 py-1.5 sm:py-2 rounded-2xl bg-white text-[#16291E] shadow-2xl text-[0.84em] font-black align-middle transform hover:scale-[1.02] transition-transform">
+            {/* Main Headline with MyFitnessPal Signature Pill Badge */}
+            <h1 className="text-4xl sm:text-5xl lg:text-[58px] font-black text-[#1F2722] leading-[1.2] sm:leading-[1.22] tracking-tight">
+              <span className="block text-[#1F2722]">{slide.headlinePrefix}</span>
+              <span className="inline-block my-2 px-5 sm:px-6 py-1.5 sm:py-2 rounded-2xl bg-white text-[#D97241] shadow-md border border-[#EAE5DA] text-[0.88em] font-black align-middle transform hover:scale-[1.02] transition-transform">
                 {slide.highlightedBadge}
               </span>
-              <span className="block text-white/95">{slide.headlineSuffix}</span>
+              <span className="block text-[#1F2722]">{slide.headlineSuffix}</span>
             </h1>
 
             {/* Subtitle */}
-            <p className="text-base sm:text-lg text-[#EAE5DA] leading-[1.8] sm:leading-[1.85] font-normal sm:font-medium max-w-xl text-balance drop-shadow-sm">
+            <p className="text-base sm:text-lg text-[#536559] leading-[1.8] sm:leading-[1.85] font-medium max-w-xl text-balance">
               {slide.subtitle}
             </p>
 
-            {/* Primary Action Button (MyFitnessPal Signature White Pill CTA) */}
+            {/* Primary Action Button (Terracotta Pill CTA like MyFitnessPal) */}
             <div className="pt-2 sm:pt-4 flex flex-col items-start gap-3.5">
               <Link
                 to={slide.ctaLink}
-                className="inline-flex items-center justify-center gap-3 px-9 sm:px-11 py-4 sm:py-4.5 rounded-full bg-white text-[#16291E] hover:bg-[#FAF8F5] hover:text-[#D97241] font-black text-base sm:text-lg shadow-2xl shadow-black/35 hover:shadow-black/55 hover:scale-[1.02] active:scale-[0.98] transition-all group min-h-[56px]"
+                className="inline-flex items-center justify-center gap-3 px-9 sm:px-11 py-4 sm:py-4.5 rounded-full bg-[#D97241] hover:bg-[#C75F2F] text-white font-black text-base sm:text-lg shadow-xl shadow-[#D97241]/25 hover:shadow-2xl hover:shadow-[#D97241]/40 hover:scale-[1.02] active:scale-[0.98] transition-all group min-h-[56px]"
               >
                 <span>{slide.ctaLabel}</span>
-                <ArrowLeft className="w-5 h-5 text-[#D97241] group-hover:-translate-x-1.5 transition-transform" />
+                <ArrowLeft className="w-5 h-5 text-white group-hover:-translate-x-1.5 transition-transform" />
               </Link>
 
-              {/* Micro-Reassurance Line (Like "HSA/FSA eligible" in MyFitnessPal) */}
-              <div className="pt-1 flex items-center gap-2 text-xs sm:text-[13px] text-[#CBDCD0] font-medium">
+              {/* Micro-Reassurance Line */}
+              <div className="pt-1 flex items-center gap-2 text-xs sm:text-[13px] text-[#6E8074] font-medium">
                 <CheckCircle2 className="w-4 h-4 text-[#7D9683] shrink-0" />
                 <span>{slide.microProof}</span>
               </div>
             </div>
 
-            {/* Minimal & Elegant Carousel Controls (Unobtrusive) */}
-            <div className="pt-4 flex items-center gap-4">
-              {/* Subtle navigation arrows */}
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={prevSlide}
-                  className="w-9 h-9 rounded-full border border-white/20 bg-white/10 hover:bg-[#D97241] text-white backdrop-blur-md flex items-center justify-center transition-all duration-300 active:scale-95 group"
-                  aria-label="الشريحة السابقة"
-                  title="الشريحة السابقة"
-                >
-                  <ChevronRight className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                </button>
-                <button
-                  onClick={nextSlide}
-                  className="w-9 h-9 rounded-full border border-white/20 bg-white/10 hover:bg-[#D97241] text-white backdrop-blur-md flex items-center justify-center transition-all duration-300 active:scale-95 group"
-                  aria-label="الشريحة التالية"
-                  title="الشريحة التالية"
-                >
-                  <ChevronLeft className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                </button>
-              </div>
+          </div>
 
-              {/* Interactive pill indicators */}
-              <div className="flex items-center gap-2">
-                {heroSlides.map((item, idx) => {
-                  const isActive = idx === currentSlide;
-                  return (
-                    <button
-                      key={item.id}
-                      onClick={() => goToSlide(idx)}
-                      className={`h-2 rounded-full transition-all duration-500 ${
-                        isActive
-                          ? 'w-8 bg-white shadow-md'
-                          : 'w-2 bg-white/30 hover:bg-white/60'
-                      }`}
-                      aria-label={`الانتقال إلى الشريحة ${idx + 1}`}
-                    />
-                  );
-                })}
-              </div>
+        </div>
 
-              {/* Counter */}
-              <span className="font-mono text-xs font-semibold text-white/60">
-                0{currentSlide + 1} / 0{totalSlides}
-              </span>
+        {/* ════════════════════════════════════════════════════════════════
+            3. CAROUSEL CONTROLS & BOTTOM STATUS (HARMONIZED WITH USER SCREENSHOT)
+        ════════════════════════════════════════════════════════════════ */}
+        <div className="mt-8 flex items-center justify-between gap-4 pt-4 border-t border-[#DED7C8]/60">
+          
+          {/* Right side (RTL): Navigation Arrows (< >) */}
+          <div className="flex items-center gap-2.5">
+            <button
+              onClick={prevSlide}
+              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#DED7C8] bg-white hover:bg-[#FAF8F5] text-[#536559] hover:text-[#1F2722] flex items-center justify-center transition-all duration-300 shadow-sm active:scale-95 group"
+              aria-label="الشريحة السابقة"
+              title="الشريحة السابقة"
+            >
+              <ChevronRight className="w-5 h-5 group-hover:scale-110 transition-transform" />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#DED7C8] bg-white hover:bg-[#FAF8F5] text-[#536559] hover:text-[#1F2722] flex items-center justify-center transition-all duration-300 shadow-sm active:scale-95 group"
+              aria-label="الشريحة التالية"
+              title="الشريحة التالية"
+            >
+              <ChevronLeft className="w-5 h-5 group-hover:scale-110 transition-transform" />
+            </button>
+          </div>
+
+          {/* Left side (RTL): Live Status Badge & Slide Indicators */}
+          <div className="flex items-center gap-3 sm:gap-4">
+            {/* Live Indicator Pill from User's Platform */}
+            <div className="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1F2722] text-white text-xs font-bold shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-[#34D399] animate-pulse" />
+              <span>استفسار فوري • صالات المكلا</span>
             </div>
 
+            {/* Interactive Progress Indicators */}
+            <div className="flex items-center gap-2">
+              {heroSlides.map((item, idx) => {
+                const isActive = idx === currentSlide;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => goToSlide(idx)}
+                    className={`h-2.5 rounded-full transition-all duration-500 ${
+                      isActive
+                        ? 'w-7 sm:w-9 bg-[#D97241] shadow-md shadow-[#D97241]/30'
+                        : 'w-2.5 bg-[#DED7C8] hover:bg-[#C8BEAA]'
+                    }`}
+                    aria-label={`الانتقال إلى الشريحة ${idx + 1}`}
+                  />
+                );
+              })}
+            </div>
+
+            {/* Numerical Slide Counter (01 / 03) */}
+            <div className="font-mono text-xs sm:text-sm font-bold text-[#536559] tracking-wider">
+              <span className="text-[#1F2722]">0{currentSlide + 1}</span>
+              <span className="text-[#536559]/50 mx-1">/</span>
+              <span className="text-[#536559]/70">0{totalSlides}</span>
+            </div>
           </div>
 
         </div>
