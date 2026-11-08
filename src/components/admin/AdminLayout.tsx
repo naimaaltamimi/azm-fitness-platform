@@ -192,7 +192,6 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
               {activeTab === 'subscriptions' && 'إدارة طلبات الاشتراكات والحجوزات الميدانية'}
               {activeTab === 'gyms' && 'صالات ونوادي المكلا المعتمدة'}
               {activeTab === 'trainers' && 'إدارة واعتماد كباتن اللياقة بالمكلا'}
-              {activeTab === 'database' && 'حالة الباك إند وتكامل Supabase'}
             </h2>
           </div>
 
