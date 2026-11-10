@@ -22,40 +22,48 @@ import {
   UtensilsCrossed,
   MessageCircle,
   Sparkles,
-  CheckCircle2
+  CheckCircle2,
+  Plus,
+  Clock
 } from 'lucide-react';
 
-/* ─── Category Data (Shop by Category equivalent) ─── */
+/* ─── Category Data (Burger Hub Floating Category Strip Style) ─── */
 const CATEGORIES = [
   {
     label: 'صالات رياضية',
+    sublabel: 'أجهزة حديثة وكباتن',
     path: '/gyms',
-    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=400&q=80',
+    icon: Dumbbell,
   },
   {
     label: 'تغذية صحية',
+    sublabel: 'صيد المكلا الطازج',
     path: '/meals',
-    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=400&q=80',
+    icon: UtensilsCrossed,
   },
   {
-    label: 'المدربون',
+    label: 'دليل المدربين',
+    sublabel: 'إشراف ومتابعة مهنية',
     path: '/trainers',
-    image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=400&q=80',
+    icon: Users2,
   },
   {
     label: 'حاسبة السعرات',
+    sublabel: 'معادلة ميفلين العلمية',
     path: '/calculator',
-    image: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400&q=80',
+    icon: Calculator,
   },
   {
     label: 'الخطة الغذائية',
+    sublabel: 'جداول محسوبة للمناخ',
     path: '/nutrition-plan',
-    image: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=400&q=80',
+    icon: Sparkles,
   },
   {
-    label: 'الاشتراكات',
+    label: 'اشتراكات النوادي',
+    sublabel: 'أسعار رسمية بلا وسطاء',
     path: '/gyms',
-    image: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80',
+    icon: ShieldCheck,
   },
 ];
 
@@ -211,153 +219,135 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* ═══════════════════════════════════════════
-          3. SHOP BY CATEGORY → "تصفح حسب الفئة" — بطاقات احترافية
+          3. FLOATING CATEGORY STRIP (BURGER HUB STYLE)
       ═══════════════════════════════════════════ */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="text-center space-y-2 mb-10">
-          <span className="text-xs font-black text-[#D97241] uppercase tracking-normal">
-            ✦ دليلك الرياضي والتغذوي في المكلا ✦
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-black text-[#1F2722] leading-[1.3] tracking-normal">
-            تصفح خدمات عزم حسب الفئة
+      <section className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 mb-8 sm:mb-12">
+        <div className="bg-white rounded-2xl sm:rounded-3xl shadow-[0_20px_50px_-15px_rgba(31,39,34,0.12)] border border-[#EAE5DA] p-3 sm:p-5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 divide-y sm:divide-y-0 sm:divide-x sm:divide-x-reverse divide-[#F0EBE3]">
+            {CATEGORIES.map((cat, idx) => {
+              const IconComp = cat.icon;
+              return (
+                <Link
+                  key={cat.label}
+                  to={cat.path}
+                  className={`group flex flex-col items-center text-center p-3 sm:p-4 rounded-2xl hover:bg-[#FAF8F5] transition-all duration-300 hover:-translate-y-1 ${
+                    idx !== 0 ? 'pt-4 sm:pt-3' : ''
+                  }`}
+                >
+                  {/* Clean Icon Badge */}
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#FAF8F5] group-hover:bg-[#D97241] flex items-center justify-center text-[#1F2722] group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-md group-hover:shadow-[#D97241]/25 mb-2.5">
+                    <IconComp className="w-6 h-6 sm:w-7 sm:h-7 transition-transform group-hover:scale-110" />
+                  </div>
+                  {/* Category Title */}
+                  <span className="text-xs sm:text-sm font-black text-[#1F2722] group-hover:text-[#D97241] transition-colors leading-tight">
+                    {cat.label}
+                  </span>
+                  {/* Subtitle / Micro-tagline */}
+                  <span className="text-[10px] sm:text-[11px] text-[#7D9683] font-medium mt-1 leading-snug">
+                    {cat.sublabel}
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          4. PROMOTIONAL BANNER (BURGER HUB PROMO BANNER STYLE)
+      ═══════════════════════════════════════════ */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16">
+        <div className="rounded-3xl overflow-hidden shadow-[0_20px_50px_-15px_rgba(217,114,65,0.2)] bg-gradient-to-r from-[#D97241] via-[#E07C4C] to-[#C75F2F] text-white p-6 sm:p-10 lg:p-12 relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+
+            {/* Left/Col 1: Clock / Punchy Headline */}
+            <div className="lg:col-span-5 flex items-center gap-4">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center shrink-0">
+                <Clock className="w-8 h-8 sm:w-10 sm:h-10 text-white animate-pulse" />
+              </div>
+              <div>
+                <span className="text-xs font-black uppercase tracking-wider text-white/80 block">
+                  جاهز للبداية؟ • START TODAY
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-black leading-tight">
+                  احسب سعراتك<br />
+                  <span className="text-[#1F2722]">وابدأ أهدافك فوراً!</span>
+                </h3>
+              </div>
+            </div>
+
+            {/* Center/Col 2: Discount & Code Badge */}
+            <div className="lg:col-span-4 border-y lg:border-y-0 lg:border-x border-white/20 py-4 lg:py-0 lg:px-6 flex flex-col justify-center">
+              <div className="flex items-baseline gap-2">
+                <span className="text-4xl sm:text-5xl font-black font-mono text-white">20%</span>
+                <span className="text-sm sm:text-base font-bold text-white/90">خصم خاص على أول اشتراك</span>
+              </div>
+              <div className="mt-2 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-[#1F2722] text-white text-xs font-mono font-bold w-fit shadow-inner">
+                <span className="text-[#D97241]">كود عزم:</span>
+                <span className="tracking-widest">AZM2026</span>
+              </div>
+            </div>
+
+            {/* Right/Col 3: CTA Buttons */}
+            <div className="lg:col-span-3 flex flex-col sm:flex-row lg:flex-col gap-3 justify-center">
+              <Link
+                to="/calculator"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#1F2722] hover:bg-black text-white font-black text-sm shadow-xl hover:scale-105 active:scale-95 transition-all text-center"
+              >
+                <Calculator className="w-4 h-4 text-[#D97241]" />
+                <span>احسب سعراتك الآن</span>
+              </Link>
+              <Link
+                to="/nutrition-plan"
+                className="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-white/20 hover:bg-white/30 text-white font-bold text-sm backdrop-blur-md transition-all text-center border border-white/30"
+              >
+                <span>الخطة الغذائية الساحلية</span>
+              </Link>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          5. BEST SELLERS → "صالات المكلا الأكثر إقبالاً" (BURGER HUB BESTSELLERS STYLE)
+      ═══════════════════════════════════════════ */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16">
+        {/* Section Header with Script Accent & Lines */}
+        <div className="text-center space-y-2 mb-10 sm:mb-12">
+          <div className="inline-flex items-center justify-center gap-2.5 text-xs font-black text-[#D97241]">
+            <span className="w-8 sm:w-12 h-px bg-[#D97241]/40" />
+            <span className="tracking-widest uppercase">الخيارات الأكثر طلباً • POPULAR PICKS</span>
+            <span className="w-8 sm:w-12 h-px bg-[#D97241]/40" />
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1F2722] tracking-tight">
+            صالات المكلا الأكثر إقبالاً
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-5 sm:gap-6">
-          {CATEGORIES.map((cat) => (
-            <Link
-              key={cat.label}
-              to={cat.path}
-              className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 border border-[#F0EBE3] bg-white"
-            >
-              {/* صورة الفئة */}
-              <div className="relative h-40 sm:h-48 overflow-hidden">
-                <img
-                  src={cat.image}
-                  alt={cat.label}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  loading="lazy"
-                />
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1F2722]/70 via-[#1F2722]/20 to-transparent" />
-              </div>
-
-              {/* محتوى البطاقة */}
-              <div className="absolute bottom-0 w-full p-4 sm:p-5">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-base sm:text-lg font-black text-white drop-shadow-sm">
-                    {cat.label}
-                  </h3>
-                  <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#D97241] text-white shadow-lg shadow-[#D97241]/30 group-hover:scale-110 group-hover:bg-[#C75F2F] transition-all duration-300">
-                    <ArrowLeft className="w-4 h-4" />
-                  </span>
-                </div>
-              </div>
-
-              {/* حدّ سفلي ملوّن عند Hover */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#D97241] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-right" />
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════
-          4. PROMOTIONAL BANNER (Split Layout)
-      ═══════════════════════════════════════════ */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16">
-        <div className="rounded-3xl overflow-hidden shadow-[0_15px_40px_-15px_rgba(31,39,34,0.15)] border border-[#EAE5DA]">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
-
-            {/* Content Column */}
-            <div className="bg-[#1F2722] text-white p-8 sm:p-10 lg:p-14 flex flex-col justify-center space-y-5">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[#E49C7A] text-xs font-bold w-fit">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>حسابات علمية مخصصة لطقس ورطوبة الساحل</span>
-              </div>
-              <h3 className="text-3xl sm:text-4xl lg:text-[42px] font-black leading-tight">
-                احسب احتياجك الفعلي<br />
-                <span className="text-[#D97241]">من السعرات والبروتين مجاناً</span>
-              </h3>
-              <p className="text-sm text-white/70 leading-relaxed max-w-md font-medium">
-                معادلة ميفلين-سانت جور لحساب معدل الأيض (BMR)، مع تحديد كمية الماء المناسبة للتعويض في بيئة المكلا، وجدول ماكروز دقيق بالجرام.
-              </p>
-              <div className="pt-2 flex flex-wrap items-center gap-4">
-                <Link
-                  to="/calculator"
-                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#D97241] hover:bg-[#C75F2F] text-white font-bold text-sm shadow-lg shadow-[#D97241]/25 hover:-translate-y-0.5 active:scale-95 transition-all"
-                >
-                  <Calculator className="w-4 h-4" />
-                  <span>ابدأ الحساب الآن فوراً</span>
-                </Link>
-                <Link
-                  to="/nutrition-plan"
-                  className="inline-flex items-center px-6 py-3.5 rounded-xl border border-white/20 text-white font-bold text-sm hover:bg-white/10 transition-colors"
-                >
-                  <span>استكشف الخطة الساحلية</span>
-                </Link>
-              </div>
-            </div>
-
-            {/* Image Column */}
-            <div className="relative bg-[#EDE8DF] min-h-[300px] lg:min-h-0">
-              <img
-                src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80"
-                alt="التدريب والتغذية الصحية في المكلا"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent lg:hidden" />
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════
-          5. BEST SELLERS → "صالات المكلا الأكثر إقبالاً"
-      ═══════════════════════════════════════════ */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16">
-        {/* Section Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <span className="text-xs font-black text-[#7D9683] block">صالات حقيقية معتمدة</span>
-            <h2 className="text-2xl sm:text-3xl font-black text-[#1F2722] leading-[1.3] tracking-normal">
-              الصالات الأكثر إقبالاً في المكلا
-            </h2>
-          </div>
-          <Link
-            to="/gyms"
-            className="text-xs sm:text-sm font-bold text-[#D97241] hover:text-[#C75F2F] transition-colors flex items-center gap-1.5"
-          >
-            <span>عرض كل الصالات</span>
-            <ArrowLeft className="w-4 h-4" />
-          </Link>
-        </div>
-
-        {/* Cards Grid with Badges and Diffuse Shadows */}
+        {/* 4 Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {popularGyms.map((gym) => {
             const isFav = favorites.includes(gym.id);
             const badge = GYM_BADGES[gym.id] || { label: 'معتمدة ✓', bg: 'bg-[#7D9683]', text: 'text-white' };
 
             return (
-              <Link
+              <div
                 key={gym.id}
-                to={`/gyms/${gym.slug}`}
-                className="group bg-white rounded-3xl border border-[#F0EBE3] hover:border-[#D97241]/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_16px_40px_-10px_rgba(217,114,65,0.15)] hover:-translate-y-1.5 transition-all duration-300 overflow-hidden flex flex-col"
+                className="group bg-white rounded-2xl sm:rounded-3xl border border-[#EAE5DA] hover:border-[#D97241] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_-10px_rgba(217,114,65,0.2)] hover:-translate-y-1.5 transition-all duration-300 overflow-hidden flex flex-col justify-between"
               >
                 {/* Card Image */}
-                <div className="relative aspect-[4/3] bg-[#FAF8F5] overflow-hidden">
+                <Link to={`/gyms/${gym.slug}`} className="block relative aspect-[4/3] bg-[#FAF8F5] overflow-hidden">
                   <img
                     src={gym.coverImage}
                     alt={gym.nameAr}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
+                    loading="lazy"
                   />
-
                   {/* Ribbon Badge */}
                   <span className={`absolute top-3 right-3 px-3 py-1 rounded-full text-[10px] font-black shadow-md ${badge.bg} ${badge.text}`}>
                     {badge.label}
                   </span>
-
                   {/* Heart Icon */}
                   <button
                     onClick={(e) => toggleFavorite(gym.id, e)}
@@ -370,88 +360,92 @@ export const LandingPage: React.FC = () => {
                   >
                     <Heart className={`w-4 h-4 ${isFav ? 'fill-red-500' : ''}`} />
                   </button>
-                </div>
+                </Link>
 
                 {/* Card Body */}
                 <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3">
                   <div>
-                    {/* Gym Name */}
-                    <h4 className="font-black text-base text-[#1F2722] leading-snug group-hover:text-[#D97241] transition-colors truncate">
-                      {gym.nameAr}
-                    </h4>
-
-                    {/* Location */}
+                    <Link to={`/gyms/${gym.slug}`}>
+                      <h4 className="font-black text-base text-[#1F2722] leading-snug group-hover:text-[#D97241] transition-colors truncate">
+                        {gym.nameAr}
+                      </h4>
+                    </Link>
                     <p className="text-xs text-[#7D9683] font-medium flex items-center gap-1 mt-1">
-                      <MapPin className="w-3.5 h-3.5 shrink-0" />
+                      <MapPin className="w-3.5 h-3.5 shrink-0 text-[#D97241]" />
                       <span>{gym.neighborhood} • المكلا</span>
+                    </p>
+                    <p className="text-xs text-[#536559] line-clamp-2 mt-2 leading-relaxed">
+                      {gym.shortDescription}
                     </p>
                   </div>
 
-                  {/* Price & Rating Row */}
-                  <div className="pt-2 border-t border-[#F0EBE3] flex items-center justify-between">
+                  {/* Price & Burger Hub "+" Action Button Row */}
+                  <div className="pt-3 border-t border-[#F0EBE3] flex items-center justify-between">
                     <div>
-                      <span className="text-lg font-black text-[#D97241] font-mono">
+                      <span className="text-xl font-black text-[#D97241] font-mono">
                         {gym.pricingPlans[0]?.priceYer.toLocaleString()}
                       </span>
                       <span className="text-[10px] text-[#7D9683] font-bold mr-1">ر.ي / شهر</span>
                     </div>
 
-                    {/* Rating */}
-                    <div className="flex items-center gap-1">
-                      <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-                      <span className="text-xs font-black text-[#1F2722]">4.9</span>
-                    </div>
-                  </div>
-
-                  {/* CTA Button */}
-                  <div className="pt-1">
-                    <span className="block w-full text-center py-2.5 rounded-xl border border-[#D97241] text-[#D97241] text-xs font-bold group-hover:bg-[#D97241] group-hover:text-white transition-all shadow-sm">
-                      عرض التفاصيل والاشتراك
-                    </span>
+                    {/* Circular Action Button (+) */}
+                    <Link
+                      to={`/gyms/${gym.slug}`}
+                      className="w-9 h-9 rounded-full bg-[#D97241] hover:bg-[#C75F2F] text-white flex items-center justify-center shadow-md shadow-[#D97241]/30 hover:scale-110 active:scale-95 transition-all"
+                      title="عرض التفاصيل والاشتراك"
+                    >
+                      <Plus className="w-5 h-5 stroke-[2.5]" />
+                    </Link>
                   </div>
                 </div>
-              </Link>
+              </div>
             );
           })}
+        </div>
+
+        {/* View Full Directory Pill Button (Burger Hub Style) */}
+        <div className="text-center mt-10">
+          <Link
+            to="/gyms"
+            className="inline-flex items-center gap-2.5 px-9 py-4 rounded-full bg-[#1F2722] hover:bg-[#D97241] text-white font-black text-sm shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 group"
+          >
+            <span>استكشف كافة الصالات المعتمدة</span>
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1.5 transition-transform" />
+          </Link>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════
-          6. RECOMMENDED MEALS SECTION
+          6. RECOMMENDED MEALS SECTION (BURGER HUB STYLE)
       ═══════════════════════════════════════════ */}
-      <section className="bg-[#FAF8F5] border-y border-[#F0EBE3]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-8">
-          {/* Section Header */}
-          <div className="flex items-center justify-between">
-            <div>
-              <span className="text-xs font-black text-[#7D9683] block">صيد بحر المكلا الطازج</span>
-              <h2 className="text-2xl sm:text-3xl font-black text-[#1F2722] leading-[1.3] tracking-normal">
-                وجبات ساحلية نوصي بتجربتها
-              </h2>
+      <section className="bg-[#FAF8F5] border-y border-[#F0EBE3] py-12 sm:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+          {/* Section Header with Script Accent & Lines */}
+          <div className="text-center space-y-2">
+            <div className="inline-flex items-center justify-center gap-2.5 text-xs font-black text-[#7D9683]">
+              <span className="w-8 sm:w-12 h-px bg-[#7D9683]/40" />
+              <span className="tracking-widest uppercase">صيد بحر المكلا الطازج • FRESH CATCH</span>
+              <span className="w-8 sm:w-12 h-px bg-[#7D9683]/40" />
             </div>
-            <Link
-              to="/meals"
-              className="text-xs sm:text-sm font-bold text-[#D97241] hover:text-[#C75F2F] transition-colors flex items-center gap-1"
-            >
-              <span>مكتبة الوجبات الكاملة</span>
-              <ArrowLeft className="w-4 h-4" />
-            </Link>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1F2722] tracking-tight">
+              وجبات ساحلية نوصي بتجربتها
+            </h2>
           </div>
 
           {/* Meal Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {recommendedMeals.map((meal) => (
-              <Link
+              <div
                 key={meal.id}
-                to={`/meals/${meal.id}`}
-                className="group bg-white rounded-3xl border border-[#F0EBE3] hover:border-[#D97241]/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden"
+                className="group bg-white rounded-2xl sm:rounded-3xl border border-[#EAE5DA] hover:border-[#D97241] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_-10px_rgba(217,114,65,0.2)] hover:-translate-y-1.5 transition-all duration-300 overflow-hidden flex flex-col justify-between"
               >
                 {/* Meal Image */}
-                <div className="relative aspect-video bg-[#EDE8DF] overflow-hidden">
+                <Link to={`/meals/${meal.id}`} className="block relative aspect-video bg-[#EDE8DF] overflow-hidden">
                   <img
                     src={meal.imageUrl}
                     alt={meal.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
+                    loading="lazy"
                   />
                   {/* Calorie Badge */}
                   <div className="absolute bottom-3 right-3 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm flex items-center gap-1">
@@ -459,18 +453,23 @@ export const LandingPage: React.FC = () => {
                     <span className="text-xs font-black text-[#D97241] font-mono">{meal.calories}</span>
                     <span className="text-[10px] text-[#7D9683] font-bold">سعرة</span>
                   </div>
-                </div>
+                </Link>
 
                 {/* Meal Body */}
-                <div className="p-5 space-y-3">
-                  <h4 className="font-black text-sm text-[#1F2722] leading-snug line-clamp-2 group-hover:text-[#D97241] transition-colors">
-                    {meal.title}
-                  </h4>
-                  <p className="text-xs text-[#536559] line-clamp-2 leading-relaxed">
-                    {meal.description}
-                  </p>
+                <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+                  <div>
+                    <Link to={`/meals/${meal.id}`}>
+                      <h4 className="font-black text-base text-[#1F2722] leading-snug line-clamp-2 group-hover:text-[#D97241] transition-colors">
+                        {meal.title}
+                      </h4>
+                    </Link>
+                    <p className="text-xs text-[#536559] line-clamp-2 leading-relaxed mt-1.5">
+                      {meal.description}
+                    </p>
+                  </div>
+
                   {/* Macros Row */}
-                  <div className="flex items-center gap-2 pt-1 flex-wrap">
+                  <div className="flex items-center gap-1.5 pt-1 flex-wrap">
                     <span className="text-[11px] font-bold text-[#7D9683] bg-[#F4F7F5] px-2.5 py-1 rounded-full">
                       {meal.protein}g بروتين
                     </span>
@@ -481,9 +480,32 @@ export const LandingPage: React.FC = () => {
                       {meal.fats}g دهون
                     </span>
                   </div>
+
+                  {/* View Meal Action Row */}
+                  <div className="pt-3 border-t border-[#F0EBE3] flex items-center justify-between">
+                    <span className="text-xs font-bold text-[#7D9683]">وصفة متوازنة</span>
+                    <Link
+                      to={`/meals/${meal.id}`}
+                      className="w-9 h-9 rounded-full bg-[#D97241] hover:bg-[#C75F2F] text-white flex items-center justify-center shadow-md shadow-[#D97241]/30 hover:scale-110 active:scale-95 transition-all"
+                      title="تفاصيل الوجبة"
+                    >
+                      <Plus className="w-5 h-5 stroke-[2.5]" />
+                    </Link>
+                  </div>
                 </div>
-              </Link>
+              </div>
             ))}
+          </div>
+
+          {/* View Full Meals Pill Button */}
+          <div className="text-center pt-2">
+            <Link
+              to="/meals"
+              className="inline-flex items-center gap-2.5 px-9 py-4 rounded-full bg-[#1F2722] hover:bg-[#D97241] text-white font-black text-sm shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 group"
+            >
+              <span>تصفح كافة الوجبات الصحية</span>
+              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1.5 transition-transform" />
+            </Link>
           </div>
         </div>
       </section>

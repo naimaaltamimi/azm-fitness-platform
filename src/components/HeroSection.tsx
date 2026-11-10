@@ -10,6 +10,8 @@ import {
   Flame,
   Salad,
   Sparkles,
+  ShieldCheck,
+  CheckCircle2,
 } from 'lucide-react';
 
 /* ─── Hero Slide Data (Kitchen Yuma Frameless Style + AZM Brand) ─── */
@@ -199,6 +201,37 @@ export const HeroSection: React.FC = () => {
               >
                 <span>{slide.secondaryLabel}</span>
               </Link>
+            </div>
+
+            {/* Micro Trust Strip (Burger Hub Style: Fast Delivery | Best Quality | Great Offers) */}
+            <div className="pt-3 grid grid-cols-3 gap-2.5 sm:gap-3 border-t border-[#DED7C8]/70 max-w-lg">
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 rounded-full bg-[#D97241]/10 flex items-center justify-center shrink-0">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#D97241]" />
+                </div>
+                <div className="text-right">
+                  <p className="text-xs font-black text-[#1F2722] leading-tight">صالات موثقة</p>
+                  <p className="text-[10px] text-[#7D9683]">فحص ميداني 2026</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 rounded-full bg-[#7D9683]/15 flex items-center justify-center shrink-0">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#7D9683]" />
+                </div>
+                <div className="text-right">
+                  <p className="text-xs font-black text-[#1F2722] leading-tight">أسعار رسمية</p>
+                  <p className="text-[10px] text-[#7D9683]">بالريال اليمني</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 rounded-full bg-[#D97241]/10 flex items-center justify-center shrink-0">
+                  <Sparkles className="w-3.5 h-3.5 text-[#D97241]" />
+                </div>
+                <div className="text-right">
+                  <p className="text-xs font-black text-[#1F2722] leading-tight">حساب علمي</p>
+                  <p className="text-[10px] text-[#7D9683]">معادلة ميفلين</p>
+                </div>
+              </div>
             </div>
 
             {/* Navigation Arrows on Bottom-Right */}
