@@ -211,7 +211,7 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* ═══════════════════════════════════════════
-          3. SHOP BY CATEGORY → "تصفح حسب الفئة"
+          3. SHOP BY CATEGORY → "تصفح حسب الفئة" — بطاقات احترافية
       ═══════════════════════════════════════════ */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="text-center space-y-2 mb-10">
@@ -223,25 +223,39 @@ export const LandingPage: React.FC = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-6 gap-6 sm:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-5 sm:gap-6">
           {CATEGORIES.map((cat) => (
             <Link
               key={cat.label}
               to={cat.path}
-              className="group flex flex-col items-center gap-3 text-center"
+              className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 border border-[#F0EBE3] bg-white"
             >
-              {/* Circular Image */}
-              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden ring-2 ring-[#F0EBE3] group-hover:ring-[#D97241] transition-all shadow-[0_8px_25px_-8px_rgba(0,0,0,0.1)] group-hover:shadow-[0_12px_30px_-5px_rgba(217,114,65,0.3)] group-hover:-translate-y-1.5 duration-300">
+              {/* صورة الفئة */}
+              <div className="relative h-40 sm:h-48 overflow-hidden">
                 <img
                   src={cat.image}
                   alt={cat.label}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  loading="lazy"
                 />
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1F2722]/70 via-[#1F2722]/20 to-transparent" />
               </div>
-              {/* Label */}
-              <span className="text-xs sm:text-sm font-bold text-[#1F2722] group-hover:text-[#D97241] transition-colors">
-                {cat.label}
-              </span>
+
+              {/* محتوى البطاقة */}
+              <div className="absolute bottom-0 w-full p-4 sm:p-5">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-base sm:text-lg font-black text-white drop-shadow-sm">
+                    {cat.label}
+                  </h3>
+                  <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#D97241] text-white shadow-lg shadow-[#D97241]/30 group-hover:scale-110 group-hover:bg-[#C75F2F] transition-all duration-300">
+                    <ArrowLeft className="w-4 h-4" />
+                  </span>
+                </div>
+              </div>
+
+              {/* حدّ سفلي ملوّن عند Hover */}
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#D97241] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-right" />
             </Link>
           ))}
         </div>

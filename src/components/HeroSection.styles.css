@@ -1,0 +1,33 @@
+/* Brand color variables and reusable utility classes */
+:root {
+  --color-primary: #D97241;   /* Terracotta */
+  --color-dark: #1F2722;      /* Deep Green */
+  --color-sand: #FAF8F5;      /* Light Beige */
+  --color-accent: #7D9683;   /* Soft Green */
+}
+
+/* Additional utility classes for semi‑transparent backgrounds */
+.bg-primary-10 { background-color: var(--color-primary); opacity: 0.1; }
+.bg-accent-10 { background-color: var(--color-accent); opacity: 0.1; }
+
+.text-primary { color: var(--color-primary); }
+.bg-primary { background-color: var(--color-primary); }
+.border-primary { border-color: var(--color-primary); }
+.text-dark { color: var(--color-dark); }
+.bg-dark { background-color: var(--color-dark); }
+.border-dark { border-color: var(--color-dark); }
+.text-accent { color: var(--color-accent); }
+.bg-accent { background-color: var(--color-accent); }
+.border-accent { border-color: var(--color-accent); }
+
+.text-primary { color: var(--color-primary); }
+.bg-primary { background-color: var(--color-primary); }
+.border-primary { border-color: var(--color-primary); }
+
+/* Fade‑zoom animation used for hero images */
+@keyframes fadeZoom {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.hero-slide-img { animation: fadeZoom 0.8s ease-out forwards; will-change: transform, opacity; }
+

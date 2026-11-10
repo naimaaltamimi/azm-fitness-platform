@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import "./HeroSection.styles.css";
 import { Link } from 'react-router-dom';
 import {
   ChevronLeft,
@@ -146,8 +147,8 @@ export const HeroSection: React.FC = () => {
       aria-label="القسم الرئيسي لمنصة عزم"
     >
       {/* ─── Organic Ambient Glows & Botanical Accents (Kitchen Yuma Style) ─── */}
-      <div className="absolute top-10 left-10 w-96 h-96 bg-[#7D9683]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#D97241]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-10 left-10 w-96 h-96 bg-accent-10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-primary-10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Decorative Botanical Elements Floating in Background */}
       <div className="absolute top-8 left-1/4 opacity-15 pointer-events-none hidden lg:block">
@@ -166,13 +167,13 @@ export const HeroSection: React.FC = () => {
           <div className="space-y-6 sm:space-y-7 text-right order-2 lg:order-1">
             
             {/* Tag / Eyebrow Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-[#DED7C8] text-[#D97241] text-xs sm:text-sm font-bold shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-[#DED7C8] text-primary text-xs sm:text-sm font-bold shadow-sm">
               {renderBadgeIcon(slide.badgeType)}
               <span className="tracking-normal">{slide.tag}</span>
             </div>
 
             {/* Display Headline with Terracotta Highlight (Enjoy Healthy Life style) */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[62px] font-black text-[#1F2722] leading-[1.18] sm:leading-[1.2] tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-[62px] font-black text-dark leading-[1.18] sm:leading-[1.2] tracking-tight">
               <span className="text-[#D97241] block sm:inline">{slide.headlineHighlight} </span>
               <span className="text-[#1F2722]">{slide.headlineRest}</span>
             </h1>

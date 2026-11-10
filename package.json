@@ -8,7 +8,9 @@
   },
   "scripts": {
     "dev": "vite",
+    "dev:admin": "vite --config admin-portal/vite.config.ts",
     "build": "tsc -b && vite build",
+    "build:admin": "vite build --config admin-portal/vite.config.ts",
     "preview": "vite preview"
   },
   "dependencies": {
