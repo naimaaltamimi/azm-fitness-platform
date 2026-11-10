@@ -69,10 +69,11 @@ const CATEGORIES = [
 
 /* ─── Gym Ribbon Badges ─── */
 const GYM_BADGES: Record<string, { label: string; bg: string; text: string }> = {
+  'fit-x-gym-mukalla': { label: 'تجهيزات حديثة ✦', bg: 'bg-[#D97241]', text: 'text-white' },
   'smart-gym-mukalla': { label: 'الأكثر إقبالاً 🔥', bg: 'bg-[#D97241]', text: 'text-white' },
   'mukalla-gym': { label: 'الأعلى تقييماً ★', bg: 'bg-[#1F2722]', text: 'text-amber-300' },
-  'golden-gym-mukalla': { label: 'توثيق معتمد ✓', bg: 'bg-[#7D9683]', text: 'text-white' },
-  'hilal-fowah-gym': { label: 'باقة مميزة ⚡', bg: 'bg-[#536559]', text: 'text-white' },
+  'golds-gym-mukalla': { label: 'توثيق معتمد ✓', bg: 'bg-[#7D9683]', text: 'text-white' },
+  'winner-gym-mukalla': { label: 'باقة مميزة ⚡', bg: 'bg-[#536559]', text: 'text-white' },
 };
 
 export const LandingPage: React.FC = () => {
