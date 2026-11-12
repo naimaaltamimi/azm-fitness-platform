@@ -19,7 +19,10 @@ export const GymsDirectoryPage: React.FC = () => {
     if (nParam !== selectedNeighborhood) setSelectedNeighborhood(nParam);
   }, [qParam, nParam]);
 
-  const neighborhoods = ['all', 'الشرج', 'فوة المتضررين', 'ديس المكلا'];
+  const neighborhoods = useMemo(() => {
+    const unique = Array.from(new Set(MUKALLA_GYMS.map((g) => g.neighborhood)));
+    return ['all', ...unique];
+  }, []);
 
   const filteredGyms = useMemo(() => {
     return MUKALLA_GYMS.filter((gym) => {
