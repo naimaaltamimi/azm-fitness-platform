@@ -33,6 +33,7 @@ export const Navbar: React.FC = () => {
     { label: 'حاسبة السعرات', path: '/calculator' },
     { label: 'الخطة الغذائية', path: '/nutrition-plan' },
     { label: 'الوجبات الصحية', path: '/meals' },
+    { label: 'من نحن', path: '/about' },
   ];
 
   const handleLogout = () => {

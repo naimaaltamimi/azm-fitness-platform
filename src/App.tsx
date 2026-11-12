@@ -21,6 +21,7 @@ import { UserDashboardPage } from './pages/UserDashboardPage';
 import { UserProfilePage } from './pages/UserProfilePage';
 import { MyOrdersPage } from './pages/MyOrdersPage';
 import { AdminDashboardPage } from './pages/AdminDashboardPage';
+import { AboutPage } from './pages/AboutPage';
 import { EmptyState } from './components/common/EmptyState';
 import { Compass } from 'lucide-react';
 
@@ -88,6 +89,9 @@ export const App: React.FC = () => {
                   <Route path="/dashboard" element={<UserDashboardPage />} />
                   <Route path="/profile" element={<UserProfilePage />} />
                   <Route path="/my-orders" element={<MyOrdersPage />} />
+
+                  {/* About Us */}
+                  <Route path="/about" element={<AboutPage />} />
 
                   {/* 404 Catch-All within Public Layout */}
                   <Route
