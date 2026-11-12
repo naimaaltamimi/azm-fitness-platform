@@ -111,42 +111,41 @@ export const LandingPage: React.FC = () => {
       <HeroSection />
 
       {/* ═══════════════════════════════════════════
-          1.5 LIVE SOCIAL PROOF TICKER (مؤشرات المصداقية الميدانية)
+          1.5 STATS STRIP — أرقام المنصة
       ═══════════════════════════════════════════ */}
-      <section className="bg-[#FAF8F5] border-y border-[#F0EBE3] py-4 sm:py-5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 divide-y md:divide-y-0 md:divide-x md:divide-x-reverse divide-[#F0EBE3]">
-            
-            <div className="flex items-center justify-center gap-3 py-2 md:py-0">
-              <span className="text-2xl sm:text-3xl font-black text-[#D97241] font-mono">+15</span>
-              <div className="text-right">
-                <span className="block text-xs font-black text-[#1F2722]">صالة موثقة بالمكلا</span>
-                <span className="block text-[10px] text-[#7D9683]">فوة والشرج والديس</span>
-              </div>
+      <section className="bg-white border-b border-[#F0EBE3] py-10 sm:py-14">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x md:divide-x-reverse divide-[#F0EBE3]">
+
+            {/* Stat 1 */}
+            <div className="flex flex-col items-center text-center md:px-8 gap-1">
+              <span className="text-4xl sm:text-5xl font-black text-[#D97241] leading-none">+15</span>
+              <span className="mt-2 text-sm font-bold text-[#1F2722]">صالة رياضية موثقة</span>
+              <span className="text-xs text-[#7D9683]">فوة • الشرج • خلف • الديس</span>
             </div>
 
-            <div className="flex items-center justify-center gap-3 py-2 md:py-0">
-              <span className="text-2xl sm:text-3xl font-black text-[#7D9683] font-mono">100%</span>
-              <div className="text-right">
-                <span className="block text-xs font-black text-[#1F2722]">أسعار رسمية ومحدثة</span>
-                <span className="block text-[10px] text-[#7D9683]">مؤكدة بالريال اليمني</span>
-              </div>
+            {/* Stat 2 */}
+            <div className="flex flex-col items-center text-center md:px-8 gap-1">
+              <span className="text-4xl sm:text-5xl font-black text-[#1F2722] leading-none">100%</span>
+              <span className="mt-2 text-sm font-bold text-[#1F2722]">أسعار رسمية محدّثة</span>
+              <span className="text-xs text-[#7D9683]">بالريال اليمني بلا وسطاء</span>
             </div>
 
-            <div className="flex items-center justify-center gap-3 py-2 md:py-0">
-              <span className="text-2xl sm:text-3xl font-black text-[#1F2722] font-mono">+2,500</span>
-              <div className="text-right">
-                <span className="block text-xs font-black text-[#1F2722]">حساب سعرات علمي</span>
-                <span className="block text-[10px] text-[#7D9683]">معادلة ميفلين-سانت جور</span>
-              </div>
+            {/* Stat 3 */}
+            <div className="flex flex-col items-center text-center md:px-8 gap-1">
+              <span className="text-4xl sm:text-5xl font-black text-[#D97241] leading-none">+2500</span>
+              <span className="mt-2 text-sm font-bold text-[#1F2722]">حساب سعرات علمي</span>
+              <span className="text-xs text-[#7D9683]">معادلة ميفلين-سانت جور</span>
             </div>
 
-            <div className="flex items-center justify-center gap-3 py-2 md:py-0">
-              <span className="text-2xl sm:text-3xl font-black text-amber-500 font-mono">4.9 ★</span>
-              <div className="text-right">
-                <span className="block text-xs font-black text-[#1F2722]">تقييم الكباتن والمتدربين</span>
-                <span className="block text-[10px] text-[#7D9683]">إشراف مهني معتمد</span>
+            {/* Stat 4 */}
+            <div className="flex flex-col items-center text-center md:px-8 gap-1">
+              <div className="flex items-center gap-1.5">
+                <span className="text-4xl sm:text-5xl font-black text-[#1F2722] leading-none">4.9</span>
+                <Star className="w-6 h-6 text-amber-400 fill-amber-400 mt-1" />
               </div>
+              <span className="mt-2 text-sm font-bold text-[#1F2722]">تقييم الكباتن</span>
+              <span className="text-xs text-[#7D9683]">إشراف مهني معتمد</span>
             </div>
 
           </div>
@@ -154,53 +153,60 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* ═══════════════════════════════════════════
-          2. TRUST BADGES STRIP (4 items with dividers)
+          2. TRUST BADGES STRIP — لماذا عزم؟
       ═══════════════════════════════════════════ */}
-      <section className="border-b border-[#F0EBE3] bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x md:divide-x-reverse divide-[#F0EBE3]">
+      <section className="bg-[#FAF8F5] border-b border-[#F0EBE3] py-10 sm:py-14">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* Section label */}
+          <div className="text-center mb-8 sm:mb-10">
+            <span className="inline-block text-xs font-black tracking-[0.2em] uppercase text-[#D97241] mb-2">لماذا منصة عزم؟</span>
+            <h2 className="text-2xl sm:text-3xl font-black text-[#1F2722]">كل ما تحتاجه في مكان واحد</h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
             {/* Badge 1 */}
-            <div className="flex flex-col items-center text-center md:px-6 gap-2">
-              <div className="w-11 h-11 rounded-full bg-[#F4F7F5] text-[#7D9683] flex items-center justify-center">
-                <ShieldCheck className="w-5 h-5" />
+            <div className="bg-white rounded-2xl border border-[#EAE5DA] p-6 flex flex-col items-center text-center gap-4 hover:border-[#D97241] hover:shadow-lg transition-all duration-300 group">
+              <div className="w-14 h-14 rounded-2xl bg-[#FDF4EF] text-[#D97241] flex items-center justify-center group-hover:bg-[#D97241] group-hover:text-white transition-all duration-300">
+                <ShieldCheck className="w-7 h-7" />
               </div>
               <div>
-                <p className="text-sm font-black text-[#1F2722]">صالات معتمدة</p>
-                <p className="text-[11px] text-[#7D9683] font-medium">فحص وتوثيق ميداني 2026</p>
+                <p className="text-base font-black text-[#1F2722] mb-1">صالات معتمدة</p>
+                <p className="text-xs text-[#7D9683] leading-relaxed">فحص وتوثيق ميداني لكل صالة قبل إدراجها في المنصة</p>
               </div>
             </div>
 
             {/* Badge 2 */}
-            <div className="flex flex-col items-center text-center md:px-6 gap-2">
-              <div className="w-11 h-11 rounded-full bg-[#F4F7F5] text-[#7D9683] flex items-center justify-center">
-                <Beaker className="w-5 h-5" />
+            <div className="bg-white rounded-2xl border border-[#EAE5DA] p-6 flex flex-col items-center text-center gap-4 hover:border-[#D97241] hover:shadow-lg transition-all duration-300 group">
+              <div className="w-14 h-14 rounded-2xl bg-[#FDF4EF] text-[#D97241] flex items-center justify-center group-hover:bg-[#D97241] group-hover:text-white transition-all duration-300">
+                <Beaker className="w-7 h-7" />
               </div>
               <div>
-                <p className="text-sm font-black text-[#1F2722]">تغذية مدروسة علمياً</p>
-                <p className="text-[11px] text-[#7D9683] font-medium">معادلات معتمدة دولياً</p>
+                <p className="text-base font-black text-[#1F2722] mb-1">تغذية علمية</p>
+                <p className="text-xs text-[#7D9683] leading-relaxed">خطط غذائية مبنية على معادلات معتمدة دولياً وتناسب المناخ الساحلي</p>
               </div>
             </div>
 
             {/* Badge 3 */}
-            <div className="flex flex-col items-center text-center md:px-6 gap-2">
-              <div className="w-11 h-11 rounded-full bg-[#F4F7F5] text-[#7D9683] flex items-center justify-center">
-                <Leaf className="w-5 h-5" />
+            <div className="bg-white rounded-2xl border border-[#EAE5DA] p-6 flex flex-col items-center text-center gap-4 hover:border-[#D97241] hover:shadow-lg transition-all duration-300 group">
+              <div className="w-14 h-14 rounded-2xl bg-[#FDF4EF] text-[#D97241] flex items-center justify-center group-hover:bg-[#D97241] group-hover:text-white transition-all duration-300">
+                <Leaf className="w-7 h-7" />
               </div>
               <div>
-                <p className="text-sm font-black text-[#1F2722]">مكونات ساحلية طبيعية</p>
-                <p className="text-[11px] text-[#7D9683] font-medium">وجبات سمك الثمد الطازجة</p>
+                <p className="text-base font-black text-[#1F2722] mb-1">مكونات طبيعية</p>
+                <p className="text-xs text-[#7D9683] leading-relaxed">وجبات من صيد المكلا الطازج وأفضل المكونات الساحلية الصحية</p>
               </div>
             </div>
 
             {/* Badge 4 */}
-            <div className="flex flex-col items-center text-center md:px-6 gap-2">
-              <div className="w-11 h-11 rounded-full bg-[#F4F7F5] text-[#7D9683] flex items-center justify-center">
-                <Users2 className="w-5 h-5" />
+            <div className="bg-white rounded-2xl border border-[#EAE5DA] p-6 flex flex-col items-center text-center gap-4 hover:border-[#D97241] hover:shadow-lg transition-all duration-300 group">
+              <div className="w-14 h-14 rounded-2xl bg-[#FDF4EF] text-[#D97241] flex items-center justify-center group-hover:bg-[#D97241] group-hover:text-white transition-all duration-300">
+                <Users2 className="w-7 h-7" />
               </div>
               <div>
-                <p className="text-sm font-black text-[#1F2722]">كباتن مؤهلون</p>
-                <p className="text-[11px] text-[#7D9683] font-medium">إشراف وتوجيه مهني</p>
+                <p className="text-base font-black text-[#1F2722] mb-1">كباتن مؤهلون</p>
+                <p className="text-xs text-[#7D9683] leading-relaxed">مدربون معتمدون بشهادات رسمية وخبرة ميدانية موثقة بالمكلا</p>
               </div>
             </div>
 
@@ -209,37 +215,43 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* ═══════════════════════════════════════════
-          3. FLOATING CATEGORY STRIP (BURGER HUB STYLE)
+          3. CATEGORY STRIP — تصنيفات المنصة (Flavoria Style)
       ═══════════════════════════════════════════ */}
-      <section className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 mb-8 sm:mb-12">
-        <div className="bg-white rounded-2xl sm:rounded-3xl shadow-[0_20px_50px_-15px_rgba(31,39,34,0.12)] border border-[#EAE5DA] p-3 sm:p-5">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 divide-y sm:divide-y-0 sm:divide-x sm:divide-x-reverse divide-[#F0EBE3]">
-            {CATEGORIES.map((cat, idx) => {
+      <section className="bg-white py-12 sm:py-16 border-b border-[#F0EBE3]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* Header */}
+          <div className="text-center mb-10 sm:mb-12">
+            <span className="inline-block text-xs font-black tracking-[0.2em] uppercase text-[#D97241] mb-2">تصنيفات المنصة</span>
+            <h2 className="text-2xl sm:text-3xl font-black text-[#1F2722]">استكشف خدماتنا</h2>
+          </div>
+
+          {/* Category Cards — Circular Style (Flavoria) */}
+          <div className="flex flex-wrap justify-center gap-6 sm:gap-10">
+            {CATEGORIES.map((cat) => {
               const IconComp = cat.icon;
               return (
                 <Link
                   key={cat.label}
                   to={cat.path}
-                  className={`group flex flex-col items-center text-center p-3 sm:p-4 rounded-2xl hover:bg-[#FAF8F5] transition-all duration-300 hover:-translate-y-1 ${
-                    idx !== 0 ? 'pt-4 sm:pt-3' : ''
-                  }`}
+                  className="group flex flex-col items-center text-center w-24 sm:w-28 gap-3"
                 >
-                  {/* Clean Icon Badge */}
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#FAF8F5] group-hover:bg-[#D97241] flex items-center justify-center text-[#1F2722] group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-md group-hover:shadow-[#D97241]/25 mb-2.5">
-                    <IconComp className="w-6 h-6 sm:w-7 sm:h-7 transition-transform group-hover:scale-110" />
+                  {/* Circle Icon */}
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-2 border-[#EAE5DA] group-hover:border-[#D97241] bg-[#FAF8F5] group-hover:bg-[#FDF4EF] flex items-center justify-center transition-all duration-300 shadow-sm group-hover:shadow-[0_8px_24px_rgba(217,114,65,0.18)] group-hover:-translate-y-1.5">
+                    <IconComp className="w-8 h-8 sm:w-9 sm:h-9 text-[#1F2722] group-hover:text-[#D97241] transition-colors duration-300" />
                   </div>
-                  {/* Category Title */}
-                  <span className="text-xs sm:text-sm font-black text-[#1F2722] group-hover:text-[#D97241] transition-colors leading-tight">
+                  {/* Label */}
+                  <span className="text-xs sm:text-sm font-bold text-[#1F2722] group-hover:text-[#D97241] transition-colors leading-tight">
                     {cat.label}
                   </span>
-                  {/* Subtitle / Micro-tagline */}
-                  <span className="text-[10px] sm:text-[11px] text-[#7D9683] font-medium mt-1 leading-snug">
+                  <span className="text-[10px] text-[#7D9683] leading-snug -mt-1">
                     {cat.sublabel}
                   </span>
                 </Link>
               );
             })}
           </div>
+
         </div>
       </section>
 
