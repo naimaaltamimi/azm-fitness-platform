@@ -34,6 +34,23 @@ interface SlideItem {
 const heroSlides: SlideItem[] = [
   {
     id: 1,
+    tag: 'منصة عزم الرياضية • ساحل حضرموت',
+    badgeType: 'gym',
+    headlineHighlight: 'ابدأ رحلتك نحو حياة',
+    headlineRest: 'أكثر نشاطاً.',
+    subtitle:
+      'بوابتك الأولى في المكلا لاكتشاف أفضل الصالات الرياضية المعتمدة، نخبة المدربين المؤهلين، والخطط الغذائية المحسوبة علمياً لتحقيق أهدافك البدنية بأعلى كفاءة.',
+    primaryLabel: 'اكتشف الأندية',
+    primaryLink: '/gyms',
+    secondaryLabel: 'استكشف المدربين',
+    secondaryLink: '/trainers',
+    image:
+      'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=85',
+    floatingBadge: 'صالات موثقة ميدانياً 2026 • أسعار رسمية',
+    alt: 'تدريب لياقة وأجهزة رياضية متطورة في المكلا',
+  },
+  {
+    id: 2,
     tag: 'تغذية ساحلية حضرمية',
     badgeType: 'nutrition',
     headlineHighlight: 'وجبات صحية',
@@ -48,23 +65,6 @@ const heroSlides: SlideItem[] = [
       'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1200&q=85',
     floatingBadge: 'صيد بحر المكلا الطازج • بروتين عالي',
     alt: 'طبق تغذية صحية من صيد بحر المكلا',
-  },
-  {
-    id: 2,
-    tag: 'منصة عزم الرياضية • ساحل حضرموت',
-    badgeType: 'gym',
-    headlineHighlight: 'لياقتك تبدأ',
-    headlineRest: 'من هنا.',
-    subtitle:
-      'اكتشف أفضل الصالات الرياضية المعتمدة في المكلا (الشرج، فوة، الديس) بأسعار رسمية بالريال اليمني دون وسطاء مع جداول الفترات المحدثة.',
-    primaryLabel: 'استكشف الصالات',
-    primaryLink: '/gyms',
-    secondaryLabel: 'دليل الكباتن',
-    secondaryLink: '/trainers',
-    image:
-      'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=85',
-    floatingBadge: 'صالات موثقة ميدانياً 2026 • أسعار رسمية',
-    alt: 'تدريب كمال أجسام وأجهزة رياضية متطورة بالمكلا',
   },
   {
     id: 3,
