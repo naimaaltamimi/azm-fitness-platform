@@ -410,13 +410,8 @@ export const LandingPage: React.FC = () => {
       ═══════════════════════════════════════════ */}
       <section className="bg-[#FAF8F5] border-y border-[#F0EBE3] py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          {/* Section Header with Script Accent & Lines */}
-          <div className="text-center space-y-2">
-            <div className="inline-flex items-center justify-center gap-2.5 text-xs font-black text-[#7D9683]">
-              <span className="w-8 sm:w-12 h-px bg-[#7D9683]/40" />
-              <span className="tracking-widest uppercase">— وجبات مختارة —</span>
-              <span className="w-8 sm:w-12 h-px bg-[#7D9683]/40" />
-            </div>
+          {/* Section Header */}
+          <div className="text-center">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1F2722] tracking-tight">
               وجبات ساحلية نوصي بتجربتها
             </h2>
