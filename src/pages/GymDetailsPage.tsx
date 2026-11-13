@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import { storageService } from '../services/storageService';
 import { MUKALLA_GYMS } from '../data/mukallaGymsData';
 import { EmptyState } from '../components/common/EmptyState';
 import {
@@ -22,7 +23,7 @@ export const GymDetailsPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  const gym = MUKALLA_GYMS.find((g) => g.slug === id || g.id === id);
+  const gym = storageService.getGymById(id || '') || MUKALLA_GYMS.find((g) => g.slug === id || g.id === id);
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 

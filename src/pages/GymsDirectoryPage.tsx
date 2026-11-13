@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { MUKALLA_GYMS } from '../data/mukallaGymsData';
+import { storageService } from '../services/storageService';
+import { Gym } from '../types';
 import { GymCard } from '../components/gyms/GymCard';
 import { EmptyState } from '../components/common/EmptyState';
 import { Search, MapPin, Dumbbell, ShieldCheck } from 'lucide-react';
@@ -10,8 +11,15 @@ export const GymsDirectoryPage: React.FC = () => {
   const qParam = searchParams.get('q') || '';
   const nParam = searchParams.get('neighborhood') || 'all';
 
+  const [gyms, setGyms] = useState<Gym[]>(() => storageService.getGyms());
   const [searchQuery, setSearchQuery] = useState(qParam);
   const [selectedNeighborhood, setSelectedNeighborhood] = useState(nParam);
+
+  useEffect(() => {
+    const handleUpdate = () => setGyms(storageService.getGyms());
+    window.addEventListener('azm_storage_update', handleUpdate);
+    return () => window.removeEventListener('azm_storage_update', handleUpdate);
+  }, []);
 
   // Sync state if searchParams change
   useEffect(() => {
@@ -20,12 +28,12 @@ export const GymsDirectoryPage: React.FC = () => {
   }, [qParam, nParam]);
 
   const neighborhoods = useMemo(() => {
-    const unique = Array.from(new Set(MUKALLA_GYMS.map((g) => g.neighborhood)));
+    const unique = Array.from(new Set(gyms.map((g) => g.neighborhood)));
     return ['all', ...unique];
-  }, []);
+  }, [gyms]);
 
   const filteredGyms = useMemo(() => {
-    return MUKALLA_GYMS.filter((gym) => {
+    return gyms.filter((gym) => {
       const matchSearch =
         gym.nameAr.toLowerCase().includes(searchQuery.toLowerCase()) ||
         gym.nameEn.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -38,7 +46,7 @@ export const GymsDirectoryPage: React.FC = () => {
 
       return matchSearch && matchNeighborhood;
     });
-  }, [searchQuery, selectedNeighborhood]);
+  }, [gyms, searchQuery, selectedNeighborhood]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8 font-['Cairo',sans-serif]" dir="rtl">

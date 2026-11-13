@@ -1,5 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { storageService } from '../services/storageService';
 import { MUKALLA_GYMS } from '../data/mukallaGymsData';
 import { MEALS_DATA } from '../data/mealsData';
 import { INITIAL_TRAINERS } from '../data/trainersData';
@@ -138,17 +139,29 @@ export const LandingPage: React.FC = () => {
   const [favorites, setFavorites] = useState<string[]>([]);
   const [selectedNeighborhood, setSelectedNeighborhood] = useState<string>('all');
 
+  const [gymsList, setGymsList] = useState(() => storageService.getGyms());
+  const [trainersList, setTrainersList] = useState(() => storageService.getTrainers());
+
+  useEffect(() => {
+    const handleUpdate = () => {
+      setGymsList(storageService.getGyms());
+      setTrainersList(storageService.getTrainers());
+    };
+    window.addEventListener('azm_storage_update', handleUpdate);
+    return () => window.removeEventListener('azm_storage_update', handleUpdate);
+  }, []);
+
   // Filter gyms by neighborhood
   const filteredGyms = useMemo(() => {
     if (selectedNeighborhood === 'all') {
-      return MUKALLA_GYMS.slice(0, 4);
+      return gymsList.slice(0, 4);
     }
-    const matching = MUKALLA_GYMS.filter((g) => g.neighborhood.includes(selectedNeighborhood));
-    return matching.length > 0 ? matching.slice(0, 4) : MUKALLA_GYMS.slice(0, 4);
-  }, [selectedNeighborhood]);
+    const matching = gymsList.filter((g) => g.neighborhood.includes(selectedNeighborhood));
+    return matching.length > 0 ? matching.slice(0, 4) : gymsList.slice(0, 4);
+  }, [gymsList, selectedNeighborhood]);
 
   const recommendedMeals = MEALS_DATA.slice(0, 3);
-  const featuredTrainers = INITIAL_TRAINERS.slice(0, 2);
+  const featuredTrainers = trainersList.slice(0, 2);
 
   const toggleFavorite = (id: string, e: React.MouseEvent) => {
     e.preventDefault();

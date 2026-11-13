@@ -19,15 +19,19 @@ interface AdminLayoutProps {
   activeTab: 'subscriptions' | 'gyms' | 'trainers';
   setActiveTab: (tab: 'subscriptions' | 'gyms' | 'trainers') => void;
   pendingCount: number;
+  gymsCount?: number;
+  trainersCount?: number;
 }
 
 export const AdminLayout: React.FC<AdminLayoutProps> = ({
   children,
   activeTab,
   setActiveTab,
-  pendingCount
+  pendingCount,
+  gymsCount = 0,
+  trainersCount = 0
 }) => {
-  const { user, logout, loginAsDemo } = useAuth();
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
 
   // If not logged in as admin, show dedicated Admin Security Gate
@@ -45,18 +49,18 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
             </span>
             <h2 className="text-2xl font-black text-white">بوابة التحكم الإدارية</h2>
             <p className="text-xs text-slate-300 leading-relaxed">
-              هذه الصفحة مخصصة لمديري ومطوري منصة عزم لإدارة الطلبات والصالات والعمليات الميدانية في المكلا.
+              هذه الصفحة مخصصة لمديري منصة عزم لإدارة الطلبات والصالات والعمليات الميدانية في المكلا. يرجى تسجيل الدخول بحساب المدير للمتابعة.
             </p>
           </div>
 
           <div className="pt-2 space-y-3">
-            <button
-              onClick={() => loginAsDemo('admin')}
+            <Link
+              to="/login"
               className="w-full py-3.5 px-6 rounded-xl bg-[#2878B8] hover:bg-[#1f639a] text-white font-bold text-sm shadow-lg shadow-[#2878B8]/30 active:scale-95 transition-all flex items-center justify-center gap-2"
             >
               <ShieldAlert className="w-4 h-4 text-[#D9AD55]" />
-              <span>الدخول بصلاحيات مدير المنصة</span>
-            </button>
+              <span>تسجيل الدخول كمدير المنصة</span>
+            </Link>
 
             <Link
               to="/"
@@ -131,7 +135,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
                 <Building2 className="w-4 h-4 text-[#D9AD55]" />
                 <span>صالات المكلا المعتمدة</span>
               </div>
-              <span className="text-[11px] text-slate-400 font-mono">5</span>
+              <span className="text-[11px] text-slate-400 font-mono">{gymsCount}</span>
             </button>
 
             <button
@@ -146,7 +150,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
                 <Users className="w-4 h-4 text-[#D9AD55]" />
                 <span>دليل الكباتن والمدربين</span>
               </div>
-              <ChevronLeft className="w-4 h-4 text-slate-400" />
+              <span className="text-[11px] text-slate-400 font-mono">{trainersCount}</span>
             </button>
           </nav>
         </div>

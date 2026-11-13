@@ -22,11 +22,12 @@ export const SubscriptionRequestPage: React.FC = () => {
 
   const planParam = searchParams.get('plan');
 
+  const allGyms = storageService.getGyms();
   // Initial gym selection
-  const selectedGymObj = MUKALLA_GYMS.find((g) => g.slug === id || g.id === id) || MUKALLA_GYMS[0];
+  const selectedGymObj = allGyms.find((g) => g.slug === id || g.id === id) || allGyms[0];
   const [gymId, setGymId] = useState(selectedGymObj.id);
 
-  const currentGym = MUKALLA_GYMS.find((g) => g.id === gymId) || MUKALLA_GYMS[0];
+  const currentGym = allGyms.find((g) => g.id === gymId) || allGyms[0];
 
   // Pricing plan selection
   const initialPlan =
@@ -196,7 +197,7 @@ export const SubscriptionRequestPage: React.FC = () => {
                 onChange={(e) => setGymId(e.target.value)}
                 className="w-full px-4 py-3 rounded-2xl border border-sand-200 focus:outline-none focus:ring-2 focus:ring-terracotta-500 text-sm font-bold bg-white"
               >
-                {MUKALLA_GYMS.map((g) => (
+                {allGyms.map((g) => (
                   <option key={g.id} value={g.id}>
                     {g.nameAr} - حي {g.neighborhood}
                   </option>

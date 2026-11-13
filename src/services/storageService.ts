@@ -1,18 +1,20 @@
-import { SubscriptionRequest, NutritionPlan, Trainer } from '../types';
+import { SubscriptionRequest, NutritionPlan, Trainer, Gym } from '../types';
 import { INITIAL_TRAINERS } from '../data/trainersData';
+import { MUKALLA_GYMS } from '../data/mukallaGymsData';
 
 const SUBSCRIPTIONS_KEY = 'azm_subscriptions';
 const NUTRITION_PLAN_KEY = 'azm_saved_nutrition_plan';
 const APPLIED_TRAINERS_KEY = 'azm_applied_trainers';
+const GYMS_KEY = 'azm_gyms_data';
 
-// Initial seed subscription so the trainee and admin can immediately test without hassle
+// Initial seed subscription so the trainee, gym owner and admin can immediately test without hassle
 const INITIAL_SUBSCRIPTIONS: SubscriptionRequest[] = [
   {
     id: 'sub-mukalla-101',
     createdAt: new Date().toISOString(),
     userId: 'user-trainee-1',
     userName: 'سالم أحمد باحشوان',
-    userPhone: '',
+    userPhone: '770123456',
     gymId: 'smart-gym-mukalla',
     gymName: 'سمارت جيم (Smart Gym)',
     planId: 'smart-month',
@@ -23,11 +25,28 @@ const INITIAL_SUBSCRIPTIONS: SubscriptionRequest[] = [
     status: 'confirmed',
     startDate: new Date().toISOString().split('T')[0],
     notes: 'التدريب في الفترة المسائية - تجديد اشتراك شهري'
+  },
+  {
+    id: 'sub-mukalla-102',
+    createdAt: new Date(Date.now() - 86400000).toISOString(),
+    userId: 'user-trainee-2',
+    userName: 'عمر خالد بن الشيخ',
+    userPhone: '771987654',
+    gymId: 'fit-x-gym-mukalla',
+    gymName: 'فيت إكس جيم (Fit X Gym)',
+    planId: 'fitx-3months',
+    planName: 'باقة التحدي (3 أشهر)',
+    priceYer: 42000,
+    preferredShift: 'morning',
+    paymentMethod: 'kuraimi_exchange',
+    status: 'pending',
+    startDate: new Date().toISOString().split('T')[0],
+    notes: 'التحويل عبر حساب الكريمي المميز'
   }
 ];
 
 export const storageService = {
-  // Subscriptions
+  // ===================== Subscriptions CRUD =====================
   getSubscriptions(): SubscriptionRequest[] {
     try {
       const data = localStorage.getItem(SUBSCRIPTIONS_KEY);
@@ -45,6 +64,11 @@ export const storageService = {
   getUserSubscriptions(userId: string): SubscriptionRequest[] {
     const all = this.getSubscriptions();
     return all.filter((s) => s.userId === userId);
+  },
+
+  getGymSubscriptions(gymIdOrSlug: string): SubscriptionRequest[] {
+    const all = this.getSubscriptions();
+    return all.filter((s) => s.gymId === gymIdOrSlug || s.gymName.toLowerCase().includes(gymIdOrSlug.toLowerCase()));
   },
 
   addSubscription(sub: Omit<SubscriptionRequest, 'id' | 'createdAt'>): SubscriptionRequest {
@@ -72,7 +96,84 @@ export const storageService = {
     return false;
   },
 
-  // Nutrition Plan
+  deleteSubscription(id: string): boolean {
+    let all = this.getSubscriptions();
+    const initialLen = all.length;
+    all = all.filter((s) => s.id !== id);
+    if (all.length !== initialLen) {
+      localStorage.setItem(SUBSCRIPTIONS_KEY, JSON.stringify(all));
+      window.dispatchEvent(new Event('azm_storage_update'));
+      return true;
+    }
+    return false;
+  },
+
+  // ===================== Gyms CRUD =====================
+  getGyms(): Gym[] {
+    try {
+      const data = localStorage.getItem(GYMS_KEY);
+      if (!data) {
+        localStorage.setItem(GYMS_KEY, JSON.stringify(MUKALLA_GYMS));
+        return MUKALLA_GYMS;
+      }
+      const parsed: Gym[] = JSON.parse(data);
+      if (!Array.isArray(parsed) || parsed.length === 0) {
+        localStorage.setItem(GYMS_KEY, JSON.stringify(MUKALLA_GYMS));
+        return MUKALLA_GYMS;
+      }
+      return parsed;
+    } catch {
+      return MUKALLA_GYMS;
+    }
+  },
+
+  getGymById(idOrSlug: string): Gym | undefined {
+    const gyms = this.getGyms();
+    return gyms.find((g) => g.id === idOrSlug || g.slug === idOrSlug);
+  },
+
+  addGym(gymData: Omit<Gym, 'id' | 'slug'> & { slug?: string }): Gym {
+    const all = this.getGyms();
+    const generatedSlug =
+      gymData.slug ||
+      (gymData.nameEn ? gymData.nameEn.toLowerCase().replace(/[^a-z0-9]+/g, '-') : 'gym-' + Date.now().toString(36));
+    const newGym: Gym = {
+      ...gymData,
+      id: 'gym-' + Date.now().toString(36),
+      slug: generatedSlug
+    };
+    all.unshift(newGym);
+    localStorage.setItem(GYMS_KEY, JSON.stringify(all));
+    window.dispatchEvent(new Event('azm_storage_update'));
+    return newGym;
+  },
+
+  updateGym(id: string, updates: Partial<Gym>): Gym[] {
+    const all = this.getGyms();
+    const index = all.findIndex((g) => g.id === id);
+    if (index !== -1) {
+      all[index] = { ...all[index], ...updates };
+      localStorage.setItem(GYMS_KEY, JSON.stringify(all));
+      window.dispatchEvent(new Event('azm_storage_update'));
+    }
+    return all;
+  },
+
+  deleteGym(id: string): Gym[] {
+    let all = this.getGyms();
+    all = all.filter((g) => g.id !== id);
+    localStorage.setItem(GYMS_KEY, JSON.stringify(all));
+    window.dispatchEvent(new Event('azm_storage_update'));
+    return all;
+  },
+
+  resetGyms(): Gym[] {
+    localStorage.setItem(GYMS_KEY, JSON.stringify(MUKALLA_GYMS));
+    window.dispatchEvent(new Event('azm_storage_update'));
+    return MUKALLA_GYMS;
+  },
+
+  // ===================== Nutrition Plan =====================
   getSavedNutritionPlan(): NutritionPlan | null {
     try {
       const data = localStorage.getItem(NUTRITION_PLAN_KEY);
@@ -87,7 +188,7 @@ export const storageService = {
     window.dispatchEvent(new Event('azm_storage_update'));
   },
 
-  // Trainers
+  // ===================== Trainers CRUD =====================
   getTrainers(): Trainer[] {
     try {
       const custom = localStorage.getItem(APPLIED_TRAINERS_KEY);
@@ -99,7 +200,6 @@ export const storageService = {
   },
 
   applyAsTrainer(trainer: Omit<Trainer, 'id'>): Trainer {
-    const existing = this.getTrainers();
     const newTrainer: Trainer = {
       ...trainer,
       id: 'trainer-' + Date.now().toString(36)
@@ -138,4 +238,3 @@ export const storageService = {
     }
   }
 };
-
