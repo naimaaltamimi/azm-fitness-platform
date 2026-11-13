@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { Logo } from './Logo';
+import { SearchModal } from './SearchModal';
 import {
   Menu,
   X,
@@ -18,8 +19,20 @@ export const Navbar: React.FC = () => {
   const { user, isAuthenticated, logout } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        setIsSearchOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -88,7 +101,11 @@ export const Navbar: React.FC = () => {
             {/* ─── LEFT (RTL): ACTION ICONS & USER ─── */}
             <div className="hidden lg:flex items-center gap-2">
               {/* Search Icon */}
-              <button className="w-9 h-9 rounded-full flex items-center justify-center text-[#536559] hover:bg-[#F4F1EA] hover:text-[#1F2722] transition-colors">
+              <button
+                onClick={() => setIsSearchOpen(true)}
+                className="w-9 h-9 rounded-full flex items-center justify-center text-[#536559] hover:bg-[#F4F1EA] hover:text-[#D97241] transition-colors"
+                title="بحث في المنصة (Ctrl+K)"
+              >
                 <Search className="w-[18px] h-[18px]" />
               </button>
 
@@ -176,7 +193,14 @@ export const Navbar: React.FC = () => {
             </div>
 
             {/* ─── MOBILE: Menu Button ─── */}
-            <div className="flex lg:hidden items-center gap-2">
+            <div className="flex lg:hidden items-center gap-1.5">
+              <button
+                onClick={() => setIsSearchOpen(true)}
+                className="p-2 rounded-lg text-[#536559] hover:bg-[#F4F1EA] hover:text-[#D97241] transition-colors"
+                title="بحث"
+              >
+                <Search className="w-5 h-5" />
+              </button>
               <Link
                 to="/calculator"
                 className="px-3.5 py-2 rounded-lg bg-[#D97241] text-white font-bold text-[11px]"
@@ -231,6 +255,12 @@ export const Navbar: React.FC = () => {
           )}
         </div>
       </header>
+
+      {/* Global Search Modal */}
+      <SearchModal
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+      />
     </>
   );
 };
