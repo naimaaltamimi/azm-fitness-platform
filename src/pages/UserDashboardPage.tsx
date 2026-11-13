@@ -221,18 +221,17 @@ export const UserDashboardPage: React.FC = () => {
                         {sub.paymentMethod === 'cash_at_gym'
                           ? 'نقداً بالصالة'
                           : sub.paymentMethod === 'kuraimi_exchange'
-                          ? 'الكريمي'
-                          : 'العمقي'}
+                            ? 'الكريمي'
+                            : 'العمقي'}
                       </td>
                       <td className="py-3 px-2">
                         <span
-                          className={`px-2.5 py-1 rounded-full text-[10px] font-bold ${
-                            sub.status === 'confirmed'
+                          className={`px-2.5 py-1 rounded-full text-[10px] font-bold ${sub.status === 'confirmed'
                               ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                               : sub.status === 'pending'
-                              ? 'bg-amber-50 text-amber-800 border border-amber-200'
-                              : 'bg-red-50 text-red-700'
-                          }`}
+                                ? 'bg-amber-50 text-amber-800 border border-amber-200'
+                                : 'bg-red-50 text-red-700'
+                            }`}
                         >
                           {sub.status === 'confirmed' ? 'مؤكد ونشط' : sub.status === 'pending' ? 'بانتظار التأكيد' : 'ملغي'}
                         </span>
@@ -519,13 +518,12 @@ export const UserDashboardPage: React.FC = () => {
                     <td className="py-3 font-mono font-bold text-[#D97241]">{sub.priceYer.toLocaleString()} ر.ي</td>
                     <td className="py-3">{sub.preferredShift === 'morning' ? 'صباحي' : 'مسائي'}</td>
                     <td className="py-3">
-                      <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold ${
-                        sub.status === 'confirmed' || sub.status === 'active'
+                      <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold ${sub.status === 'confirmed' || sub.status === 'active'
                           ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                           : sub.status === 'pending'
-                          ? 'bg-amber-50 text-amber-800 border border-amber-200'
-                          : 'bg-[#FAF8F5] text-slate-700'
-                      }`}>
+                            ? 'bg-amber-50 text-amber-800 border border-amber-200'
+                            : 'bg-[#FAF8F5] text-slate-700'
+                        }`}>
                         {sub.status === 'confirmed' ? 'مؤكد ونشط' : sub.status === 'pending' ? 'قيد المراجعة' : sub.status}
                       </span>
                     </td>

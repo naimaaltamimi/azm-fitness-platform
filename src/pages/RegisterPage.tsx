@@ -40,14 +40,19 @@ export const RegisterPage: React.FC = () => {
     setIsLoading(true);
 
     try {
-      await register({
+      const res = await register({
         name,
         email,
         phone,
         neighborhood,
-        role
+        role,
+        password
       });
-      navigate('/dashboard');
+      if (res.success) {
+        navigate('/dashboard');
+      } else {
+        alert(res.message || 'حدث خطأ أثناء إنشاء الحساب');
+      }
     } catch {
       alert('حدث خطأ أثناء إنشاء الحساب');
     } finally {

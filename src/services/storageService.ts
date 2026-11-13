@@ -7,43 +7,8 @@ const NUTRITION_PLAN_KEY = 'azm_saved_nutrition_plan';
 const APPLIED_TRAINERS_KEY = 'azm_applied_trainers';
 const GYMS_KEY = 'azm_gyms_data';
 
-// Initial seed subscription so the trainee, gym owner and admin can immediately test without hassle
-const INITIAL_SUBSCRIPTIONS: SubscriptionRequest[] = [
-  {
-    id: 'sub-mukalla-101',
-    createdAt: new Date().toISOString(),
-    userId: 'user-trainee-1',
-    userName: 'سالم أحمد باحشوان',
-    userPhone: '770123456',
-    gymId: 'smart-gym-mukalla',
-    gymName: 'سمارت جيم (Smart Gym)',
-    planId: 'smart-month',
-    planName: 'اشتراك شهري أساسي',
-    priceYer: 15000,
-    preferredShift: 'evening',
-    paymentMethod: 'cash_at_gym',
-    status: 'confirmed',
-    startDate: new Date().toISOString().split('T')[0],
-    notes: 'التدريب في الفترة المسائية - تجديد اشتراك شهري'
-  },
-  {
-    id: 'sub-mukalla-102',
-    createdAt: new Date(Date.now() - 86400000).toISOString(),
-    userId: 'user-trainee-2',
-    userName: 'عمر خالد بن الشيخ',
-    userPhone: '771987654',
-    gymId: 'fit-x-gym-mukalla',
-    gymName: 'فيت إكس جيم (Fit X Gym)',
-    planId: 'fitx-3months',
-    planName: 'باقة التحدي (3 أشهر)',
-    priceYer: 42000,
-    preferredShift: 'morning',
-    paymentMethod: 'kuraimi_exchange',
-    status: 'pending',
-    startDate: new Date().toISOString().split('T')[0],
-    notes: 'التحويل عبر حساب الكريمي المميز'
-  }
-];
+// Real production subscriptions - starts clean and only records actual user requests
+const INITIAL_SUBSCRIPTIONS: SubscriptionRequest[] = [];
 
 export const storageService = {
   // ===================== Subscriptions CRUD =====================
@@ -51,10 +16,17 @@ export const storageService = {
     try {
       const data = localStorage.getItem(SUBSCRIPTIONS_KEY);
       if (!data) {
-        localStorage.setItem(SUBSCRIPTIONS_KEY, JSON.stringify(INITIAL_SUBSCRIPTIONS));
         return INITIAL_SUBSCRIPTIONS;
       }
-      return JSON.parse(data);
+      const parsed: SubscriptionRequest[] = JSON.parse(data);
+      // Clean out any legacy mock demo subscriptions
+      const cleaned = parsed.filter(
+        (s) => s.id !== 'sub-mukalla-101' && s.id !== 'sub-mukalla-102'
+      );
+      if (cleaned.length !== parsed.length) {
+        localStorage.setItem(SUBSCRIPTIONS_KEY, JSON.stringify(cleaned));
+      }
+      return cleaned;
     } catch (e) {
       console.error(e);
       return INITIAL_SUBSCRIPTIONS;

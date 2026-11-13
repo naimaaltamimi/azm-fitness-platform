@@ -320,3 +320,4 @@ export const GymAdminModal: React.FC<GymAdminModalProps> = ({
 };
 
 export default GymAdminModal;
+

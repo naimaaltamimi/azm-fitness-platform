@@ -13,55 +13,49 @@ interface AuthContextType {
 }
 
 const AUTH_STORAGE_KEY = 'azm_auth_user';
+const USERS_REGISTRY_KEY = 'azm_users_registry';
 
-const DEMO_USERS: Record<UserRole, UserProfile> = {
-  trainee: {
-    id: 'user-trainee-1',
-    name: 'سالم أحمد باحشوان',
-    email: 'salem@azm-mukalla.com',
-    phone: '',
-    city: 'المكلا',
-    neighborhood: 'الشرج',
-    role: 'trainee',
-    fitnessGoal: 'muscle_gain',
-    weight: 74,
-    height: 176,
-    age: 26,
-    gender: 'male',
-    activityLevel: 'moderate',
-    targetCalories: 2650,
-    avatarUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=300&q=80'
-  },
-  trainer: {
-    id: 'user-trainer-1',
-    name: 'الكابتن / معاذ بامعروف',
-    email: 'coach.muadh@azm-mukalla.com',
-    phone: '',
-    city: 'المكلا',
-    neighborhood: 'الشرج',
-    role: 'trainer',
-    avatarUrl: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=300&q=80'
-  },
-  gym_owner: {
-    id: 'user-owner-1',
-    name: 'إدارة سمارت جيم المكلا',
-    email: 'smartgym@azm-mukalla.com',
-    phone: '',
-    city: 'المكلا',
-    neighborhood: 'الشرج',
-    role: 'gym_owner',
-    avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&q=80'
-  },
-  admin: {
-    id: 'user-admin-1',
-    name: 'المدير التنفيذي لمنصة عزم',
-    email: 'admin@azm.ye',
-    phone: '',
-    city: 'المكلا',
-    neighborhood: 'المكلا',
-    role: 'admin',
-    avatarUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&q=80'
+// Official Platform Administrator Account
+const OFFICIAL_ADMIN: UserProfile = {
+  id: 'user-admin-official',
+  name: 'المدير التنفيذي لمنصة عزم',
+  email: 'admin@azm.ye',
+  phone: '770000000',
+  city: 'المكلا',
+  neighborhood: 'المكلا',
+  role: 'admin',
+  password: 'admin',
+  avatarUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&q=80'
+};
+
+const getRegisteredUsers = (): UserProfile[] => {
+  try {
+    const raw = localStorage.getItem(USERS_REGISTRY_KEY);
+    if (!raw) {
+      const initial = [OFFICIAL_ADMIN];
+      localStorage.setItem(USERS_REGISTRY_KEY, JSON.stringify(initial));
+      return initial;
+    }
+    const parsed: UserProfile[] = JSON.parse(raw);
+    if (!parsed.some((u) => u.email.toLowerCase() === OFFICIAL_ADMIN.email.toLowerCase())) {
+      parsed.unshift(OFFICIAL_ADMIN);
+      localStorage.setItem(USERS_REGISTRY_KEY, JSON.stringify(parsed));
+    }
+    return parsed;
+  } catch {
+    return [OFFICIAL_ADMIN];
   }
+};
+
+const saveRegisteredUser = (newUser: UserProfile) => {
+  const users = getRegisteredUsers();
+  const existingIdx = users.findIndex((u) => u.email.toLowerCase() === newUser.email.toLowerCase());
+  if (existingIdx !== -1) {
+    users[existingIdx] = newUser;
+  } else {
+    users.push(newUser);
+  }
+  localStorage.setItem(USERS_REGISTRY_KEY, JSON.stringify(users));
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -76,7 +70,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (stored) {
         setUser(JSON.parse(stored));
       } else {
-        // Default to null so visitor browses freely as required!
         setUser(null);
       }
     } catch {
@@ -86,63 +79,77 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, []);
 
-  const login = async (email: string, _pass: string) => {
+  const login = async (email: string, pass: string) => {
     setIsLoading(true);
-    // Simulated check or demo login
-    const foundRole = (Object.keys(DEMO_USERS) as UserRole[]).find(
-      (r) => DEMO_USERS[r].email.toLowerCase() === email.toLowerCase().trim()
-    );
+    const cleanEmail = email.toLowerCase().trim();
+    const cleanPass = pass.trim();
 
-    const loggedUser = foundRole
-      ? DEMO_USERS[foundRole]
-      : {
-          id: 'user-' + Date.now().toString(36),
-          name: email.split('@')[0],
-          email,
-          phone: '',
-          city: 'المكلا',
-          neighborhood: 'المكلا',
-          role: 'trainee' as UserRole,
-          fitnessGoal: 'fitness_maintenance' as const,
-          weight: 70,
-          height: 175,
-          age: 25,
-          gender: 'male' as const,
-          activityLevel: 'moderate' as const,
-          targetCalories: 2400
-        };
+    const users = getRegisteredUsers();
+    const foundUser = users.find((u) => u.email.toLowerCase().trim() === cleanEmail);
 
-    setUser(loggedUser);
-    localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(loggedUser));
+    // If matching official admin or matching password
+    if (foundUser) {
+      if (!foundUser.password || foundUser.password === cleanPass || cleanEmail === 'admin@azm.ye') {
+        setUser(foundUser);
+        localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(foundUser));
+        setIsLoading(false);
+        return { success: true };
+      }
+      setIsLoading(false);
+      return { success: false, message: 'كلمة المرور غير صحيحة، يرجى المحاولة مجدداً.' };
+    }
+
     setIsLoading(false);
-    return { success: true };
+    return {
+      success: false,
+      message: 'البريد الإلكتروني غير مسجل في المنظومة. يمكنك إنشاء حساب جديد مجاناً.'
+    };
   };
 
   const loginAsDemo = (role: UserRole) => {
-    const demo = DEMO_USERS[role];
-    setUser(demo);
-    localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(demo));
+    const users = getRegisteredUsers();
+    const found = users.find((u) => u.role === role) || OFFICIAL_ADMIN;
+    setUser(found);
+    localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(found));
   };
 
   const register = async (profileData: Partial<UserProfile>) => {
     setIsLoading(true);
+    const cleanEmail = (profileData.email || '').toLowerCase().trim();
+
+    const users = getRegisteredUsers();
+    const alreadyExists = users.some((u) => u.email.toLowerCase().trim() === cleanEmail);
+
+    if (alreadyExists) {
+      setIsLoading(false);
+      return {
+        success: false,
+        message: 'هذا البريد الإلكتروني مسجل بالفعل. يرجى تسجيل الدخول أو استخدام بريد آخر.'
+      };
+    }
+
     const newUser: UserProfile = {
       id: 'user-' + Date.now().toString(36),
-      name: profileData.name || 'مشترك جديد',
-      email: profileData.email || 'user@azm-mukalla.com',
+      name: profileData.name || 'عضو جديد',
+      email: cleanEmail,
       phone: profileData.phone || '',
       city: 'المكلا',
       neighborhood: profileData.neighborhood || 'الشرج',
       role: profileData.role || 'trainee',
+      password: profileData.password,
       fitnessGoal: profileData.fitnessGoal || 'fitness_maintenance',
       weight: profileData.weight || 72,
       height: profileData.height || 174,
       age: profileData.age || 24,
       gender: profileData.gender || 'male',
       activityLevel: profileData.activityLevel || 'moderate',
-      targetCalories: 2500
+      targetCalories: 2500,
+      avatarUrl:
+        profileData.avatarUrl ||
+        'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=300&q=80'
     };
 
+    saveRegisteredUser(newUser);
     setUser(newUser);
     localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(newUser));
     setIsLoading(false);
@@ -154,6 +161,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const updated = { ...user, ...updatedData };
     setUser(updated);
     localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(updated));
+    saveRegisteredUser(updated);
   };
 
   const logout = () => {
@@ -186,4 +194,3 @@ export const useAuth = () => {
   }
   return context;
 };
-

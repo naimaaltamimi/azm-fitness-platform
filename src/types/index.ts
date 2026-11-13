@@ -16,6 +16,7 @@ export interface UserProfile {
   gender?: 'male' | 'female';
   activityLevel?: 'sedentary' | 'light' | 'moderate' | 'very_active';
   targetCalories?: number;
+  password?: string;
 }
 
 export interface GymPricingPlan {
